@@ -1,0 +1,115 @@
+<html>
+  <head></head>
+  <body>
+    <table id="ta">
+      <tr>
+        <td>1</td>
+        <td>admin</td>
+        <td>23</td>
+        <td>程序员</td>
+        <td>天津</td>
+        <td>admin@kali.com</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>guest</td>
+        <td>23</td>
+        <td>测试员</td>
+        <td>北京</td>
+        <td>guest@kali.com</td>
+      </tr>
+    </table>
+    <input id="Button1" type="button" value="导出EXCEL" onclick="exportExcel('ta')" />
+
+    <script>
+      function getBrowserType() {
+        var explorer = window.navigator.userAgent
+        //ie
+        if (explorer.indexOf('MSIE') >= 0) {
+          return 'ie'
+        }
+        //firefox
+        else if (explorer.indexOf('Firefox') >= 0) {
+          return 'Firefox'
+        }
+        //Chrome
+        else if (explorer.indexOf('Chrome') >= 0) {
+          return 'Chrome'
+        }
+        //Opera
+        else if (explorer.indexOf('Opera') >= 0) {
+          return 'Opera'
+        }
+        //Safari
+        else if (explorer.indexOf('Safari') >= 0) {
+          return 'Safari'
+        }
+      }
+
+      function isIeBrowser() {
+        return getBrowserType() === 'ie'
+      }
+
+      function excelForIe(tableId) {
+        var curTbl = document.getElementById(tableId)
+        var oXL = new ActiveXObject('Excel.Application')
+
+        //创建AX对象excel
+        var oWB = oXL.Workbooks.Add()
+        //获取workbook对象
+        var xlsheet = oWB.Worksheets(1)
+        //激活当前sheet
+        var sel = document.body.createTextRange()
+        sel.moveToElementText(curTbl)
+        //把表格中的内容移到TextRange中
+        sel.select
+        //全选TextRange中内容
+        sel.execCommand('Copy')
+        //复制TextRange中内容
+        xlsheet.Paste()
+        //粘贴到活动的EXCEL中
+        oXL.Visible = true
+        //设置excel可见属性
+
+        try {
+          var fname = oXL.Application.GetSaveAsFilename('Excel.xls', 'Excel Spreadsheets (*.xls), *.xls')
+        } catch (e) {
+          print('Nested catch caught ' + e)
+        } finally {
+          oWB.SaveAs(fname)
+
+          oWB.Close((savechanges = false))
+          //xls.visible = false;
+          oXL.Quit()
+          oXL = null
+        }
+      }
+
+      var excelForMainBrowser = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+        var template =
+          '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+        var base64 = function (s) {
+          return window.btoa(unescape(encodeURIComponent(s)))
+        }
+        var format = function (s, c) {
+          return s.replace(/{(\w+)}/g, function (m, p) {
+            console.log(m, p)
+            return c[p]
+          })
+        }
+
+        return function (tableId, name) {
+          var table = document.getElementById(tableId)
+          var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+          window.location.href = uri + base64(format(template, ctx))
+        }
+      })()
+
+      function exportExcel(tableId) {
+        //整个表格拷贝到EXCEL中
+        isIeBrowser() ? excelForIe(tableId) : excelForMainBrowser(tableId, 'agent')
+      }
+    </script>
+  </body>
+</html>

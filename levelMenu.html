@@ -1,0 +1,383 @@
+<html>
+
+<head>
+    <title>级联菜单</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        body, h1, div, ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, #menus, #editMenuArea {
+            width: 700px;
+            margin: 20px auto;
+        }
+
+        #menus > select,
+        #menus > #editMenuArea {
+            vertical-align: middle;
+        }
+
+        #menus > #editMenuArea, #menus {
+            -moz-box-sizing: border-box; /*Firefox3.5+*/
+            -webkit-box-sizing: border-box; /*Safari3.2+*/
+            -o-box-sizing: border-box; /*Opera9.6*/
+            -ms-box-sizing: border-box; /*IE8*/
+            box-sizing: border-box; /*W3C标准(IE9+，Safari5.1+,Chrome10.0+,Opera10.6+都符合box-sizing的w3c标准语法)*/
+        }
+
+        #menus > #editMenuArea {
+            padding: 20px;
+            height: 150px;
+            border: 5px dashed red;
+            display: none;
+        }
+
+        #menus > #editMenuArea {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 4px dotted green;
+        }
+
+        #menus > #editMenuArea > button {
+            margin: 10px 0;
+        }
+
+        #menus > #editMenuArea > .secondLevelMenuContent > ol > li {
+            margin-left: 60px;
+            margin-top: 10px;
+        }
+
+        #menus > #submitMenu {
+            display: none;
+            width: 100%;
+        }
+
+        #menus > select {
+            width: 100px;
+            margin-right: 40px;
+        }
+
+        #menus > #editMenuArea > input:first-child {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>菜单show</h1>
+
+<div id="menus">
+    <!--功能按钮-->
+    <button id="addMenu" onclick="addMenu()">新增菜单</button>
+    <button id="alterMenu" onclick="alterMenu()">修改菜单</button>
+    <button id="deleteMenu" onclick="deleteMenu()">删除菜单</button>
+    <button id="cancel" onclick="cancel()">取消</button>
+    <hr/>
+
+    <!--功能对应的内容显示区域-->
+    <div id="editMenuArea"></div>
+
+    <button id="submitMenu" onclick="submitMenu()">提交菜单</button>
+    <hr/>
+
+    <!--菜单展示-->
+    <select id="firstLevelMenu" onchange="firstLevelMenuFun()"></select>
+    <select id="secondLevelMenu" onchange="secondLevelMenuFun()"></select>
+    <select id="thirdLevelMenu" onchange="thirdLevelMenuFun()"></select>
+</div>
+
+<script>
+    // 菜单JSON
+    var menu = [
+        {
+            "type_id": 1,
+            "name": "大菜",
+            "foods": [
+                {
+                    "food_id": 1,
+                    "name": "鱼鲜肉丝",
+                    "price": "10"
+                },
+                {
+                    "food_id": 2,
+                    "name": "红烧肉",
+                    "price": "11"
+                },
+                {
+                    "food_id": 3,
+                    "name": "香辣粉",
+                    "price": "12"
+                }
+            ]
+        },
+        {
+            "type_id": 2,
+            "name": "中菜",
+            "foods": [
+                {
+                    "food_id": 4,
+                    "name": "小炒肉",
+                    "price": "13"
+                },
+                {
+                    "food_id": 5,
+                    "name": "云吞",
+                    "price": "14"
+                }
+            ]
+        },
+        {
+            "type_id": 3,
+            "name": "小菜",
+            "foods": [
+                {
+                    "food_id": 6,
+                    "name": "雪糕",
+                    "price": "15"
+                },
+                {
+                    "food_id": 7,
+                    "name": "黄瓜",
+                    "price": "16"
+                }
+            ]
+        }
+    ];
+
+    // 封装$方法
+    window.$ = HTMLElement.prototype.$ = function (selector) {
+        var elems = (this === window ? document : this).querySelectorAll(selector);
+        return elems.length === 0 ? null : elems.length === 1 ? elems[0] : elems;
+    };
+
+    var addMenuButton = $('#menus > #addMenu');
+    var alterMenuButton = $('#menus > #alterMenu');
+    var deleteMenuButton = $('#menus > #deleteMenu');
+
+    var buttonList = [];
+    buttonList.push(addMenuButton);
+    buttonList.push(alterMenuButton);
+    buttonList.push(deleteMenuButton);
+
+    var firstLevelMenu = $('#menus > #firstLevelMenu');
+    var secondLevelMenu = $('#menus > #secondLevelMenu');
+    var thirdLevelMenu = $('#menus > #thirdLevelMenu');
+    var second_level_menu_html = "";
+    var third_level_menu_html = "";
+
+    // 页面加载同时加载JS内容
+    window.onload = initMenu(menu);
+
+    function initMenu(menu) {
+        var first_level_menu_html = "";
+
+        menu.forEach(function (item) {
+            first_level_menu_html += "<option value=" + item["type_id"] + ">" + item["name"] + "</option>";
+        });
+
+        // 默认第一个一级菜单被选中
+        menu[0]["foods"].forEach(function (food) {
+            second_level_menu_html += "<option value=" + food["food_id"] + ">" + food["name"] + "</option>";
+            third_level_menu_html += "<option value=" + food["price"] + ">" + food["price"] + "元" + "</option>";
+        });
+
+        firstLevelMenu.innerHTML = first_level_menu_html;
+        secondLevelMenu.innerHTML = second_level_menu_html;
+        thirdLevelMenu.innerHTML = third_level_menu_html;
+    }
+
+    // 新增菜单
+    function addMenu() {
+        buttonState(addMenuButton);
+
+        $('#editMenuArea').innerHTML = '<span>一级菜单内容: </span><input type="text"> <br /><button onclick="addSecondLevelMenu()">新增二级菜单 </button> <br /><div class="secondLevelMenuContent"></div>'
+    }
+
+    // 修改菜单
+    function alterMenu() {
+        buttonState(alterMenuButton);
+    }
+
+    // 删除菜单
+    function deleteMenu() {
+        buttonState(addMenuButton);
+    }
+
+    // 点击一级菜单选项同步更新二级菜单内容
+    function firstLevelMenuFun() {
+        menu.forEach(function (item) {
+            // 当前点击一级菜单选项的值 与 item中的 type_id 属性值相等的那个对象
+            if (Number(firstLevelMenu.options[firstLevelMenu.selectedIndex].value) === item["type_id"]) {
+
+                second_level_menu_html = "";
+                third_level_menu_html = "";
+
+                item["foods"].forEach(function (food) {
+                    second_level_menu_html += "<option value=" + food["food_id"] + ">" + food["name"] + "</option>";
+                    third_level_menu_html += "<option value=" + food["price"] + ">" + food["price"] + "元" + "</option>";
+                });
+
+                secondLevelMenu.innerHTML = second_level_menu_html;
+                thirdLevelMenu.innerHTML = third_level_menu_html;
+
+                return;
+            }
+        });
+    }
+
+    // 点击二级菜单时，更新三级菜单被选中项
+    function secondLevelMenuFun() {
+        thirdLevelMenu.options[secondLevelMenu.selectedIndex].selected = true;
+    }
+
+    // 点击三级菜单时，更新二级菜单被选中项
+    function thirdLevelMenuFun() {
+        secondLevelMenu.options[thirdLevelMenu.selectedIndex].selected = true;
+    }
+
+    // 新增二级菜单
+    function addSecondLevelMenu() {
+        // 如果未添加 二级菜单内容文本提示，则添加
+        if ($('.secondLevelMenuContent > ol') === null) {
+            $('.secondLevelMenuContent').innerHTML += '<ol>二级菜单内容: </ol>';
+        }
+
+        // 菜单数据
+        var li = document.createElement('li');
+        li.innerHTML = '菜单名：';
+        var inputName = document.createElement('input');
+        var inputPrice = document.createElement('input');
+        var span = document.createElement('span');
+        span.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp; 价格：';
+        inputPrice.type = 'number';
+        inputPrice.min = 0;
+        li.appendChild(inputName);
+        li.appendChild(span);
+        li.appendChild(inputPrice);
+
+        $('.secondLevelMenuContent > ol').appendChild(li);
+
+        incrementAddMenuContentHeight(33);
+    }
+
+    /**
+     * 改变新增菜单区域宽度
+     * height: 要改变菜单区域高度的值
+     * */
+    function incrementAddMenuContentHeight(height) {
+        var editMenuAreaHeight = parseInt(document.defaultView.getComputedStyle($('#editMenuArea'), null).height);
+
+        editMenuAreaHeight += height;
+        // 新增菜单的同时，把菜单区域的高度同时增高
+        $('#editMenuArea').style.height = editMenuAreaHeight + 'px';
+    }
+
+    // 提交数据
+    function submitMenu() {
+        $('#menus > #submitMenu').setAttribute("disabled", "true");
+
+        // 获取所有菜单中最后一个一级菜单
+        var lastMenu = menu[menu.length - 1];
+
+        // 获取新建一级菜单的名称
+        var firstLevelMenuInputValue = $('#menus > #editMenuArea > input:first-of-type').value;
+
+        // 定义一级菜单数据
+        var newMenu = {
+            "type_id": ++lastMenu["type_id"],
+            "name": firstLevelMenuInputValue,
+            "foods": []
+        };
+
+        // 如果有二级菜单，则创建二级菜单
+        if ($('.secondLevelMenuContent > ol > li')) {
+            // 获取二级菜单中的数据
+            var secondLevelMenuLis = $('.secondLevelMenuContent > ol > li');
+
+            // 获取所有菜单中最后一个一级菜单中最后一个二级菜单中的 food_id
+            var currentFoodId = lastMenu["foods"][lastMenu["foods"].length - 1]["food_id"];
+
+            // 新建一个二级菜单
+            if (secondLevelMenuLis.length === undefined || secondLevelMenuLis.length === 1) {
+                newMenu["foods"].push(createNewFood(currentFoodId, secondLevelMenuLis));
+            }
+            else {
+                // 新建多个二级菜单
+                secondLevelMenuLis.forEach(function (li) {
+                    newMenu["foods"].push(createNewFood(currentFoodId, li));
+                });
+            }
+
+            /**
+             * 创建二级菜单数据
+             * currentFoodId: 所有菜单中最后一个一级菜单中最后一个二级菜单中的 food_id
+             * li: 内部包含二级菜单的数据，有两个input框的值组成
+             *      input[0]: 菜单名，
+             *      input[1]: 菜单价格
+             * */
+            function createNewFood(currentFoodId, li) {
+                return {
+                    "food_id": ++currentFoodId,
+                    "name": li.getElementsByTagName('input')[0].value,
+                    "price": li.getElementsByTagName('input')[1].value
+                };
+            }
+        }
+
+        menu.push(newMenu);
+
+        initMenu(menu);
+    }
+
+    /**
+     * 控制功能按钮的状态，启用和禁用
+     * */
+    function buttonState(currentButton) {
+        if (document.defaultView.getComputedStyle($('#menus > #editMenuArea'), null)["display"] === "none") {
+            $('#menus > #editMenuArea').style.display = 'block';
+        }
+
+        if (document.defaultView.getComputedStyle($('#menus > #submitMenu'), null)["display"] === "none") {
+            $('#menus > #submitMenu').style.display = 'block';
+        }
+
+        buttonList.forEach(function (button) {
+            if (currentButton === button) {
+                button.removeAttribute("enabled");
+                button.setAttribute("disabled", "false");
+            }
+            else {
+                button.removeAttribute("disabled");
+                button.setAttribute("enabled", "true");
+            }
+        });
+    }
+
+    /**
+     * 取消操作功能
+     * */
+    function cancel() {
+        // 如果新增菜单内容未显示，则显示
+        if ($('#menus > #editMenuArea').style.display === "block") {
+            $('#menus > #editMenuArea').style.display = "none";
+        }
+
+        if ($('#menus > #submitMenu').style.display === "block") {
+            $('#menus > #submitMenu').style.display = "none";
+        }
+
+        buttonList.forEach(function (button) {
+            if(button.getAttribute("disabled")){
+                button.removeAttribute("disabled");
+                button.setAttribute("enabled", "true");
+                return;
+            }
+        });
+    }
+</script>
+</body>
+</html>
