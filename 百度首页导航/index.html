@@ -1,0 +1,96 @@
+<!doctype html>	<!--声明当前页面 html-->
+<html lang="en">
+	<head>
+		<!--声明当前页面编码集 utf-8 国际编码  GBK gb2312 中文编码-->
+		<meta charset="UTF-8">
+		<!--网页三要素-->
+		<title>百度首页导航</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="Description" content="描述">
+		<!--css、js-->
+		<!--css 层叠样式表  衣服  化妆品 修饰作用-->
+		<style type="text/css">
+		*{margin:0;/*外边距*/padding:0;/*内边距*/}
+		body{background:url("images/bg.jpg");
+			background-position:center top;/*(px,%,center top  left right bottom)*/
+			background-size:100%;/*px % cervor*/
+			background-repeat:no-repeat;
+		}
+		div.box{width:910px;
+			height:315px;
+			margin:150px auto;/*上下外边距50px  左右居中*/
+		}
+		div.box .nav{
+			width:80px;
+			height:315px;
+			background:rgba(0,0,0,0.5);
+			float:left;
+		}
+		div.box .nav ul li{
+			width:100%;
+			height:35px;
+			line-height:35px;
+			list-style:none;
+			text-align:center;
+		}
+		div.box .nav ul li.hover{
+			background:url("images/button.png");
+		}
+		div.box .nav ul li a{
+			color:#fff;
+			font-size:12px;
+			text-decoration:none;
+		}
+		div.box .con{
+			width:810px;
+			height:315px;
+			background:blue;
+			float:right;
+			position:relative;
+			overflow:hidden;
+		}
+		div.box .con .pic{
+			width:810px;
+			height:315px;
+			position:absolute;
+			top:0;
+			left:0;
+		}
+		div.box .con .pic img{
+			display:block;
+		}
+		</style>
+		
+	</head>
+<body>
+	<div class="box">
+		<div class="nav">
+			<ul>
+				<li class="hover"><a href="javascript:">导航</a></li>
+				<li><a href="javascript:">新闻</a></li>
+				<li><a href="javascript:">音乐</a></li>
+				<li><a href="javascript:">视频</a></li>
+			</ul>
+		</div>
+		<div class="con">
+			<div class="pic">
+				<img src="images/1.jpg" />
+				<img src="images/2.jpg" />
+				<img src="images/3.jpg" />
+				<img src="images/4.jpg" />
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+	var li = $("div.box .nav ul li");//获取li对象 4个li
+	var pic = $("div.box .con .pic");//获取图片容器对象
+	var num = 0;//对应下标
+	li.click(function(){
+		$(this).addClass("hover").siblings().removeClass("hover");
+		num = $(this).index();//获取当前下标
+		pic.animate({top:-315*num+"px"},700);
+	});
+	</script>
+</body>
+</html>

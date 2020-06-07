@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById('txt1');
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){
+				var re = /^\w+@[a-z0-9]+\.[a-z]+$/i;	//	^	行首	$	行尾
+
+				if (re.test(oTxt.value)) {	//test 	只要字符串一部分符号要求，返回true
+					alert('合法的邮箱');
+				}else{
+					alert('写错了');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="txt1" type="text" />
+	<input id="btn1" type="button" value="校验" />
+</body>
+</html>

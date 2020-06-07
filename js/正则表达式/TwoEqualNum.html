@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			两个相同的数字中间带零个或多个字母 a ，输出匹配结果。
+		*/
+		var str = '123abc11dd2a2ee3aa3kkk4aaa456789'
+		var res = /(\d)a*\1/g;
+		var arr = str.match(res);
+
+		for (var i=0; i<arr.length; i++) {
+			if (i < arr.length-1) document.write("\""+arr[i]+"\",");
+			else document.write("\""+arr[i]+"\"");
+		}
+	</script>
+</body>
+</html>

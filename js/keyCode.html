@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,textarea{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				textarea{ width:192px; overflow:hidden;}
+				a{ display:block; width:100%; text-decoration:none; color:#000;}
+				.focused,a:hover{ background:#1173cc; color:#fff;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<textarea id="email"  name="email" rows="1" onkeyup = "match(this.value,arguments[0])"></textarea>
+			<div id="matchWindow">匹配框</div>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var matchWindow = document.getElementById('matchWindow');
+				var email = document.getElementById("email");
+				//按键上
+				var KEY_UP = 38;
+				//按键下
+				var KEY_DOWN = 40;
+				//按键回车
+				var KEY_ENTER = 13;
+
+				//进行匹配对象
+				var focusTip;
+				//进行匹配个数
+				var matchSize; 
+
+				//支持键盘次操作的匹配函数
+				function match(keyword,e){
+					e = e || event;
+					//按上下键的时候不进行刷新
+					if(e.keyCode == KEY_ENTER){
+						email.value = email.value.replace(/@.*/,focusTip.innerHTML).replace(/\s/,'');
+						matchWindow.style.display = 'none';
+						email.blur();
+					}else if(e.keyCode == KEY_UP){
+						//放置在未显示匹配框前而导致的错误
+						if(matchWindow.style.display == 'none'){
+							return;
+						}
+						//状态恢复
+						if(!focusTip.previousSibling){
+							focusTip.className = '';
+							matchWindow.scrollTop = matchWindow.scrollHeight;
+							focusTip = matchWindow.lastChild;
+							focusTip.className = 'focused';
+						}else{
+							focusTip.previousSibling.className = 'focused';
+							focusTip.className = '';
+							focusTip = focusTip.previousSibling;
+							matchWindow.scrollTop -= matchWindow.scrollHeight/matchSize;
+						}
+					}else if(e.keyCode == KEY_DOWN){
+						if(matchWindow.style.display == 'none'){
+							return;
+						}
+						if(!focusTip.nextSibling){
+							focusTip.className = '';
+							matchWindow.scrollTop = 0;
+							focusTip = matchWindow.firstChild;
+							focusTip.className = 'focused';
+						}else{
+							matchWindow.scrollTop += matchWindow.scrollHeight/matchSize;
+							focusTip.nextSibling.className = 'focused';
+							focusTip.className = '';
+							focusTip = focusTip.nextSibling;
+						}
+					}else{
+						//清除已有信息
+						matchWindow.innerHTML = '';
+						//隐藏窗口
+						matchWindow.style.display == 'none';
+						//保证邮箱格式的正确性
+						if(!keyword){
+							return;
+						}
+						if(!keyword.match(/^[ \w\ . \- ]+@\w*[ \ . ]?\w*/)){
+							return;
+						}
+						//获取匹配字符串,只取@符号后面的内容
+						keyword = keyword.match(/@\w*[ \ . ]?\w*/);
+						//进行匹配
+						var matchs = mailBoxs.match(new RegExp(keyword+"[^ ]","gm"));
+						//输出匹配结果
+						if(matchs){
+							matchs = matchs.join('').replace(/ $/,'').split('');	//split()方法用于将一个字符串分割为多个子阵列，并返回新的数组。
+							matchSize = matchs.length;
+							matchWindow.style.display == 'block';
+							for(var i=0, l=matchs.length; i<1;i++){
+								matchWindow.innerHTML += '<a href="javascript:void(0);">'+matchs[i]+'</a>';
+							}
+						}
+						//为IE设置max-height
+						if(matchWindow.style.maxHeight == undifined){
+							if(matchWindow.scrollHeight >= 100){
+								matchWindow.style.height = '100px';
+							}else{
+								matchWindow.style.height = '0px';
+							}
+						}
+						//初始化匹配焦点
+						focusTip = matchWindow.firstChild;
+						focusTip.className = 'focused';
+					}
+				}
+
+				//鼠标更新焦点
+				matchWindow.onmouseover = function(e){
+					e = e || event;
+					var target = e.srcElement || e.target;
+					focusTip.className = '';
+					target.className= 'focused';
+					focusTip = target;
+				}
+				if(!focusTip.previousSibling){
+					focusTip.className = '';	//去掉老焦点
+					focusTip = matchWindow.lastChild;	//改变焦点对象为匹配项列表中的最后一个
+					focusTip.className = 'focused';	//把新焦点对象样式改变为获得焦点
+					matchWindow.scrollTop = matchWindow.scrollHeight;	//改变滚动条来跟踪光标
+				}
+				matchWindow.scrollTop +=matchWindow.srcollHeight/matchSize;
+				matchWindow.scrollTop -=matchWindow.srcollHeight/matchSize;
+
+
+			</script>
+
+		</body>
+</html>

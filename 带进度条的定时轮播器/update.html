@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>带进度条的定时轮播特效</title>
+		<meta name="keywords" content="关键词1，关键词2。。">
+		<meta name="description" content="描述:对网页内容的概述">
+		<style>
+		*{margin:0px;padding:0px;}
+		#box{
+			width:100%;height:630px;
+			background:#900;
+			overflow:hidden;
+		}
+		ul li{
+			width:100%;height:630px;background:#000;
+			position:relative;
+		}
+		img{
+			position:absolute;
+			left:100px;top:0px;
+		}
+		.nav{
+			width:100%;height:70px;background:rgba(255,255,255,0.5);			position:absolute;left:0px;bottom:0px;
+		}
+		.bar{
+			width:100%;height:3px;background:url("images/bar.png");
+			position:absolute;bottom:0px;
+		}
+		p{height:3px;background:#060;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li style="background:url(images/bg1.jpg) center">
+					<img src="images/con1.png"/>
+					<div class="nav"></div>
+					<div class="bar">
+						<p></p>
+					</div>
+				</li>
+				<li style="background:url(images/bg2.jpg) center">
+					<img src="images/con2.png"/>
+					<div class="nav"></div>
+					<div class="bar">
+						<p></p>
+					</div>
+				</li>
+				<li style="background:url(images/bg3.jpg) center">
+					<img src="images/con3.png"/>
+					<div class="nav"></div>
+					<div class="bar">
+						<p></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+			var n = 0;
+			function auto(){
+				$("ul li").eq(n).find("img").css("left","-100%");
+				$("ul li").eq(n).find("p").css("width","0px");
+				$("ul li").eq(n).find("img").animate({
+					"left":"50px"
+				},1000,function(){
+					$("ul li").eq(n).find("p").animate({
+						"width":"100%"
+					},4000,function(){
+						$("ul li").eq(n).find("img").animate({
+							"left":"100%"
+						},1000,function(){
+							n++;
+							if (n>2){
+								n=0;
+							}
+							$("ul li").eq(n).fadeIn(100).siblings().fadeOut(100);
+						});
+					});
+				});
+			}
+			auto();
+			setInterval(auto,6100);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#dragger{ width:100px; height:100px; background:#ccc; position:relative;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="dragger"></div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				/*	IE
+				var dragger = document.getElementById('dragger');
+				//监听鼠标事件
+				dragger.onmousedown = function(e){
+					//获取鼠标当前坐标
+					var pageX = event.clientX;
+					var pageY = event.clientY;
+
+					//获取元素坐标  当没有设置left和top属性时，IE默认为auto
+					var offX = parseInt(this.currentStyle.left) || 0;
+					var offY = parseInt(this.currentStyle.top) || 0;
+
+					//获取鼠标相对于元素的间距
+					var offXL = pageX - offX;
+					var offYL = pageY - offY;
+
+					if(!document.onmousemove){
+						document.onmousemove = function(){
+							//设置X坐标
+							dragger.style.left = event.clientX - offXL;
+							//设置Y坐标
+							dragger.style.top = event.clientY - offYL;
+						}
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}*/
+
+				/*主流浏览器*/
+				var dragger = document.getElementById('dragger');
+				//监听鼠标事件
+				dragger.onmousedown = function(e){
+					//兼容时间对象
+					e = e || event;
+					
+					//兼容获取鼠标当前坐标
+					var pageX = e.clientX || e.pageX;
+					var pageY = e.clientY || e.pageY;
+
+					//兼容样式对象
+					var style = this.currentStyle || window.getComputedStyle(this, null);
+
+					//获取元素坐标  当没有设置left和top属性时，IE默认为auto
+					var offX = parseInt(style.left) || 0;
+					var offY = parseInt(style.top) || 0;
+
+					//获取鼠标相对于元素的间距
+					var offXL = pageX - offX;
+					var offYL = pageY - offY;
+
+					if(!document.onmousemove){
+						document.onmousemove = function(e){
+							e = e || event;
+							//设置X坐标
+							dragger.style.left = (event.clientX || e.pageX) - offXL + 'px';
+							//设置Y坐标
+							dragger.style.top = (event.clientY || e.pageY)- offYL + 'px';
+						}
+					}
+				}
+				document.onmouseup = function(){
+					//避免出现拖动闪现
+					document.onmousemove = null;
+				}
+			</script>
+
+		</body>
+</html>

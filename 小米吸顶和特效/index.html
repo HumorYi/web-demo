@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中国编码 gb2312 gbk-->
+			<meta charset="utf-8" />	
+			<!--网页三要素 标题，关键词，描述-->
+			<title>小米吸顶和特效 - Andy</title>
+			<meta name="keywords" content="" />
+			<meta name="description" content="" />
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,a{margin:0px;padding:0px;}
+				body{font-size:16px;font-family:"微软雅黑";height:2000px;}
+				.banner{width:100%;height:200px;background:#000;}
+				.nav{width:100%;height:50px;background:#6c6c6c;}
+				.nav .nav_con{width:1000px;height:50px;margin:0px auto;}
+				.nav .nav_con ul li{list-style:none;float:left;line-height:50px;}
+				.nav .nav_con ul li.all{background:#ff6700;padding:0px 35px;color:#fff;}
+				.nav .nav_con ul li a{text-decoration:none;color:#fff;padding:15px 19px;}
+				.nav .nav_con ul li a:hover{background:rgba(0,0,0,0.6);}
+				.pic{width:1000px;height:474px;background:url(images/1.png);margin:0px auto;}
+				.top{position:fixed;top:0px;left:0px;}
+			</style>
+			<!--js,各色特效-->
+			<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+			<script type="text/javascript">
+				$(window).scroll(function(){
+					var _top = $(window).scrollTop();//获取滚动条距离上边的距离
+					if (_top>200)
+					{
+						$(".nav").addClass("top");
+					}else{
+						$(".nav").removeClass("top");
+					}
+				});
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="banner"></div>
+			<div class="nav">
+				<div class="nav_con">
+					<ul>
+						<li class="all">全部商品分类</li>
+						<li><a href="#">首页</a></li>
+						<li><a href="#">小米手机</a></li>
+						<li><a href="#">红米</a></li>
+						<li><a href="#">小米平板</a></li>
+						<li><a href="#">小米电视</a></li>
+						<li><a href="#">盒子</a></li>
+						<li><a href="#">路由器</a></li>
+						<li><a href="#">合约机</a></li>
+						<li><a href="#">服务</a></li>
+						<li><a href="#">社区</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="pic"></div>
+		</body>
+</html>

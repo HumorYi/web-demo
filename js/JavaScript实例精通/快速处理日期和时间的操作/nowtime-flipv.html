@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#time1{width:10px; height:10px; position:absolute; top:100px; left:100px;}
+		#time2{position:absolute; filter:flipv() alpha(opacity=20); fo  nt-style:italic;}
+		.time{ font-family: Comic Sans Ms; font-size:14pt; font-weight:bold; color:#00008d; }
+	</style>
+</head>
+<body>
+	<div id="time1" class="time"></div>
+	<div id="time2" class="time"></div>
+
+	<script type="text/javascript">
+		var timer;
+		function init(){
+			if(document.all){
+				time2.style.left = time1.style.posLeft;
+				time2.style.top = time1.style.posTop+time1.offsetHeight-6;
+				settimes();
+			}
+		}
+
+		function settimes(){
+			var time = new Date();
+			hours = time.getHours();
+			mins = time.getMinutes();
+			secs = time.getSeconds();
+			if (hours < 10) {
+				hours = '0' + hours;
+			}
+			if (mins < 10) {
+				mins = '0' + mins;
+			}
+			if (secs < 10) {
+				secs = '0' + secs;
+			}
+			time1.innerHTML = hours + ":" + mins + ":" + secs;
+			time2.innerHTML = hours + ":" + mins + ":" + secs;
+			timer = setTimeOut('settimes()',960);
+		}
+
+	</script>
+</body>
+</html>

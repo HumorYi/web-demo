@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>八音盒 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,img,audio{margin:0px;padding:0px;}
+				html{width:100%; height:100%;}
+				body{background:url(images/bj1.jpg)no-repeat center; background-size:cover;}
+				ul li{list-style:none;}
+				.product{width:210px;height:210px;position:absolute;top:500px;right:0px;left:0px;margin:auto;perspective:800px;/*看3D元素的距离 子元素透视效果*/}
+				.product .details{transform-style:preserve-3D;/*设置为3D模式*/width:210px;height:210px;-webkit-animation:rotating 10S linear infinite;}
+				.product .details ul li{width:200px;height:200px;position:absolute;border:5px solid #de4693;}
+				.product .details ul li img{width:200px;height:200px;cursor:pointer;}
+				.product .details ul li:nth-child(1){transform:rotateY(0deg) translateZ(180px);}
+				.product .details ul li:nth-child(2){transform:rotateY(60deg) translateZ(180px);}
+				.product .details ul li:nth-child(3){transform:rotateY(120deg) translateZ(180px);}
+				.product .details ul li:nth-child(4){transform:rotateY(180deg)translateZ(180px);}
+				.product .details ul li:nth-child(5){transform:rotateY(240deg)translateZ(180px);}
+				.product .details ul li:nth-child(6){transform:rotateY(300deg)translateZ(180px);}
+				@-webkit-keyframes rotating{
+					from{transform:rotateY(0deg);}
+					to{transform:rotateY(360deg);}
+				}	
+				.product .details:hover{-webkit-animation-play-state:paused;}
+				.product .details ul li:hover img{transform:scale(1.2);border:5px solid #de4693;}
+				.heart{position:absolute;bottom:90px;left:60px;-webkit-animation:heart 10S linear infinite;cursor:pointer;}
+				@-webkit-keyframes heart{
+					0%{bottom:10%;left:5%;opacity:1;}
+					20%{bottom:35%;left:15%;opacity:0.1;}
+					40%{bottom:70%;left:40%;opacity:1;}
+					60%{bottom:35%;left:65%;opacity:0.2;}
+					80%{bottom:10%;left:80%;opacity:1;}
+					100%{bottom:0%;left:55%;opacity:0.3;}
+				}
+				audio.king{margin:20px auto;display:none;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="heart"><img src="images/xin.png" /></div>
+			<audio src="images/king.mp3" class="king" autoplay loop controls="controls"></audio>
+			<div class="product">				
+				<div class="details">
+					<ul>
+						<li><img src="images/1.jpg" /></li>
+						<li><img src="images/2.jpg" /></li>
+						<li><img src="images/3.jpg" /></li>
+						<li><img src="images/4.jpg" /></li>
+						<li><img src="images/5.jpg" /></li>
+						<li><img src="images/6.jpg" /></li>
+					</ul>
+				</div>
+			</div>		
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			$(".heart").click(function(){
+				$("audio.king").css("display","block");
+			});
+			$(".product .details ul li").click(function(){
+				$("audio.king").css("display","none");
+			});
+		</script>
+</html>

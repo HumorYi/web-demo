@@ -1,0 +1,61 @@
+/*
+ Create By luoxing on 2018/4/11 14:33
+*/
+
+/*注册和登录页面共用 S*/
+body {
+    background : #fedb75 url("../../assets/register/images/login_background.jpg") no-repeat top center;
+}
+
+a.logo {
+    position : fixed;
+    left     : 40px;
+    top      : 20px;
+}
+
+a.logo > img {
+    width : 140px;
+}
+
+.registerOrLogin {
+    width      : 500px;
+    position   : absolute;
+    right      : 10%;
+    top        : 50%;
+    border     : 1px solid #d6d6d6;
+    border-top : 2px solid #E8868B;
+    box-shadow : 0 0 10px 3px rgba(0, 0, 0, .17);
+    background : #fff;
+    padding    : 20px 20px 0;
+}
+
+.registerOrLogin.form-horizontal .form-title {
+    border-left  : solid 5px #E8868B;
+    padding-left : 12px;
+    line-height  : 16px;
+    font-weight  : bold;
+}
+
+.registerOrLogin.form-horizontal .form-group {
+    margin-top   : 20px;
+    margin-left  : 0;
+    margin-right : 0;
+}
+
+.registerOrLogin.form-horizontal .form-group .glyphicon {
+    font-size : 18px;
+}
+
+.registerOrLogin.form-horizontal .buttons {
+    margin-top : 30px;
+}
+
+.registerOrLogin.form-horizontal .buttons p {
+    margin-top : 10px;
+    font-size  : 14px;
+}
+
+.registerOrLogin.form-horizontal .buttons p a:last-child {
+    float : right;
+}
+/*注册和登录页面共用 E*/

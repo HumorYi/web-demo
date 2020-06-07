@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<!--声明当前页面的编码格式 国际编码 UTF-8  中文编码 GBK-->
+	<meta charset="utf-8">
+	<!--声明当前页面的三要素-->
+	<meta name="Keywords" content="关键词，关键词">
+	<meta name="description" content="描述">
+	<title>标题</title>
+	<!--样式css 一件美丽的外衣  化妆品 修饰-->
+	<!--引入样式-->
+	<style type="text/css">
+		/*浏览器兼容*/
+		*{margin:0;padding:0;}
+		.box{width:1200px;/*宽*/height:320px;/*高*/margin:150px auto 0;/*上  左右 下*/}
+		.box .con{width:280px;height:320px;float:left;/*左浮动*/margin:0 8px;border:1px solid #929292;}
+		.box .con h3{line-height:60px;text-align:center;font-size:20px;}
+		.box .con ul li{width:260px;list-style:none;/*去掉小圆点*/padding-left:10px;}
+		.box .con ul li p.t_h{line-height:30px;font-size:16px;color:#666;}
+		.box .con ul li p.t_h span.c_r{color:red;margin-right:10px;}
+		.box .con ul li dl{width:100%;display:none;}
+		.box .con ul li dl dt{width:102px;height:102px;float:left;border:1px solid #929292;}
+		.box .con ul li dl dd{width:140px;height:102px;float:left;padding-left:10px;}
+		.box .con ul li dl dd p.title{line-height:30px;color:#666;}
+		.box .con ul li dl dd p.parct{line-height:25px;color:#666;font-size:14px;}
+		.box .con ul li dl dd p.number{line-height:25px;color:#666;font-size:12px;}
+		.box .con ul li dl dd p span{color:red;}
+	</style>
+</head>	
+<body>
+	<div class="box"></div>
+	<script src="js/jquery.js"></script>
+	<script>		
+		var htmlDivCon = "";
+		var htmlLifirst = "";
+		var htmlLisecond = "";
+		var htmlSpan = "";
+		var htmlDl ="";
+		var htmlDivClear = "";		
+		for (var i=1;i<5 ;i++ ){	
+			htmlDivCon += "<div class='con'><h3>人气品牌</h3><ul></ul></div>";		
+			htmlLisecond += "<li><p class='t_h' style='display:block'><dl style='display:none'></dl></li>";
+		}
+		htmlDl +="<dt><img src='images/pic1.jpg'  width='102' height='102'/></dt><dd><p class='title'>雅诗兰黛</p><p class='parct'>产品数：<span>657</span></p><p class='number'>关注数：<span>787542</span></p></dd>";
+		htmlDivClear += "<div style='clear:both'></div>";
+		htmlSpan += "<span class='c_r'>1</span>雅诗兰黛";
+		htmlLifirst += "<li><p class='t_h' style='display:none'></p><dl class='first' style='display:block'></dl></li>";
+		$(".box").append(htmlDivCon);
+		$(".box .con ul").append(htmlLifirst);
+		$(".box .con ul").append(htmlLisecond);
+		$(".box .con ul li p.t_h").append(htmlSpan);
+		$(".box .con ul li dl").append(htmlDl);
+		$(".box .con ul li").append(htmlDivClear);
+		$(".box .con ul li").hover(function(){
+			$(this).siblings().find("dl").hide();
+			$(this).find("dl").show();
+			$(this).siblings().find("p.t_h").show();
+			$(this).find("p.t_h").hide();
+		});	
+		$(".box .con ul li").hover(function(){
+			var _index = $(this).index();
+			$(".box .con ul li dl dt img").attr("src","images/pic"+(_index+1)+".jpg");
+		});
+	</script>
+</body>
+</html>

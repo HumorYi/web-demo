@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<meta name="Description" content="">
+			<title>同城网旅游网 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,img,p,input,dl,dt,dd,a{margin:0px;padding:0px;}
+				body{font-family:"微软雅黑";background:#8a8a8a;}
+				ul li{list-style:none;}
+				.soso{width:490px;height:355px;background:#fff;margin-top:50px;margin-left:30px;}
+				.soso ul.nav{width:130px;height:355px;background:#384147;float:left;}
+				.soso ul.nav li{width:130px;line-height:44px; color:#fff;font-size:14px;cursor:pointer;}
+				.soso ul.nav li.hover{background:#ddd;}
+				@font-face {font-family: 'iconfont';
+					src: url('iconfont/iconfont.eot'); /* IE9*/
+					src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+					url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+					url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+					url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+				}
+				.iconfont{
+					margin-left:20px;margin-right:10px;
+					font-family:"iconfont" !important;
+					font-size:16px;font-style:normal;
+					-webkit-font-smoothing: antialiased;
+					-webkit-text-stroke-width: 0.2px;
+					-moz-osx-font-smoothing: grayscale;
+				}
+				.soso ul.con{width:350px;height:355px;float:right;position:relative;}
+				.soso ul.con li{width:350px;height:355px;position:absolute;left:0px;top:0px;display:none;}
+				.soso ul.con li img{width:350px;height:355px;}
+				.soso ul.con li .nav-top{line-height:36px;padding-top:10px;}
+				.soso ul.con li .nav-top a{color:#666;text-decoration:none;padding:10px 5px;}
+				.soso ul.con li .nav-top a.hover{border-bottom:2px solid #0c0;}
+				.soso ul.con li p{margin:20px;}
+				.soso ul.con li p input.text{width:288px;height:30px;}
+				.soso ul.con li p input.but
+				{width:130px;height:36px;background:#FF7800;border:none;font-size:20px;margin-left:163px;}
+				.soso ul.con li dt{color:#666;line-height:30px;}
+				.soso ul.con li dd{line-height:25px;float:left;margin:0px 10px;font-size:12px;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+		<div class="soso">
+			<ul class="nav">
+				<li class="hover"><i class="iconfont">&#xe60d;</i>出境游</li>
+				<li><i class="iconfont">&#xe626;</i>国内游</li>
+				<li><i class="iconfont">&#xe61e;</i>周边游</li>
+				<li><i class="iconfont">&#xe634;</i>景点门票</li>
+				<li><i class="iconfont">&#xe628;</i>酒店</li>
+				<li><i class="iconfont">&#xe626;</i>机票</li>
+				<li><i class="iconfont">&#x3447;</i>火车票</li>
+				<li><i class="iconfont">&#xec93;</i>邮轮</li>
+			</ul>
+			<ul class="con">
+				<li style="display:block;">
+					<div class="nav-top">
+						<a class="hover" href="#">景点</a>
+						<a href="#">酒店+景点</a>
+						<a href="#">周边跟团游</a>
+						<a href="#">当地玩乐</a>
+						<form>
+							<p><input class="text" type="text" placeholder="您想到的地方" /></p>
+							<p><input class="but" type="submit" value="搜索" /></p>
+						</form>
+						<dl>
+							<dt>精选主题：</dt>
+							<dd>主题乐园</dd>
+							<dd>自然风光</dd>
+							<dd>水世界</dd>
+							<dd>名胜古迹</dd>
+							<div style="clear:both"></div>
+						</dl>
+						<dl>
+							<dt>精选主题：</dt>
+							<dd>主题乐园<dd>
+							<dd>自然风光</dd>
+							<dd>水世界</dd>
+							<dd>名胜古迹</dd>
+							<div style="clear:both"></div>
+						</dl>
+						<dl>
+							<dt>精选主题：</dt>
+							<dd>主题乐园</dd>
+							<dd>自然风光</dd>
+							<dd>水世界</dd>
+							<dd>名胜古迹</dd>
+							<div style="clear:both"></div>
+						</dl>
+					</div>
+				</li>
+				<li>
+					<img src="images/pic1.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic2.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic3.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic4.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic5.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic6.png" alt="img" />
+				</li>
+				<li>
+					<img src="images/pic7.png" alt="img" />
+				</li>
+			</ul>
+		</div>
+		</body>			
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+		<script type="text/javascript">
+			var arr = ["#209ef6","rgb(80,180,0)","rgb(255,102,0)","rgb(80,180,0)","rgb(255,102,0)",
+			"rgb(32,158,246)","rgb(80,180,0)","rgb(15,197,204)"]
+			$(".soso ul.nav li").click(function(){
+				var _index = $(this).index();
+				$(".soso ul.con li").eq(_index).show().siblings().hide();
+				$(this).addClass("hover").siblings().removeClass("hover");
+				$(this).css({color:arr[_index]}).siblings().css({color:"#fff"});
+			});
+		</script>
+</html>

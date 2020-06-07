@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<script type="text/javascript">
+
+    function fillDivWithInnerHTML() {
+
+       var username = document.getElementById("username").value;
+
+       var textDiv = document.getElementById("textDiv");
+
+       textDiv.innerHTML=username;
+
+    }
+
+    function fillDivWithTextNode() {
+
+   
+
+       var textDiv = document.getElementById("textDiv");
+
+       //首先删除所有已新建的Text Node节点
+
+       while(textDiv.hasChildNodes()) {
+
+           textDiv.removeChild(textDiv.childNodes[0]);
+
+       }
+
+       var textNode = document.createTextNode(document.getElementById("username").value);
+
+       textDiv.appendChild(textNode);
+
+    }
+
+   
+
+    function fillSpanWithInnerHTML() {
+
+       var username = document.getElementById("username").value;
+
+       var textSpan = document.getElementById("textSpan");
+
+       textSpan.innerHTML=username;
+
+    }
+
+   
+
+    function fillSpanWithTextNode() {
+
+       var textSpan = document.getElementById("textSpan");
+
+       //首先删除所有已新建的Text Node节点
+
+       while(textSpan.hasChildNodes()) {
+
+           textSpan.removeChild(textSpan.childNodes[0]);
+
+       }
+
+      
+
+       var textNode = document.createTextNode(document.getElementById("username").value);
+
+       textSpan.appendChild(textNode);
+
+    }
+
+   
+
+   
+
+</script>
+
+</head>
+
+<body>
+
+<input type="text" id="username" name="username"/><br/>
+
+<input type="button" id="fillDivWithInnerHTML" value="fillDivWithInnerHTML" onclick="fillDivWithInnerHTML()"/>
+
+<br/>
+
+<input type="button" id="fillDivWithTextNode" value="fillDivWithTextNode" onclick="fillDivWithTextNode()"/>
+
+<br/>
+
+<input type="button" id="fillSpanWithInnerHTML" value="fillSpanWithInnerHTML" onclick="fillSpanWithInnerHTML()"/>
+
+<br/>
+
+<input type="button" id="fillSpanWithTextNode" value="fillSpanWithTextNode" onclick="fillSpanWithTextNode()"/>
+
+<span id="textSpan"></span><br/>
+
+<div id="textDiv"></div>
+
+</body>
+
+</html>

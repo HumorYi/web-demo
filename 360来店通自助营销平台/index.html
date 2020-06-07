@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<meta name="Description" content="">
+			<title>360来店通自助营销平台 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li{margin:0px;padding:0px;}
+				body{font-family:"微软雅黑";}
+				ul li{list-style:none;}
+
+				/*header S*/
+				#header{width:100%;height:80px;background:#43ADFF;}
+				#header img{margin:25px 0px 0px 40px;}
+				#header span{float:right;color:#fff;margin:30px 40px 0px 0px;}
+				#header span a{text-decoration:none;font-size:16px;color:#fff;}
+				#header span a:hover{border-bottom:1px solid #bcbcbc;}
+				/*header E*/
+
+				/*logo S*/
+				#logo{width:100%;height:42px;box-shadow:0px 2px 4px #ddd;}
+				#logo ul li
+				{list-style:none;width:70px;float:left;text-align:center;line-height:42px;
+				color:#666;margin:0px 30px;cursor:pointer;}
+				#logo ul li:hover{color:#45ddff;}
+				#logo ul li.active{border-bottom:2px solid #45ddff;}
+				/*logo E*/
+
+				/*roll S*/
+				.roll{width:100%;height:485px;}
+				/*roll E*/
+
+				/*menu S*/
+				.menu{width:100px;height:200px;background:#dceffe;position:fixed;
+				top:150px;left:40px;box-shadow:5px 5px 10px #666;}
+				.menu ul li{font-size:14px;text-align:center;line-height:40px;position:relative;cursor:pointer;}
+				.menu ul li.active{background:#44ADFF;color:#fff;}
+				.menu ul li span{width:12px;height:12px;background:#44ADFF;position:absolute;
+				top:12px;left:-3px;border-radius:6px;box-shadow:0px 0px 4px 4px #fff;display:none;}
+				.menu ul li.active span{display:block;}
+				/*menu E*/
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+
+			<!--header S-->
+			<div id="header">
+				<img src="images/banner.png" alt="img" width="327" height="23" />
+				<span>
+					<a href="#">登录</a> |
+					<a href="#">注册</a>
+				</span>
+			</div>
+			<!--header E-->
+
+			<!--logo S-->
+			<div id="logo">
+				<ul>
+					<li>首页</li>
+					<li>号码纠错</li>
+					<li class="active">业务介绍</li>
+					<li>联系我们</li>
+				</ul>
+			</div>
+			<!--logo E-->
+
+			<!--method one
+			<div class="img">
+				<img src="images/bg1.png" alt="img" />
+				<img src="images/bg2.png" alt="img" />
+				<img src="images/bg3.png" alt="img" />
+				<img src="images/bg4.png" alt="img" />
+				<img src="images/bg5.png" alt="img" />
+			</div>-->
+
+			<!--method two>
+			<!--rool S-->
+			<div id='msgList'>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<!--roll E-->
+
+			<div class="menu">
+				<ul>
+					<li class="active">商家秀<span></span></li>
+					<li>自定义链接<span></span></li>
+					<li>黄页<span></span></li>
+					<li>营销管理<span></span></li>
+					<li>移动建站<span></span></li>
+				</ul>
+			</div>
+
+			<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+			<script type="text/javascript">
+				$(function(){
+					$('#msgList div').addClass('roll');
+					for(var i=1; i<6; i++){
+						$('#msgList>div:nth-child('+i+')').css("background","url(images/bg"+i+".png)");
+					}
+				});
+
+				console.log($(window).scrollTop());
+
+				$(".menu ul li").click(function(){
+					$(this).addClass("active").siblings().removeClass("active");
+					$("body,html").animate({scrollTop:$(".roll").eq($(this).index()).offset().top},500);
+				});
+			</script>
+		</body>
+
+</html>

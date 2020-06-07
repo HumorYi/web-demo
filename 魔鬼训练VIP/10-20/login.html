@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>标题</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="描述">	
+		<!--css , js-->
+<style type="text/css">
+*{margin:0px;}
+body{background:#f8f7f5;}
+/*css样式语法规则: 属性:值; 身高:1.6m; px像素*/
+#Top{width:100%;/*宽度*/ height:90px;/*高度*/ background:#000;/*背景颜色*/}
+#Top #Banner{width:1000px; height:70px;  margin:0px auto;/*水平距中*/
+			padding-top:20px;}
+#Login{width:340px; height:350px; background:#fff; margin:50px auto; border:1px solid #ddd;}
+#Login h3{font-size:14px;text-indent:45px;/*首行缩进*/ height:85px;	line-height:85px;}
+#Login .loginCon{width:252px; height:250px; margin:0px auto;}
+#Login .loginCon p.txt{ padding-bottom:20px;}
+#Login .loginCon p.txt input{width:240px; height:35px; border:1px solid #ddd; 
+				border-radius:5px;/*css3 最新技要实现圆角*/}
+#Login .loginCon p.txt input.yzm{width:80px;}
+#Login .loginCon p.txt input.but{width:90px; height:40px; background:#333; color:#fff;}
+</style>
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+$ = jQuery;
+function changeAuthCode() {
+	var num = 	new Date().getTime();
+	var rand = Math.round(Math.random() * 10000);
+	num = num + rand;
+	$('#ver_code').css('visibility','visible');
+	if ($("#vdimgck")[0]) {
+		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+	}
+	return false;	
+}
+</script>
+
+
+
+	</head>
+<body>
+<!-- div 盒子模型，高度，宽度，放内容的长方形容器  姓名="张三"-->
+<div id="Top">
+	<div id="Banner"><img src="images/logo.png" /></div>
+</div>	
+
+<!--登录界面开始-->
+<div id="Login">
+	<h3>账户登录</h3>
+	<div class="loginCon">
+		<form name="form1" method="post" action="login.php">
+		<input type="hidden" name="gotopage" value="/dede/" />
+      <input type="hidden" name="dopost" value="login" />
+      <input name='adminstyle' type='hidden' value='newdedecms' />
+
+			<p class="txt"><input type="text" name="userid" /></p>
+			<p class="txt"><input type="text" name="pwd"/></p>
+			<p class="txt"><input type="text" class="yzm" id="vdcode" name="validate"/><img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../include/vdimgck.php"/>
+           <a href="#" onClick="changeAuthCode();">看不清？ </a></p>
+			<p class="txt"><input type="submit" class="but"  name="sm1" onclick="this.form.submit();"/></p>
+
+		</form>
+	</div>
+</div>
+<!--登录界面结束-->
+
+
+
+
+
+
+
+
+
+<!--
+	1、在页面当中，构建一个长方形的 div盒子模型，宽度100%; 高度90px 背景颜色
+	2、什么叫做外边距，解决关于外边距的兼容问题
+	3、在大长方形里面，构建一个小的长方形，并且通过外边距，使这个小的长方形，在水平距中
+	margin:0px auto; 上下外边距0px 左右外边距自动相等
+	4、如何在页面当中插入一张图片 <img src="地址" />
+	5、提到内边距的概念，通过内边距来移动这个图片的位置，padding-top:20px; 他高度90-20=70
+	6、给body添加背景颜色,构建长方形登录框，控制他的位置，给他添加边框线 border:粗细 风格 颜色;
+	7、账户登录文字样式的设置 ....
+-->
+</body>
+</html>

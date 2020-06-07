@@ -1,0 +1,267 @@
+<!--
+	声明网页文档类型:html(html5最新版本的规范)  符合w3c标准规范
+	每个浏览器对这些代码都有自己的编译模式(怪异模式)
+-->
+<!doctype html>
+<html><!--人-->
+	<head><!--头部:规定一些信息 提供给浏览器用 用户看不到 非可视化标签-->
+		<meta charset="utf-8"><!--字符编码:utf-8国际编码 gbk 中文编码-->
+		<!--网页三要素-->
+		<title>图片懒加载技术-玄武</title>
+		<meta name="keywords" content="关键词1,关键词2">
+		<meta name="description" content="对网页的内容的大概介绍">
+		<style>/*css层叠样式表的存放位置*/
+		/*
+			1、找到对应的标签元素
+			2、给它设置属性
+		*/
+		*{/*通用选择器:选择到所有的标签元素*/
+			margin:0px;/*外边距*/padding:0px;/*内边距*/
+			/*
+				margin-top:;上外边距
+				margin-bottom:;下外边距
+				margin-left:;左外边距
+				margin-right:;右边距
+				margin:10px;上下左右相等 都为10px
+				margin:10px 20px;上下为10px 左右为20px
+				margin:10px 20px 30px;上为10px 左右为20px  下为30px 
+				margin:10px 20px 30px 40px; 上右下左 顺时针方向
+			*/
+		}
+		#box{/*# id选择器*/
+			width:990px;/*宽度*//*height:200px;高度
+			background:red;背景颜色*/
+			margin:50px auto;/*上下为50px  左右居中*/
+		}
+		ul li{
+			list-style:none;/*去除前面的小黑圆点*/
+			width:290px;height:220px;/*background:blue;*/
+			float:left;/*左浮动：和父元素左端对齐 依次往右端显示*/
+			margin:10px 15px;
+		}
+		.txt{/*.class类名选择器*/
+			width:100%;height:40px;
+			box-shadow:1px 1px 5px #000;/*阴影:左右偏移 上下偏移 模糊度 颜色*/
+			text-align:center;/*文本对齐方式：水平居中*/
+			line-height:40px;/*行高：垂直居中*/
+		}
+		ul li img:hover{/*鼠标移上去实现什么效果*/
+			opacity:0.7;/*透明的:0-1*/
+		}
+		</style>
+	</head>
+	<body><!--身体-->
+		<!--
+			1、可以不向服务器下载图片就不到服务器
+			2、可以下载一张图片就不下载多张图片
+			3、能用css实现的特效就不用js
+		-->
+		<!--盒子模型标签 宽度 高度-->
+		<div id="box"><!--id="自定义名字"唯一性(身份证) 见名之意-->
+			<ul><!--无序列表标签-->
+				<li>
+					<!--图片四要素:src路径 width宽度 height:高度 alt解释作用-->
+					<img src="images/1.jpg" width="288" height="180" alt="解释">
+					<div class="txt"><!--class="自定义名字"重复性(姓名)-->
+					绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/6.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/7.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/8.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/9.jpg" width="288" height="180" alt="解释">
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/10.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/11.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/12.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/13.jpg" width="288" height="180" alt="解释">
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/14.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/15.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/16.jpg" width="288" height="180" alt="解释" >
+
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/17.jpg" width="288" height="180" alt="解释">
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/18.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/19.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/20.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/21.jpg" width="288" height="180" alt="解释">
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+					<div class="txt">绿丛小花精美摄影</div>
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+				<li>
+					<img src="images/2.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/3.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/4.jpg" width="288" height="180" alt="解释" >
+				</li>
+				<li>
+					<img src="images/5.jpg" width="288" height="180" alt="解释">
+				</li>
+			</ul>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/lazyload.js"></script>
+		<script>
+			//调用插件里的懒加载功能函数
+			//json传参 键 : 值
+			var lazyload = $.noConflict();
+			//用在哪里
+			lazyload(function(){
+				lazyload("img").lazyload({
+					placeholder : "images/lazyload.png",
+					effect : "fadeIn"
+				});
+			});
+			
+		</script>
+	</body>
+</html>

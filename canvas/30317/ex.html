@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk">
+<title>canvas</title>
+<style type="text/css">
+canvas { border: 1px solid black; }
+#change{width:200px; line-height:30px; color:#fff; text-align:center; background:blue;}
+</style>
+<script type="text/javascript" charset="utf-8">
+var text = "东临碣石，以观沧海。|水何澹澹，山岛竦峙。|树木丛生，百草丰茂。|秋风萧瑟，洪波涌起。|日月之行，若出其中。|星汉灿烂，若出其里。|幸甚至哉，歌以咏志。";
+var arr = text.split("|");
+var line = 0;
+var timer = 0;
+var i = 0;
+var newText = "";
+
+function Typing(id) {
+    var canvas = document.getElementById(id);
+    if (canvas == null) {
+        return false;
+    }
+    scrollit();
+}
+
+function scrollit() {
+    newText = arr[line].slice(0, i++) + "_";
+    var context = canvas.getContext("2d");
+    // 擦除文字
+    context.clearRect(0, 20 + line * 30, 600, 20 + 30 * (line + 1));
+    var gradient = context.createLinearGradient(0, 0, 200, 0);
+    gradient.addColorStop("0", "magenta");
+    gradient.addColorStop("0.5", "blue");
+    gradient.addColorStop("1.0", "red");
+    context.fillStyle = gradient;
+    context.font = "20px Verdana";
+    context.textBaseline = "hanging";
+
+    if (i > arr[line].length) {
+        newText = arr[line].slice(0, arr[line].length);
+        context.fillText(newText, 30, 20 + 30 * line);
+        // 换行
+        i = 0;
+        line++;
+        if (line < arr.length) {
+            clearTimeout(timer);
+            scrollit();
+        };
+    } else {
+        context.fillText(newText, 30, 20 + 30 * line);
+        timer = setTimeout(scrollit, 200);
+    }
+}
+
+window.onload = function() {
+    Typing("canvas");
+}    
+</script>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="400"></canvas>
+<img id="newImg" src="" alt="" widt="100" height="100">
+<div id="demo">作者：</div>
+</html>

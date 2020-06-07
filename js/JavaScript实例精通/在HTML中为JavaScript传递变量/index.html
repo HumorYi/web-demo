@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+			<script language="javascript" type="text/javascript">
+				var foobar;
+				function pass2var(){
+					foobar = document.getElementById('textfield').value;
+					alert('传递变量成功');
+				}
+				function display2Var(){
+					alert('变量值为：'+foobar);
+				}						
+
+				var foobar1;
+				function display3Var(){
+					foobar1 = document.getElementById('textfield3').value;
+					alert('(升级版)变量值为：'+foobar1);
+				}
+				
+				var foobar2 = 'foobar2';
+				function pass3var(){
+					document.getElementById('textfield3').value = foobar2;
+					alert('变量引用成功');
+				}
+
+				function display4Var(){
+					alert('变量值为：'+foobar2);
+				}		
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+			<form name="form1" method='post' action=''>
+				<label>
+					<input type='text' name='textfield' id='textfield' />
+				</label>
+
+				<label>
+					<input type='button' name='button' id='button' value='传递变量' onClick='javascript:void pass2var();' />
+				</label>
+
+				<label>
+					<input type='button' name='button2' id='button2' value='显示变量' onClick='javascript:void display2Var();' />
+				</label>
+			</form>
+
+			<form name="form2" method='post' action=''>
+				<label>
+					<input type='text' name='textfield2' id='textfield2' />
+				</label>
+
+				<label>
+					<input type='button' name='button3' id='button3' value='显示变量' onClick='javascript:void display3Var();' />
+				</label>
+			</form>
+
+			<form name="form3" method='post' action=''>
+				<label>
+					<input type='text' name='textfield3' id='textfield3' />
+				</label>
+
+				<label>
+					<input type='button' name='button4' id='button4' value='引用变量' onClick='javascript:void pass3var();' />
+				</label>
+
+				<label>
+					<input type='submit' name='button5' id='button5' value='显示变量' onClick='javascript:void display4Var();' />
+				</label>
+			</form>
+		</body>
+</html>

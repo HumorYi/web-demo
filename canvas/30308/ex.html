@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+<script>
+    var c = document.createElement('canvas');
+    var ch=c.width = 200;
+    var cw=c.height=200;
+    c.style.backgroundColor='darkkhaki';
+    document.body.appendChild(c);
+    var cxt = c.getContext('2d');
+    function  drawbg(angle) {
+
+        cxt.save();
+        cxt.translate(100,100);
+        cxt.rotate(-Math.PI/2);
+
+//    绘制横竖线
+        cxt.moveTo(0,-100);
+        cxt.lineTo(0,ch/2);
+        cxt.stroke();
+
+        cxt.moveTo(cw/2,0);
+        cxt.lineTo(-cw/2,0);
+        cxt.stroke();
+
+//     绘制两圈圈
+        cxt.beginPath();
+        cxt.arc(0,0,88,0,Math.PI*2,false);
+        cxt.strokeStyle='#c4c7e4';
+        cxt.lineWidth=2;
+        cxt.stroke();
+        cxt.closePath();
+
+        cxt.beginPath();
+        cxt.arc(0,0,70,0,Math.PI*2,false);
+        cxt.stroke();
+        cxt.closePath();
+
+        //绘制外层0.4透明度的图层。
+        cxt.beginPath();
+        cxt.fillStyle="#5e5e69";
+        cxt.globalAlpha=0.4;
+        cxt.arc(0,0,Math.sqrt(cw*cw+ch*ch),0,Math.PI/180*angle,false);
+        cxt.lineTo(0,0);
+        cxt.closePath();
+        cxt.fill();
+        cxt.restore();
+        //tip：这里面使用到了 save() restore()。每次重新绘制时，导出上一次绘制的状态，然后再次基础上，绘制数字。之后再擦除画布。再次循环上一次操作。
+    }
+
+    var angle=0;
+    var per=10;
+    var timer =setInterval(function()
+    {
+        angle+=7.2;//7.2经过计算的。
+        if(angle>=360&&per!=0)//只要数字没到0，那么继续下一次绘制。时间--，角度--。
+        {
+            per--;
+            angle=0;
+        }
+        if(angle>=360&&per==0)//终止计时器条件
+        {
+            clearInterval(timer);
+        }
+        cxt.clearRect(0,0,cw,ch);
+        drawbg(angle);
+        if(per==10)
+            cxt.font='100pt Calibri';
+        else
+            cxt.font='130pt Calibri';
+        cxt.textAlign='center';
+        cxt.textBaseline='middle';
+        cxt.fillText(per.toString(),ch/2,cw/2);//数字的表现和秒(时间)。一个意思。
+    },20);//20自定义。
+    //角度和setInterval的执行时间，是经过计算的。为了达到数字和0.4透明度图层的同步。
+    /*计算方法也很简单,如果要一使数字和图层一致，需要360°/1000ms，既每秒中0.4透明度图层绘制360度。然后考虑每次绘制时间，即setInterval的参数
+    时间。这个可以根据自己的视觉感受调整，我设置为20。那么每次绘制0.4透明度的角度就可以计算出来了。360/(1000/20)=7.2°。
+     */
+</script>
+</body>
+</html>

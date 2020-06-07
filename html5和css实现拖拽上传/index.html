@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html;  charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>Java结合html5和css实现拖拽上传 --> Andy</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+	<!--css/js 化妆师-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{background:url("images/唐嫣2.jpg")no-repeat top center;
+			background-size:cover;color:#000;font-size:12px;font-family:"微软雅黑";}
+			.Message{width:642px;height:150px;background:#fff;margin:200px auto;border-radius:5px;padding:20px 0;position:relative;}
+			.Message .MesCon{width:613px;height:100px;border:1px solid #ddd;margin:0 auto;}
+			.Message .MesCon .Edit{width:612px;height:100px;border-right:1px solid #ccc;float:left;padding:5px 5px;}
+			.Message .MesCon .imgBut{width:100px;height:15px;float:left;background:url("images/林心如2.jpg")no-repeat center  33px;padding-top:65px;text-align:center}
+			.Message .Mesbut{width:602px;margin:20px auto 0;display:none;}
+			.Message .Mesbut font{font-size:16px;margin:0 20px;cursor:pointer;}
+			.Message .Mesbut span{width:80px;height:30px;background:#1ac47b;display:inline-block;float:right;border-radius:5px;font-size:14px;color:#fff;line-height:20px;text-align: center;cursor:pointer;}
+			.Message .Mesbut span:hover{background:#16a077;}
+			.Message .tzImg{width:622px;height:22px;background:rgba(0,0,0,0.3);position:absolute;left:0;top:190px;display:none;}
+			.Message .tzImg .text{font-size:24px;color:#fff;text-align:center;line-height:22px;text-shadow:1px 1px 1px #0ce4ca;box-shadow:1px 15px 1px #fff;}
+		</style>
+		<link type="text/css" rel="stylesheet" href="css/sg.css" />
+    </head>
+	<body>
+		<div class="Message">
+			<div class="MesCon">
+				<div class="Edit" contenteditable="true"></div>
+				<div class="imgBut">上传图片</div>
+			</div>
+			<div class="Mesbut">
+				<font>本地相册</font>
+				<font>拖拽上传</font>
+				<span>发表</span>
+			</div>
+			<div class="tzImg">
+				<p class="text">请将图片</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/sg.js"></script>
+		<script type="text/javascript" src="js/tz_util.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+		//	loading("Andy learning show",3)
+		//点击图片上传按钮
+		$(".imgBut").click(
+			function(){
+		//		$(".Mesbut").slideToggel();
+				$(".Mesbut").slideDown();
+			}
+		);
+		//点击输入框
+		$(".Edit").click(
+			function(){
+				$(".Mesbut").slidDown();
+			}
+		);
+		//点击文字
+		$(".tz_text").click(
+			function(){
+				$(".tzImg").slidToggle();
+			}
+		);
+		//当点击
+		var oDiv=$(".tzImg").get(0);
+		var op=$(".tzImg .text").get(0);
+
+		</script>
+	</body>
+</html>
+

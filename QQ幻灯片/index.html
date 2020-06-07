@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="luoxing">
+    <meta name="email" content="luoxing8493@126.com">
+    <meta name="date" content="2018/2/27 3:09">
+
+    <title></title>
+
+    <!--幻灯片样式-->
+    <link rel="stylesheet" href="css/slide.css">
+</head>
+
+<body>
+
+<!--幻灯片 S-->
+<div id="slide">
+    <!--幻灯片大图 S-->
+    <a href="#" id="slide_maxImage" title="">
+        <img src="" alt="">
+    </a>
+    <!--幻灯片大图 E-->
+
+    <!--幻灯片信息区域 S-->
+    <div id="slide_mask">
+        <!--幻灯片信息区域顶部 S-->
+        <div id="mask_top">
+            <!--幻灯片标题 S-->
+            <a href="#">
+                <!--使用源生css实现暂停按钮 S-->
+                <span class="pause">
+                    <!--右三角 S-->
+                    <span class="triangle_right"></span>
+                    <!--右三角 E-->
+                </span>
+                <!--使用源生css实现暂停按钮 E-->
+
+                <!--文字区域 S-->
+                <span class="title ellipsis"></span>
+                <!--文字区域 E-->
+            </a>
+            <!--幻灯片标题 E-->
+        </div>
+        <!--幻灯片信息区域顶部 E-->
+
+        <!--幻灯片信息区域底部 S-->
+        <div id="mask_bottom">
+            <!--幻灯片小图 S-->
+            <div id="slide_minImage">
+                <ul id="mask_images"></ul>
+            </div>
+            <!--幻灯片小图 E-->
+
+            <!--幻灯片方向 S-->
+            <div id="mask_direction">
+                <span class="direction_left">&lt</span>
+                <span class="direction_right direction_active">&gt</span>
+            </div>
+            <!--幻灯片方向 E-->
+        </div>
+        <!--幻灯片信息区域底部 E-->
+    </div>
+    <!--幻灯片信息区域 E-->
+</div>
+<!--幻灯片 E-->
+
+<!--幻灯片功能实现-->
+<script src="js/slide.js"></script>
+</body>
+</html>

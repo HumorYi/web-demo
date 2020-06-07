@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#parent{ width: 600px; height: 20px; background: #ccc; position: relative; margin: 10px auto; }
+		#div1{ width:20px; height: 20px; background: red; position: absolute; left: 0; top: 0; }
+		#div2{ width: 400px; height: 300px; border: 1px solid black; position: absolute; overflow: hidden;}
+		#div3{ position: absolute; left: 0; top: 0; padding: 5px;}
+	</style>
+	<script type="text/javascript">
+ 		window.onload = function(){
+ 			var oDiv = document.getElementById('div1');
+ 			var oDiv2 = document.getElementById('div2');
+ 			var oDiv3 = document.getElementById('div3');
+ 			var oParent = document.getElementById('parent');
+
+ 			var disX = 0;
+
+ 			oDiv.onmousedown = function(ev){
+ 				var oEvent = ev || event;
+
+ 				disX = oEvent.clientX - oDiv.offsetLeft;
+
+ 				document.onmousemove = function(ev){
+	 				var oEvent = ev || event;
+	 				var l = oEvent.clientX - disX;
+
+	 				if (l < 0 ) {
+	 					l = 0;
+	 				}else if (l > oParent.offsetWidth - oDiv.offsetWidth) {
+	 					l = oParent.offsetWidth - oDiv.offsetWidth;
+	 				}
+
+	 				oDiv.style.left = l + 'px';
+
+	 				var scale = l / (oParent.offsetWidth - oDiv.offsetWidth);
+	 				document.title = scale;
+ 
+	 				oDiv3.style.top = - scale * (oDiv3.offsetHeight - oDiv2.offsetHeight)+ 'px';
+ 				} 			
+
+	 			document.onmouseup = function(){
+	 				document.onmousemove = null;
+	 				document.onmouseup = null;
+	 			}
+
+	 			return false; //阻止拖拽事件，兼容FF 
+ 			}
+ 		}
+ 	</script>
+</head>
+<body>
+	<div id="parent">
+		<div id="div1"></div>
+	</div>
+	<div id="div2">
+		<div id="div3">
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+			选择题
+			如果想对一个类的的意义进行描述，那么应该采用（  C  ）。
+			A. 标记值            B. 规格描述            C. 注释            D. 构造型
+			对于一个学生成绩管理系统而言，下列适合作为参与者的选项（  B  ）。
+			A．登录        B．教师         C．成绩查询       D. 成绩录入               
+			在ATM自动取款机的工作模型中（用户通过输入正确的用户资料，从银行取钱的过程），下面不是参与者的是（  A   ）。
+			A．取款        B．ATM取款机         C．ATM取款机管理员       D. 用户               
+			（  A   ）是用于把元素组织成组的通用机制。
+			A．包                               B．类
+			C．接口                             D．组件
+			下列关于接口的关系说法不正确的是（  D   ）。
+			A.接口是一种特殊的类。        
+			B.所有接口都是有构造型《interface》的类。      
+			C.一个类可以通过实现接口从而支持接口所指定的行为。
+			D.在程序运行的时候，其他对象不仅需要依赖此接口，还需要知道该类对接口实现的其他信息。
+			下列不属于类的构成元素的是（  C   ）。
+			A．名称            B．操作            C．角色          D．属性
+			协作图不包括以下哪种元素（  C  ）。
+		</div>
+	</div>
+</body>
+</html>

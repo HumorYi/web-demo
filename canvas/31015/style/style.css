@@ -1,0 +1,19 @@
+html,
+body,
+canvas,
+#instructions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+body {
+    background-color: #000;
+}
+#instructions {
+    opacity: 1;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}

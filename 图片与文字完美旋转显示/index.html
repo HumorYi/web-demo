@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--基于W3C标准 不用做任何修改-->
+<html xmlns="http://www.w3.org/1999/xhtml"><!--起始标准-->
+<head><!--设置初始化文档信息和文档管理标注-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--整个页面编码 utf-8 国际编码 通用性最强，GBK/gb2312 中文-->
+<!--页面三要素-->
+<title>图片与文字完美旋转显示</title>
+<meta name="Keywords" content="关键字,关键字">
+<meta name="Description" content="描述">
+<!--js css-->
+<style type="text/css">
+ul,h2,p{margin:0;padding:0;}
+/*
+类样式选择器：“.名字”
+*/
+.main{width:1005px;height:500px;margin:0 auto;}
+.main li{width:315px;height:280px;border:5px solid #fff;float:left;list-style:none;margin:5px;box-shadow:0px 0px 5px #ccc;
+overflow:hidden;/*超出的部分不显示  作用：让黑色区块在默认情况下不显示*/
+cursor:pointer;/*让鼠标指导为手形状态*/
+}
+
+.rotate{width:315px;height:560px;
+transition:all 500ms ease;
+}
+.cap{width:285px;height:250px;background:#000;color:#fff;line-height:140%;padding:15px;
+/*默认情况下让黑色背景内的所有内容进行180度旋转*/
+transform:rotate(180deg);/*兼容IE9+以上浏览器*/
+-webkit-transform:rotate(180deg);/*兼容google Chrome浏览器*/
+}
+.cap h2{font-size:14px;}
+.cap p{font-size:12px;}
+
+.main li:hover .rotate{
+	transform:rotate(-180deg);/*兼容IE9+以上浏览器*/
+	-webkit-transform:rotate(180deg);/*兼容google Chrome浏览器*/
+}
+
+</style>
+</head>
+
+<body>
+
+<ul class="main">
+	<li>
+		<div class="rotate"><!-- 把图片和描述部分看做为一整块来进行旋转 -->
+		<img src="images/1.jpg" />
+		<div class="cap">
+			<h2>曝韦德愿做牺牲降薪留队 跳出合同4年5000万续约</h2>
+			<p>2010年夏天，韦德同热火签下一份为期六年价值1.08亿美元的合同，目前还剩两年到期，价值4150万。这份合同的最后两年，韦德分别拥有一个跳出条款，可以提前恢复自由身。而韦德正打算利用这一条款结束当前合同，与球队重签一份为期4年，总价值在5000万到5500万之间的新合同。...</p>
+		</div>
+		</div>
+	</li>
+	<li>
+		<div class="rotate"><!-- 把图片和描述部分看做为一整块来进行旋转 -->
+		<img src="images/2.jpg" />
+		<div class="cap">
+			<h2>科比不支持世界杯禁欲令：NBA不会这是训练一部分</h2>
+			<p>
+2014年巴西世界杯正如火如荼地进行，和往年一样，为了让球员把更多的精力投入到比赛场上，一些国家队纷纷下达了禁欲令。也就是说在这一个月左右的时间里，那些球员们将不被允许过性生活以及参加派对。...</p>
+		</div>
+		</div>
+	</li>
+	<li>
+		<div class="rotate"><!-- 把图片和描述部分看做为一整块来进行旋转 -->
+		<img src="images/3.jpg" />
+		<div class="cap">
+			<h2>公牛有意魔术侧翼摇摆人 魔术大年继续屯首轮签</h2>
+			<p>
+　　今年28岁的阿弗拉罗还剩下两年合同，并且在明年夏天拥有提前终止选项。联盟中的一些球队管理层人士相信，相比于延长阿弗拉罗的合同，魔术队更倾向于交易他。<br>
+　　目前还不确定的是，公牛有意通过交易得到阿弗拉罗是否会影响到他们在今夏自由球员市场上对尼克斯当家小前锋卡梅罗-安东尼[微博]的追逐。...</p>
+		</div>
+		</div>
+	</li>
+
+</ul>
+</body>
+</html>

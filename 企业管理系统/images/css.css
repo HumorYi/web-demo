@@ -1,0 +1,298 @@
+* {
+	margin:0;
+	padding:0;
+}
+body, html {
+	margin:0 auto;
+	height: 100%;
+}
+body {
+	background:url(top_01.gif) repeat-x #144d82;
+	font-size:12px;
+	color:#393939;
+	line-height:20px;
+}
+a {
+	font-size:12px;
+	text-decoration:none;
+	color:#777777;
+}
+a:hover {
+	font-size:12px;
+	text-decoration:none;
+	color:#ff6100;
+}
+img {
+	border:none
+}
+.margin {
+	margin:10px 0 0 0;
+	font-size:13px;
+	line-height:160%;
+}
+.clear {
+	clear:both
+}
+.top a {
+	font-size:12px;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+.top a:hover {
+	font-size:12px;
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+.tittle {
+	color:#0b66a8;
+	font-size:14px;
+	font-weight:bold;
+}
+.tittle a {
+	color:#0b66a8;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+}
+.tittle a:hover {
+	color:#0b66a8;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.class {
+	font-size:12px;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+.class a {
+	color:#0b66a8;
+	text-decoration:none;
+	display:block;
+	width:186px;
+	height:29px;
+	line-height:29px;
+	background:url(class_100.gif) no-repeat;
+	overflow:hidden;
+	font-weight:normal;
+	padding-left:5px;
+}
+.class a:hover {
+	color:#fd8e03;
+	text-decoration:none;
+	display:block;
+	width:186px;
+	height:28px;
+	line-height:29px;
+	background:url(class2_100.gif) no-repeat;
+	overflow:hidden;
+	border-bottom:1px #FFCC99 solid;
+	font-weight:normal
+}
+.class a p {
+	text-indent:30px;
+}
+.topclass {
+	font-size:12px;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+.topclass a {
+	color:#0b66a8;
+	text-decoration:none;
+	display:block;
+	width:188px;
+	height:29px;
+	line-height:29px;
+	background:url(class_100.gif) no-repeat;
+	overflow:hidden;
+	font-weight:normal;
+}
+.topclass a:hover {
+	color:#fd8e03;
+	text-decoration:none;
+	display:block;
+	width:188px;
+	height:28px;
+	line-height:29px;
+	background:url(class2_100.gif) no-repeat;
+	overflow:hidden;
+	border-bottom:1px #FFCC99 solid;
+	font-weight:normal
+}
+.topclass a p {
+	text-indent:30px;
+}
+.pclass {
+	font-size:12px;
+	color:#FFFFFF;
+	font-weight:bold;
+
+}
+.pclass a {
+	color:#0b66a8;
+	text-decoration:none;
+	display:block;
+	height:29px;
+	line-height:29px;
+	background:url(class_100.gif) no-repeat;
+	font-weight:normal;
+	width:162px;
+	text-align:left;
+	padding-left:32px;
+}
+.pclass a:hover {
+	color:#fd8e03;
+	text-decoration:none;
+	display:block;
+	height:28px;
+	width:162px;
+	line-height:29px;
+	background:url(class2_100.gif) no-repeat;
+	overflow:hidden;
+	border-bottom:1px #FFCC99 solid;
+	font-weight:normal
+}
+.contact {
+	color:#0b66a8;
+	padding-top:8px;
+	padding-left:8px;
+	text-align:left;
+}
+.topcontact {
+	color:#0b66a8;
+}
+.product {
+	width:120px;
+	height:130px;
+	margin:10px 10px 0 10px;
+	float:left
+}
+.product img {
+	width:120px;
+	height:90px;
+}
+.product p {
+	width:120px;
+	height:25px;
+	background:url(product_101.gif);
+	display:block;
+	line-height:25px;
+	overflow:hidden;
+	text-align:center;
+	color:#FFFFFF;
+	margin:0;
+	padding:0;
+}
+.tlttle2 {
+	color:#565656;
+	font-weight:bold;
+}
+.tlttle2 a {
+	color:#565656;
+	font-weight:bold;
+	text-decoration:none
+}
+.tlttle2 a:hover {
+	color:#ff6100;
+	font-weight:bold;
+	text-decoration:none
+}
+.company img {
+	width:140px;
+	height:100px;
+	border:1px solid #dbdbdb;
+	background:#FFFFFF;
+	padding:2px;
+	overflow:hidden
+}
+.btm {
+	color:#0b66a8;
+}
+.btm a {
+	color:#0b66a8;
+	text-decoration:none
+}
+.btm a:hover {
+	color:#e6f4ff;
+	text-decoration:underline
+}
+.btm2 a {
+	color:#98d0e7;
+	text-decoration:none
+}
+.btm2 a:hover {
+	color:#ffffff;
+	text-decoration:none
+}
+.foot1 {
+	font-size: 12px;
+	color: #FFFFFF;
+}
+a.about1 {
+	font-size: 12px;
+	line-height: 190%;
+	color: #0b66a8;
+	text-decoration: none;
+}
+a.about1:hover {
+	font-size: 12px;
+	line-height: 190%;
+	color: #fd8e03;
+	text-decoration: none;
+}
+.about2 {
+	line-height: 28px;
+}
+.btn {
+	BORDER-RIGHT: #7b9ebd 1px solid;
+	PADDING-RIGHT: 2px;
+	BORDER-TOP: #7b9ebd 1px solid;
+	PADDING-LEFT: 2px;
+	FONT-SIZE: 12px;
+FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde);
+	BORDER-LEFT: #7b9ebd 1px solid;
+	CURSOR: hand;
+	COLOR: black;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #7b9ebd 1px solid;
+}
+.Inputtext {
+	BACKGROUND-COLOR: #ffffff;
+	background-image: none;
+	color:#000000;
+	BORDER-BOTTOM: #006cb5 1px solid;
+	BORDER-LEFT: #006cb5 1px solid;
+	BORDER-RIGHT: #006cb5 1px solid;
+	BORDER-TOP:#006cb5 1px solid;
+	HEIGHT: 18px;
+	font-size: 12px;
+	cursor: hand;
+}
+.rongyu {
+		font-size: 12px;
+	line-height: 190%;
+	color: #0b66a8;
+	text-decoration: none;
+	}
+
+.pro a{
+	font-size: 12px;
+	color: #0b66a8;
+	text-decoration: none;
+}
+.pro a:hover{
+	font-size: 12px;
+	color: #fd8e03;
+	text-decoration: none;
+}
+.index_pro a{
+	font-size: 12px;
+	color: #fff;
+	text-decoration: none;
+}
+.index_pro a:hover {
+	font-size: 12px;
+	color: #fd8e03;
+	text-decoration: none;
+}

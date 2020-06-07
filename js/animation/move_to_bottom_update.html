@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#block{ width:100px; height:100px; background:#aaa; position:absolute; top:100px; left:100px; overflow:hidden; opacity:1; filter:Alpha(Opacity = '100'); /*IE 6*/}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="block"></div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//每秒帧数
+				var FPS = 24;
+				var SPF = 1000/FPS;
+				//总时间3秒
+				var period = 3;
+				//移动100像素
+				var distance = 100;
+				//修改尺寸，从100到0
+				var size = 100;
+				//透明度，从不透明100到透明0
+				var opacity = 100;
+				//总帧数
+				var frames = parseInt(FPS * period);
+				//每帧移动的距离
+				var disStep = distance/frames;
+				//每帧缩小尺寸
+				var sizeStep = size/frames;
+				//每帧增加透明度
+				var opaStep = opacity/frames;
+				var block = document.getElementById('block');
+				//获取运行时样式
+				var ocurStyle = window.getComputedStyle ? window.getComputedStyle(block,null) : block.currentStyle;
+				//定时器引用，用于结束动画
+				var timer = null;
+				//动画处理函数
+				var d = new Date;
+				function callback(){
+					if(frames <= 0){
+						//当总帧数到0时，停止动画
+						clearInterval(timer);
+						if(block.offsetLeft != 200){
+							block.style.left = '200px';
+						}
+						if(block.offsetTop != 200){
+							block.style.top = '200px';
+						}
+						//显示完成动画后的坐标
+						//alert(block.offsetLeft +":"+ block.offsetTop);
+					}
+					//变更移动量
+					block.style.left = block.offsetLeft + disStep + 'px';
+					block.style.top = block.offsetTop + disStep + 'px';
+					//缩小尺寸
+					block.style.width = block.offsetWidth - sizeStep + 'px';
+					block.style.height = block.offsetHeight - sizeStep + 'px';
+					//透明渐变
+					block.style.cssText +='opacity:' + (ocurStyle['opacity'] - opaStep/100) + ';filter:Alpha(Opacity = '+(ocurStyle['opacity'] *100-opaStep) +')';
+					frames--;
+				}
+
+				timer = setInterval(callback,SPF);
+			</script>
+
+		</body>
+</html>

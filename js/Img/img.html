@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				div,img{ position:absolute;}
+				.mask1,.mask5{background:rgba(0,0,0,.4); z-index:4; width:74px; height:74px;;}
+				.mask2,.mask4{background:rgba(0,0,0,.3); z-index:5; width:138px; height:138px;}
+				#container{ left:20%; text-align:center; margin-top:150px; width:500px; height:198px;}
+				.mask1{ left:31px; top:63px; }
+				.mask2{ left:71px; top:32px; }
+				.mask4{ left:291px; top:32px; }
+				.mask5{ left:395px; top:63px;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="container">
+				<!--左箭头-->
+				<img src="images/left.png" style="left:-80px; top:85px;" onclick="JavaScript:showImg(-1);" />
+				<!--左边第一个图片框-->
+				<img id='img01' class="mask1" />
+				<div class="mask1" onclick="JavaScript:showImg(2);"></div>
+				<!--左边第二个图片框-->
+				<img id='img01' class="mask2"/>
+				<div class="mask2" onclick="JavaScript:showImg(1);"></div>
+				<!--中间的图片-->
+				<img id='img03' style="z-index:6; left:151px; top:0px; width:198px; height:198px;" onclick="JavaScript:showImg(0);" />
+				<!--右边第一个图片框-->
+				<img id='img04' class="mask4" />
+				<div class="mask4" onclick="JavaScript:showImg(-1);"></div>
+				<!--右边第二个图片框-->
+				<img id='img05' class="mask5" />
+				<div class="mask5" onclick="JavaScript:showImg(-2);"></div>
+				<!--右箭头-->
+				<img src="images/right.png" style="left:530px; top:85px;" onclick="JavaScript:showImg(1);" />
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var imgArray = new Array();
+				for(var i=0; i<10; i++){
+					imgArray[i] = "images/s"+(i+1)+".png";					
+				}
+				var base = 0;
+
+				function showImg(offset){
+					base = (base - offset) % imgArray.length;
+
+					for(var i=base; i<base+5; i++){
+						var img = document.getElementById("img0"+(i-base+1));	
+						if(i<0){
+							img.src = imgArray[imgArray.length+i];
+						}else if(i>(imgArray.length-1)){
+							img.src = imgArray[i- imgArray.length];
+						}else{
+							img.src = imgArray[i];
+						}
+					}
+				}
+
+				window.onload = function(){
+					showImg(3);
+				}
+			</script>
+
+		</body>
+</html>

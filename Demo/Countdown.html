@@ -1,0 +1,87 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>倒计时 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,p{ margin:0px;padding:0px; }
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			
+			<p id="time1">还剩1小时39分14秒</p>
+			<p id="time2">还剩2小时39分14秒</p>
+			<p id="time3">还剩3小时39分14秒</p>
+
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				var interval = null, ms=60; 
+				var json = [
+					{ "time": "2016/5/29 16:26:30","id":"time1" },
+					{ "time": "2016/5/29 16:26:30","id":"time2" },
+					{ "time": "2016/5/29 16:36:30","id":"time3" }
+				];
+				//	获取时间
+				function Residual_time(timeDate,objId){
+					//	抢购日期
+					var endTime = new Date(timeDate);
+					//	当前时间
+					var date = new Date();
+					//获取还有多少豪秒
+					var milliSecond = (endTime.getTime() - date.getTime())/1000;
+					//天数
+					var days = Math.floor(milliSecond/3600/24);
+					//时钟
+					var hours = Math.floor(milliSecond/3600)%24;
+					//分钟
+					var minutes = Math.floor(milliSecond/60)%60;
+					//秒钟
+					var seconds = Math.floor(milliSecond%60);
+					
+					//显示时间
+					document.getElementById(objId).innerHTML = "还剩下"+days+"天"+hours+"小时"+minutes+"分"+seconds+"秒"+ms;
+					if (milliSecond<=0)
+					{
+						document.getElementById(objId).innerHTML = "结束了";
+					}
+					
+					//设置定时器(添加虚拟快速效果)
+					Interval = setInterval(function(){
+						if (ms==0)
+						{
+							ms=60;
+						}
+						ms -=1;
+					},500);
+				}
+
+				//	窗口加载
+				window.onload = function(){
+					interval = setInterval(function(){
+						for (var i=0;i<json.length ;i++ )
+						{
+							Residual_time(json[i].time,json[i].id);
+						}
+					});
+				}
+			</script>
+
+		</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="bs">
+
+<head lang="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Cache-Control" content="max-age=300" />
+  <meta http-equiv="Window-target" content="_top" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <meta name="Author" content="落星" />
+  <meta name="Copyright" content="本站版权归作者落星所有" />
+  <meta name="Keywords" content="前端书籍、前端技能书籍、html书籍、css书籍、js书籍、" />
+  <meta name="Description" content="落星书屋-拥有前端技能从入门到精通的书籍，html、css、js、javascript、jq、jquery" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <link rel="stylesheet" href="css/ionic.min.css" />
+  <link rel="stylesheet" href="css/BookStore.min.css" />
+  <script src="js/ionic.bundle.min.js"></script>
+  <title>落星书屋</title>
+</head>
+
+<body ng-controller="bsCtrl" id="bs">
+  <div ng-include="'./tpl/include/header.html'" ng-show="isShowHeader"></div>
+  <div ui-view=""></div>
+  <div ng-include="'./tpl/include/footer.html'" ng-show="isShowFooterTabs"></div>
+  <script src="js/BookStore.js"></script>
+</body>
+
+</html>

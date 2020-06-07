@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>右键菜单 -Andy</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+			html,body,div,ul,li,img{margin:0;padding:0;}
+			html{width:100%;height:100%;overflow:hidden;}
+			body{background:url("images/2.jpg") no-repeat;background-size:100% 100%;font-family:"微软雅黑";}
+			ul li{list-style:none;}
+			/*右键菜单 S*/
+			.menu{width:200px;height:250px;background:#fff;box-shadow:0px 0px 10px #fff;position:absolute;top:100px;left:100px;display:none;}
+			.menu ul li{width:200px;line-height:35px;border-bottom:1px solid #ddd;font-size:14px;color:#666;text-indent:20px;/*首字缩进*/cursor:pointer;}
+			.menu ul li:hover{background:#000;color:#fff;}
+			/*右键菜单 E*/
+			/*桌面背景 S*/
+			.bg{width:730px;height:360px;background:rgba(0,0,0,0.5);margin:100px auto;transform:scale(0) rotate(0deg);transition:all 1s ease-in;}
+			.opt{transform:scale(1) rotate(360deg);}
+			.bg .title{width:730px;line-height:46px;background:url(images/title_bg.jpg);color:#fff;font-size:18px;text-indent:10px;cursor:pointer;}
+			.bg .title .close{float:right;margin-top:10px;margin-right:10px;}
+			.bg ul li{float:left;width:200px;height:125px;border:5px solid #fff;margin:10px 16px;cursor:pointer;}
+			/*桌面背景 E*/
+		</style>
+    </head>
+	<body>
+		<!--右键菜单 S-->
+		<div id="menu" class="menu">
+				<ul>
+					<li><img src="images/ico1.jpg" align="absmiddle" />添加应用</li>
+					<li><img src="images/ico2.jpg" align="absmiddle" />获取课程</li>
+					<li><img src="images/ico3.jpg" align="absmiddle" />添加笔记</li>
+					<li><img src="images/ico4.jpg" align="absmiddle" />刷新</li>
+					<li><img src="images/ico5.jpg" align="absmiddle" />上传资料</li>
+					<li><img src="images/ico6.jpg" align="absmiddle" />更换背景</li>
+					<li><img src="images/ico7.jpg" align="absmiddle" />注销</li>
+				</ul>
+		</div>
+		<div id="bg" class="bg">
+			<div class="title" id="title">
+				<img src="images/close.png" class="close" />桌面背景
+			</div>
+				<ul>
+					<li><img src="images/s_1.jpg" /></li>
+					<li><img src="images/s_2.jpg" /></li>
+					<li><img src="images/s_3.jpg" /></li>
+					<li><img src="images/s_4.jpg" /></li>
+					<li><img src="images/s_5.jpg" /></li>
+					<li><img src="images/s_6.jpg" /></li>
+				</ul>
+		</div>
+		<!--右键菜单 E-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			/*
+				禁止本来右键的功能 oncontextmenu
+				禁止选择  onselectstart
+				禁止拖放  ondragstart
+				禁止copy oncopy				
+			*/
+			//禁止浏览器自带的右键菜单功能 
+			document.oncontextmenu = function(){
+				return false;
+			}
+			//启用自定义的右键功能
+			$(document).mousedown(function(e){
+				var key = e.which || e.button;//获取鼠标按下去的状态 1左键 2中间滚轮 3右键
+				//e.clientX 鼠标的X轴  e.clientY鼠标的Y轴;
+				if (key==3)
+				{
+					var _left = e.clientX;
+					var _top = e.clientY;
+					//获取鼠标的位置 给menu添加位置
+					$("#menu").show().css({left:_left,top:_top});
+				}else{
+					document.onclick = function(){
+						$("#menu").hide();
+					};
+				}
+			});
+			//点击页面任何的地方关闭菜单
+			$(document).click(function(){
+				$("#menu").hide();
+			});
+			//点击更换背景
+			var _index = 0;
+			$("#menu ul li").click(function(){
+				_index = $(this).index();
+				if (_index==5)
+				{
+					$("#bg").addClass("opt");
+				}
+			});
+			//点击关闭按钮关闭菜单
+			$("#bg .close").click(function(){
+				$("#bg").removeClass("opt");
+			});
+			//背景切换
+			$("#bg ul li").click(function(){
+				var simg = $(this).find("img").attr("src"); 
+				var bimg = simg.replace("s_","");
+				$("body").css({"background":"url("+bimg+") no-repeat","background-size":"100% 100%"});	
+				$("#bg").removeClass("opt");
+			});
+		</script>
+	</body>
+</html>
+

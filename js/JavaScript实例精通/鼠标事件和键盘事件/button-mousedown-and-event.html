@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function click(){
+			//IE
+			if (event.button == 1) {
+				alert('mouseleft');
+			}
+
+			//IE chrome FF
+			if (event.button == 2) {
+				alert('mouseright');
+			}
+		}
+		document.onmousedown = click;
+	</script>
+</head>
+<body>
+	<h5>请在页面上单击鼠标左键或者鼠标右键</h5>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/css1.css" id="css">
+	<script type="text/javascript">
+		function change(a){
+			var css = document.getElementById("css");
+
+			if(a==1){
+				css.setAttribute("href","css/css1.css");
+			}
+			if(a==2){
+				css.setAttribute("href","css/css2.css")
+			}
+		}
+	</script>
+</head>
+<body>
+	<p><a href="javascript:void(0);" onclick="change(1)">应用第一个样式</a></p>
+	<p><a href="javascript:void(0);" onclick="change(2)">应用第二个样式</a></p>	
+	<div id="css1">点击应用样式</div>
+</body>
+</html>

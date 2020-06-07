@@ -1,0 +1,97 @@
+* {
+    padding: 0px;
+    margin: 0px
+}
+
+img {
+    border: 0px;
+}
+
+body {
+    background: url('../img/house.jpg');
+    font-size: 14px;
+    font-family: '微软雅黑';
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+}
+
+table#day {
+    margin: 50px auto;
+    width: 100%;
+    box-shadow: 10px 5px 1em #8c5221;
+}
+
+table#day > thead > tr > th, table#day > tbody > tr > td {
+    margin-top: 50px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #3c9fce;
+    box-shadow: 0px 0px 12px 2px #98e207 inset;
+}
+
+table#day > thead > tr > th {
+    background: linear-gradient(5deg, rgb(93, 53, 74), rgb(19, 42, 53));
+    padding: 15px;
+}
+
+table#day > tbody > tr > td {
+    background: linear-gradient(5deg, rgb(93, 53, 74), rgb(206, 77, 77));
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+table#day > tbody > tr > td.back {
+    background: #694f35;
+}
+
+table#day > tbody > tr > td.currentDay {
+    background: green;
+}
+
+table#day > tbody > tr > td:hover {
+    background: #c3a61a;
+    color: #f9d207;
+    border: 1px solid #00ff37;
+    box-shadow: 0px 0px 12px 2px #98e207 inset;
+}
+
+#date {
+    width: 600px;
+    margin: 50px auto;
+}
+
+#sel_date{
+    width: 100%;
+}
+
+#sel_date > span{
+    font-size: 33px;
+    color: #3c9fce;
+    vertical-align: middle;
+}
+
+#sel_date > select {
+    width: 30%;
+    padding: 10px;
+    background: #3cbbb5;
+    font-size: 20px;
+    color: #fff;
+    border: 0;
+    outline: none;
+    vertical-align: middle;
+}
+
+#sel_date > span:nth-of-type(2){
+    margin-left: 8%;
+}
+
+#sel_date > select:active{
+    border: 0;
+}

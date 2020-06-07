@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>小米官网二级导航菜单 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,a,i,img,span{margin:0px;padding:0px;}
+				body{font-size:14px;font-family:"微软雅黑";}
+				a{text-decoration:none;}
+				ul li{list-style:none;}
+				/*nav S*/
+				.nav{width:234px;height:460px;background: rgba(0,0,0,0.6);margin:50px 0px 0px 50px;position:relative;}
+
+				/*list S*/
+				.nav ul.list{padding:20px 0px;}
+
+				/*item S*/
+				/*>表示找到后面的第一个a，精确定位，后面如果还有a就不会显示出*/
+				.nav ul.list li.item>a{color:#fff;line-height:42px;display:block;padding-left:30px;position:relative;}
+				/*phone S*/				
+				.nav ul.list li.item .phone,.two-list,.tv{height:458px;position:absolute;top:2px;left:234px;border:1px solid #e0e0e0;border-left: 0;box-shadow: 0 8px 16px rgba(0,0,0,0.18);background:#fff;display:none;}
+				.nav ul.list li.item .phone{width:795px;}
+
+				/*next S*/
+				.nav ul.list li.item .next{width:795px;position:relative;float:left;}
+				.nav ul.list li.item .next .two-list1,.two-list2,.two-list3,.next .two-list4{width:264px;height:458px;position:absolute;top:2px;}
+				.nav ul.list li.item .next .two-list1{left:0px;}
+				.nav ul.list li.item .next .two-list2,.two-list3{left:264px;}
+				.nav ul.list li.item .next .two-list4{left:528px;}
+				/*next E*/
+
+				.nav ul.list li.item:hover .phone{display:block;transform:translate3d(0, -2px, 0);}
+				/*phone E*/
+
+				/*tv S*/
+				.nav ul.list li.item .tv{width:530px;}
+				.nav ul.list li.item:hover .tv{display:block;transform:translate3d(0, -2px, 0);}
+				/*tv E*/
+				
+				.nav ul.list li.item>a i.iconfont{position:absolute;top:0px;right:20px;font-weight:bold;}
+				.nav ul.list li.item:hover>a{background:#ff6700;}
+
+				/*two-list S*/
+				.nav ul.list li.item .two-list{width:265px;}
+				.nav ul.list li.item ul li{width:245px;height:56px;margin-left:20px;padding:20px 0px 0px;}
+				.nav ul.list li.item ul li a:hover span{color:#ff6700;}
+				.nav ul.list li.item ul li a span{color:#333;margin-left:10px;}
+				.nav ul.list li.item ul li a.btn_buy{color:#ff6700;width:58px;line-height:24px;border:1px solid #ff6700;display:inline-block;text-align:center;float:right;margin:8px 10px 0px 0px;}
+				.nav ul.list li.item a.btn_buy:hover{color:#fff;background:#ff6700;}
+				.nav ul.list li.item:hover .two-list{display:block;transform:translate3d(0, -2px, 0);}
+				/*two-list E*/
+				/*item E*/
+				/*list E*/
+				/*nav E*/
+				
+				/*阿里矢量图 S*/
+				@font-face {font-family: 'iconfont';
+					src: url('iconfont/iconfont.eot'); /* IE9*/
+					src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+					url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+					url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+					url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+				}
+				.iconfont{
+					font-family:"iconfont" !important;
+					font-size:16px;font-style:normal;
+					-webkit-font-smoothing: antialiased;
+					-webkit-text-stroke-width: 0.2px;
+					-moz-osx-font-smoothing: grayscale;
+				}
+				/*阿里矢量图 E*/
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+		<div class="nav">
+			<ul class="list">
+				<li class="item">
+					<a href="#">
+						手机 平板 电话卡
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="phone">
+						<div class="next">
+							<div class="two-list1">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/note.jpg" alt="phone" align="absmiddle" />	
+											<span>小米Note</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/minote.jpg" alt="phone" align="absmiddle" />	
+											<span>小米手机 4</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/mi4.jpg" alt="phone" align="absmiddle" />	
+											<span>小米手机 4c</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/note3.jpg" alt="phone" align="absmiddle" />	
+											<span>红米Note 3</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/note2.jpg" alt="phone" align="absmiddle" />	
+											<span>小米Note 2</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/note2.jpg" alt="phone" align="absmiddle" />	
+											<span>小米Note 电信版</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+								</ul>
+							<div>	
+							<div class="two-list2">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/hongmi2.jpg" alt="phone" align="absmiddle" />	
+											<span>红米手机 2</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/hongmi2a.jpg" alt="phone" align="absmiddle" />	
+											<span>红米手机 2A</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/pad2.png" alt="phone" align="absmiddle" />	
+											<span>小米平板 2</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/telcom.jpg" alt="phone" align="absmiddle" />	
+											<span>电信版</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/heyue.jpg" alt="phone" align="absmiddle" />	
+											<span>合约机</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/zhongxin.jpg" alt="phone" align="absmiddle" />	
+											<span>电信特权</span>
+										</a>
+										<a class="btn_buy">选购</a>
+									</li>
+								</ul>
+							<div>
+							<div class="two-list3">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/compare.jpg" alt="phone" align="absmiddle" />	
+											<span>对比手机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/mimobile.jpg" alt="phone" align="absmiddle" />	
+											<span>小米移动 电话卡</span>
+										</a>
+								</ul>
+							<div>
+						</div>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						电视 盒子
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="tv">
+						<div class="next">
+							<div class="two-list1">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/tv40.jpg" alt="phone" align="absmiddle" />	
+											<span>小米电视 40英寸</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/tv48.jpg" alt="phone" align="absmiddle" />	
+											<span>小米电视 48英寸</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/tv3-55.jpg" alt="phone" align="absmiddle" />	
+											<span>小米电视 55英寸</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/tv60.jpg" alt="phone" align="absmiddle" />	
+											<span>小米电视 60英寸</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/hezis.jpg" alt="phone" align="absmiddle" />	
+											<span>小米盒子 3</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/hezimini.jpg" alt="phone" align="absmiddle" />	
+											<span>小米盒子 mini</span>
+										</a>
+									</li>
+								</ul>
+							</div>	
+							<div class="two-list2">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/tvzj.jpg" alt="phone" align="absmiddle" />	
+											<span>小米电视主机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/diyinpao.jpg" alt="phone" align="absmiddle" />	
+											<span>红米手机 2A</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/shb.jpg" alt="phone" align="absmiddle" />	
+											<span>小米平板 2</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/dianshipeijian.jpg" alt="phone" align="absmiddle" />	
+											<span>小米平板 2</span>
+										</a>
+									</li>
+								</ul>
+							<div>
+						</div>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						路由器 智能硬件
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="phone">
+						<div class="next">
+							<div class="two-list1">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/miwifi.jpg" alt="phone" align="absmiddle" />	
+											<span>路由器</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/scooter.jpg" alt="phone" align="absmiddle" />	
+											<span>九号平衡车</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/shouhuan.jpg" alt="phone" align="absmiddle" />	
+											<span>手环及配件</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/scale.jpg" alt="phone" align="absmiddle" />	
+											<span>体重秤</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/ihealthbluetooth.jpg" alt="phone" align="absmiddle" />	
+											<span>血压计</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/zhinengtaozhuang.jpg" alt="phone" align="absmiddle" />	
+											<span>智能家庭套装</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="two-list2">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/miwifilite.jpg" alt="phone" align="absmiddle" />	
+											<span>路由器 mini</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/water.jpg" alt="phone" align="absmiddle" />	
+											<span>净水器</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/air.jpg" alt="phone" align="absmiddle" />	
+											<span>空气净化器</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/xiaoyi.jpg" alt="phone" align="absmiddle" />	
+											<span>摄像机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/yicamera.jpg" alt="phone" align="absmiddle" />	
+											<span>运动相机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/chuangtoudeng.jpg" alt="phone" align="absmiddle" />	
+											<span>床头灯</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="two-list4">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/miwifimini.jpg" alt="phone" align="absmiddle" />	
+											<span>路由器 青春版</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/jiancebi.jpg" alt="phone" align="absmiddle" />	
+											<span>水质检测笔</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/air2.jpg" alt="phone" align="absmiddle" />	
+											<span>空气净化器 2</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/lvxinsidebar.jpg" alt="phone" align="absmiddle" />	
+											<span>除甲醛滤芯</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/wifiplus.jpg" alt="phone" align="absmiddle" />	
+											<span>WiFi放大器</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/smart.jpg" alt="phone" align="absmiddle" />	
+											<span>全部智能硬件</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>					
+				</li>
+				<li class="item">
+					<a href="#">
+						移动电源 插线板
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/dianyuan.jpg" alt="phone" align="absmiddle" />	
+									<span>小米移动电源</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/powerscript.jpg" alt="phone" align="absmiddle" />	
+									<span>小米插线板</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/yidongdianyuan.jpg" alt="phone" align="absmiddle" />	
+									<span>品牌移动电源</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/dianyuanfujian.jpg" alt="phone" align="absmiddle" />	
+									<span>移动电源附件</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						耳机 音箱
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="tv">
+						<div class="next">
+							<div class="two-list1">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/headphone.jpg" alt="phone" align="absmiddle" />	
+											<span>小米头戴式耳机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/quantie.jpg" alt="phone" align="absmiddle" />	
+											<span>小米圈铁耳机</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/huosai.jpg" alt="phone" align="absmiddle" />	
+											<span>小米活塞耳机 标准版</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/xuancai.jpg" alt="phone" align="absmiddle" />	
+											<span>小米活塞耳机 炫彩版</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/bluetoothheadset.jpg" alt="phone" align="absmiddle" />	
+											<span>小米Note</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/erji.jpg" alt="phone" align="absmiddle" />	
+											<span>品牌耳机</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="two-list2">
+								<ul>
+									<li>
+										<a href="#">
+											<img src="images/pocketaudio.png" alt="phone" align="absmiddle" />	
+											<span>小米蓝牙音箱</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/xiaogangpao.jpg" alt="phone" align="absmiddle" />	
+											<span>小钢炮音箱</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/fanghezi.jpg" alt="phone" align="absmiddle" />	
+											<span>小米方盒子音箱</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="images/pinpaiyinxiang.jpg" alt="phone" align="absmiddle" />	
+											<span>品牌音箱</span>
+										</a>
+									</li>
+								</ul>
+							<div>
+						</div>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						电池 存储卡
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/5Battery1.jpg" alt="phone" align="absmiddle" />	
+									<span>彩虹5号电池</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/7Battery1.jpg" alt="phone" align="absmiddle" />	
+									<span>彩虹7号电池</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/dianchi.jpg" alt="phone" align="absmiddle" />	
+									<span>电池</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/chongdian.jpg" alt="phone" align="absmiddle" />	
+									<span>充电器</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/xiancai.jpg" alt="phone" align="absmiddle" />	
+									<span>线材</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/cunchu.jpg" alt="phone" align="absmiddle" />	
+									<span>存储卡</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						保护套 后盖
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/baohu.jpg" alt="phone" align="absmiddle" />	
+									<span>保护套/保护壳</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/hougai.jpg" alt="phone" align="absmiddle" />	
+									<span>后盖</span>
+								</a>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						贴膜 其他配件
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/tiemo.jpg" alt="phone" align="absmiddle" />	
+									<span>贴膜</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/zipaigan.jpg" alt="phone" align="absmiddle" />	
+									<span>自拍杆</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/tizhi.jpg" alt="phone" align="absmiddle" />	
+									<span>贴纸</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/fangchensai.jpg" alt="phone" align="absmiddle" />	
+									<span>防尘塞</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/zhijia.jpg" alt="phone" align="absmiddle" />	
+									<span>手机支架</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/wifi.jpg" alt="phone" align="absmiddle" />	
+									<span>随身WiFi</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						米兔 服装
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/mitu.jpg" alt="phone" align="absmiddle" />	
+									<span>米兔</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/fuzhuang.jpg" alt="phone" align="absmiddle" />	
+									<span>服装</span>
+								</a>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<a href="#">
+						箱包 其他周边
+						<i class="iconfont">&#xe643;</i>
+					</a>
+					<div class="two-list">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="images/bag.jpg" alt="phone" align="absmiddle" />	
+									<span>箱包</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/lvxingxiang.jpg" alt="phone" align="absmiddle" />	
+									<span>90分旅行箱</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/shubiaodian.jpg" alt="phone" align="absmiddle" />	
+									<span>小米鼠标垫</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/zhoubian1.jpg" alt="phone" align="absmiddle" />	
+									<span>生活周边</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/wan.jpg" alt="phone" align="absmiddle" />	
+									<span>酷玩产品</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--GBK,GB2312 中文-->
+    <meta charset="UTF-8">
+    <!--页面三要素-->
+    <title>使用CSS3制作个性QQ相册</title>
+    <meta name="Keywords" content="关键字,关键字">
+    <meta name="Description" content="描述">
+    <!--js css-->
+    <style type="text/css">
+        body {
+            background: url(images/bg.jpg) repeat-x 0 0;
+        }
+
+        .photo {
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        .photo a {
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-family: "微软雅黑";
+            float: left;
+            margin: 0 0 27px 30px;
+            transition: all 0.3s linear;
+            -webkit-transform: rotate(-2deg); /*兼容google浏览器 */
+            transform: rotate(-2deg); /*兼容IE*/
+        }
+
+        .photo img {
+            width: 190px;
+            height: 190px;
+            display: block;
+            margin-bottom: 10px;
+            border: 0;
+        }
+
+        /*
+            nth-child(even): odd 和 even 是可用于匹配下标是奇数或偶数的子元素的关键词（第一个子元素的下标是 1）。
+            奇数(odd)与(2n+1)结果一样；
+            偶数(even)与(2n+0)及(2n)结果一样。
+        */
+        .photo a:nth-child(odd) {
+            -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+        }
+
+        /*.photo a:nth-child(2n){-webkit-transform:none;transform:none;}*/
+        /*
+            nth-child(an+b):使用公式 (an + b)。描述：表示周期的长度，a为正整数，n 是计数器（从 0 开始），b 是偏移值。
+        */
+        .photo a:nth-child(3n) {
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+        }
+
+        .photo a:after {
+            /*调用自定义属性*/
+            content: attr(title);
+        }
+
+        .photo a:hover {
+            /*
+            transform	旋转 div 元素
+            scale()	按比例进行放大或缩小
+             */
+            -webkit-transform: scale(1.25); /*兼容google浏览器 */
+            transform: scale(1.25); /*兼容IE*/
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+            /*使用层级是为了提升当前标签的显示层级，可直接展示当前标签的完整内容不被其它标签内容遮挡住*/
+            position: relative;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+<!--div  层  盒子 容器
+class	命名注意事项：只能使用字母开头  不能使用数字、中文、特殊字符开头！@#￥%……&*（）——+、、
+-->
+
+<!--method one-->
+<div class="photo">
+    <!--<a href="#" title="潭州学院-IF"><img src="images/if.jpg"/></a>
+    <a href="#" title="美女"><img src="images/1.jpg"/></a>
+    <a href="#" title="摄影"><img src="images/2.jpg"/></a>
+    <a href="#" title="服饰"><img src="images/3.jpg"/></a>
+    <a href="#" title="潭州学院-小龙"><img src="images/4.jpg"/></a>
+    <a href="#" title="世界杯"><img src="images/6.jpg"/></a>
+    <a href="#" title="壁纸"><img src="images/7.jpg"/></a>
+    <a href="#" title="婚嫁"><img src="images/8.jpg"/></a>
+    <a href="#" title="明星"><img src="images/5.jpg"/></a>-->
+</div>
+
+<!--method tow-->
+<script>
+    // 创建文档碎片
+    var frag = document.createDocumentFragment();
+    // 相册数据数据
+    var albums = [
+        {
+            "title": "潭州学院-IF",
+            "src": "images/if.jpg"
+        },
+        {
+            "title": "美女",
+            "src": "images/1.jpg"
+        },
+        {
+            "title": "摄影",
+            "src": "images/2.jpg"
+        },
+        {
+            "title": "服饰",
+            "src": "images/3.jpg"
+        },
+        {
+            "title": "潭州学院-小龙",
+            "src": "images/4.jpg"
+        },
+        {
+            "title": "世界杯",
+            "src": "images/6.jpg"
+        },
+        {
+            "title": "壁纸",
+            "src": "images/7.jpg"
+        },
+        {
+            "title": "婚嫁",
+            "src": "images/8.jpg"
+        },
+        {
+            "title": "明星",
+            "src": "images/5.jpg"
+        }
+    ];
+
+    albums.forEach(function (album) {
+        var a = document.createElement("a");
+        var img = document.createElement("img");
+
+        a.href = "#";
+        a.title = album.title;
+        img.src = album.src;
+
+        a.appendChild(img);
+        frag.appendChild(a);
+
+        a = null;
+        img = null;
+    });
+
+    document.querySelector(".photo").appendChild(frag);
+    frag = null;
+    albums = null;
+</script>
+</body>
+</html>

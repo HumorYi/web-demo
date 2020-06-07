@@ -1,0 +1,29 @@
+body{
+text-align:center;     /*水平置中*/
+font-family:Arial,微軟正黑體;
+font-size:18px;
+}
+button{
+font-size:15px;
+cursor:pointer;
+}
+div{
+	display:inline;	
+	width:350px;
+	height:40px;
+	background:#ffff99;
+	color:#0000ff;
+	font-size:25px;
+}
+form{
+  width:300px;
+  height:190px;
+  border: thick inset #cc0000;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-box-shadow: 3px 0px 5px 0px #333333;
+  box-shadow: 3px 0px 5px 0px #333333;
+  padding: 5px;
+  margin: 10px auto;
+  line-height:30px;
+}

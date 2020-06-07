@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+		
+			<script language="javascript" type="text/javascript">
+				function IndexOfDemo(str2){
+					var str1 = "dddaaabbbcccaaa";
+					var s = str1.indexOf(str2);
+					return(s);
+				}
+
+				function lastIndexOfDemo(str2){
+					var str1 = 'dddaaabbbcccaaa';
+					var s = str1.lastIndexOf(str2);
+					return(s);
+				}
+
+				with(document){
+					writeln("执行IndexOfDemo('aaa')的结果如下：");
+					writeln(IndexOfDemo('aaa')+'<br />');
+
+					writeln("执行lastIndexOfDemo('aaa')的结果如下：");
+					writeln(lastIndexOfDemo('aaa')+'<br />');
+				}
+			</script>
+
+		</body>
+</html>
+<!--
+	1、indexOf(subString[ , currIndex])->按顺序查找(开始出现)子字符串在字符串的位置的函数；若子字符串比最大字符位置索引还大，indexOf()从左向右查找；否则同lastIndexOf()一样。
+	2、lastIndexOf(subString[ , currIndex])->按逆序查找(最后出现)子字符串在字符串的位置的函数；若子字符串比最大字符位置索引还大，lastIndexOf()从右向左查找，否则同indexOf()方法一样。
+	3、若以上两个方法都没有找到子字符串，返回-1；
+-->

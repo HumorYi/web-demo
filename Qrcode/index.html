@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>Java 开发威信二维码扫一扫 --> Andy</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";background:url("images/bg.jpg") no-repeat;background-size:cover;}
+			/*qrcode start*/
+			.qrcode{width:600px;height:300px;margin:150px auto;text-align:center;}
+			h1{font-size:26px;color:#369;text-shadow:2px 2px 10px #fff;/*水平方向 垂直方向 阴影模糊度 阴影颜色*/}
+			.qrcode .q_text{width:400px;height:100px;margin:10px 0;outline:none;}
+			.qrcode .q_btn{width:400px;height:30px;background:#e6e6e6;border:0;font-size:18px;font-family:"楷体";font-weight:bold;	border-radius:12px;cursor:pointer;outline:none;}
+			.qrcode .q_btn:hover{background:#561028;}
+			/*qrcode end*/
+		</style>
+    </head>
+	<body>
+		<!--qrcode start-->
+		<div class="qrcode">
+			<h1>Java 开发威信二维码扫一扫<h1>
+			<textarea class="q_text"></textarea>
+			<input type="submit" class="q_btn" value="提交" />
+		</div>
+		<!--qrcode end-->
+	</body>
+</html>
+

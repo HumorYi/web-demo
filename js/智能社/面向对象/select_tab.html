@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 input{ background: white; }
+		#div1 input.active{background: yellow;}
+		#div1 div{width: 200px; height: 200px; background: #ccc; display: none;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var aBtn = document.getElementsByTagName('input');
+			var aDiv = document.getElementsByTagName('div');
+
+			for (var i = 0; i < aBtn.length; i++) {
+				aBtn[i].onclick = function(){
+					aBtn[i].index = i;
+					aBtn[i].onclick = function(){
+						for (var i = 0; i < aBtn.length; i++) {
+							aBtn[i].className = '';
+							aDiv[i].style.display = 'none';
+						}
+
+						this.className = 'active';
+						aDiv[this.index].style.display = 'block';
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input class="active" type="button" value="aaa" />
+		<input type="button" value="bbb" />
+		<input type="button" value="ccc" />
+		<div style="display: block;">asdf</div>
+		<div>a12314</div>
+		<div>189649816239</div>
+	</div>
+</body>
+</html>
+<!--
+	实例：面向对象的选项卡
+
+		原则：不能有函数套函数，但可以有全局变量
+		过程：onload -》 	构造函数
+			  全局变量-》 	属性	
+			  函数—》		方法
+		改错：this、事件、闭包、传参
+	对象与闭包：通过闭包传递this
+
+-->

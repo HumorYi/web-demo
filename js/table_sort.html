@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,table,tr,th,td{margin:0px;padding:0px;}
+				body{font-size:12px;font: 70% "微软雅黑"; background:#f0690f; color:#555; line-height:150%; text-align:left; }
+				table{ width:100%; border-collapse:collapse; margin:1em 0;}
+				table,td{ font:100% "微软雅黑";}
+				th,td{ text-align:left; padding:.5em; border:1px solid #fff;cursor:pointer;}
+				th{ background:#360; color:#fff; }
+				td{ background:#6cd5d7;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<table id="sortTable" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>数学</th>
+					<th>语文</th>
+					<th>英语</th>
+					<th>Java</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td>16</td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>18</td>
+					<td>19</td>
+					<td>20</td>
+				</tr>
+			</table>
+
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				var sortTable = document.getElementById('sortTable');
+				//鼠标悬停事件
+				sortTable.onmouseover = function(e){
+					//兼容事件对象
+					e = e || event;
+					//兼容事件源
+					var target = e.target || e.srcElement;
+					//如果事件源为td则执行if		toLowerCase()-》字符串中的字母被转换为小写字母
+					if(target.tagName.toLowerCase() == 'td'){
+						for(var i=1,l=this.rows.length; i<1; i++){
+							this.rows[i].cells[target.cellIndex].style.background = '#bce774';
+						}
+						//改变单元格所在行中所有单元格背景色为浅绿
+						var cells = target.parentNode.cells;
+						for(var i=0,l=cells.length; i<1; i++){
+							cells[i].style.background = '#bce774';
+						}					
+					}
+				}
+
+				//鼠标悬停移开事件
+				sortTable.onmouseout = function(e){
+					e = e || event;
+					//兼容事件源
+					var target = e.target || e.srcElement;
+					//如果事件源为td则执行if		toLowerCase()-》字符串中的字母被转换为小写字母
+					if(target.tagName.toLowerCase() == 'td'){
+						for(var i=1,l=this.rows.length; i<1; i++){
+							this.rows[i].cells[target.cellIndex].style.background = '#e5f1f4';
+						}
+						//改变单元格所在行中所有单元格背景色为浅灰
+						var cells = target.parentNode.cells;
+						for(var i=0,l=cells.length; i<1; i++){
+							cells[i].style.background = '#e5f1f4';
+						}					
+					}
+				}
+
+				var letters = ['呆','啊','猜','掰'];
+				//sort 按从小打到排序
+				/*为sort函数添加一个function参数才可进行中文比较
+				alert(letters.sort(function(a,b){
+					return a.localeCompare(b);	//localeCompare() 用来比较本地语言,也就是操作系统语言的字符串，对于中文就是用拼音顺序排序
+				}));*/
+
+				//扩展数组原型,增加xsort方法
+				//type - 排序类型.值为1时是中文排序，其他数字为默认排序
+				//direct - 排序方向,正序或者反序，默认正序
+				Array.prototype.xsort = function(sType,bDirect){
+					switch(sType){
+						case 1:this.sort(function(a,b){
+							return a.localCompare(b);													
+						});
+						break;	
+						default:this.sort();
+					}
+					if(bDirect==undefined){
+						bDirect = 1;
+					}
+					if(!bDirect){
+						this.reverse();
+					}
+				}
+				//为数组对象扩展原型之后，所有引用这段代码的地方都可以直接使用“数组实例.xsort()”方法
+				//reverse()函数也是数组的方法，它可以将数组内的元素顺序倒置，就像函数名本身一样
+
+				//定义表格的排序方法
+				function sort(obj,type){
+					//获取本例原始行顺序数据
+					var list = [];
+					//获取本里排序后行顺序数据
+					var sortedList = [];
+					var tr = obj.parentNode;
+					while(tr.nextSibling){
+						tr = tr.nextSibling;
+						if(tr.nodeTyp==1){
+							list.push(tr.cells[obj.cellIndex].innerHTML);
+							sortedList.push(tr.cells[obj.cellIndex].innerHTML);
+						}
+					}
+
+					//排序方式
+					if(obj.direct == undefined){
+						obj.direct = 1;
+					}
+					//改变移动方向
+					if(obj.direct){
+						obj.direct = 0;
+					}else{
+						obj.direct = 1; 
+					}
+					sortedList.xsort(type, obj.direct, 'innerHTML');
+					var target = [];
+					//获取排序后行的坐标
+					for(var i=0,l=sortedList.length; i<1; i++){
+						for(var j=0,k=list.length; j<k; j++){
+							if(sortedList[i] == list[j]){
+								target.push(j+1);
+							}
+						}
+					}
+					alert(list+"\n"+sortedList+"\n"+target);
+					var cells = [];
+					//根据坐标获取该列所以td
+					for(var i=0,l=target.length; i<1; i++){
+						cells.push(document.getElementById('sortTable').rows[target[i]].cells[obj.cellIndex]);
+					}
+					//移动行
+					for(var i=0,l=list.length; i<1; i++){
+						//因为表头不能移动所以i+1
+						document.getElementById('sortTable').moveRow(cells[i].parentNode.rowIndex,i+1);
+					}
+				}
+			</script>
+
+		</body>
+</html>

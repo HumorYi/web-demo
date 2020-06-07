@@ -1,0 +1,197 @@
+<!doctype html><!--网页文档头部文档声明 doc=document(文档)，type(类型)-->
+<html><!--主体开始-->
+	<!--网页头部区域-->
+	<head>
+		<!--声明当前页面的编码集charset=utf-8,中文编码集(gbk,gb2312),国际编码集(utf-8)-->
+		<meta charset="utf-8" /><!--元信息标签 声明编码集-->
+		<!--声明当前页面文档三要素-->
+		<!--标题-->
+		<title>努力_幸运-凡事都不愿意将就</title>
+		<!--关键字-->
+		<meta name="Keywords" content="web前端" />
+		<!--描述-->
+		<meta name="Description" content="一定要把Web前端学好学出色" />
+
+		<!--base,link,style,script-->
+		<!--赋予躯体灵魂 Css层叠样式 如同衣服可以装扮网页-->
+		<style type="text/css">
+			html,body,div,ul,li,img{margin:0px;padding:0px;}
+			ul li{list-style:none;/*隐藏无序列表小黑圆点*/}
+			.banner{
+				width:730px;/*宽度   730数值属性值 px屏幕分辨率*/
+				height:454px;/*高度*/
+				margin:100px auto 0;
+				overflow:hidden;/*内容超出本区域 设定为隐藏*/
+				position:relative;/*定位 相对定位/参照物 打车软件当前锁定的位置*/
+				cursor:pointer;
+			}
+			/*
+				.banner:hover:找到banner区域绑定hover伪类，当鼠标滑入显示指定区域
+				.but div:指定区域
+			*/
+			.banner:hover .but div{display:block;}/*显示默认隐藏区域*/
+			/*左右切换按钮样式*/
+			.but div{
+				width:28px;
+				height:62px;
+				position:absolute;/*定位 绝对定位/目的地  top right bottom left*/
+				top:50%;margin-top:-31px;
+				/*通过背景颜色 颜色三原色值以及通道设定背景透明
+					rgb:颜色三元素 r=red g=green b=blue
+					a:通道
+					rgba(r,g,b,a);	例如：background:rgba(0,0,0,0.6);
+				*/
+				background:rgba(0,0,0,0.4);
+				color:#fff;
+				text-align:center;/*元素内容水平居中*/
+				line-height:62px;/*行高 元素垂直居中*/
+				font-size:18px;
+				display:none;
+				transition:block 0.4s;/*指定执行某个样式添加时间过度*/
+			}
+			/*左按钮*/
+			.but div.prev{left:0px;}
+			/*右按钮*/
+			.but div.next{right:0px;}
+			/*底部选项卡按钮*/
+			.nav{
+				width:128px;
+				height:16px;
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				left:0;
+				/* margin:auto; */
+				margin:435px auto 0;
+			}
+			.nav ul li{
+				float:left;/*浮动 left左浮动*/
+				width:14px;
+				height:14px;
+				/*Css3 边框圆角 圆形注意（50%），元素宽高必须一致*/
+				border-radius:50%;
+				margin:0 2px;/*外边距*/
+				background:#3e3e3e;
+				color:#fff;
+				text-align:center;
+				line-height:14px;
+				font-size:12px;/*字体大小*/
+				font-weight:bold;/*字体加粗*/
+				font-family:"黑体";/*字体风格样式*/
+			}
+			/*选项卡按钮默认用户选中样式*/
+			.nav ul li.sel{background:#b61b1f;}
+		</style>
+	</head>
+
+	<!--网页身体区域-->
+	<body>
+		<!--Banner开始-->
+		<div class="banner">
+			<!--图片区域-->
+			<div class="img_list">
+				<ul>
+					<li>
+						<img src="img/bn01.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+					<li>
+						<img src="img/bn02.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+					<li>
+						<img src="img/bn03.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+					<li>
+						<img src="img/bn04.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+					<li>
+						<img src="img/bn05.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+					<li>
+						<img src="img/bn06.jpg" width="730" height="454" alt="京东家纺节" />
+					</li>
+				</ul>
+			</div>
+			<!--左右切换按钮区域-->
+			<div class="but">
+				<div class="prev">&lt;</div>
+				<div class="next">&gt;</div>
+			</div>
+			<!--选项卡切换区域-->
+			<div class="nav">
+				<ul>
+					<li class="sel">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+				</ul>
+			</div>
+		</div>
+		<!--Banner结束-->
+
+		<!--引入一套Jquery类库-API接口文件-->
+		<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+		<script type="text/javascript">
+			/*通过控制输出函数 输出Jquery文件指定$*/
+			//console.log($); 测试Jquery是否引入成功
+
+			/*通过Jquery脚本 动态查找文档里面左右切换按钮元素*/
+			/*左按钮*/
+			/*	
+				$：通过原生Js封装可以直接查找
+				(""); 存放元素类名、id、标签名...
+				$(".but div.prev"); 查找元素 比如原生Js通过id名获取元素对象
+				.click();鼠标点击事件
+				funtion(){}:方法构造
+			*/
+			/*var Js关键字 创建变量 _index:变量名称 = 赋值 0：初始化值*/
+			var  _index = 0;//创建序列号容器存放等会序列号数据
+			
+				/*
+					$(this);查找当前
+					.index();获取当前序列号
+					_index = $(this).index();
+					.eq()；匹配
+					左边      右边
+					容器  赋值 	查找相关元素获取当前序列号
+				*/
+				_index = $(this).index();
+			$(".but div.prev").click(function(){
+				//alert("越努力越幸运");
+				/*上一张切换*/ 
+				_index--; //序列号运算 -- 递减
+				if(_index<0){ //if判断 (判断条件) 如果当前为第一张图片 _index<=0 判断是否负数
+					_index = 5;	//强制转换最后一张图片
+					
+				}	
+				console.log(_index);
+					flash();
+			});
+			/*右按钮*/
+			$(".but div.next").click(function(){
+				//alert("点击右按钮");
+				_index++; //序列号运算 -- 递减
+				if(_index>5){ //if判断 (判断条件) 如果当前为第一张图片 _index<=0 判断是否负数
+					_index = 0;	//强制转换最后一张图片
+					
+				}	
+				console.log(_index);
+					flash();
+			});
+
+			/*图片切换效果*/
+			/*创建一个新的方法构造 取名为flash 里面有图片切换效果
+				$(".img_list ul li")：找到图片对象
+				.show():显示函数
+				.siblings():兄弟查找函数 除了当前li其他li标签
+				.hide():隐藏函数
+			*/
+			function flash(){
+				$(".img_list ul li").eq(_index).fadeIn(200).siblings().fadeOut(200);
+				$(".nav ul li").eq(_index).addClass("sel").siblings().removeClass("sel");
+			}
+		</script>
+	</body>
+</html><!--主体结束-->

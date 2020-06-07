@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>鼠标跟随特效</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+			*{margin:0;padding:0;list-style:none;}
+			/*banner start*/
+			#banner{width:830px;height:300px;background:#ddd;margin:100px auto;
+			}
+			#banner .left{width:700px;height:300px;float:left;position:relative;cursor:pointer;}
+			#banner .left ul li{position:absolute;left:13px;top:10px;display:none;}
+			#banner .left ul li img{width:670px;height:280px;border-radius:6px;}
+			#banner .right{width:116px;height:295px;float:right;margin-right:10px;padding-top:5px;position:relative;}
+			#banner .right ul li{margin-top:7px;width:126px;height:64px;float:right;cursor:pointer;}
+			#banner .right ul li img{width:100px;height:50px;margin:7px 13px;display:block;border-radius:6px;}
+			#banner .right .curr{position:absolute;left:-12px;top:14px;}
+		</style>
+    </head>
+	<body>
+			<!--banner start-->
+			<div id="banner">
+					<div class="left">
+						<ul>
+							<li style="display:block"><img src="images/a1.jpg" alt="蜗牛" /></li>
+							<li><img src="images/a2.jpg" alt="键盘" /></li>
+							<li><img src="images/a3.jpg" alt="晨曦风景" /></li>
+							<li><img src="images/a4.jpg" alt="励志名言" /></li>
+						</ul>
+
+					</div>
+					<div class="right">
+						<ul>
+							<li><img src="images/a1_l.jpg" alt="蜗牛" /></li>
+							<li><img src="images/a2_l.jpg" alt="键盘" /></li>
+							<li><img src="images/a3_l.jpg" alt="风景" /></li>
+							<li><img src="images/a4_l.jpg" alt="励志名言" /></li>
+						</ul>
+						<div class="curr">
+							<img src="images/hover.png" alt="相框" width="126" height="64" />
+						</div>
+					</div>
+			</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		var clearTime = null;
+		var _index = 0;
+		$("#banner .right ul li").hover(function(){
+			clearInterval(clearTime);
+			_index = $(this).index();
+			common();
+		},function(){
+			autoPlay();
+		});
+		function autoPlay(){
+			clearTime=setInterval(function(){
+					_index++;
+					if (_index>3)
+					{
+						_index=0;
+					}	
+					common();
+				},3000);
+			}
+		function common(){
+			$("#banner .left ul li").eq(_index).fadeIn(300).siblings().fadeOut();
+			$("#banner .right .curr").stop().animate({"top":_index*71+14},200);
+		}
+		autoPlay();
+		</script>
+</html>
+

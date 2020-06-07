@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function show(a, b){
+			//alert(this);
+			alert('this是：' +this+ '\na是：' +a+ '\nb是：' + b);
+		}
+		//show(); == show.call();
+		//show.call(23);
+		show.call('abc',12,5);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

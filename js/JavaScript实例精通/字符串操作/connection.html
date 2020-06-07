@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+		
+			<script language="javascript" type="text/javascript">
+				function optionDemo(){
+					var str1 = 'foo';
+					var str2 = 'bar';
+					var s = str1 + str2;
+					return (s);
+				}
+
+				function concatDemo(){
+					var str1 = 'ABCD';
+					var str2 = 'EFGH';
+					var s = str1.concat(str2);
+					return(s);
+				}
+
+				function joinDemo(){
+					var a,b;
+					a = new Array('0','1','2','3','4');
+					b = a.join('');
+					return(b);
+				}
+
+				with(document){
+					writeln('执行函数optionDemo()的结果如下：');
+					writeln(optionDemo()+'<br />');
+					writeln('执行函数concatDemo()的结果如下：');
+					writeln(concatDemo()+'<br />');
+					writeln('执行函数joinDemo()的结果如下：');
+					writeln(joinDemo());
+				}
+			</script>
+
+		</body>
+</html>

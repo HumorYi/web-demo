@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>标题</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="描述">	
+		<!--css , js-->
+		<style type="text/css">
+		html,body,div,ul,li,img,h3{margin:0px; padding:0px;}
+		#PicList{width:1200px; height:1px; margin:0px auto; position:relative;/*相对定位*/}
+		#PicList ul li{width:210px; /* height:350px;*/  list-style-type:none;
+						padding:10px; background:#fff; box-shadow:0px 0px 5px #666; position:absolute;/*绝对定位*/ -webkit-transition:all 1s ease;}
+		#PicList ul li h3{font-size:14px; color:#666; font-weight:100; font-family:微软雅黑;text-align:center; height:35px;  line-height:35px;}
+		</style>
+	</head>
+	<body>
+		<!--Div盒子模型，高度，宽度，放置内容-->
+		<div id="PicList">
+			<ul>
+				<li><img src="images/1.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s2"><img src="images/2.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s3"><img src="images/3.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s4"><img src="images/4.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s5"><img src="images/5.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s6"><img src="images/6.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s7"><img src="images/7.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s8"><img src="images/8.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s9"><img src="images/9.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s10"><img src="images/10.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s4"><img src="images/4.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s5"><img src="images/5.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s6"><img src="images/6.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s7"><img src="images/7.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s8"><img src="images/8.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s9"><img src="images/9.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+				<li class="s10"><img src="images/10.jpg" /><h3>霍思燕旅游杂志写真</h3></li>
+			</ul>
+		</div>
+		<!--jquery引用，外部函数库-->
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript">
+			var margin = 10;//这里设置间距
+			var li=$("#PicList li");//这里是区块名称
+			var	li_W = li[0].offsetWidth+margin;//取区块的实际宽度
+			function liuxiaofan(n){//定义成函数便于调用
+				var h=[];//记录区块高度的数组
+				var n = n//窗口的宽度除以区块宽度就是一行能放几个区块
+				for(var i = 0;i < li.length;i++) {//有多少个li就循环多少次
+					li_H = li[i].offsetHeight;//获取每个li的高度
+					if(i < n) {//n是一行最多的li，所以小于n就是第一行了
+						h[i]=li_H;//把每个li放到数组里面
+						li.eq(i).css("top",0);//第一行的Li的top值为0
+						li.eq(i).css("left",i * li_W);//第i个li的左坐标就是i*li的宽度
+						}
+					else{
+						min_H =Math.min.apply(null,h) ;//取得数组中的最小值，区块中高度值最小的那个
+						minKey = getarraykey(h, min_H);//最小的值对应的指针
+						h[minKey] += li_H+margin ;//加上新高度后更新高度值
+						li.eq(i).css("top",min_H+margin);//先得到高度最小的Li，然后把接下来的li放到它的下面
+						li.eq(i).css("left",minKey * li_W);	//第i个li的左坐标就是i*li的宽度
+					}
+					
+				}
+			}
+			/* 使用for in运算返回数组中某一值的对应项数(比如算出最小的高度值是数组里面的第几个) */
+			function getarraykey(s, v) {
+				for(k in s) {
+					if(s[k] == v) {
+						return k;
+					}
+				}
+			}
+			/*这里一定要用onload，因为图片不加载完就不知道高度值*/
+			window.onload = function() {liuxiaofan(5);};
+			/*浏览器窗口改变时也运行函数*/
+			window.onresize = function() {liuxiaofan(5);};
+		</script>
+	</body>
+</html>

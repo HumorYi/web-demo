@@ -1,0 +1,83 @@
+<html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background: #7ACFFA;
+      }
+      #canvas {
+        position: absolute;
+        top: 0; left: 0;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id="canvas" width="1" height="1"></canvas>
+
+    <script type='text/javascript'>
+      window.requestAnimFrame = (function(){
+          return  window.requestAnimationFrame       ||
+                  window.webkitRequestAnimationFrame ||
+                  window.mozRequestAnimationFrame    ||
+                  function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                  };
+        })();
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      function Tree(x,y,branchLen,branchWidth,depth,canvas){
+        this.canvas = canvas || document.getElementById('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.x = x||0;
+        this.y = y||0;
+        this.branchLen = branchLen||0;
+        this.branchWidth = branchWidth||0;
+        var depth = depth || 5;
+        this.drawRoot(this.x,this.y,this.branchLen,this.branchWidth);
+      }
+      Tree.prototype.drawRoot = function(x,y,branchLen,branchWidth){
+        var toX = x;
+        var toY = y-branchLen;
+        this.ctx.save();
+        this.ctx.strokeStyle="rgba(37, 141, 194, 0.93)";
+        this.ctx.beginPath();
+        this.ctx.lineCap = "butt";
+        this.ctx.lineJoin="round";
+        this.ctx.lineWidth = branchWidth;
+        this.ctx.moveTo(x,y);
+        this.ctx.lineTo(toX,toY);
+        this.ctx.closePath();
+        this.ctx.stroke();
+        this.ctx.restore();
+        this.drawBranch(toX,toY,branchLen,branchWidth-1,30);
+        this.drawBranch(toX,toY,branchLen,branchWidth-1,-30);
+      }
+      Tree.prototype.drawBranch = function(x,y,branchLen,branchWidth,angle){
+        var angle = angle || 0;
+        var radian = (90-angle)*(Math.PI/180);
+        var toX = x+Math.cos(radian)*branchLen;
+        var toY = y-Math.sin(radian)*branchLen;
+        this.ctx.save();
+        this.ctx.strokeStyle="rgba(37, 141, 194, 0.93)";
+        this.ctx.beginPath();
+        this.ctx.lineCap = "butt";
+        this.ctx.lineJoin="round";
+        this.ctx.lineWidth = branchWidth;
+        this.ctx.moveTo(x,y);
+        this.ctx.lineTo(toX,toY);
+        this.ctx.closePath();
+        this.ctx.stroke();
+        this.ctx.restore();
+      }
+      var atree = new Tree(canvas.width/2-4,canvas.height,100,8,8,canvas);
+    </script>
+  </body>
+</html>

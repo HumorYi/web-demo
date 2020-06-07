@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oUl = document.getElementById("ul1");
+			var aA = document.getElementsByTagName("a");
+			//alert(oUl.parentNode);
+			for (var i = 0; i < aA.length; i++) {
+				
+				aA[i].onclick = function(){
+					this.parentNode.style.display = 'none';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>asdf<a href="javascript:void(0);">隐藏</a></li>
+		<li>asdafasdasdff<a href="javascript:void(0);">隐藏</a></li>
+		<li>aasdfagesdf<a href="javascript:void(0);">隐藏</a></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+<!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+<!--当前页面三要素-->
+<meta charset="UTF-8">
+<meta name="Keywords" content="关键词,关键词">
+<meta name="Description" content="描述 76 -80">
+<title>贪吃蛇</title>
+<!--css 层叠样式表  一件美丽的外衣-->
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: 0;
+}
+body{
+	background: url("images/linsy.jpg") no-repeat 100% 100% ;
+	background-size:cover;
+	font: 12px "微软雅黑";
+
+}
+#resize {
+	width: 220px;
+	height: 220px;
+	border: 2px dashed #3a3a3a;
+	position: absolute;
+	top: 200px;
+	left: 30px;
+	font-weight: bold;
+	font-size: 16px;
+	color: #214d18;
+}
+#myCanvas{
+	border: 3px solid #4a4a4a;
+	margin: 118px 0 0 500px;
+}
+#Name{
+	position: absolute;
+	top: 80px;
+	left: 60px;
+	font-size: 40px;
+	font-family: "方正舒体";
+
+}
+#score{
+	color: #737375;
+	font-weight: 600;
+	font-size: 20px;
+	position: absolute;
+	margin-top: -636px;
+	margin-left: 1000px;
+}
+#btn {
+	position: absolute;
+	top: 236px;
+	left: 286px;
+
+}
+#btn p{
+	margin-bottom: 50px;
+}
+#btn p a {
+	color: #fff;
+	font-weight: 600;
+	width: 140px;
+	height: 26px;
+	background: #388328;
+	font-size: 20px;
+	border-radius: 10px;
+	display: block;
+	text-align: center;
+	padding: 10px;
+}
+#btn a:hover{
+	cursor: pointer;
+	background-color:#214E18 ;
+	color: #c6c6c6;
+}
+</style>
+
+</head>
+<body>
+	<div id="btn">
+		<p>
+			<a href="javascript:void(0)" id="star" onclick="btnStart()">开始游戏</a>
+		</p>
+		<p>
+			<a href="javascript:void(0)">重新开始</a>
+		</p>
+	</div>
+	<div id="Name">
+		<h3>贪 吃 蛇</h3>
+	</div>
+	<div id="resize">
+		<h3>游戏说明<h3>
+		<p style="text-indent: 2em;">点击开始游戏，游戏开
+        始，按电脑上下左右键移动贪吃蛇去吃食物，
+     贪吃蛇碰到边界，和碰到自身，游戏结束！！</p>
+	</div>
+	<canvas id="myCanvas" width="600" height="600px"></canvas>
+	<div id="score">
+		 得分： <span id="score_one"></span>
+	</div>
+	<script type="text/javascript">
+		function $(id){
+			return document.getElementById(id);
+		}
+		var canvas = $("myCanvas");
+		var ctx = canvas.getContext("2d");
+		var score = $("score_one");
+		//定义分数
+		score.innerText = '0';
+		//蛇的大小
+		var BLOCK_SIZE = 40;
+		//蛇身
+		var snakes = [];
+		//蛇的长度
+		var snakeCount = 4;
+		//定义食物x  y 坐标
+		var foodX = 0;
+		var foodY = 0;
+		var ROWS = 15;
+		var COLS = 15;
+		// 蛇走动的方向  左上右下    1 2 3 4
+		var toGo = 3;
+		timer = null;
+		//绘画
+		function draw(){
+			var s = 600;
+			//画网格
+			for (var i = 0 ; i<s ; i+=40){
+				ctx.strokeStyle = "#4a4a4a";
+				ctx.lineWidth= 1;
+				ctx.moveTo(0,i+40);
+				ctx.lineTo(600,i+40);
+				ctx.moveTo(i+40,0);
+				ctx.lineTo(i+40,600);
+				ctx.stroke();
+			}
+			//画蛇
+			for (var i = 0; i<snakes.length ; i++ ){
+				//绘画开始
+				ctx.beginPath();
+				//绘制填充矩形   fillRext(x,y,width,height);
+				ctx.strokeStyle = "graw";
+				ctx.fillRect(snakes[i].x,snakes[i].y,BLOCK_SIZE,BLOCK_SIZE);
+				//设置边框线
+				ctx.moveTo(snakes[i].x,snakes[i].y);
+				ctx.lineTo(snakes[i].x+BLOCK_SIZE,snakes[i].y);
+				ctx.lineTo(snakes[i].x+BLOCK_SIZE,snakes[i].y+BLOCK_SIZE);
+				ctx.lineTo(snakes[i].x,snakes[i].y+BLOCK_SIZE);
+				//设置左边的边框
+				ctx.lineTo(snakes[i].x,snakes[i].y);
+				//背景颜色
+				//ctx.fillStyle="red";
+				ctx.stroke();
+			}
+			ctx.fillRect(foodX,foodY,40,40);
+			ctx.fill();
+		}
+		//定义整个蛇身的位置
+		function start(){
+			//遍历出蛇身每个部位的具体位置
+			for (var i = 0; i<snakeCount ; i++ ){
+				//存放如数组当中
+				snakes[i] = {x:i*BLOCK_SIZE,y:0};
+			}
+			//添加食物
+			addFood();
+			draw();
+		}
+		//随机生成食物
+		function addFood(){
+			//Math.floor()向下取整数
+			//foodX = Math.floor(Math.random()*(ROWS)) * BLOCK_SIZE;
+			//foodY = Math.floor(Math.random()*(COLS)) * BLOCK_SIZE;
+			foodX = Math.floor(Math.random()*15)*40;
+			foodY = Math.floor(Math.random()*15)*40;
+			//console.log(foodX+"*-*"+foodY);
+		}
+
+		//snake 移动
+		function move(){
+			switch (toGo){
+				case 1:      //左
+							snakes.push({x:snakes[snakeCount-1].x -BLOCK_SIZE,y:snakes[snakeCount-1].y});
+							break;
+				case 2: 	//上
+							snakes.push({x:snakes[snakeCount - 1].x,y:snakes[snakeCount - 1].y - BLOCK_SIZE});
+							break;
+			   case 3:		//右
+						   snakes.push({x:snakes[snakeCount - 1].x +BLOCK_SIZE,y:snakes[snakeCount - 1].y});
+						   break;
+               case 4:		//下边
+							snakes.push({x:snakes[snakeCount - 1].x,y:snakes[snakeCount - 1].y+BLOCK_SIZE});
+							break;
+				}
+				 //shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值
+				snakes.shift();
+				ctx.clearRect(0,0,600,600);
+				isEat();
+				isDead();
+				draw();
+		}
+		//吃东西
+		function isEat(){
+			if (snakes[snakeCount-1].x == foodX&&snakes[snakeCount-1].y == foodY)
+			{
+				snakeCount++;
+				addFood();
+				//unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+				snakes.unshift({x:-40,y:-40});
+				score_one.innerText = parseInt(score_one.innerText)+50;
+				console.log(score_one.innerText);
+			}
+		};
+
+		//判断边界
+		function isDead(){
+			//1.判断有没有碰到自己
+			for(var i=0;i<snakes.length-1;i++){
+                if(snakes[snakes.length - 1].x == snakes[i].x && snakes[snakes.length - 1].y == snakes[i].y){
+                    alert("一个字： 烂！三个字： 太烂了！");
+					window.location.reload();
+                }
+            }
+			//2.判断边界
+			if (snakes[snakes.length-1].x>560||
+				snakes[snakes.length-1].y>560||
+				snakes[snakes.length-1].x<0||
+				snakes[snakes.length-1].y<0)
+			{
+				alert("Andy太帅？想不开？");
+				window.location.reload();
+			}
+		};
+		/*
+		//获取键盘值
+		keyDown();
+		function keyDown(){
+		 document.onkeydown= function(e){
+			alert(e.keyCode);
+			}
+		*/
+		  //键盘控制snake的方向
+		function keyDown(e){
+			switch (e.keyCode){
+				case 37:     //左
+					if(toGo != 1 || toGo != 3) toGo = 1;   //如果不是左边和右边   就是左边
+					break;
+				case  38:     //上
+					if(toGo != 2 || toGo !=3) toGo = 2;    //如果不是上边和右边  就是上边
+					break;
+				case  39:     //右
+					if(toGo != 3 || toGo !=2) toGo = 3;   //如果不是右边和上边  就是右边
+					break;
+				case  40:     //下
+					if(toGo !=4|| toGo !=3) toGo = 4;    // 如果不是下边和右边  就是下边
+					break;
+			}
+		}
+		function btnStart(){
+			timer = setInterval(move,150);
+			document.onkeydown = function(e){
+				e = e || window.event;
+				keyDown(e);
+			}
+		}
+		window.onload = function(){
+			start();
+		}
+	</script>
+</body>
+</html>
+

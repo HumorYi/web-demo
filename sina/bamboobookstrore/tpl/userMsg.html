@@ -1,0 +1,24 @@
+<ion-content class="content has-header has-footer" overflow-scroll="false">
+  <ul class="list userMsg">
+    <li class="item">
+      <img src="img/bkCover.jpg" alt="logo" class="logo" />
+      <strong class="myName">{{uname}}</strong>
+      <span ng-click="jump('userEdit')">编辑 &gt;</span>
+    </li>
+    <li class="item" ng-click="jump('myOrder')">
+      <i class=" icon ion-ios-list-outline"></i>
+      <b>我的书单</b>
+      <b class="order-heart-badge">{{orderBadge}}</b>
+      <span>&gt;</span>
+    </li>
+    <li class="item" ng-click="jump('myHeart')">
+      <i class=" icon ion-android-favorite"></i>
+      <b>我的关注</b>
+      <b class="order-heart-badge">{{heartBadge}}</b>
+      <span>&gt;</span>
+    </li>
+  </ul>
+</ion-content>
+<ion-footer-bar class="footer-bs">
+  <button class="button button-assertive btnWidth" ng-click="exitNowAccount()">退出账号</button>
+</ion-footer-bar>

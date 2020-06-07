@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html,body,canvas,img{ margin: 0; padding: 0;}
+		html{ overflow: hidden; }
+		img{ display: none; }
+	</style>
+</head>
+<body>
+	<img src="images/11.png" />
+	<img src="images/22.png" />
+	<img src="images/33.png" />
+	<img src="images/44.png" />
+	<img src="images/55.png" />
+	<img src="images/66.png" />
+	<img src="images/77.png" />
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		//获取屏幕的分辨率的宽高度
+		var s = window.screen;
+		var w = s.width;
+		var h = s.height;
+
+		//获取canvas对象
+		var canvas = document.getElementById('canvas');
+		//获取canvas环境
+		var ctx = canvas.getContext('2d');
+		//将获取到的屏幕分辨率的宽高度赋给canvas
+		canvas.width = w;
+		canvas.height = h;
+
+		//获取图片数组
+		var imgs = document.getElementsByTagName('img');
+		//设置图片大小
+		var BLOCK_SIZE = 60;
+		//设置边距
+		var fontSize = 14;
+		//获取图片列数
+		var cols = Math.floor(w/fontSize);
+
+		//定义数组存放y的坐标
+		var drops = [];
+		//利用循环把y的坐标堆在一起,遍历获取到的数组
+		for (var i = 0; i < cols; i++) {
+			drops.push(Math.floor(Math.random()*500));
+		}
+
+		//绘画方法
+		function draw(){
+			//图片阴影
+			ctx.fillStyle = 'rgba(0,0,0,.05)';
+			//绘制矩形
+			ctx.fillRect(0,0,w,h);
+			for (var i = 0; i < cols; i+=6) {
+				//动态添加x，y的坐标
+				var x = i*fontSize;
+				var y = drops[i]*60;
+				//获取每个图片出现的随机位置
+				var r = Math.floor(Math.random()*imgs.length);
+				//绘画图片
+				ctx.drawImage(imgs[r],x,y,BLOCK_SIZE,BLOCK_SIZE);
+
+				//判断边界
+				if (y>canvas.height && Math.random()>0.7) {
+					drops[i] = -1;
+				}
+				drops[i]++;
+			}
+			
+		};
+
+		draw();
+		setInterval(draw,40);
+
+	</script>
+</body>
+</html>

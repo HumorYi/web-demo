@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>旋转立方体</title>
+<style>
+.main{position:relative;
+width:400px; height:400px;
+margin:100px auto;
+perspective:800px;
+perspective-origin:50% 100px;
+
+
+}
+.sube{
+position:relative;
+width:200px;
+transform-style:preserve-3d;
+}
+.sube div{
+ position:absolute;
+ width:200px;
+ height:200px;
+ opacity:0.6;
+}
+.hou{
+	transform:translateZ(-100px) rotateY(180deg);
+	background:#FFF;}
+.right{
+	transform:rotateY(-270deg) translateX(100px);
+	transform-origin:top right;
+	background:#0F0;}
+.left{
+	transform:rotateY(270deg) translateX(-100px);
+	transform-origin:center left;
+	background:#FF0;}
+.top{ 
+transform:translateZ(100px) rotateX(-90deg);
+	transform-origin: top center;
+	background:#C00;
+}
+.bottom{
+	transform:translateZ(100px) rotateX(90deg);
+	transform-origin: bottom center;
+	background:#00F;
+	}
+.qian{ 
+transform:translateZ(100px);
+background:#F0F;
+}
+
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+.sube{
+	animation:spin 5s infinite linear;
+}
+
+</style>
+</head>
+
+<body>
+<div class="main">
+	<div class="sube">
+    	<div class="qian">前</div>
+        <div class="hou">后</div>
+        <div class="top">上</div>
+        <div class="bottom">下</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+</div>
+</body>
+</html>

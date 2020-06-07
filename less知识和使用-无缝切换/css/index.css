@@ -1,0 +1,150 @@
+/* Development agreement
+ * 	S: Start 表示样式开始地方 
+ * 	E: End 表示样式结束地方
+*/
+/* Simpel Reset S */
+html,
+body,
+div,
+ul,
+li,
+button {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+button {
+  border: none;
+  outline: none;
+}
+/* Simpel Reset E */
+/* Commom Variable S */
+/* Commom Variable E */
+/* Commom Class S */
+.cursorD {
+  cursor: default;
+}
+.cursorM {
+  cursor: move;
+}
+.cursorP,
+#banner > ul.circles > li,
+#banner > button {
+  cursor: pointer;
+}
+.fl,
+#banner > ul.circles > li {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fc {
+  float: both;
+}
+.poa,
+#banner > ul.images,
+#banner > ul.circles,
+#banner > button {
+  position: absolute;
+}
+.por,
+#banner {
+  position: relative;
+}
+/* Commom Class E */
+/* Commom Function S */
+/* Commom Function E */
+html,
+#banner {
+  width: 100%;
+}
+/* banner S */
+#banner {
+  height: 500px;
+  margin-top: 50px;
+  overflow: hidden;
+  /* images S */
+  /* images E */
+  /* circles S */
+  /* circles E */
+  /* button S */
+  /* button E */
+}
+#banner > ul.images {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+#banner > ul.images > li {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+#banner > ul.images > li > a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#banner > ul.images > li > a > img {
+  width: 100%;
+  height: 100%;
+}
+#banner > ul.circles {
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  /* IE 9 */
+  -moz-transform: translateX(-50%);
+  /* Firefox */
+  -webkit-transform: translateX(-50%);
+  /* Safari 和 Chrome */
+  -o-transform: translateX(-50%);
+  /* Opera */
+  left: 50%;
+  bottom: 20px;
+}
+#banner > ul.circles > li {
+  background-color: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+#banner > ul.circles > li:not(:last-child) {
+  margin-right: 10px;
+}
+#banner > ul.circles > li.active {
+  background-color: #26c59c;
+}
+#banner > button {
+  color: #ffffff;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  /* IE 9 */
+  -moz-transform: translateY(-50%);
+  /* Firefox */
+  -webkit-transform: translateY(-50%);
+  /* Safari 和 Chrome */
+  -o-transform: translateY(-50%);
+  /* Opera */
+  width: 40px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  font-size: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+#banner > button:hover {
+  background-color: #20b5a2;
+  color: #d0bc16;
+}
+#banner > button.left {
+  left: 0;
+}
+#banner > button.right {
+  right: 0;
+}
+/* banner E */

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#a{ width:90px; height:90px; background:#000;  float:left;}
+				#a #b{ width:60px; height:60px; background:#333;}
+				#a #b #c{ width:30px; height:30px; background:#ddd;}
+				#d{ width:30px; height:30px; background:#360; float:right;}
+			</style> 
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="a">
+				<div id="b">
+					<div id="c"></div>
+				</div>
+			</div>
+			<div id="d"></div>
+			<!--文档变更 IE专用-->
+			<b style="color:blue;" onpropertychange="alert('文档变更');" onclick='this.style.width="2px"'>点击文字变更文档</b>
+
+			<!--HTML事件-->
+			<select onchange="alert(this[this.selectedIndex].innerHTML);">
+				<option>IE</option>
+				<option>FF</option>
+				<option>Chrome</option>
+				<option>Opera</option>
+				<option>Safari</option>
+			</select>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var a = document.getElementById("a");
+				var b = document.getElementById("b");
+				var c = document.getElementById("c");
+				var d = document.getElementById("d");
+
+				/*为所有节点设置监听器		主流浏览器
+				//点击子元素为1时不管父元素是0还是1都显示子元素，如果子元素设置为1，先显示点击为1的子元素，再显示为0的父元素，1代表优先显示
+				//a.addEventListener('click',function(){ alert("A");},0);
+				b.addEventListener('click',function(e){ alert("B"); e.stopPropagation();},0);		//防止冒泡事件
+				c.addEventListener('click',function(){ 
+					alert("C");
+					//注册监听器
+					a.addEventListener('click',function(){ alert("A");},0);
+				},0);
+				d.addEventListener('click',function(){ alert("D");},1);
+				
+				//删除监听器
+				function listener(){
+					alert('非匿名函数');
+					this.removeEventListener('click',listener,0);
+					this.removeEventListener('click',listener,1);
+				}
+				document.addEventListener('click',listener,0);
+				document.addEventListener('click',listener,1);*/
+
+				/*IE 专用
+				a.attachEvent('onclick',function(){ alert("A");},0);	//点击子元素为1时不管父元素是0还是1都显示子元素，如果子元素设置为1，先显示点击为1的子元素，再显示为0的父元素，1代表优先显示
+				b.attachEvent('onclick',function(e){ alert("B"); event.cancelBubble;},0);		//防止冒泡事件
+				c.attachEvent('onclick',function(){ alert("C");},0);
+				d.attachEvent('onclick',function(){ alert("D");},1);
+				//删除接口
+				function listener(){
+					alert('非匿名函数');
+					this.detachEvent('onclick',listener);
+				}
+				document.attachEvent('onclick',listener);
+				*/
+
+				/*//获取鼠标左键点击的坐标	
+				document.onclick = function(e){
+						e = e ? e : event ;	//浏览器兼容方案
+						alert(event.clientX+":"+event.clientY);					
+				}*/
+			</script>
+
+		</body>
+</html>

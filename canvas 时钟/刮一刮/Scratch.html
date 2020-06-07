@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>刮一刮 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,canvas,a,span{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				#main{width:400px;height:640px;margin: 50px auto; background: #fef102; }
+				.demo{width: 360px; height: 56px; margin: 10px auto 0;}
+				#main a{color:#fff; background:#09f; text-decoration:none;font-size:20px; font-weight: 1000px; margin: 10px auto; display: block;width: 300px; text-align: center; border-radius: 6px; padding: 8px 0px;box-shadow: 0px 6px 0px #06f,0px 9px 15px #000;/*css3 多重 阴影 立体感*/  }
+				#main a span{color: #f00;}
+				/*点击a标签实现立体效果*/
+				#main a:active{box-shadow: 0px 3px 0px #06f,0px 3px 6px #000;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="main">
+				<img src="images/bg.jpg" />
+				<div class="demo">
+					<canvas></canvas>
+				</div>
+				<a href="">不服，请<span>再自虐一次！</span></a>
+			</div>
+
+			<!--js,各色特效-->
+			<script>
+				//避免浏览器中 鼠标选中拖动文字事件 body 添加样式
+				var bodyStyle = document.body.style; //得到body对象
+				bodyStyle.mozUserSelect = 'none'; //moz
+				bodyStyle.webkitUserSelect = 'none'; //webkit
+
+				//定义我们的结果
+				//获取 canvas元素 并设置背景和位置属性
+				//五个结果 -》 每一次产生一个随机数字 -》0 1 2 3 4 对应着我们的结果图片
+				var img = new Image();
+				var canvas = document.querySelector('canvas');
+				canvas.style.backgroundColor = 'transparent';
+				canvas.style.cursor = 'pointer';
+			//	canvas.style.position = 'absolute';
+				var imgs = ['images/0.png','images/1.png','images/2.png','images/3.png','images/4.png'];
+				var num = Math.floor(Math.random()*10)%5;
+			//	console.log(num);
+				img.src = imgs[num];
+
+				//当我们进入主体的时候，检测图片加载完成的时候，定义一些属性和函数
+				img.addEventListener('load',function(e){
+					var ctx ;
+					var w = img.width;
+						h = img.height;
+					var offsetX = canvas.offsetLeft,
+						offsetY = canvas.offsetTop;
+					var mousedown = false; //ture false
+
+					//绘制一个长方形 颜色为灰色 
+					function layer(ctx){
+						ctx.fillStyle = 'gray';
+						ctx.fillRect(0,0,w,h);
+					}
+
+					//鼠标按下事件和松开事件
+					function eventDown(e){
+						e.preventDefault();
+						mousedown = true;
+					}
+					function eventUp(e){
+						e.preventDefault();
+						mousedown = false;
+					}
+
+					//定义移动事件 按下时候 获取坐标
+					//绘制小圆点
+					function eventMove(e){
+						e.preventDefault();
+						if(mousedown){
+							if(e.changedTouches){
+								e = e.changedTouches[e.changedTouches.length-1];
+							}
+							var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+								y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+							with(ctx){
+								beginPath();
+								arc(x,y,10,0,360*Math.PI/180);
+								fill();
+								closePath();
+							}
+						}
+					}
+					
+					//canvas 调用
+					canvas.width = w;
+					canvas.height = h;
+					canvas.style.backgroundImage = 'url('+img.src+')';
+					ctx = canvas.getContext('2d');
+					ctx.fillStyle = 'transparent';
+					ctx.fillRect(0,0,w,h);
+					layer(ctx);
+					ctx.globalCompositeOperation = 'destination-out'; //很重要
+
+					/*和对应的事件结合起来（手机端）
+					canvas.addEventListener('touchstart',eventDown);
+					canvas.addEventListener('touchend',eventUp);
+					canvas.addEventListener('touchmove',eventMove);
+					*/
+
+					//PC端
+					canvas.addEventListener('mousedown',eventDown);
+					canvas.addEventListener('mouseup',eventUp);
+					canvas.addEventListener('mousemove',eventMove);
+				});
+			</script>
+
+		</body>
+</html>

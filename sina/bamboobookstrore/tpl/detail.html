@@ -1,0 +1,24 @@
+<ion-content class="content has-header has-footer">
+  <div class="card">
+    <div class="item item-divider">
+      <span ng-click="jump('main')" class="calm">书屋</span> / 详情
+    </div>
+    <div class="item item-text-wrap">
+      <h2 class="fs">{{book.name}}</h2>
+      <p>{{book.author}}</p>
+      <p class="energized">{{book.publishing_house+' '+book.publish_time}}</p>
+      <img class="img-responsive" ng-src="img/{{book.img_lg}}" alt="{{book.img_alt}}" />
+      <p>{{book.detail}}</p>
+      <hr/>
+      <p class="price">{{book.price | currency : '¥'}}</p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer-bar>
+  <ion-tabs class="tabs-icon-top cartTabs">
+    <ion-tab title="关注" icon="{{isHeart ? 'ion-ios-heart' : 'ion-ios-heart-outline'}}" ng-click="toggleHeart()"></ion-tab>
+    <ion-tab title="书车" icon="ion-ios-cart-outline" badge="myCart.badge" ng-click="goCart()"></ion-tab>
+    <ion-tab title="添加到书车" class="buy" ng-click="addToCart()"></ion-tab>
+    <ion-tab title="立即购买" ng-click="goBuy()" class="btn-color"></ion-tab>
+  </ion-tabs>
+</ion-footer-bar>

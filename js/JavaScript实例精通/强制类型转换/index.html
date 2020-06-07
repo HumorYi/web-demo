@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+<body>
+	<!--
+		js原理：操作DOM树,DOM树由节点和节点之间关联的。
+		(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+	-->
+<center>
+	<h1>JavaScript中的强制类型转换</h1>
+	<hr>
+	<br>
+	<h5>显示如下变量信息...</h5>
+<pre>
+<script language="javascript">
+	document.writeln('字符串类型转->Number、Object、Boolean类型');
+	document.writeln("");
+	var str = '100';                              	// 声明一个字符串变量str，初始值为“100”
+	var num = Number(str);							// 用Number强制类型转换将str转换为数字类型并附值给num变量
+	document.writeln(typeof(num) + ': ' + num);		// 打印变量num的类型和值
+	var obj = Object(str);							// 用Object强制类型转换将str转换为对象类型并附值给obj变量
+	document.writeln(typeof(obj) + ': ' + obj);		// 打印变量obj的类型和值
+	var bool = Boolean(str);						// 用Boolean强制类型转换将str转换为布朗类型并附值给bool变量
+	document.writeln(typeof(bool) + ': ' + bool);	// 打印变量bool的类型和值
+	document.writeln(  );
+
+	document.writeln('数字类型转->String、Object、Boolean类型');
+	document.writeln("");
+	var num = 100;									// 声明一个字符串变量num，初始值为100
+	var str = String(num);							// 用String强制类型转换将num转换为字符类型并附值给str变量
+	document.writeln(typeof(str) + ': ' + str);		// 打印变量str的类型和值
+	var bool = Boolean(num);						// 用Boolean强制类型转换将num转换为布朗类型并附值给bool变量
+	document.writeln(typeof(bool) + ': ' + bool);	// 打印变量bool的类型和值
+	var obj = Object(num);							// 用Object强制类型转换将num转换为对象类型并附值给obj变量
+	document.writeln(typeof(obj) + ': ' + obj);		// 打印变量num的类型和值
+	document.writeln(  );
+
+	document.writeln('布尔类型转->String、Object、Number类型');
+	document.writeln("");
+	var bool = true;								// 声明一个字符串变量bool，初始值为true
+	var str = String(bool);							// 用String强制类型转换将bool转换为字符类型并附值给str变量
+	document.writeln(typeof(str) + ': ' + str);		// 打印变量str的类型和值
+	var num = Number(bool);							// 用Number强制类型转换将bool转换为数字类型并附值给num变量
+	document.writeln(typeof(num) + ': ' + num);		// 打印变量num的类型和值
+	var obj = Object(bool);							// 用Object强制类型转换将bool转换为对象类型并附值给obj变量
+	document.writeln(typeof(obj) + ': ' + obj);		// 打印变量obj的类型和值
+	document.writeln(  );
+
+	document.writeln("对象类型转->String、Boolean、Number类型");
+	document.writeln("");
+	var obj = {};									// 声明一个字符串变量obj，初始值为空对象
+	var str = String(obj);							// 用String强制类型转换将obj转换为数字类型并附值给str变量
+	document.writeln(typeof(str) + ': ' + str);		// 打印变量str的类型和值
+	var num = Number(obj);							// 用Number强制类型转换将obj转换为数字类型并附值给num变量
+	document.writeln(typeof(num) + ': ' + num);		// 打印变量num的类型和值
+	var bool = Boolean(obj);						// 用Boolean强制类型转换将obj转换为数字类型并附值给bool变量
+	document.writeln(typeof(bool) + ': ' + bool);	// 打印变量bool的类型和值
+</script>
+</pre>
+</center>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--声明当前页面的编码格式 国际编码 UTF-8  中文编码 GBK-->
+	<meta charset="utf-8">
+	<!--声明当前页面的三要素-->
+	<meta name="Keywords" content="关键词，关键词">
+	<meta name="description" content="描述">
+	<title>标题</title>
+	<!--样式css 一件美丽的外衣  化妆品 修饰-->
+	<!--引用样式css-->
+	<style type="text/css">
+	/*兼容问题*/
+	*{margin:0;padding:0;}
+	body{background:url('images/bg.jpg');}
+	.bd_nav{width:910px;/*宽*/height:315px;/*高*/
+			margin:200px auto 0;
+	}
+	.bd_nav .nav{width:80px;height:315px;background:rgba(0,0,0,0.5);float:left;/*左浮动*/
+	}
+	
+	.bd_nav .nav ul li{width:80px;height:35px;color:#fff;
+			list-style:none;font-weight:700;text-align:center;line-height:35px;
+	}
+	.bd_nav .nav ul li.hover{background:url('images/button.png');}
+	.bd_nav .con{width:810px;height:315px;background:red;float:right;
+			position:relative;overflow:hidden;}
+	.bd_nav .con ul{position:absolute;top:0px;left:0;}
+	.bd_nav .con ul li{width:810px;height:315px;background:green;
+			list-style:none;
+	}
+	</style>
+
+</head>	
+<body>
+	<div class="bd_nav">
+		<div class="nav">
+			<ul>
+				<li class="hover">导航</li>
+				<li>新闻</li>
+				<li>音乐</li>
+				<li>视频</li>
+			</ul>
+		</div>
+		<div class="con">
+			<ul>
+				<li><img src="images/1.jpg" /></li>
+				<li><img src="images/2.jpg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+			</ul>
+		</div>
+	
+	</div>
+	
+	<!--div 盒子模型 有宽度  有高度 放置内容的长方形区域-->
+	
+		<!--
+			1、给网页添加一张背景图片
+			2、样式语法  名字{属性：值}
+			3、构建一个长方形区域 用div
+			4、命名 class=""  姓名=“张三” 重用 多个 灵活性
+			
+		-->
+	<script src="js/jquery.js"></script>
+	<script>
+	$(".bd_nav .nav ul li").click(function(){
+		//alert("打你的对象，她哭了")
+		$(".bd_nav .nav ul li").removeClass("hover");
+		$(this).addClass("hover");
+		var _index = $(this).index();//获取当前索引
+		$(".bd_nav .con ul").animate({top:-_index*315+"px"},500);
+	});
+	</script>
+</body>
+</html>

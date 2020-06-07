@@ -1,0 +1,368 @@
+﻿<!doctype html>
+<html lang="en">
+	 <head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>企业留言</title>
+		<style type="text/css">
+			html,body,div,ul,li,span,input,a,img,table,tr,td{margin:0px;padding:0px;}
+			body{font-size:12px;font-family:"微软雅黑";background:url(images/top_01.gif);}
+			
+			/*commonality S*/
+			ul li{list-style:none;}
+			li,img{cursor:pointer}
+			a{color:#353535;text-decoration:none;}
+			a:hover{text-decoration:underline;color:#C13232;}
+			span.font{font-size:22px;color:#0b66a8;margin:0px 0px;line-height:34px;
+			background:url(images/class_46.jpg);display:block;border-radius:12px 12px 0px 0px;}
+			span.font img{border-radius:12px 0px 0px 0px;}
+			span img{float:left;}
+			input,textarea{outline:none;}
+			/*commonality E*/
+			
+			/*head S*/
+			.head{width:1000px;height:91px;margin:0px auto;}
+			.head .logo{width:384px;height:91px;float:left;padding-bottom:0px;background:url(images/logo.gif);}
+			.head ul{width:616px;height:91px;float:right;background:url(images/top_04.gif) no-repeat;}
+			.head ul li{width:75px;float:right;
+			margin:40px 20px;position:relative;text-align:center;line-height:20px;}
+			.head ul li img{width:3px;height:3px;position:absolute;bottom:7px;left:-20px;}
+			.head ul li a{color:#fff;}
+			/*head E*/
+			
+			/*banner S*/
+			.banner{width:980px;height:37px;background:url(images/top_04.gif);margin:0px auto;}
+			.banner ul li{width:81px;height:37px;float:left;text-align:center;line-height:37px;}
+			.banner ul li a{color:#fff;}
+			.banner ul li:hover{background:#70D5BD;border-radius:6px;}
+			/*banner E*/
+
+			/*carousel S*/
+			.carousel{width:980px;height:249px;background:yellow;margin:0px auto;}
+			/*carousel E*/
+
+			/*search S*/
+			.search{width:984px;height:40px;margin:10px auto;position:relative;}
+			.search img{margin:11px 0px 0px 5px;border-radius: 9px;}
+
+			/*check S*/
+			.search .check,img#search{border-radius:16px;}
+			.search .check
+			{width:380px;height:28px;background:#EDEDED;border:1px solid grey;position:absolute;top:6px;right:20px;}
+			.search .check img#search{margin:0px;}
+			.search .check span{color:353535;position:absolute;top:3px;left:104px;}
+			.search .check input{width:150px;position:absolute;top:3px;left:163px;}
+			.search .check img#go{position:absolute;top:-6px;right:13px;}
+			/*check E*/
+
+			/*hovertxt S*/
+			.search .hovertxt{margin-left:100px;width:300px;line-height:40px;position:absolute;top:0px;left:0px;font-size:14px;color:#FAFD3B;text-shadow:2px 2px 5px #fff;}
+			/*hovertxt E*/
+			/*search E*/
+
+			/*bottom S*/
+			.bottom div{border-radius:12px;}
+			.bottom{width:980px;height:700px;background:#F0F8FC;margin:0px auto;border-radius:12px;position:relative;}
+
+			/*left S*/
+			.bottom .left{width:200px;height:500px;padding:20px 12px;}
+			.bottom .left .product{width:200px;height:185px;border:1px solid #BEE0EC;}			
+			.bottom .left ul{background:url(images/class_100.gif);border-radius:0px 0px 12px 12px;}
+			.bottom .left ul li{width:200px;height:30px;}
+			.bottom .left ul li a{text-align:center;line-height:30px;display:block;}
+			.bottom .left .tele{width:200px;height:125px;border:1px solid #BEE0EC;margin-top:125px;}
+			.bottom .left .tele ul li{margin-left:10px;}
+			.bottom .left .download{width:200px;height:95px;border:1px solid #BEE0EC;margin-top:125px;}
+			/*left E*/
+
+			/*information S*/
+			.bottom .information{width:735px;height:660px;border:1px solid #BEE0EC;position:absolute;top:20px;right:16px;}
+			.bottom .information .table{width:735px;height:626px;background:#fff;padding-top:0px;border-radius:0px 0px 12px 12px;}
+			.bottom .information .table span{font-size:14px;color:#353535;display:block;text-indent:20px;}
+			.bottom .information .table p{font-size:14px;color:#353535;text-indent:40px;}
+			.bottom .information .table table{width:698px;height:535px;margin:0px auto;}
+			.bottom .information .table table tr td{height:25px;}
+			.bottom .information .table table tr.con td{height:261px;}
+			.bottom .information .table table tr td.left{width:150px;}
+			.bottom .information .table table tr td.right{width:542px;}
+			.bottom .information .table table tr td span{text-align:right;}
+			.bottom .information .table table tr td input{float:left;}
+			.bottom .information .table table tr td.c_right textarea{float:left;width:338px;height:261px;}
+
+			/*information E*/
+
+			/*bottom E*/
+
+			/*link S*/
+			.link{width:980px;height:90px;background:url(images/btm_177.gif);
+			margin:50px auto 0px;}
+			.link .l_top{width:980px;height:44px;}
+			.link span{display:block;text-align:center;line-height:44px;}
+			.link span a{margin-left:10px;}
+			.link .l_bottom{width:980px;height:44px;}
+			/*link E*/
+			
+			/*address S*/
+			.address{width:980px;height:96px;background:url(images/btm_186.gif);
+			margin:0px auto;}
+			.address span{display:block;color:#fff;text-align:center;line-height:31px;}
+			/*address E*/
+
+		</style>
+	</head>
+	<body>
+
+		<!--head S-->
+		<div class="head">
+
+			<!--logo S-->
+			<div class="logo"></div>
+			<!--logo E-->
+				<ul>
+					<li><img src="images/yd.gif" alt="圆点" /><a href="#">返回首页</a></li>
+					<li><img src="images/yd.gif" alt="圆点" /><a href="#">设为首页</a></li>
+					<li><img src="images/yd.gif" alt="圆点" /><a href="#">加入收藏</a></li>
+					<li><img src="images/yd.gif" alt="圆点" /><a href="#">在线客服</a></li>
+				</ul>
+		</div>
+		<!--head E-->
+		
+		<!--banner S-->
+		<div class="banner">
+			<ul>
+				<li><a href="#">首页</a></li>
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">产品中心</a></li>
+				<li><a href="#">公司新闻</a></li>
+				<li><a href="#">成功案例</a></li>
+				<li><a href="#">企业荣誉</a></li>
+				<li><a href="#">人才招聘</a></li>
+				<li><a href="#">营销网络</a></li>
+				<li><a href="#">在线留言</a></li>
+				<li><a href="#">下载中心</a></li>
+				<li><a href="#">售后服务</a></li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+		</div>
+		<!--banner E-->
+
+		<!--carousel S-->
+		<script type="text/javascript">
+						var img=new Array();
+						var txt=new Array();
+						var lnk=new Array();
+
+						img[0]='flash/1.jpg'
+						lnk[0]=escape('http://www.fspt.net');
+						txt[0]='';
+
+						img[1]='flash/2.jpg'
+						lnk[1]=escape('http://www.fspt.net');
+						txt[1]='';
+
+						img[2]='flash/3.jpg'
+						lnk[2]=escape('http://www.fspt.net');
+						txt[2]='';
+
+						img[3]='flash/2.jpg'
+						lnk[3]=escape('http://www.fspt.net');
+						txt[3]='';
+
+						img[4]='flash/1.jpg'
+						lnk[4]=escape('http://www.fspt.net');
+						txt[4]='';
+						 var focus_width=980;
+						 var focus_height=249;
+						 var text_height=0;
+						var swf_height = focus_height+text_height;
+						var pics=img.join("|");
+						var links=lnk.join("|");
+						var texts=txt.join("|");
+						 
+						 document.write('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="[url]http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6[/url],0,0,0" width=984 height=249>');
+						document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="flash/pixviewer.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+						document.write('<param name="menu" value="false"/><param name="wmode" value="transparent"/>');
+						document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+						document.write('<embed src="flash/pixviewer.swf" wmode="transparent" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"  pluginspage="[url]http://www.macromedia.com/go/getflashplayer[/url]" />');
+						document.write('</object>');    
+				</script>
+		<!--carousel E-->
+
+		<!--search S-->
+		<div class="search">
+			<img src="images/lb.jpg" alt="喇叭" width="18" height="18" />
+			<div class="hovertxt">
+					<marquee behavior="scroll" direction="left" loop="-1" onmouseover="this.stop()" onmouseout="this.start()">
+					 本站公告：14计算机应用技术 2班 黄坚毅！
+					</marquee>
+			</div>
+			<div class="check">
+				<img id="search" src="images/search.gif" alt="搜索" width="100" height="28" /> 
+				<span>关键字：</span>
+				<input type="text" name="关键字" placeholder="请输入您想查找的内容！" />
+				<img id="go" src="images/go.gif" alt="go" width="40" height="20" />
+			</div> 
+		</div>
+		<!--search E-->
+
+		<!--bottom S-->
+		<div class="bottom">
+
+			<!--left S-->
+			<div class="left">
+				<!--product S-->
+				<div class="product">
+					<span class="font">
+						<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />产品分类
+					</span>
+					<ul>
+						<li><a href="#">轴承配件产品</a></li>
+						<li><a href="#">直线系列轴承</a></li>
+						<li><a href="#">机构装饰物件</a></li>
+						<li><a href="#">精密汽车配件</a></li>
+						<li><a href="#">轴承配件产品</a></li>
+					</ul>
+				</div>
+				<!--product E-->
+
+				<!--telt S-->
+				<div class="tele">
+					<span class="font">
+						<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />联系我们
+					</span>
+					<ul>
+						<li><a href="#">地址：佛山三水市乐平镇</a></li>
+						<li><a href="#"> 电话：0757-38888888</a></li>
+						<li><a href="#"> 邮件：123456@163.com</a></li>
+					</ul>
+				</div>
+				<!--telt E-->
+
+				<!--download S-->
+				<div class="download">
+					<span class="font">
+						<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />下载中心
+					</span>	
+					<ul>
+						<li><a href="#">aws服务器rar文件</a></li>
+						<li><a href="#">doc文档</a></li>
+					</ul>
+				</div>
+				<!--download E-->
+			</div>
+			<!--left E-->		
+			
+			<!--right S-->
+				<div class="information">					
+						<span class="font">
+							<img src="images/product_50.gif" alt="箭头" width="45" height="34" />签写留言
+						</span>
+						<!--information S-->
+						<div class="table">
+							<br />
+							<span>尊敬的客户：</span>
+							<p>如果您对我们的产品或服务有任何意见和建议请及时告诉我们，我们将尽快给您满意答复。</p>
+								  <form id="form" name="form" method="post" action="">
+										<table border="1" bordercolor="#ccc" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="left"><span>主题：</span></td>
+												<td class="right">
+													<input type="text" />
+												</td>
+											</tr>
+											<tr class="con">
+												<td class="c_left"><span>内容：&nbsp;&nbsp;&nbsp;</span></td>
+												<td class="c_right"><textarea></textarea></td>
+											</tr>
+											<tr>
+												<td class="left"><span>公司名称：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>公司地址：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>邮编：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>联系人：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>联系电话：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>手机：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>联系传真：</span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"><span>E-mail：></span></td>
+												<td class="right"><input type="text" /></td>
+											</tr>
+											<tr>
+												<td class="left"></td>
+												<td class="right">
+													<input type="submit" value="提交留言" />
+													<input type="submit" value="重新填写" />
+												</td>
+											</tr>
+										</table>
+									</form>
+						</div>
+						<!--information E-->					
+			</div>
+			<!--right E-->
+		</div>
+		<!--bottom E-->
+
+		<!--link S-->
+		<div class="link">
+			<div class="l_top">
+				<span class="l_a">
+					友情链接 ： 
+					<a href="http://www.chinaz.com/">中国站长站</a> 
+					 <a href="http://www.xina.com.cn/">新浪 </a> 
+					 <a href="http://www.taobao.com/">淘宝 </a> 
+					 <a href="http://www.163.com/">网易163</a> 
+					 <a href="http://www.microsoft.com/zh-cn/"> 微软中国</a>  
+					 <a href="http://www.baidu.com/"> 百度</a>  
+					 <a href="http://fs.58.com/?utm_source=d_2345&utm_campaign=2345-101"> 58同城</a> 
+				</span>
+			</div>
+			<img src="images/btm_182.gif" alt="img" width="961" height="2" />
+			<div class="l_bottom">
+				<span class="l_a">
+					<a href="www.baidu.com">网站首页</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">关于我们</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">新闻中心</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">产品展示</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">营销网站</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">人才招聘</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">在线留言</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">联系我们</a> &nbsp;&nbsp;&nbsp;|
+					<a href="www.baidu.com">在线客服</a> &nbsp;&nbsp;&nbsp;|
+				</span>
+			</div>
+		</div>
+		<!--link E-->
+		
+		<!--address S-->
+		<div class="address">
+			<span>
+				ShyPost企业管理系统版权所有 2012 版权所有 COPYRIGHT 2012-2014 ShyPost.COM ALL RIGHTS RESRVED<br />
+				通讯地址:石家庄市红旗南大街328号汇丰商务大厦802 联系电话:0769-88888888 联系QQ：12345678 
+			</span>
+		</div>
+		<!--address E-->
+	</body>
+</html>
+
+

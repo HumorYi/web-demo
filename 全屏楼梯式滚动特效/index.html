@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--声明当前页面的编码格式 国际编码 UTF-8  中午编码 GBK-->
+	<meta charset="utf-8">
+	<!--声明当前页面的三要素-->
+	<meta name="Keywords" content="关键词，关键词">
+	<meta name="description" content="描述">
+	<title>网页制作VIP试听课--千凡</title>
+	<!--样式css 修饰 衣服 化妆品-->
+	<style type="text/css">
+	*{margin:0;}
+	img{border:0;display:block;/*以块级元素显示*/}
+	body{background:url("images/bg.jpg") center top;}
+	/* 以“#”开头称之为id样式*/
+	#web{width:100%;/*宽*/
+		height:100%;/*高*/
+		position:fixed;/*固定定位*/
+		top:0px;left:0;
+	}
+		/* 以“.”开头称之为类样式*/
+	#web .con{width:100%;
+		height:100%;
+		}
+	#nav{width:164px;
+		position:fixed;/*固定定位*/
+		top:150px;left:30px;
+	}
+	#nav ul{width:110px;
+		height:190px;
+		background:#943ec9;
+		padding:0;
+		margin:0 auto;/*上下 左右相等*/
+	}
+	#nav ul li{width:110px;
+		height:35px;
+		list-style-type:none;
+		font-size:14px;
+		color:#fff;
+		text-align:center;/*文本左右居中*/
+		line-height:35px;/*行高*/
+		background:url("images/bg1.png") no-repeat center bottom;
+		cursor:pointer;/*手指形状*/
+		}
+	</style>
+
+</head>	
+<body>
+	<div id="web">
+		<div class="con" style="background:url('images/pic_about.png')no-repeat center center;"></div>
+		<div class="con" style="background:url('images/pic_culture.png') no-repeat center center;"></div>
+		<div class="con" style="background:url('images/pic_joinus.png') no-repeat center center;"></div>
+		<div class="con" style="background:url('images/MAP.png') no-repeat center center;"></div>
+		<div class="con" style="background:url('images/guangGao.png') no-repeat center center;"></div>
+	</div>
+	<div id="nav">
+		<img src="images/index.png" />
+		<ul>
+			<li>意时网</li>
+			<li>谋福利</li>
+			<li>免费保险</li>
+			<li>手机应用</li>
+			<li>意时广告</li>
+		</ul>
+	</div>
+	<!--div 盒子模型 有宽度 有高度 放内容的长方形区域
+		命名
+		id="" 身份证 唯一性 以id命名 叫作 id选择器
+		class="" 名字 重用 多个 以class命名 叫作 类选择器
+	-->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+	var num =0;//在第几个
+	//点击事件执行里面函数
+	$("#nav ul li").click(function(){
+		var height = $(window).height();//获取浏览器高度
+		num =$(this).index();//获取当前下标
+		//移动top值
+		$("#web").animate({top:-height*num+"px"},500)
+	});
+	</script>
+</body>
+</html>

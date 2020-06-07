@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+canvas {
+    display: block;
+    margin: 0 auto;
+    margin: calc(50vh - 200px) auto;
+}

@@ -1,0 +1,20 @@
+json和array的区别:
+
+1、json的下标示字符串，array的下标是数字；
+2、json没有length，array有length；
+var json = {a:2, b:3, c:4};
+var arr = [12, 5, 7];
+alert(json.a);
+alert(json['a']);
+alert(arr[0]);
+//数组首先用循环
+for(var i=0; i<arr.length,a++){
+	alert('第'+i+'个：'+arr[i]);
+}
+for(var i in arr){
+	alert('第'+i+'个：'+arr[i]));
+}
+//json用循环
+for(var i in json){
+	alert('第'+i+'个：'+json[i]);
+}

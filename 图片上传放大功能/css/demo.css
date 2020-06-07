@@ -1,0 +1,57 @@
+/**{/*通用选择器:选择到所有的标签元素 真正项目开发中禁止使用
+	优秀开发工程师一定是为服务器 为cpu考虑的(要会提升代码的执行效率 减小服务器/cpu压力 提高代码加载的速度)
+	
+	margin:0px;/*外边距padding:0px;/*内边距
+}*/
+body,div,input{
+	margin:0px;padding:0px;
+}
+body{
+	background:#3c8fc1;
+}
+#box{/*id选择器#*/
+	width:900px;height:350px;
+	background:url("../images/bg.jpg");
+	margin:50px auto;/*上下为50px  左右为居中*/
+	border:1px solid #3c8fc1;/*边框:宽度 类型(实线) 颜色*/
+	position:relative;/*相对定位:参考物*/
+}
+#upload{
+	width:420px;height:100px;
+	background:#cacaca;
+	margin-top:215px;/*上外边距*/
+	margin-left:50px;
+	border-radius:10px;/*设置圆角*/
+	padding:10px;/*上下左右都为10px*/
+}
+#upload a{
+	width:100px;height:100px;
+	border:1px solid #aaa;
+	display:inline-block;/*行内块级元素*/
+	background:#fff url("../images/img.png") no-repeat;/*低版本IE浏览器必须有空格 不然就会出错*/
+	background-position:35px 38px;/*背景图片定位*/
+	border-top-left-radius:10px;/*左上角设置圆角*/
+	border-bottom-left-radius:10px;/*左下角设置圆角*/
+	float:left;
+	border-right:none;
+}
+#upload a input{
+	width:100px;height:100px;
+	opacity:0;/*透明度为0：透明*/
+}
+#fileName{
+	width:280px;
+	height:100px;
+	float:left;
+	border:1px solid #aaa;
+}
+#faceImg{
+	width:283px;height:283px;
+	border:1px solid red;
+	position:absolute;/*绝对定位:定位元素*/
+	top:32px;right:58px;/*bottom:;left:*/
+	border-radius:10px;
+}
+#img{
+	border-radius:10px;
+}

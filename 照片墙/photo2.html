@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>照片墙</title>
+	<style type="text/css">
+		html,body,canvas,img,audio{ margin:0; padding: 0; }
+		html{ overflow: hidden; }
+		img{ display: none; }
+	</style>
+</head>
+<body>
+	<img src="images/1.gif" />
+	<img src="images/2.gif" />
+	<img src="images/3.gif" />
+	<img src="images/4.gif" />
+	<img src="images/5.gif" />
+	<img src="images/6.gif" />
+	<img src="images/7.gif" />
+	<img src="images/8.gif" />
+	<img src="images/9.gif" />
+	<img src="images/10.gif" />
+	<img src="images/11.gif" />
+	<img src="images/12.gif" />
+	<!--<audio src="mp3/2.mp3" autoplay loop></audio>-->
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		//获取电脑的分辨率
+		var s = window.screen;
+		//把得到的分辨率赋给 canvas元素 昨为宽高
+		var w = s.width;
+		var h = s.height;
+		var canvas = document.getElementById('canvas');
+		var imgs = document.getElementsByTagName('img');
+		var ctx = canvas.getContext('2d');
+		//动态添加画布的高度，宽度
+		canvas.width = w;
+		canvas.height = h;
+		//定义图片的大小
+		var BLOCK_SIZE = 60;
+		//获取图片列数
+		var cols = Math.floor(w/BLOCK_SIZE);
+		//初始化随机坐标位置
+		var x = 0;
+		var y = 0;
+
+		//绘画方法
+		function draw(){
+			ctx.fillStyle = "rgba(0,0,0,0.05)";
+			//绘画矩形
+			ctx.fillRect(0,0,w,h);			
+			//获取每个图片随机出现的位置
+			var r = Math.floor(Math.random()*imgs.length);
+			randR();
+			//填充图片
+			ctx.rotate(20);
+			ctx.drawImage(imgs[r],x,y,BLOCK_SIZE,BLOCK_SIZE);
+				
+		};
+
+		draw();
+		setInterval(draw,20);
+
+		//定义图片随机出现的位置 x y
+		function randR(){
+			x = Math.floor(Math.random()*cols*BLOCK_SIZE);
+			y = Math.floor(Math.random()*cols*BLOCK_SIZE);
+		};
+	</script>
+</body>
+</html>

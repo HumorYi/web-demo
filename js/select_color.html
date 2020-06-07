@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,select,option{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; border:none; overflow:hidden;}
+				select{ width:150px; float:left;}
+				#block{ width:100px; height:100px; border:1px solid #000; float:right;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--通过修改列表框的多行属性(multiple),可以改单选下拉列表为多选列表，size代表显示几个下拉项-->
+			<select id="selector" multiple size=6>
+				<option style="background:#000;" value="0x000"></option>
+				<option style="background:#fff;" value="0xfff"></option>
+				<option style="background:#f00;" value="0xf00"></option>
+				<option style="background:#0f0;" value="0x0f0"></option>
+				<option style="background:#00f;" value="0x00f"></option>
+				<option style="background:#ff0;" value="0xff0"></option>
+				<option style="background:#0ff;" value="0x0ff"></option>
+				<option style="background:#f0f;" value="0xf0f"></option>
+			</select>
+			<div id="block"></div>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var baseColor = 0x000;
+				var colorSelector = document.getElementById('selector');
+				colorSelector.onchange = function(){
+					for(var i=0; i<this.options.length; i++){
+						if(this.options[i].selected){
+							baseColor ^= parseInt(this.options[i].value) ;
+						}
+					}
+					baseColor = baseColor.toString(16);
+					if(baseColor.length == 1){ baseColor = '00'+baseColor;}
+					if(baseColor.length == 2){ baseColor = '0'+baseColor;}
+					document.getElementById('block').style.background = '#'+baseColor;
+				}
+			</script>
+
+		</body>
+</html>

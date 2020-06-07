@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#block{ width:100px; height:100px; background:#aaa; position:absolute; top:100px; left:100px; overflow:hidden; opacity:1; filter:Alpha(Opacity = '100'); /*IE 6*/}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="block"></div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				function transform(obj,params){
+					//每秒帧数
+					var FPS = 24;
+					var SPF = 1000/FPS;
+					//总时间
+					var period = params.period || 1;
+					//总帧数
+					var frames = parseInt(FPS * period);
+					//目标属性集合
+					var desObj = {};
+					//当前属性集合
+					var srcObj = {};
+					//所有属性每帧步长
+					var paramStepObj = {};
+					//定义当前值和目标值
+					var desValue, srcValue;
+					//计算不同属性的每帧改变量
+					var opacity;
+					var block = document.getElementById('block');
+					//获取运行时样式
+					var ocurStyle = window.getComputedStyle ? window.getComputedStyle(obj,null) : obj.currentStyle;
+					//遍历params对象中的属性
+					for(var i in params){
+						//获取在运行时样式中的当前属性值
+						srcValue = ocurStyle[i];
+						//获取目标属性值
+						desValue = params[i];
+						//如果运行时样式中有该属性，可能有不合法的属性名
+						if(srcValue){
+							//如果属性值为auto，改为0
+							srcValue = srcValue.replace(/auto/i, '0');
+							//如果当前属性值不是数字或者为空，那么无法进行动画处理
+							if(!/[0-9]+/i.test(srcValue) || (srcValue.indexOf(' ') != -1)){
+								continue;
+							}
+							//把属性i的值分别存储
+							desObj[i] = parseFloat(desValue || 0);
+							srcObj[i] = parseFloat(srcValue || 0);
+							//获取每个属性的每帧改变量
+							paramStepObj[i] = (desObj[i] - srcObj[i])/frames;
+						}
+					}
+				
+					var timer = setInterval(function(){
+						if(frames <= 0){
+							//当总帧数到0时，停止动画
+							clearInterval(timer);
+						}
+						frames--;
+
+						//动画处理核心
+						for(var i in paramStepObj){
+							if(/opacity/i.test(i)){
+								//如果元素没有透明样式，那么必须初始化一个
+								if((obj.style[i]  != 0) && (!obj.style[i])){
+									obj.style.cssText += 'opacity:1; filter:Alpha(Opacity = 100);';
+								}
+								obj.style.cssText += 'opacity:' + (parseFloat(ocurStyle['opacity']) +paramStepObj[i]) + ';filter:Alpha(Opacity = '+ (parseFloat(ocurStyle['opacity'])*100 + ocurStyle[i]*100)+')';
+							}else{
+								try{
+									obj.style[i] = obj.style[i] ? parseFloat(obj.style[i]) + paramStepObj[i] : srcObj[i] + paramStepObj[i];
+								}catch(el){
+									obj.style[i] = '0px';
+								}
+							}
+						}
+					},SPF);
+				}
+				transform(block, {left:300, top:500, opacity:0, period:1}); 
+
+			</script>
+
+		</body>
+</html>

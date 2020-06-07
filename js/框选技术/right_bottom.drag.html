@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//编写框选接口
+				//判断坐标点x，y是否在于元素container中
+				function isContained(container , x , y){
+					return ( x > container.offsetLeft 
+								&& y > container.offsetTop 
+								&& container.offsetLeft + container .offsetWidth > x 
+								&& container.offsetTop + container.offsetHeight > y) 
+								? true : false;
+				}
+
+				//判断两个元素是否重叠
+				function isWrap(node1 , node2){
+					var x = node2.offsetLeft;
+					var y = node2.offsetTop;
+					var width = node2.offsetWidth;
+					var height = node2.offsetHeight;
+					if( isContained(node1 , x ,y) ){
+						return true;
+					}
+					if( isContained(node1 , x+width , y+height) ){
+						return true;
+					}
+					if( isContained(node1 , x+width , y) ){
+						return true;
+					}
+					if( isContained(node1 , x , y+height) ){
+						return true;
+					}
+					return false;
+				}
+
+				//增加selectables参数，表示可被框选的对象列表；增加onComplete监听函数
+				function selector(selectables , onComplete){
+					//初始化可选对象
+					selectables = selectables || [];
+
+					//创建拖动框元素
+					var block = document.createElement('div');
+					//添加到DOM树
+					document.body.appendChild(block);
+
+					//监听鼠标按键按下事件
+					document.onmousedown = function(e){
+						//兼容事件处理
+						e = e || event;
+
+						//设置拖动框样式
+						with(block.style){
+							//设置定位方式为绝对定位
+							position = 'absolute';
+
+							//设置大小溢出处理
+							overflow = 'hidden';
+
+							//设置初始大小
+							width = 0;
+							height = 0;
+
+							//设置边框样式
+							border = '1px solid #3C85E8';
+
+							//改变隐藏为可见
+							display = 'block';
+						}
+
+						//获取鼠标按键按下时的坐标
+						var srcX = e.clientX;
+						var srcY = e.clientY;
+
+						//设置拖动框的坐标为鼠标按下时所在的坐标点
+						block.style.left = srcX;
+						block.style.top = srcY;
+
+						//监听鼠标移动事件
+						document.onmousemove = function(e){
+							//兼容事件处理
+							e = e || event;
+
+							//获取鼠标当前的坐标
+							var desX = e.clientX;
+							var desY = e.clientY;
+
+							//设置拖动框的尺寸
+							//当鼠标的Y轴坐标和X轴坐标都小于起始坐标时，第二象限
+							if(desY<=srcY && desX<=desX){
+								//改变选框的X轴坐标为鼠标当前坐标
+								block.style.left = desX;
+								//改变选框的Y轴坐标为鼠标当前坐标
+								block.style.top = desY;
+
+								//选框的宽高度
+								block.style.width = srcX - desX;
+								block.style.height = srcY - desY;
+							}else if(desX <= srcX){	//当鼠标的X轴坐标小于起始坐标时，第三象限
+								//改变选框的X轴坐标为鼠标当前坐标
+								block.style.left = desX;
+								//还原选框的Y轴坐标
+								block.style.top = srcY;
+								
+								//选框的宽高度
+								block.style.width = srcX - desX;
+								block.style.height = desY - srcY;
+							}else if(desY <= srcY){	//当鼠标的Y轴坐标小于起始坐标时，第一象限
+								//还原选框的X轴坐标
+								block.style.left = srcX;
+								//改变选框的Y轴坐标为鼠标当前坐标
+								block.style.top = desY;
+
+								//选框的宽高度
+								block.style.width = desX - srcX;
+								block.style.height = srcY - desY;
+							}else{		//第四象限
+								//还原选框的X轴坐标
+								block.style.left = srcX;
+								//还原选框的Y轴坐标
+								block.style.top = srcY;
+
+								//选框的宽高度
+								block.style.width = desX - srcX;
+								block.style.height = desY - srcY;
+							}
+
+							//处理可选对象列表
+							for(var i=0, l=selectables.length; i<1; i++){
+								//判断选框是否与可选对象重叠
+								if(isWrap(block, selectables[i])){
+									//设置选中标志
+									selectables[i].sTag =1;
+									//如果对象进行事件监听，则触发监听函数，并设置函数的this指针指向selectables[i]
+									if(selectables[i].onSelected){
+										selectables[i].onSelected.call(selectables[i] , block);
+									}else if(selectables.sTag ==1){
+										selectables.sTag = 0;
+										if(selectables[i].onUnselected){
+											selectables[i].onUnselected.call(selectables[i] , block);
+										}
+									}
+								}
+							}
+						}
+
+						//鼠标按键松开事件
+						document.onmouseup = function(e){
+							//隐藏拖动框
+							block.style.display = 'none';
+
+							//卸载监听
+							document.onmousemove = null;
+							document.onmouseup = null;
+
+							//获取被选中的对象列表
+							for(var i=0, l=selectables.length; i<1; i++){
+								if(selectables[i].sTag == 1 ){
+									selected.push(selectables[i]);
+									selectables.sTag = 0;
+								}
+							}
+
+							if(onComplete){
+								onComplete.call(block , selected);
+							}
+						}
+					}
+				}
+
+				//编写可选中对象的回调函数
+				var s1 = document.getElementById('s1');
+				//定义选中时的监听函数
+				s1.onSelected = function(){
+					with(this.style){
+						width = '90px';
+						height = '90px';
+					}
+				}
+
+				//定义选中后有离开时的监听函数
+				s1.onUnselected = function(){
+					with(this.style){
+						width = '100px';
+						hieght = '100px';
+					}
+				}
+
+				var s2 = document.getElementById('s2');
+				//定义选中时的监听函数
+				s2.onSelected = function(){
+					this.style.border = '2px dotted #000';
+				}
+				//定义选中后有离开时的监听函数
+				s2.onUnselected = function(){
+					this.style.border = '1px solid #000';
+				}
+				selector([ s1, s2], function(selectables){
+					alert(selectables.length);
+				});
+			</script>
+
+		</body>
+</html>

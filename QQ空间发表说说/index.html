@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>QQ空间发表说说 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,p,img,span,ul,li,dl,dt,dd{margin:0px;padding:0px;}
+				html,body{width:100%;height:100%;}
+				body{font-family:"微软雅黑";
+				background:url(images/bg_05.jpg) center;background-size:cover;}
+				ul li{list-style:none;}
+				/*message S*/
+				#message{width:600px;height:170px;background-color:#fff;
+				margin:200px auto 15px;border-radius:5px;}
+				#message p{color:rgba(238, 114, 26, 0.78);line-height:40px;text-indent:20px;text-shadow:2px 5px 4px #F90;}
+
+				/*edit S*/
+				#message .edit{width:560px;height:70px;border:1px solid #ddd;margin:0px auto;outline:none;}
+				#message .edit img{margin-left:2px;}
+				/*edit E*/
+
+				/*but S*/
+				#message .but{width:560px;height:40px;margin:15px auto 0px;position:relative;}
+
+				/*msg_but S*/
+				#message .but .msg_but{width:80px;line-height:30px;color:#fff;background:#7db718;
+				display:inline-block;text-align:center;border-radius:15px;cursor:pointer;float:right;}
+				/*msg_but E*/
+				
+				/*face S*/
+				#message .but .face{width:380px;height:160px;border:1px solid #ddd;background:#fff;padding:10px;position:absolute;top:20px;left:20px;display:none;}
+				#message  .but .face ul li{width:22px;height:22px;float:left;cursor:pointer;margin:3px;}
+				/*face E*/
+				/*but E*/
+
+				/*msgBox S*/
+				.msgBox{width:600px;margin:15px auto;}
+
+				/*msgInfo S*/
+				.msgBox .msgInfo{width:580px;background:#fff;padding:10px;margin-bottom:15px;}
+				.msgBox .msgInfo dl{height:60px;border-bottom:1px dashed #ddd;}
+				.msgBox .msgInfo dl dt{width:50px;height:50px;float:left;}
+				.msgBox .msgInfo dl dt img{border-radius:50%;box-shadow:2px 2px 10px #795F56;}
+				.msgBox .msgInfo dl dd{width:500px;line-height:50px;float:right;color:#5AB2FC;text-shadow:2px 2px 5px #00FFA1;}
+
+				/*con S*/
+				.msgBox .msgInfo .con{line-height:30px;color:#3CD147;text-shadow:2px 2px 5px #9E9B3B;}
+				.msgBox .msgInfo .con img{margin-left:2px;}
+				/*con E*/
+
+				/*msgInfo E*/
+				/*msgBox E*/						
+				/*message E*/
+
+				/*Part1 S*/
+				#Part1{width:600px;height:480px;margin:32px auto 0px;background:#fff;}
+
+				/*Part1_L S*/
+				#Part1 #Part1_L{width:339px;height:442px;float:left;padding:6px 6px;}
+				
+				/*Part_imgCon S*/
+				#Part1 #Part1_L 
+				.Part_imgCon{width:339px;height:376px;background:red;position:relative;overflow:hidden;}
+
+				/*Part_ScrollCon S*/
+				#Part1 #Part1_L .Part_imgCon .Part_ScrollCon{width:100%;height:376px;background:blue;position:absolute;left:0px;top:0px;}
+				#Part1 #Part1_L .Part_imgCon .Part_ScrollCon img{float:left;}
+				/*Part_ScrollCon E*/
+				/*Part_imgCon E*/
+
+				/*Part_ScrollTxt S*/
+				#Part1 #Part1_L ul.Part_ScrollTxt{height:35px;overflow:hidden;}
+				#Part1 #Part1_L ul.Part_ScrollTxt li{list-style:none;font-size:14px;line-height:35px;margin-left:80px;}
+				/*Part_ScrollTxt E*/
+
+				/*Part_ScrollBut S*/
+				#Part1 #Part1_L ul.Part_ScrollBut li{width:40px;height:8px;background:#00a9e2;list-style:none;float:left;margin:5px ;}
+				#Part1 #Part1_L ul.Part_ScrollBut li.hover{background:#d81480;}
+				/*Part1_L E*/
+				
+				/*Part1_R S*/
+				#Part1 #Part1_R{width:560px;height:442px;padding:0px 30px;background:url("images/vl.jpg")no-repeat,url("images/vr.jpg") no-repeat right top;float:right;}
+				/*Part_ScrollBut E*/
+
+				/*select_but S*/
+				#Part1 #Part1_R ul.select_but {border-bottom:1px solid #ddd;height:32px;}
+				#Part1 #Part1_R ul.select_but li{list-style: none;width: 84px;height: 32px;float: left;font-size: 14px;line-height: 32px;text-align: center;background: url("images/lxtjcdbg.jpg") no-repeat right bottom;margin-right:10px;}
+				#Part1 #Part1_R ul.select_but li.hover{background-image:url("images/lxtjcdxg.jpg");/*method two 
+				background:url("../images/lxtjcdxg.jpg") no-repeat right 
+				bottom;*/ }
+				/*select_but E*/
+
+				/*select_con S*/
+				#Part1 #Part1_R .select_con{height:300px;margin-top:20px;overflow:hidden;}
+
+				/*select_content S*/
+				#Part1 #Part1_R .select_con .select_content{height:300px;}
+
+				/*sel_imgList S*/
+				#Part1 #Part1_R .select_con .select_content ul.sel_imgList li{width:126px;height:124px;list-style:none;float:left;margin:0px 6px 0px 7px;position:relative;}
+				#Part1 #Part1_R .select_con .select_content ul.sel_imgList li p{background-color:rgba(187,14,115,0.7);color:#fff;text-indent:25px;
+				line-height:20px;position:absolute;left:0px;bottom:0px;height:0px;overflow:hidden;}
+				#Part1 #Part1_R .select_con .select_content ul.sel_imgList li:hover{transform:scale(1.2,1.2);transition:0.5s;}
+				/*sel_imgList E*/
+				/*select_content E*/
+				/*select_con E*/
+
+				#Part1 #Part1_R ul{padding-top:20px;}
+
+				/*IntroNews S*/
+				#Part1 #Part1_R ul.IntroNews li{font-size:14px;line-height:35px;text-indent:20px;
+				background:url("images/li_dian.png") no-repeat 8px 16px;}
+				#Part1 #Part1_R ul.IntroNews li a{color:#000;text-decoration:none;}
+				#Part1 #Part1_R ul.IntroNews li a:hover{color:#E20076;}
+				#Part1 #Part1_R ul.IntroNews li span{color:#E20076;font-weight:bold;float:right;}
+				/*height:35px;line-height:35px;==line-height:35px;*/
+				/*IntroNews E*/
+				/*Part1_R S*/
+				/*Part1 E*/
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--message S-->
+			<div id="message">
+				<p>有什么新鲜事想告诉Andy？</p>
+				
+				<!--edit S-->
+				<div class="edit" contenteditable="true"></div>
+				<!--edit E-->
+
+				<!--but S-->
+				<div class="but">
+					<img class="imgface" src="images/bba_thumb.gif" alt="expression" width="22" height="22"  />
+					<span class="msg_but">发表</span>
+					<!--face S-->
+					<div class="face">
+						<ul>
+							<li><img src="images/88_thumb.gif" title="[拜拜]" /></li>
+							<li><img src="images/angrya_thumb.gif" title="[发怒]" /></li>
+							<li><img src="images/boboshengmenqi_thumb.gif" title="[生气]" /></li>
+							<li><img src="images/bofubianlian_thumb.gif" title="[发功]" /></li>
+							<li><img src="images/bs2_thumb.gif" title="[鄙视]" /></li>
+							<li><img src="images/cake.gif" title="[蛋糕]" /></li>
+							<li><img src="images/camera_thumb.gif" title="[相机]" /></li>
+							<li><img src="images/cat_yunqizhong_thumb.gif" title="[小猫]" /></li>
+							<li><img src="images/cf_thumb.gif" title="[得意]" /></li>
+							<li><img src="images/chn_buyaoya_thumb.gif" title="[不要呀]" /></li>
+							<li><img src="images/clock_thumb.gif" title="[时钟]" /></li>
+							<li><img src="images/come_thumb.gif" title="[勾引]" /></li>
+							<li><img src="images/cool_thumb.gif" title="[酷]" /></li>
+							<li><img src="images/crazya_thumb.gif" title="[抓狂]" /></li>
+							<li><img src="images/cry.gif" title="[衰]" /></li>
+							<li><img src="images/cza_thumb.gif" title="[挑逗]" /></li>
+							<li><img src="images/daxiongleibenxiong_thumb.gif" title="[奔跑]" /></li>
+							<li><img src="images/fuyun_thumb.gif" title="[浮云]" /></li>
+							<li><img src="images/gbzkun_thumb.gif" title="[困死了]" /></li>
+							<li><img src="images/good_thumb.gif" title="[强]" /></li>
+							<li><img src="images/gza_thumb.gif" title="[鼓掌]" /></li>
+							<li><img src="images/h_thumb.gif" title="[流汗]" /></li>
+							<li><img src="images/hatea_thumb.gif" title="[讨厌]" /></li>
+							<li><img src="images/hearta_thumb.gif" title="[爱心]" /></li>
+							<li><img src="images/heia_thumb.gif" title="[偷笑]" /></li>
+							<li><img src="images/horse2_thumb.gif" title="[神马]" /></li>
+							<li><img src="images/hsa_thumb.gif" title="[色]" /></li>
+							<li><img src="images/hufen_thumb.gif" title="[互粉]" /></li>
+							<li><img src="images/j_thumb.gif" title="[囧]" /></li>
+							<li><img src="images/k_thumb.gif" title="[好困啊]" /></li>
+							<li><img src="images/kbsa_thumb.gif" title="[勾鼻]" /></li>
+							<li><img src="images/kl_thumb.gif" title="[可怜]" /></li>
+							<li><img src="images/lazu_thumb.gif" title="[蜡烛]" /></li>
+							<li><img src="images/ldln_thumb.gif" title="[gg]" /></li>
+							<li><img src="images/liwu_thumb.gif" title="[礼物]" /></li>
+							<li><img src="images/lxhluguo_thumb.gif" title="[路过]" /></li>
+							<li><img src="images/lxhzhuanfa_thumb.gif" title="[自己疯]" /></li>
+							<li><img src="images/m_thumb.gif" title="[麦克风]" /></li>
+							<li><img src="images/mb_thumb.gif" title="[可惜]" /></li>
+							<li><img src="images/money_thumb.gif" title="[钱迷]" /></li>
+							<li><img src="images/nm_thumb.gif" title="[咒骂]" /></li>
+							<li><img src="images/no_thumb.gif" title="[你不行]" /></li>
+							<li><img src="images/ok_thumb.gif" title="[好的]" /></li>
+							<li><img src="images/otm_thumb.gif" title="[流鼻涕]" /></li>
+							<li><img src="images/panda_thumb.gif" title="[熊猫]" /></li>
+							<li><img src="images/pig.gif" title="[猪]" /></li>
+							<li><img src="images/qq_thumb.gif" title="[亲亲]" /></li>
+							<li><img src="images/rabbit_thumb.gif" title="[兔子]" /></li>
+							<li><img src="images/sad_thumb.gif" title="[烂]" /></li>
+							<li><img src="images/sada_thumb.gif" title="[大哭]" /></li>
+							<li><img src="images/sb_thumb.gif" title="[傻逼]" /></li>
+							<li><img src="images/shamea_thumb.gif" title="[放电]" /></li>
+							<li><img src="images/sk_thumb.gif" title="[思考]" /></li>
+							<li><img src="images/sleepa_thumb.gif" title="[打呼噜]" /></li>
+							<li><img src="images/sleepya_thumb.gif" title="[好困]" /></li>
+							<li><img src="images/smilea_thumb.gif" title="[微笑]" /></li>
+							<li><img src="images/sw_thumb.gif" title="[忏愧]" /></li>
+							<li><img src="images/sweata_thumb.gif" title="[流汗]" /></li>
+							<li><img src="images/t_thumb.gif" title="[吐]" /></li>
+							<li><img src="images/tootha_thumb.gif" title="[嬉笑]" /></li>
+							<li><img src="images/tza_thumb.gif" title="[害羞]" /></li>
+							<li><img src="images/unheart.gif" title="[心碎了]" /></li>
+							<li><img src="images/vw_thumb.gif" title="[九五至尊]" /></li>
+							<li><img src="images/weijin_thumb.gif" title="[围巾]" /></li>
+							<li><img src="images/wg_thumb.gif" title="[全家福]" /></li>
+							<li><img src="images/wq_thumb.gif" title="[委屈]" /></li>
+							<li><img src="images/ye_thumb.gif" title="[胜利了]" /></li>
+							<li><img src="images/yhh_thumb.gif" title="[右哼哼]" /></li>
+							<li><img src="images/youqian_thumb.gif" title="[有钱]" /></li>
+							<li><img src="images/bgl.gif" title="[扮鬼脸]" /></li>
+						</ul>
+					</div>
+					<!--face E-->
+				</div>
+				<!--but E-->
+			</div> 
+			<!--message E-->
+
+			<!--msgBox S-->
+			<div class="msgBox"></div>
+			<!--msgBox E-->
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			$(".but img.imgface").click(function(e){
+				$(".face").slideDown(); //慢慢乡下展开 event事件
+				e.stopPropagation(); //阻止冒泡时间
+			});
+			$(document).click(function(){
+				$(".face").slideUp(); //向上收缩
+			});	
+			//点击表情，添加到div.edit
+			$(".face ul li").click(function(){
+				var img = $(this).find("img").clone();
+				$(".edit").append(img);
+			});
+			$(".but .msg_but").click(function(){
+				var txt = $(".edit").html(); //html 得到表情 会转换
+				if (txt=="")
+				{
+					$(".edit").focus(); //获取焦点
+				} 
+				else{
+					$(".msgBox").append("<div class='msgInfo'><dl><dt><img src='images/psb.png' alt='logo' width='50' height='50' /></dt><dd>Tell Andy Show</dd></dl><div class='con'>"+txt+"</div></div>");
+					$(".edit").html("");
+				}
+			});
+		</script>
+</html>

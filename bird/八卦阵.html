@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>八卦阵</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+				html,body,div{margin:0;padding:0;}
+				body{background:url("images/linsy1.jpg") no-repeat;background-size:cover;}
+				.yin-yang{width:96px;height:48px;border-style:solid;border-color:#000;border-width:0px 0px 48px 0px;/*上右下左*/margin:100px auto;background:#fff;border-radius:50%;position:relative;animation:rot 4s infinite linear;/*名字 时间 次数 匀速运动（uniform motion）*/}
+				@keyframes rot{/*执行动画*/
+					from{transform:rotate(0deg);}
+					to{transform:rotate(360deg);}
+				}
+				.yin-yang:before,.yin-yang:after{content:'';width:12px;height:12px;border-radius:50%;position:absolute;/*定位可换为 display:block;*/top:50%;}
+				.yin-yang:before{background:#fff;border:18px solid #000;left:0px;}
+				.yin-yang:after{background:#000;border:18px solid #fff;left:50%;}
+		</style>
+
+    </head>
+	<body>
+		<div class="yin-yang"></div>
+	</body>
+</html>
+

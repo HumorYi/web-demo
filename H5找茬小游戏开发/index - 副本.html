@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<!--网页头部-->
+<head>
+    <!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+    <meta charset="UTF-8">
+    <!--网页三要素 标题，关键词，描述-->
+    <meta name="Keywords" content="">
+    <!--80个字以内，小于等于76个字是标准-->
+    <meta name="Description" content="">
+    <!--<title>小于等于31个字是标准-->
+    <title>H5找茬小游戏开发 - Andy</title>
+    <!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+    <style type="text/css">
+        html, body, div, ul, li, a, h1, img {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        #game {
+            width: 850px;
+            height: 500px;
+            background: #fff;
+            margin: 60px auto;
+            box-shadow: 0px 0px 15px #000;
+            border: 5px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #game > h1 {
+            text-align: center;
+            color: #ccc;
+            padding-top: 20px;
+        }
+
+        #game .con {
+            width: 760px;
+            height: 330px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        #game .con > ul > li {
+            width: 100%;
+            height: 330px;
+            float: left;
+        }
+
+        #game .con > ul > li > div {
+            width: 365px;
+            height: 330px;
+            background: #999;
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        #game .con > ul > li > div > div {
+            border: 3px solid #00FFDC;
+            position: absolute;
+            opacity: 0;
+        }
+
+        img {
+            opacity: .5;
+        }
+
+        #game > button {
+            border: 0;
+            outline:none;
+            cursor: pointer;
+            width: 150px;
+            line-height: 55px;
+            text-align: center;
+            display: block;
+            margin: 0px auto;
+            font-size: 16px;
+            color: #fff;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        #game .con > ul > li:nth-of-type(1) > div > div:nth-of-type(1) {
+            width: 180px;
+            height: 45px;
+            top: 45px;
+            left: 12px;
+        }
+
+        #game .con > ul > li:nth-of-type(1) > div > div:nth-of-type(2) {
+            width: 10px;
+            height: 60px;
+            bottom: 90px;
+            left: 0px;
+        }
+
+        #game .con > ul > li:nth-of-type(1) > div > div:nth-of-type(3) {
+            width: 40px;
+            height: 100px;
+            bottom: 80px;
+            left: 120px;
+        }
+
+        #game .con > ul > li:nth-of-type(2) > div > div:nth-of-type(1) {
+            width: 70px;
+            height: 60px;
+            top: 0px;
+            left: 0px;
+        }
+
+        #game .con > ul > li:nth-of-type(2) > div > div:nth-of-type(2) {
+            width: 70px;
+            height: 50px;
+            top: 60px;
+            left: 220px;
+        }
+
+        #game .con > ul > li:nth-of-type(2) > div > div:nth-of-type(3) {
+            width: 40px;
+            height: 100px;
+            bottom: 80px;
+            left: 120px;
+        }
+
+        #game .con > ul > li:nth-of-type(3) > div > div {
+            width: 30px;
+            height: 70px;
+            bottom: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="game">
+    <h1>美女来找茬</h1>
+    <div class="con">
+        <ul>
+            <li>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <img src="images/1.jpg"/>
+                </div>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <img src="images/11.jpg"/>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="images/2.jpg"/>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+                    <img src="images/22.jpg"/>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="images/3.jpg"/>
+                    <div></div>
+                </div>
+                <div>
+                    <img src="images/33.jpg"/>
+                    <div></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <button>开始游戏</button>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    var i = 0;
+    $("#game>button").click(function () {
+        $("img").css("opacity", "1");
+        $(this).css('background', '#005366');
+        $("#game .con>ul>li>div>div").click(function () {
+            $("#game .con>ul>li").eq(i).find($("#game .con>ul>li>div>div")).css("opacity", "1");
+            setTimeout(function () {
+                i++;
+                if (i > 2) {
+                    i = 0;
+                    $("#game .con>ul>li>div>div").css("opacity", "0")
+                }
+                $("#game .con>ul>li").eq(i).show().siblings().hide();
+            }, 1000);
+        });
+    });
+</script>
+</body>
+</html>

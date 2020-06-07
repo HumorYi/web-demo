@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a,b;
+		a = ['a','b','c','d','e'];
+		b = new Array('foo','bar');
+
+		with(document){
+			write('遍历数组a，返回的结果如下：'+'<br />');
+			for (var i = 0; i < a.length; i++) {
+					write('a['+i+']:');
+					write(a[i]+'<br />');
+			}
+
+			write('遍历数组b，返回的结果如下：'+'<br />');
+			for(var i in b){
+				write('b['+i+']:')
+				write(b[i]+'<br />');
+			}
+		}
+	</script>
+</body>
+</html>

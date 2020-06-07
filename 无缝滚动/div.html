@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+    *{margin:0; padding:0;}
+    .scrollList{width:800px; height:190px; margin:0px auto; margin-top:50px; overflow:hidden; position:relative; }
+    .scrollList ul{position:absolute; left:0; top:0;}
+    .scrollList ul li{width:190px; height:180px; float:left; list-style:none;}
+</style>
+</head>
+
+<body>
+<input type="button" value="Left" id="btnL" />
+<input type="button" value="Right" id="btnR" />
+<div class="scrollList" id="div1">
+    <ul>
+        <li><img src="img/1.jpg" width="180" height="255" alt="图片一" /></li>
+        <li><img src="img/2.jpg" width="180" height="255" alt="图片一" /></li>
+        <li><img src="img/3.jpg" width="180" height="255" alt="图片一" /></li>
+        <li><img src="img/4.jpg" width="180" height="255" alt="图片一" /></li>
+    </ul>
+</div>
+    
+<script>
+    window.onload = function(){
+        var oDiv = document.getElementById("div1");
+        var oUl = oDiv.getElementsByTagName("ul")[0];
+        var aLi = oUl.getElementsByTagName("li");
+        var timer = null;
+        
+        var btnL = document.getElementById("btnL");
+        var btnR = document.getElementById("btnR");
+        
+        var speed = 3;
+        var aliOffsetWidth = aLi[0].offsetWidth;
+        var aliLength, oUlOffsetWidth, oUlOffsetWidthHalf;
+        
+        oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+
+        aliLength = aLi.length;
+        oUlOffsetWidth = aliOffsetWidth * aliLength;
+        oUlOffsetWidthHalf = oUlOffsetWidth / 2;
+
+        oUl.style.width = oUlOffsetWidth + 'px';
+        
+        function move(){
+            var oUlOffsetLeft = oUl.offsetLeft;
+            var left;
+
+            // 控制向左移动
+            if(oUlOffsetLeft < -oUlOffsetWidthHalf){
+                left = '0';
+            }
+            // 控制向右移动
+            else if(oUlOffsetLeft > 0){
+                left = -oUlOffsetWidthHalf + 'px';
+            }
+            // 控制移动速度
+            else {
+                left = oUlOffsetLeft + speed + 'px';
+            }
+
+            oUl.style.left = left;
+        }
+        
+        timer = setInterval(move,30);
+        
+        oDiv.onmouseover = function(){
+            clearInterval(timer);
+        };
+        
+        oDiv.onmouseout = function(){
+            timer = setInterval(move,30);
+        };
+        
+        btnL.onclick = function(){
+            if(speed > 0){
+                speed = -speed;
+            }
+        };
+        btnR.onclick = function(){
+            if(speed < 0){
+                speed = -speed;
+            }
+        };
+    };
+</script>
+</body>
+</html>

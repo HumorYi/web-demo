@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="luoxing">
+    <meta name="email" content="luoxing8493@126.com">
+    <meta name="date" content="2018/4/11 12:12">
+
+    <title>注册</title>
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap-3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="common/css/registerOrLogin.css">
+    <link rel="stylesheet" href="assets/register/css/index.css">
+</head>
+
+<body>
+<a href="index.html" class="logo">
+    <img src="assets/images/nav-logo.png" alt="logo">
+</a>
+
+<div class="container">
+    <form class="form-horizontal registerOrLogin" id="formRegister">
+        <div class="form-title">用户注册</div>
+
+        <!--手机号码 S-->
+        <div class="form-group form-group-lg">
+            <div class="input-group col-sm-7">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-phone"></span>
+                </div>
+                <input id="phone" type="text" class="form-control" placeholder="手机号码">
+            </div>
+        </div>
+        <!--手机号码 E-->
+
+        <!--验证码 S-->
+        <div class="form-group form-group-lg">
+            <div class="col-sm-3 verifyCode">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-qrcode"></span>
+                    </div>
+                    <input id="verifyCode" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-lg btn-danger" id="btnVerifyCode" disabled>获取验证码</button>
+            </div>
+        </div>
+        <!--验证码 E-->
+
+        <!--登录密码 S-->
+        <div class="form-group form-group-lg">
+            <div class="input-group col-sm-7">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <input id="loginPwd" type="password" class="form-control" placeholder="登录密码">
+            </div>
+        </div>
+        <!--登录密码 E-->
+
+        <!--确认密码 S-->
+        <div class="form-group form-group-lg">
+            <div class="input-group col-sm-7">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <input id="confirmPwd" type="password" class="form-control" placeholder="确认密码">
+            </div>
+        </div>
+        <!--确认密码 E-->
+
+        <!--注册按钮 S-->
+        <div class="form-group form-group-lg buttons">
+            <button type="submit" class="btn btn-block btn-lg btn-danger">同意协议并提交</button>
+
+            <p>
+                <a href="login.html">已注册？立即登录</a>
+                <span>注册即同意 <a href="#">《伟达金云桥使用协议》</a></span>
+            </p>
+        </div>
+        <!--注册按钮 E-->
+    </form>
+</div>
+
+<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/plugins/bootStrapValidator/bootStrapValidator.js"></script>
+<script src="assets/register/js/index.js"></script>
+</body>
+</html>

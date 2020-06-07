@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CSS3圆盘时钟动画</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" href="css/clock.css"/>
+</head>
+<body>
+    <div class="t2">
+        <div class="t3">
+            <div class="t4">
+                <i class="hour hour3">3</i>
+                <i class="hour hour6">6</i>
+                <i class="hour hour9">9</i>
+                <i class="hour hour12">12</i>
+
+                <div id="miao"></div>
+                <div id="fen"></div>
+                <div id="shi"></div>
+                <div id="point"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var nowDate;
+        function drawClock() {
+            nowDate = new Date();
+            document.getElementById("shi").style.transform = "rotate(" + nowDate.getHours() % 12 * 30 + "deg)";
+            document.getElementById("fen").style.transform = "rotate(" + nowDate.getMinutes() * 6 + "deg)";
+            document.getElementById("miao").style.transform = "rotate(" + nowDate.getSeconds() * 6 + "deg)";
+        }
+
+        drawClock();
+        setInterval(drawClock, 1000);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

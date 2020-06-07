@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>JS+HTML5模仿骇客帝国文字矩阵效果</title>
+  <style type="text/css">
+  *{
+	margin: 0;
+	padding: 0;
+  }
+  html{overflow:hidden;}
+ </style>
+ </head>
+ <body>
+	<div id="box" style="font-weigth:25; "> </div>
+  <canvas id="canvas"></canvas>
+  <script type="text/javascript">
+	/* 
+		1.获取浏览器的 w  h  
+		2.获取 canvas对象
+			a： 给 画布动态添加高度 宽度
+		3.获取上下文
+		4. 定义方法
+			a:绘画矩形fillRect(x,y,w,h);
+			b:给画布添加文字 fillText(文字,x,y);
+			? 下落是通过那个坐标实现的    改变y的坐标 
+				a：是一组数据  用数组装 定义一个数组变量drops =[];初始逗为0
+				b :  有多少列   浏览器的宽度/ 字体的大小= 列  var cols = 0；
+			c： 动态添加文字的坐标   需要参数
+					x  =  i* fontSize
+					y  =  drops[i]* fontSize
+					fillText(文字,x,y);
+					drops[i] ++ 
+			d: 定时器     
+					setInterval
+			f:  判断  y>= canvas.height   && Math.random() >0.99
+				a: 重置  y的坐标
+		*/
+		window.onload = function(){
+			//可视的范围
+			var s =window.screen;
+			//屏幕宽
+			var w =s.width; 
+			//屏幕高
+			var h =s.height;
+			//获取对象
+			var canvas =document.getElementById("canvas");
+			//获取上下文
+			var ctx = canvas.getContext("2d");
+			canvas.width = w;
+			canvas.height = h;
+			var str = "⑯⑮⒃ǔㄈㄆㄖΗΡζ";//字体显示
+			var fontSize = 12;
+			//动态计算整个屏幕能够铺开多少列
+			var cols = Math.floor(w/fontSize);
+			//这是一个数组 存放所有Y的坐标
+			var drops =[];
+			//初始化左右的y坐标都为0
+			for (var i = 0; i<cols ; i++ )
+			{
+				drops.push(0);
+			}
+			//绘画的方法
+			function draw(){
+				//通过透明色 实现渐变
+				ctx.fillStyle = "rgba(0,0,0,0.05)";
+				//填充整个页面
+				ctx.fillRect(0,0,w,h);
+				ctx.fillStyle = ranColor();
+				//字体的 粗细 大小 风格
+				ctx.font="600 "+fontSize+"px 微软雅黑";
+				//遍历定义坐标的位置
+				for (var i = 0; i<cols ;i++ )
+				{
+					//随机文字
+					var index = Math.floor(Math.random()*str.length);
+					//定义x y 坐标
+					var x = i*fontSize;
+					var y = drops[i]*fontSize;
+					//拿到坐标后绘画文字
+					ctx.fillText(str[index],x,y);
+					//这里是难点 
+					if (y >= canvas.height && Math.random()>0.99)
+					{
+						//满足条件y为0  重新跑
+						drops[i]=0;
+					}
+					//循坏一次 y 改变一次位置 也就是向下
+					drops[i]++;
+				}
+			};
+			draw();
+			setInterval(draw,33);
+			//随机颜色
+			function ranColor()
+			{
+				var r=Math.floor(Math.random()*256);
+				var g=Math.floor(Math.random()*256);
+				var b=Math.floor(Math.random()*256);
+				return "rgb("+r+","+g+","+b+")";
+			};
+		};
+</script>
+ </body>
+</html>

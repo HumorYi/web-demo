@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var oDate = new Date();
+
+		oDate.setDate(oDate.getDate() + 14);
+		//alert(oDate.getFullYear() + '-' + (oDate.getMonth()+1) + '-' + oDate.getDate());
+		document.cookie = 'user=blue; expires=' + oDate; 
+		alert(document.cookie);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTab = document.getElementById('tab1');
+			var oBtn = document.getElementById('search');
+			var oName = document.getElementById('name');
+
+			oBtn.onclick = function(){
+				for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+					//输入框和已有文本比较,忽略大小写
+					var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sName = oName.value.toLowerCase();
+
+					//调用split()方法，设置空格符，搜索多关键字
+					var arr = sName.split(' '); 
+
+					oTab.tBodies[0].rows[i].style.display = 'none';
+
+					for (var j = 0; j < arr.length; j++) {
+						//调用search()方法，如果查找字符不匹配，则值为-1
+						if ( sTab.search(arr[j]) != -1 ) {
+							//筛选查找的内容
+							oTab.tBodies[0].rows[i].style.display = 'block';
+						}
+					}
+					
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	姓名：<input id="name" type="text" />
+	<input id="search" type="button" value="搜索" />
+	<table id="tab1" border="1" width="500">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>green</td>
+				<td>24</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>red</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>gray</td>
+				<td>26</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>李四</td>
+				<td>24</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>张四</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>李三</td>
+				<td>26</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

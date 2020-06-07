@@ -1,0 +1,171 @@
+<html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background: #7ACFFA;
+      }
+      #canvas {
+        position: absolute;
+        top: 0; left: 0;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id="canvas" width="1" height="1"></canvas>
+
+    <script type='text/javascript'>
+      window.requestAnimFrame = (function(){
+          return  window.requestAnimationFrame       ||
+                  window.webkitRequestAnimationFrame ||
+                  window.mozRequestAnimationFrame    ||
+                  function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                  };
+        })();
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      function Tree(x,y,branchLen,branchWidth,depth,canvas){
+        this.canvas = canvas || document.getElementById('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.x = x||0;
+        this.y = y||0;
+        this.branchLen = branchLen||0;
+        this.branchWidth = branchWidth||0;
+        this.branchLenFactor = 0.8;
+        this.rootLenFactor = 1.2;
+        this.branchAngle = 20;
+        this.oBranchAngle = this.branchAngle;
+        this.branchAngleFactor = 5;
+        this.swingAngle = 0;
+        this.swingSwitch = true;
+        this.depth = depth || 5;
+        var depth = depth || 5;
+        this.strengthX = 0;
+        this.strengthY = 0;
+        this.strengthXFactor = 5;
+        this.strengthYFactor = 10;
+        this.recoverStartTime = 0;
+        this.drawRoot();
+      }
+      Tree.prototype.drawRoot = function(){
+        var x = this.x,y=this.y,branchLen = this.branchLen,depth = this.depth,branchWidth = this.branchWidth;
+        var toX = x;
+        var toY = y-branchLen*this.rootLenFactor;
+        var depth = depth||5;
+        this.ctx.save();
+        this.ctx.strokeStyle="rgba(37, 141, 194, 0.93)";
+        this.ctx.beginPath();
+        this.ctx.lineCap = "butt";
+        this.ctx.lineJoin="round";
+        this.ctx.lineWidth = this.branchWidth;
+        this.ctx.moveTo(x,y);
+        this.ctx.lineTo(toX,toY);
+        this.ctx.closePath();
+        this.ctx.stroke();
+        this.ctx.restore();
+        depth--;
+        if(depth>0){
+          this.drawBranch(toX,toY,branchLen*this.branchLenFactor,branchWidth-1,this.branchAngle,depth);
+          this.drawBranch(toX,toY,branchLen*this.branchLenFactor,branchWidth-1,-this.branchAngle,depth);
+        }
+      }
+      Tree.prototype.drawBranch = function(x,y,branchLen,branchWidth,angle,depth){
+        var angle = angle || 0;
+        angle += this.strengthX*(depth/this.depth)/this.strengthXFactor*this.branchAngle;
+        var radian = (90-angle)*(Math.PI/180);
+        var toX = x+Math.cos(radian)*branchLen+this.strengthX*(1-depth/this.depth);
+        var toY = y-Math.sin(radian)*branchLen+this.strengthY*(1-depth/this.depth);
+        this.ctx.save();
+        this.ctx.strokeStyle="rgba(37, 141, 194, 0.93)";
+        this.ctx.beginPath();
+        this.ctx.lineCap = "butt";
+        this.ctx.lineJoin="round";
+        this.ctx.lineWidth = branchWidth;
+        this.ctx.moveTo(x,y);
+        this.ctx.lineTo(toX,toY);
+        this.ctx.closePath();
+        this.ctx.stroke();
+        this.ctx.restore();
+        depth--;
+        if(depth>0){
+          this.drawBranch(toX,toY,branchLen*this.branchLenFactor,branchWidth-1,angle+this.branchAngle,depth);
+          this.drawBranch(toX,toY,branchLen*this.branchLenFactor,branchWidth-1,angle-this.branchAngle,depth);
+        }
+      }
+      var atree = new Tree(canvas.width/2-4,canvas.height,100,8,8,canvas);
+      function loop(time){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        if(atree.swingSwitch){
+          if(atree.strengthX > 0){
+            if(atree.recoverStartTime == 0){
+              atree.recoverStartTime = time;
+            }
+            var t = time-atree.recoverStartTime;
+            atree.strengthX =  Math.max(atree.oStrengthX-atree.oStrengthX*((t=t/2000-1)*t*t*t*t + 1)+0,0);
+          }
+          if(atree.strengthX < 0){
+            if(atree.recoverStartTime == 0){
+              atree.recoverStartTime = time;
+            }
+            var t = time-atree.recoverStartTime;
+            atree.strengthX =  Math.min(atree.oStrengthX-atree.oStrengthX*((t=t/2000-1)*t*t*t*t + 1)+0,0);
+          }
+          if(atree.strengthY > 0){
+            if(atree.recoverStartTime == 0){
+              atree.recoverStartTime = time;
+            }
+            var t = time-atree.recoverStartTime;
+            atree.strengthY =  Math.max(atree.oStrengthY-atree.oStrengthY*((t=t/2000-1)*t*t*t*t + 1)+0,0);
+          }
+          if(atree.strengthY < 0){
+            if(atree.recoverStartTime == 0){
+              atree.recoverStartTime = time;
+            }
+            var t = time-atree.recoverStartTime;
+            atree.strengthY =  Math.min(atree.oStrengthY-atree.oStrengthY*((t=t/2000-1)*t*t*t*t + 1)+0,0);
+          }
+          atree.swingAngle++;
+          atree.branchAngle = Math.sin(atree.swingAngle*(Math.PI/180))*atree.branchAngleFactor+atree.oBranchAngle;
+        }
+        atree.drawRoot();
+        requestAnimFrame(loop);
+      }
+      loop(0);
+      
+      //记录触控开始时的信息
+      var touchStart = {x:0,y:0,strengthX:0,strengthY:0};
+      document.addEventListener('touchstart',function(e){
+          //让树停止摆动
+          atree.swingSwitch = false;
+          touchStart.x = e.touches[0].clientX;
+          touchStart.y = e.touches[0].clientY;
+          //记录触控开始时,原strength的值
+          touchStart.strengthX = atree.strengthX;
+          touchStart.strengthY = atree.strengthY;
+      });
+      document.addEventListener('touchmove',function(e){
+          //阻止浏览器默认动作
+          e.preventDefault();
+          //(touchStart.x-e.touches[0].clientX)/canvas.width可以根据滑动距离获得一个0-1的值
+          atree.strengthX = touchStart.strengthX-(touchStart.x-e.touches[0].clientX)/canvas.width*atree.strengthXFactor;
+          atree.strengthY = touchStart.strengthY-(touchStart.y-e.touches[0].clientY)/canvas.height*atree.strengthYFactor;
+      });
+      document.addEventListener('touchend',function(e){
+          //恢复摆动
+          atree.recoverStartTime = 0;
+          atree.oStrengthX = atree.strengthX;
+          atree.oStrengthY = atree.strengthY;
+          atree.swingSwitch = true;
+      });
+    </script>
+  </body>
+</html>

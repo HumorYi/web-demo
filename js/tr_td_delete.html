@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--js,各色特效-->
+			<script type="text/javascript" src=""></script>
+			<script type="text/javascript">
+				var tab = document.createElement('table');
+				tab.width = 500;
+				tab.border = 1;
+				tab.id = 'tab';
+				var row,cell;
+				for(var i=0; i<3; i++){
+					//为表插入行
+					row = tab.insertRow(-1);
+					for(var j=0; j<3; j++){
+						//为表插入单元格
+						cell = row.insertCell(-1);
+						cell.innerHTML = "单元格"+i+"*"+j;
+					}
+				}
+				//插入到DOM树中
+				document.body.appendChild(tab);
+				//对创建好的table动态删除
+				alert("查看删除效果");
+				//删除第二行
+				tab.deleteRow(1);
+				alert("第二行被删除");
+				tab.rows[0].deleteCell(2);
+				alert("第一行第三列被删除");
+			</script>
+		</body>
+</html>

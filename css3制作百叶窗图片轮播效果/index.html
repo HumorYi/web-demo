@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>css3制作百叶窗图片轮播效果 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,span,input,label{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				input{display:none;}
+				#Con{width:900px;height:500px;margin:50px auto;position:relative;}
+				#Con #content{width:900px;height:500px;background:url(images/1.jpg);}
+				#Con #content div{width:225px;height:500px;background:#ddd;float:left;position:relative;overflow:hidden;}
+				#Con #content div span{width:225px;height:500px;display:block;position:absolute;left:225px;top:0px;transition:all .5s ease;}
+				/*为每一个span标签设置背景图片*/
+				input#but1:checked ~ #content div span:nth-child(1){background-image:url(images/1.jpg);}
+				input#but2:checked ~ #content div span:nth-child(2){background-image:url(images/2.jpg);}
+				input#but3:checked ~ #content div span:nth-child(3){background-image:url(images/3.jpg);}
+				input#but4:checked ~ #content div span:nth-child(4){background-image:url(images/4.jpg);}
+				/*为每一个div span标签设置背景图片位置*/
+				#Con #content div:nth-child(1) span{background-position:0px;}
+				#Con #content div:nth-child(2) span{background-position:-225px 0px;}
+				#Con #content div:nth-child(3) span{background-position:-450px 0px;}
+				#Con #content div:nth-child(4) span{background-position:-675px 0px;}
+				/*实现百叶效果*/
+				input#but1:checked ~ #content div span:nth-child(1),
+				input#but2:checked ~ #content div span:nth-child(2),
+				input#but3:checked ~ #content div span:nth-child(3),
+				input#but4:checked ~ #content div span:nth-child(4)
+				{left:0px;-webkit-transition:left 1s ease;}
+				/*利用label标签控制按钮样式*/
+				label{width:30px;line-height:30px;background:#f8e39e;display:block;border-radius:50%;text-align:center;font-size:16px;position:absolute;bottom:0px;z-index:2;cursor:pointer;bottom:20px;}
+				/*+号代表与input#but1相邻的元素,设置各个label的位置*/
+				input#but1 + label{left:660px;}
+				input#but2 + label{left:720px;}
+				input#but3 + label{left:780px;}
+				input#but4 + label{left:840px;}
+				/*点击label的时候更改背景颜色添加边框*/
+				input:checked + label{background:#fff;border:5px solid #ddd;bottom:15px;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="Con">
+				<input type="radio" name="but" id="but1" checked />
+				<label for="but1">1</label>
+				<input type="radio" name="but" id="but2" />
+				<label for="but2">2</label>
+				<input type="radio" name="but" id="but3" />
+				<label for="but3">3</label>
+				<input type="radio" name="but" id="but4" />
+				<label for="but4">4</label>
+				<div id="content">
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</body>	
+</html>
+<!--
+	思路：
+		外面一个大的div--》Con，里面嵌套同样大小的div--》content，在content里面设置4个div，每个div设置4个span，每个span大小相同，为每个div中的每个span设置背景图片，更改图片位置形成一张图片，添加单选按钮，制作好效果之后用label代替
+	1、单选按钮插入法：<input type="radio" name="but" id="but1" />
+		控制单选按钮：input#but1:checked ~ #content div span:nth-child(1){background-image:url(images/1.jpg);}
+		注意事项：
+						（1）单选按钮必须放在最上层点击的时候才能显示图片,亦或者说点击按钮的时候才有才能执行点击实现的功能
+						（2）不能添加父类名称在前面；
+						（3）添加背景图片的写法必须写 background-image:url(images/1.jpg);
+	2、点击label标签的时候，for="but1"属性控制的是input下面的id，实现同点击input时候的效果
+-->

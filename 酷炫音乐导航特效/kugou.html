@@ -1,0 +1,70 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>酷炫音乐导航特效 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,ul,li,a{ margin:0px;padding:0px; }
+				body{font-family:"微软雅黑"; }
+				#nav{ width:100%; height:56px; margin-top:100px; background:#1f0a31 url(images/topbg1.jpg) no-repeat top center;}
+				#nav ul{width:700px; height:56px; margin:0 auto; padding-left:100px;}
+				#nav ul li{ list-style:none; width:100px; height:56px; line-height:56px; text-align:center; float:left; position:relative;}
+				#nav ul li a{ width:100%; color:#fff; font-size:16px; text-decoration:none; position:absolute; z-index:2; display:block; text-align:center;}
+				#nav ul li span{ width:100%; height:0px; background:rgba(0,0,0,.4); display:block; position:absolute; bottom:0px; left:0px;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="nav">
+				<ul>
+					<!--dataSrc自定义属性表示获取音乐的路径-->
+					<li dataSrc="do"><a href="javascript:void(0);">音乐库</a></li>
+					<li dataSrc="fa"><a href="javascript:void(0);">歌手库</a></li>
+					<li dataSrc="la"><a href="javascript:void(0);">图库</a></li>
+					<li dataSrc="mi"><a href="javascript:void(0);">歌词</a></li>
+					<li dataSrc="re"><a href="javascript:void(0);">直播</a></li>
+					<li dataSrc="si"><a href="javascript:void(0);">网页播放器</a></li>
+					<li dataSrc="sol"><a href="javascript:void(0);">下载</a></li>
+				</ul>
+			</div>
+			<div style="display:none;"><video src="mp3/do.mp3" id="music"></video></div>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				$("#nav ul li").hover(function(){
+					var html = "<span></span>";
+					$(this).append(html);
+					$(this).find("span").animate({ height:"56px"},500);
+					var _src = $(this).attr("dataSrc");
+					$("#music").get(0).src="mp3/"+_src+".mp3";
+					$("#music").get(0).play();
+				},function(){
+					$(this).find("span").animate({ height:"0px"},400);
+				});
+			</script>
+
+		</body>
+</html>

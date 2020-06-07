@@ -1,0 +1,19 @@
+body {
+    margin: 0 0 0 0;
+    background-color: #111;
+}
+p {
+    width: 100%;
+    text-align: center;
+    font: 20px Verdana;
+    color: #bbb;
+}
+a {
+    color: #ddd;
+    text-decoration: none;
+}
+canvas {
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+}

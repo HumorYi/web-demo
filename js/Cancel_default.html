@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--
+			<input id="userName" type="text" />
+			<script type="text/javascript">
+				var userName = document.getElementById('userName');
+				userName.onkeydown = function(e){
+					var charCode = (e || event).keyCode;
+					if(charCode<48 || charCode>57) {
+						alert("智能输入数字0~9");
+						//阻止默认行为
+						if(e){
+							e.preventDefault();	//标准
+						}else{
+							event.returnValue = false;	//IE
+						}
+					}
+				}
+			</script>-->
+			
+
+			<!--检测每个敲击键盘的动作是很消耗系统资源的，如果这些信息需要保存到数据库中，那么一个更好的方法是在提交前进行检测-->
+			<form id="regInfo" action="mm_or_px.html">
+				<input id="userName" type="text" />
+				<input type="submit" />
+			</form>
+			<script>
+				var regInfo = document.getElementById('regInfo');
+				var userName = document.getElementById('userName');
+				regInfo.onsubmit = function(e){
+					if(!/^[0-9]{6,9}$/.test(userName.value)){
+						alert('只能输入6~9位数字');
+						//阻止默认行为
+						if(e){
+							e.preventDefault();
+						}else{
+							event.returnValue = false;
+						}
+					}
+				}
+			</script>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript">
+				document.onclick = function(event){
+					with(window){	//浏览器兼容
+						var target = event.traget || event.srcElement;
+						alert("事件目标名称为："+target.nodeName);
+					}
+				}
+			</script>
+						
+		</body>
+</html>

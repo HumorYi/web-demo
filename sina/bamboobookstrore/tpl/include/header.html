@@ -1,0 +1,6 @@
+<ion-header-bar align-title="center">
+  <img src="img/bkCover.jpg" alt="logo" class="logo" ng-click="showSide()" ng-show="isShowLogo" />
+  <i class="icon ion-ios-arrow-left headerBack" ng-click="goBack()" ng-show="isShowBack"></i>
+  <h1 class="title dir fc">{{headerTitle}}</h1>
+<i class="icon headerHome" ng-class="homeClass" ng-hide="isShowLogo" ng-click="goHome()"></i>
+</ion-header-bar>

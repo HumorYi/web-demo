@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+		 <head>
+				  <meta charset="UTF-8">
+				  <meta name="Keywords" content="">
+				  <meta name="Description" content="">
+				  <title>Document</title>
+			<link rel="stylesheet" type="text/css" href="css/index1.css"></link>
+		 </head>
+		 <body>
+				<!--Top start-->
+				<div id="Top">
+						<!--head start-->
+						<div class="head">
+								<img  src="images/cart.png" alt="cart" width="16" height="16" align='absmiddle' />&nbsp;全省免费服务热线： 
+								<span>96556</span>
+								<span> 0731-84635555</span> 
+								旅行社同行热线：
+								<span>0731-84402588 </span>
+								<a href="#">登陆</a> 
+								<a href="#">注册</a>
+						</div>
+						<!--head end-->
+						<!--banner start-->
+						<div id="header">
+								<div class="logo">
+										<a href="#"><img src="images/logo.png" alt="logo" /></a>
+								</div>		
+								<div class="banner">
+									<a href="#">首 页</a>
+									<a href="#">出境游</a>
+									<a href="#">国内游</a>
+									<a href="#">特价游</a>
+									<a href="#">签 证</a> 
+								</div>
+								<div class="search">
+									<form>
+										<input type="text" class='txt' value="输入目的地" />
+										<input type="submit" class='but' value="" />
+									</form> 
+								</div>
+						</div>
+						<!--banner end-->
+				</div>
+		 <script type="text/javascript" src="js/jquery.js"></script>
+		 <script type="text/javascript">
+			/*	$(function(){
+					alert(1);
+				});*/
+				var d_Value=$("#Top #header .search input.txt").val(); //获取到他默认的值
+	//			alert(d_Value);
+				//获取焦点时
+				$("#Top #header .search input.txt").focus(function(){
+					if($(this).val()==d_Value){
+						$(this).val("");//当前输入框的值为空
+					}
+				});
+				//失去焦点时
+				$("#Top #header .search input.txt").blur(function(){
+					if($(this).val()==""){
+					$(this).val(d_Value);//给他赋他的初始值
+					}
+				});
+		 </script>
+		 </body>
+		 
+</html>
+<!--
+	1、构建一个宽度100% 高度149px 这样一个长方形，为了保证浏览器的兼容，我们加了 *{margin:0px;		padding:0px;}
+	2、给这个长方形，添加一个背景图片，背景图片默认的会延着水平方向平铺
+	3、在大长方形构建名字 head 的小长方形，并且设置在水平距中显示 margin:上下(0px) 左右(auto); 
+	4、如何控制图片和文字在竖直方向距中 align='absmiddle'  控制文字的样式  单独控制某此文字的颜		色，给他们单独加<span></span> 并控制他里面文字的颜色
+	5、讲到了a标签 a标签本身特性，如何去掉下划线，鼠标放上去改变文字颜色 a:hover{}
+	6、构建header长方形，设置在水平距中，在里面构建三个小的长方形，两个往左，一个往右显示(左边的左浮动float:left;，右边的右浮动float:right;)
+	7、讲到了a标签制作导航，讲到了一个空隙的兼容问题(float:left;)来解决
+	jquery.com官网
+-->

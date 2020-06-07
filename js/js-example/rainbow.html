@@ -1,0 +1,133 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>彩虹圈 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,table{ margin:0px;padding:0px; }
+				html{ width:100%; height:100%; font-family:"微软雅黑"; }
+				#bg{ position:absolute; left:0; top:0; width:100%; height:100%; background:#000; font-size:40px; color:#ccc; text-align:center;}				
+				#colorLine{ width:400px;}
+				#colorLine div{ width:5px; height:2px; float:left; overflow:hidden;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<table id="bg">
+				<tr height="300">
+					<td>彩虹进度条</td>
+				</tr>
+				<tr height="100">
+					<td align=center>
+						<div id="colorLine"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+			<script type="text/javascript">
+				var IE6 = navigator.userAgent.toLowerCase().indexOf('ie')+1 && /MSIE (5\.5|6\.)/i.test(navigator.userAgent);
+				var CL = document.getElementById('colorLine');
+
+				//创建彩虹进度条
+				function makeCLine(){
+					var r = 255;
+					var g = 0;
+					var b	 = 0;
+					var step = 1;
+
+					/*
+						1. 增加绿色
+						2. 减少红色
+						3. 增加蓝色
+						4. 减少绿色
+					*/
+
+					for (var  i=0; i<80 ;i++ ){
+						var node = document.createElement('div');
+						if(g>255 && step==1){
+							step = 2;
+						}
+						if(r<0 && step==2){
+							step = 3;
+						}
+						if(b>255 && step==3){
+							step = 4;
+						}
+						node.style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+						CL.appendChild(node);
+						if(step==1){
+							g += 14;
+						}
+						if(step==2){
+							r -= 14;
+						}
+						if(step==3){
+							b += 14;
+						}
+						if(step==4){
+							g -= 14;
+						}
+					}
+
+					var oNodeL = IE6 ? CL.firstChild : CL.firstChild.nextSibling;
+					var oNodeR = CL.lastChild;
+
+					//制作两端渐变效果
+					for(var i=0; i<20; i++){
+						oNodeL.style.cssText += ';opacity:'+(0.05*i)+';filter:Alpha(Opacity='+(0.05*i*100)+')';
+						oNodeR.style.cssText += ';opacity:'+(0.05*i)+';filter:Alpha(Opacity='+(0.05*i*100)+')';
+
+						oNodeL = oNodeL.nextSibling;
+						oNodeR = oNodeR.previousSibling;
+					}
+				}
+
+				//移动彩虹条
+				function makeCLMove(){
+					var colors = [];
+					for(var i=CL.lastChild; i; i=i.previousSibling){
+						if(i.style){
+							colors.unshift(i.style.backgroundColor);
+						}
+					}
+
+					var flag = 1; 
+					var j = 0;
+					setInterval(function(){
+						var sTempColor = CL.lastChild.style.backgroundColor;
+						var oNodeL = IE6 ? CL.firstChild : CL.firstChild.nextSibling;
+						for(var i=CL.lastChild; i; i=i.previousSibling){
+							if(i.previousSibling && i.previousSibling.style){
+								i.style.backgroundColor = i.previousSibling.style.backgroundColor;
+							}
+						}
+						if(j>(colors.length-1)){
+							flag = 0;
+						}else if(j<1){
+							flag = 1;
+						}
+						oNodeL.style.backgroundColor = flag ? colors[j++] : colors[j--];
+					},1);
+				}
+
+				makeCLine();
+				makeCLMove();
+			</script>
+		</body>
+</html>

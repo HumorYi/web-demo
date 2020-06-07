@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+		
+			<script language="javascript" type="text/javascript">
+				function ReplaceDemo(){
+					var r, re, ss;
+					ss = 'The man hit the ball with the bat. \n';
+					ss += 'while the fielder caught the ball with the glove.';
+					re = /The/g;
+					r = ss.replace(re,'A');
+					return(r);
+				}
+
+				function ChangeDemo(){
+					var r, re, ss;
+					ss = 'The rain in Spain falls mainly in the plain.';
+					re = /(\S+)+(\s+)+(\S+)/g;
+					r = ss.replace(re, '$3 $2 $1');
+					return(r);
+				}
+
+				function temperature(s){
+					var test = /(\d+(\.\d*)?)F\b/g;
+					return(s.replace(test , function($0,$1,$2){
+						return((($1-32)*5/9)+'C');	//	返回从华氏到摄氏的转换
+					}));
+				}
+
+				with(document){
+					writeln('执行 ReplaceDemo()的结果如下：');
+					writeln(ReplaceDemo()+'<br />');
+
+					writeln('执行 ChangeDemo()的结果如下：');
+					writeln( ChangeDemo()+'<br />');
+
+					writeln('执行 temperature("Water freezes at 32F and boils at 212F.")的结果如下：');
+					writeln( temperature('Water freezes at 32F and boils at 212F.')+'<br />');
+				}
+			</script>
+
+		</body>
+</html>
+<!--
+	replace(rgExp, replaceText);
+	1、replace()方法的结果是一个完成了指定替换的stringObj对象的复制；
+	2、如果replaceText为函数，对于每一个匹配的子字符串，调用该函数时带有下面的m+3个参数，此处m是在rgExp中捕获的左括弧的个数。第一个参数是匹配的子字符串。接下来的m个参数是查找中捕获的左括弧的个数。第m+2个参数是在stringObj中匹配出现的偏移量，而第m+3个参数为stringObj。结果为将每一匹配的子字符串替换为函数调用的相应返回值的字符串值。
+	Replace方法更新全局RegExp对象的属性。
+-->

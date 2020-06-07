@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1{ width: 100px; height: 150px; background: red; position: absolute; right: 0; bottom: 0; }
+		#txt1{ position: fixed; right: 0; top: 0; }
+	</style>
+	<script type="text/javascript">
+		window.onscroll = function(){
+			var oDiv = document.getElementById('div1');
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			//参数内为屏幕可视区内的高度
+			startMove(parseInt((document.documentElement.clientHeight - oDiv.offsetHeight)/2 + scrollTop));
+		}
+
+		var timer = null;
+
+		function startMove(iTarget){
+			var oDiv = document.getElementById('div1');
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var speed = (iTarget - oDiv.offsetTop)/4;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				if (oDiv.offsetTop == iTarget) {
+					//清除定时器，防止出现抖动
+					clearInterval(timer);
+				}else{
+					document.title = iTarget;
+					document.getElementById('txt1').value = oDiv.offsetTop;
+					oDiv.style.top = oDiv.offsetTop + speed +'px';
+				}
+			},30);
+		}
+	</script>
+</head>
+<body style="height:2000px;">
+	<input id="txt1" type="text" />
+	<div id="div1"></div>
+</body>
+</html>

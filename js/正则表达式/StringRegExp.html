@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form name="myform">
+        <center>
+            <h2>String对正则表达式的支持</h2>
+            <h2>要进行测试的字符串为：ab12cd34ef56gh78ig</h2>
+            <br>
+            <input type="button" value="search方法测试" onclick="clickfun1()">
+            <input type="button" value="match方法测试" onclick="clickfun2()">
+            <input type="button" value="replace方法测试" onclick="clickfun3()">
+            <input type="button" value="split方法测试" onclick="clickfun4()">
+        </center>
+    </form>
+
+    <script type="text/javascript">
+    	function clickfun1(){
+    		var str = 'ab12cd34ef56gh78ig';
+    		var reg = /\d\d/;
+    		var index = str.search(reg);
+    		s = "在字符串的第 "+index+ " 个字符位置找到了和模式"+ reg+"匹配的字符串";
+    		alert(s);
+    	}
+
+    	function clickfun2(){
+    		var str = 'ab12cd34ef56gh78ig';
+    		var reg = /\d\d/g;
+    		var arr = str.match(reg);
+    		var s ;
+    		s = 'match方法测试：\n';
+    		s += '与' +reg+ '匹配的字符串有：\n[';
+
+    		for (var i = 0; i < arr.length; i++) {
+    			if (i < arr.length-1) s += arr[i] + ',';
+    			else s += arr[i] + ']\n';
+    		}
+    		alert(s);
+    	}
+
+    	function clickfun3(){
+    		var str1 = 'ab12cd34ef56gh78ig';
+    		var reg = /(\d)(\d)/g;
+    		var str2 = str1.replace(reg,'$2$1');
+    		alert(str1 +'被替换为：'+ str2);
+    	}
+
+    	function clickfun4(){
+    		var str = 'ab12cd34ef56gh78ig';
+    		var arr = new Array();
+    		var reg = /\d\d/;
+    		arr = str.split(reg);
+    		var s ;
+    		s += "字符串"+str+"被模式"+reg+"分割为：\n";
+
+    		for (var i = 0; i < arr.length; i++) {
+    			if (i < arr.length-1) s += arr[i] + ',';
+    			else s += arr[i] ;
+    		}
+    		alert(s);
+    	}
+    </script>
+</body>
+</html>

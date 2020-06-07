@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById("btn1");
+			var oUl = document.getElementById("ul1");
+			var oTxt = document.getElementById("txt1");
+
+			oBtn.onclick = function(){
+				//创建元素
+				var oLi = document.createElement("li");
+				var aLi = oUl.getElementsByTagName("li");
+				//传值
+				oLi.innerHTML = oTxt.value;
+
+				//兼容ie和chrome
+				if (aLi.length>0) {
+					//在顶部添加
+					oUl.insertBefore(oLi,aLi[0]);
+				} else {
+					//父级.appendChild(子节点);从上至尾插入
+					oUl.appendChild(oLi);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="txt1" type="text" />
+	<input id="btn1" type="button" value="创建1" />
+	<ul id="ul1"></ul>
+</body>
+</html>

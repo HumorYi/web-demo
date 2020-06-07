@@ -1,0 +1,9 @@
+body {
+    overflow: hidden;
+    margin: 0;
+}
+canvas {
+    position: absolute;
+    -webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+}

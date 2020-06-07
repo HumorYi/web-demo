@@ -1,0 +1,37 @@
+html {
+    background: #000;
+    height: 100%;
+    padding: 10px;
+}
+body {
+    background: #000;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+}
+label {
+    color: #fff;
+    position: absolute;
+    font-family: helvetica;
+}
+input {
+    color: #fff;
+    border: 1px solid #666;
+    background: #333;
+    border-radius: 4px;
+    text-align: center;
+}
+input:focus {
+    outline: none;
+}
+canvas {
+    border: 1px solid #887;
+    border-radius: 500px;
+    box-shadow: 0 0 40px #998;
+    display: block;
+    margin: auto;
+    height: 100%;
+    max-width: 100%;
+}

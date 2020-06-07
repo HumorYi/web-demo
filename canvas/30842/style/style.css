@@ -1,0 +1,16 @@
+body {
+    background: #000;
+}
+body .controls {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.5em;
+    color: white;
+}
+body .controls input {
+    height: 2em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none;
+    border-radius: 1.5em;
+    width: 5em;
+}

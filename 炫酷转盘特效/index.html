@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" onselectstart="return false"> <!--阻止图片复制-->
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>3D立体相册旋转 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,img{ 
+					margin:0px;padding:0px; 
+				}
+				html{ 
+					width:100%; height:100%; font-family:"微软雅黑"; background:#000; overflow:hidden;
+				}
+				#wrap{
+					width:133px; height:200px; margin:350px auto; position:relative; transform-style:preserve-3d;transform: perspective(800px) rotateX(-10deg) rotateY(0deg);
+				}
+				#wrap img{
+					width:100%; height:100%; position:absolute; top:0px; left:0px;  box-shadow:0 0 8px #fff; -webkit-box-reflect:below 8px -webkit-linear-gradient(top,rgba(0,0,0,0) 40% , rgba(0,0,0,.5) 100%);/*倒影*/
+				}
+			</style>	
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				window.onload = function(){
+					var owrap = document.getElementById('wrap');
+					var oimg = document.getElementById('wrap').getElementsByTagName('img');
+					var deg = 360/oimg.length;
+					//当前点的坐标和前一点的坐标
+					var x , y , x_ , y_, xN, yN;
+					//定义初始的选择角度
+					var roy = 0, rox = -10;
+					for (var i=0;i<oimg.length ;i++ )
+					{
+						//每张图片的旋转角度
+						oimg[i].style.transform = 'rotateY('+i*deg+'deg) translateZ(350px)';
+						//设置图片开始旋转的时间，最后一个图片不延迟
+						oimg[i].style.transition = '1s '+(oimg.length-i-1)*0.1+'s';
+						//阻止图片拖拽
+						oimg[i].ondragstart = function(){
+							return false;
+						}
+					}
+					
+					timer = null;
+					//鼠标按下事件
+					document.onmousedown = function(ev){
+						clearInterval(timer);
+						ev = ev || window.event;
+						x_ = ev.clientX;
+						y_ = ev.clientY;
+						//鼠标移动事件
+						this.onmousemove = function(ev){
+							ev = ev || window.event;
+							//获取鼠标当前点的坐标值
+							x = ev.clientX;
+							y = ev.clientY;
+							
+							//当前点与前一点坐标值之差
+							xN = x - x_;
+							yN = y - y_;
+							
+							//获取重新初始坐标
+							roy += xN*0.2;
+							rox -= yN*0.2;
+							owrap.style.transform = 'perspective(800px) rotateX('+rox+'deg) rotateY('+roy+'deg)';
+
+							//测试鼠标移动轨迹
+							/*
+							for (var key in ev)
+							{
+								console.log(key +','+ ev[key]);
+							}
+							*/
+							/*
+							var odiv = document.createElement('div');
+							this.body.appendChild(odiv);
+							odiv.style.cssText = 'width:5px; height:5px; background:red; position:absolute; left:'+x+'px; top:'+y+'px;';
+							*/
+
+							//获取鼠标前一点的坐标值
+							x_ = ev.clientX;
+							y_ = ev.clientY;
+						}
+						//鼠标抬起事件
+						this.onmouseup = function(){
+							this.onmousemove = null;
+							timer=setInterval(function(){
+								xN *= 0.95;
+								yN *= 0.95;
+								if ( Math.abs(xN)<0.5 && Math.abs(yN<0.5) )
+								{
+									clearInterval(timer);
+								}
+								roy += xN*0.2;
+								rox -= yN*0.2;
+								owrap.style.transform = 'perspective(800px) rotateX('+rox+'deg) rotateY('+roy+'deg)';
+							},30);
+						}
+					}
+				};
+			</script>
+
+		</head>
+		<!--网页身体-->
+		<body>
+			<div id="wrap">
+				<img src="img/1.jpg"  />
+				<img src="img/2.jpg" />
+				<img src="img/3.jpg" />
+				<img src="img/4.jpg" />
+				<img src="img/5.jpg" />
+				<img src="img/6.jpg" />
+				<img src="img/7.jpg" />
+				<img src="img/8.jpg" />
+				<img src="img/9.jpg" />
+				<img src="img/10.jpg" />
+				<img src="img/11.jpg" />
+			</div>
+		</body>
+</html>

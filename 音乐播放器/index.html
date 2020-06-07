@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>音乐播放器 - Andy</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+		<style type="text/css">
+				html,body,div,img,ul,li{margin:0px;padding:0px;}
+				body{background:url("images/bg.jpg")no-repeat;background-size: cover;font-size:12px;font-family:"微软雅黑";}
+				ul,li{list-style:none;}
+				#box{width:630px;border:1px solid #ddd;overflow:hidden;margin:100px auto 40px;border-radius:10px;box-shadow:0px 0px 40px #96EDFF;}
+				#box img{float:left;display:block;}
+				#box #Ircbox{width:380px;height:280px;float:left;}
+				#box #Ircbox ul#Irc_list{font-size:18px;color:#ddd;}
+				#box #Ircbox ul#Irc_list li{height:24px;padding:8px;transition:all 0.3s ease;}
+				#box #Ircbox ul#Irc_list li.hover{color:#96EDFF;font-size:24px;}
+				audio{margin:0px auto;display:block;}
+		</style>
+ <body>
+		<div id="box">
+			<img src="images/1.gif" alt="求佛图片" width="248" height="280" />
+			<div id="Ircbox">
+					<ul id="Irc_list"></ul>
+			</div>
+		</div>
+		<audio src="mp3/求佛.mp3" id="audio" controls="controls" autoplay loop></audio>
+		<textarea id="Irc" style="display:none;">
+				[00:02.00]求佛
+				[00:04.40]词曲：陈超 
+				[00:06.48]演唱：誓言
+				[00:08.48]
+				[00:35.50]当月光洒在我的脸上
+				[00:39.36]我想我就快变了模样
+				[00:44.25]有一种叫做撕心裂肺的汤
+				[00:48.16]喝了它有神奇的力量
+				[00:51.30]
+				[00:52.93]闭上眼   看见天堂
+				[00:56.02]那是藏着你笑的地方
+				[01:00.96]我躲开无数个猎人的枪
+				[01:04.78]赶走坟墓爬出的忧伤
+				[01:08.00]
+				[01:08.56]为了你  我变成狼人模样
+				[01:12.67]为了你  染上了疯狂
+				[01:16.73]为了你  穿上厚厚的伪装
+				[01:20.99]为了你  换了心肠
+				[01:24.02]
+				[01:26.11]我们还能不能再见面
+				[01:29.10]我在佛前苦苦求了几千年
+				[01:33.26]愿意用几世换我们一世情缘
+				[01:37.45]希望可以感动上天
+				[01:41.08]
+				[01:41.68]我们还能不能能不能再见面
+				[01:45.79]我在佛前苦苦求了几千年
+				[01:49.96]当我在踏过这条奈何桥之前
+				[01:54.13]让我再吻一吻你的脸
+				[01:58.05]
+				[02:33.20]闭上眼   看见天堂
+				[02:36.16]那是藏着你笑的地方
+				[02:41.22]我躲开无数个猎人的枪
+				[02:44.97]赶走坟墓爬出的忧伤
+				[02:48.08]
+				[02:48.68]为了你  我变成狼人模样
+				[02:52.82]为了你  染上了疯狂
+				[02:57.04]为了你  穿上厚厚的伪装
+				[03:01.23]为了你  换了心肠
+				[03:04.10]
+				[03:06.03]我们还能不能再见面
+				[03:09.24]我在佛前苦苦求了几千年
+				[03:13.38]愿意用几世换我们一世情缘
+				[03:17.64]希望可以感动上天
+				[03:21.23]
+				[03:21.83]我们还能不能能不能再见面
+				[03:25.90]我在佛前苦苦求了几千年
+				[03:30.12]当我在踏过这条奈何桥之前
+				[03:34.38]让我再吻一吻你的脸
+				[03:39.11]
+				[03:39.71]我们还能不能再见面
+				[03:42.68]我在佛前苦苦求了几千年
+				[03:46.80]愿意用几世换我们一世情缘
+				[03:51.00]希望可以感动上天
+				[03:55.28]我们还能不能能不能再见面
+				[03:59.29]我在佛前苦苦求了几千年
+				[04:03.63]当我在踏过这条奈何桥之前
+				[04:07.59]让我再吻一吻你的脸
+				[04:12.02]让我再吻一吻你的脸
+				[04:16.11]让我再吻一吻你的脸
+		</textarea>
+		<!--
+			1.歌词解析
+			2.歌词跳动
+		-->
+		<script type="text/javascript">
+				//封装方法
+				function $(id){
+					return document.getElementById(id);
+				};
+				//获取歌词对象
+				var audioDom =$("audio");
+				//歌词的监控 时间 
+				audioDom.ontimeupdate =function(){
+					var t = parseInt(this.currentTime);
+	//				console.log(t);
+					Irc.jump(t);
+				};
+				window.onload = function(){
+					//获取歌词的值
+					Irc.init($("Irc").value);	
+				}
+				var Irc = {
+					//正则方法 去掉前后的空格 s 表示空格 | 并且 $ 结束
+					regex_trim:/^\s+|\s+$/,
+				//	对象的写法
+					init:function(Irctext){
+				//	alert(Irctext);	
+					var txts = Irctext.split("\n");
+				//通过空格把歌词分成一个一个的数 歌词换行添加了一个空格
+				//	alert(txts);
+					var html ="";
+					for (var i=0;i<txts.length ;i++ )
+					{	
+						//去掉空格
+						var item = txts[i].replace(this.txts,"");
+						//歌词时间分离 split 分离
+						var ms = item.split("]");
+					//	alert(ms[i]);
+					//浏览器的控制台
+					//	console.log(ms[i]);
+						//播放器播放到这个歌词的总的时间
+						var mt = ms[0].replace("[","").split(":");
+					//	console.log(mt[i]);
+					//运动的时间点
+					//mt[0] 分，mt[1] 秒
+						var m = parseInt(mt[0]*60+mt[1]*1);
+					//	console.log(m);
+						var txt =ms[1];
+						//拿到歌词
+					//	console.log(txt);
+					//把运行的数字时间做成id就可以获取每一行
+					//叠加到整个页面当中
+					if (txt !="")
+					{ 
+						html+="<li id='t_"+m+"'>"+txt+"</li>";
+					}
+					}
+					$("Irc_list").innerHTML += html;	
+					},
+					jump:function(duration){
+					//	console.log(duration);
+						var dom = $("t_"+duration);
+						var Ircbox = $("Irc_list"); 
+						if (dom)
+						{
+							var arr=this.siblings(dom);
+							for (var i=0;i<arr.length ;i++ )
+							{
+								arr[i].className="";
+							}
+							dom.className ="hover";
+							var index =this.indexof(dom)-3;
+							Ircbox.style.marginTop =(index<0?0:index) *-40+"px";
+						}
+					},
+					//查看当前歌词的一个变化情况
+					indexof:function(dom){
+						var listDoms = dom.parentElement.children;
+						var index = 0;
+						for (var i=0;i<listDoms.length ;i++ )
+						{
+							if (listDoms[i]==dom)
+							{
+								index = i;
+								break;
+							}
+						}
+						return index;
+					},
+					//获取同级元素
+					siblings:function(dom){
+						var listDoms = dom.parentElement.children;
+						var arr =[];
+						//不一样的单独提取出来 重新做一个样式的修改
+						for (var i=0;i<listDoms.length ;i++ )
+						{
+							if (listDoms[i]!=dom)
+							{
+								arr.push(listDoms[i]);
+							}
+						}
+						return arr;
+					}
+				};
+		</script>
+ </body>		
+</html>

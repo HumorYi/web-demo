@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+		
+			<script language="javascript" type="text/javascript">
+				function SubStrDemo(){
+					var s, ss;
+					s = 'The rain in Spain falls mainly in the plain.';
+					ss = s.substr(12,5);	//12到后面的5个字符
+					return(ss);
+				}
+
+				function SubstringDemo(){
+					var s, ss;
+					s = 'The rain in Spain falls mainly in the plain.';
+					ss = s.substring(12,17);	//12到17
+					return(ss);
+				}
+
+				with(document){
+					writeln('执行 SubStrDemo()的结果如下：');
+					writeln(SubStrDemo()+'<br />');
+
+					writeln('执行 SubstringDemo()的结果如下：');
+					writeln( SubstringDemo()+'<br />');
+				}
+			</script>
+
+		</body>
+</html>
+<!--
+	1、substr(start[ , length])方法返回一个从指定位置开始的指定长度的子字符串。该函数的length参数为0或负数，将返回一个空字符串。如果没有指定该参数，则自字符串将延续到字符串的最后。
+	2、substring(start,end)方法返回位于String对象中指定位置的子字符串。该方法将返回一个包含从start到最后(不包含end)的子字符串的字符串。该方法使用start和end两者中的较小值作为子字符串的起始点。如果start或end为NaN或者负数，那么将其替换为0。子字符串的长度等于start和end之差的绝对值。
+-->

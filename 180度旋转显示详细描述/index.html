@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--基于W3C标准 不用做任何修改-->
+<html xmlns="http://www.w3.org/1999/xhtml"><!--起始标准-->
+<head><!--设置初始化文档信息和文档管理标注-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--整个页面编码 utf-8 国际编码 通用性最强，GBK/gb2312 中文-->
+<!--页面三要素-->
+<title>180度旋转显示详细描述</title>
+<meta name="Keywords" content="关键字,关键字">
+<meta name="Description" content="描述">
+<!--js css-->
+<style type="text/css">
+body{background:#EAEAEA;}
+h3,p{margin:0;padding:0;}
+.main{width:700px;margin:0 auto;}
+.box{width:200px;height:200px;border:5px solid #fff;box-shadow:0px 0px 3px #ccc;overflow:hidden;cursor:pointer;float:left;margin:5px;}
+
+.box img{width:200px;height:200px;}
+
+.cap{width:170px;height:170px;background:#000;color:#fff;line-height:140%;padding:15px;
+transform:rotate(180deg);/*兼容IE9+以上浏览器*/
+-webkit-transform:rotate(180deg);/*兼容google Chrome浏览器*/
+}
+.cap h3{font-size:14px;}
+.cap p{font-size:12px;}
+
+.rotate{width:200px;height:400px;
+transition:all 800ms ease;
+-webkit-transition:all 800ms ease;
+}
+
+.box:hover .rotate{
+transform:rotate(180deg);/*兼容IE9+以上浏览器*/
+-webkit-transform:rotate(180deg);/*兼容google Chrome浏览器*/
+}
+
+</style>
+</head>
+
+<body>
+<!--
+div 层 盒子 容器
+class 命名规则（需要一个容易记的名字） 只能使用字母开头 不能使用中文、数字、特殊字符开头
+--> 
+<div class="main">
+	<div class="box">
+		<div class="rotate">
+		<img src="images/1.jpg"/>
+		<div class="cap">
+			<h3>性感美女</h3>
+			<p>美女，一般解释为容貌美丽的女子。营养专家提出的营养学上的美女定义，是从脸蛋比例、体质指数、健康指标和发育程度等方面进行要求，更倾重于一种健康的标准...</p>
+		</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="rotate">
+		<img src="images/2.jpg"/>
+		<div class="cap">
+			<h3>金秀贤优雅帅气绅士高清写真</h3>
+			<p>金秀贤，1988年2月16日生于首尔，韩国演员。2007年参演电视剧《泡菜奶酪微笑》出道。2011年首次在电视剧《Dream High》中担当主角，并在KBS演技大赏中独揽三奖。...</p>
+		</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="rotate">
+		<img src="images/3.jpg"/>
+		<div class="cap">
+			<h3>经典必玩路线普吉岛之旅</h3>
+			<p>江西冷购物中心拥有200个以上租借店，商场超市等纷纷进驻，形成了芭东海滩最大规模的购物中心。饮食区、娱乐区、休闲区兼备。每晚这里都会举办音乐灯光秀...</p>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+</body>
+</html>

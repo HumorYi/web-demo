@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+		
+			<script language="javascript" type="text/javascript">
+				with(document){
+					//write(variable);
+					writeln('undefined');
+					writeln(undefined);
+
+					writeln(typeof 'undefined');
+					writeln(typeof undefined);
+					writeln(typeof variable);
+				}
+			</script>
+
+		</body>
+</html>
+<!--
+	1、undefined 是JavaScript中一个“已定义”的全局变量值，而不是它的字面意义所表达的未定义。
+	2、undefined是脚本引擎定义的一个常量，它在脚本引擎初始化完毕后存在。
+	3、它的实际作用是表示一个已定义的变量的未初始化状态。
+-->

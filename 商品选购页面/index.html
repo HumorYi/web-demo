@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+	<head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>商品选购页面</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+			/*content start*/
+			html,body,div,p,span,b,a,input{ margin:0; padding:0; }
+			body{font-family:"微软雅黑";}
+			/*content start*/
+			.content{ width:600px; height:360px; margin:50px auto; }
+			.content .top{ width:600px; height:220px; border-bottom:1px solid #ddd; }
+			.content .top p{ margin-bottom:15px; }
+			.content .top p b{ font-size:14px; font-weight:normal;margin-right:20px; }
+			.content .top p span{ font-size:14px; color:#666; padding:7px; border:1px solid #ccc; display:inline-block;/*块结构的元素显示，行颜色的元素排列*/ margin-right:10px; margin-right:10px; cursor:pointer;}
+			.content .top p .on{ border:2px solid #e9630a; padding:6px; background:url("images/bk.jpg")no-repeat 100% 100%; /*上传是需更改background:url("<?php bloginfo('template_url'); ?>/images/")no-repeat 100% 100%;*/}
+			.bottom{ width:600px;height:109px; padding-top:30px; }
+			.bottom p b{ font-weight:normal; font-size:18px; }
+			.bottom p span{ color:#e9630a; }
+			.bottom p a{ font-size:14px; margin-left:20px; }
+			.bottom input{ width:330px;height:50px; background:#e9630a;border:none; color:#fff; font-size:18px; margin-top:20px; cursor:pointer; }
+			.bottom input:hover{background:#408080;color:#a6a6a6;}
+		</style>
+    </head>
+	<body>
+		<!--content start-->
+		<div class="content">
+				<!--top start-->
+
+				<div class="top">
+					<!--model start-->
+					<p class="model">
+						<b>型号</b>
+						<span class="on">4.7英寸</span>
+						<span>5.5英寸</span>
+					</p>
+					<!--model end-->
+
+					<!--color start-->
+					<p class="color">
+						<b>颜色</b><span class="on">银色</span>
+						<span>金色</span>
+						<span>深空灰色</span>
+					</p>
+					<!--color end-->
+
+					<!--rom start-->
+					<p class="rom">
+						<b>内存</b>
+						<span class="on">16GB</span>
+						<span>64GB</span>
+						<span>128GB</span>
+					</p>
+					<!--rom end-->
+
+					<!--banben-->
+					<p class="banben"><b>版本</b><span class="on">公开版</span>
+					<span>移动赠费版</span><span>联通合约版</span></p>
+					<!--banben end-->
+
+				</div>
+				<!--top end-->
+
+				<!--bottom start-->
+				<div class="bottom">
+					<p>
+						<b>价格：</b>
+						<span>￥<span class="price">5288</span> .00</span>
+						<a href="#">移动赠费版或联通合约版购机价格计算请点击这里&gt;.&lt</a>
+					</p>
+					<input type="submit" value="结算" />
+				</div>
+				<!--bottom end-->
+
+		</div>
+	</body>
+
+	<script src="js/jquery.js"></script>
+	<!--
+	FlashFXP软件
+	index.html ->index.php
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
+	西西数码
+	-->
+	<script type="text/javascript">
+
+	// $ 查找 匹配  javascript 严格区分大小写
+		$(function(){
+	//		alert(1);
+			$(".top p span").click(function(){
+			//	alert(1);
+				$(this).addClass("on").siblings("span").removeClass("on");
+			});
+
+			//var price1 = 5288;全局变量这种命名方法能不用就不用 不能被销毁，容易忽略
+			var price1 = 5288;
+			var price2 = 0;
+			var price3 = 0;
+			var price4 = 0;
+			$(".model span").click(function(){
+				var index = $(this).index();
+			//	var price1 =$(".bottom .price").html();
+			//	alert(index);
+				switch (index)
+				{
+				case 1:
+						price1 = 5288;
+						break;
+				case 2:
+						price1 = Number(price1)+800;
+						break;
+				};
+				$(".bottom .price").html(price1+price2+price3+price4);
+			});
+
+			$(".color span").click(function(){
+				var index = $(this).index();
+				switch (index)
+				{
+				case 1:
+						price2 = 0;
+						break;
+				case 2:
+						price2 = 200;
+						break;
+				case 3:
+						price2 = 300;
+						break;
+				};
+				$(".bottom .price").html(price1+price2+price3+price4);
+			});
+
+			$(".rom span").click(function(){
+				var index = $(this).index();
+				switch (index)
+				{
+				case 1:
+						price3 = 0;
+						break;
+				case 2:
+						price3 = 800;
+						break;
+				case 3:
+						price3 = 1600;
+						break;
+				};
+				$(".bottom .price").html(price1+price2+price3+price4);
+			});
+
+			$(".banben span").click(function(){
+				var index = $(this).index();
+				switch (index)
+				{
+				case 1:
+						price4 = 0;
+						break;
+				case 2:
+						peice4 = 200;
+						break;
+				case 3:
+						price4 = 300;
+						break;
+				};
+				$(".bottom .price").html(price1+price2+price3+price4);
+			});
+		});
+	</script>
+</html>
+

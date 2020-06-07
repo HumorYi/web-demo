@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>魔鬼训练班_静态网站首页开发二</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="
+厦工楚胜洒水车免交购置税,洒水车现货供应。购车热线:18672281711.2014年最全的洒水车图片,最新的洒水车价格,欢迎前来选购。">
+		<!--css , js-->
+		<link rel="stylesheet" type="text/css" href="css/index1.css">
+	</head>
+	<body>
+	<!--Top start-->
+	<div id="Top">
+		<!--头部信息开始-->
+		<div class="head"><img src="images/cart.png" align='absmiddle'/>&nbsp;全省免费服务热线：
+				<span>96556</span> <span>0731-84635555</span>旅行社同行热线：<span>0731-84402588</span> <a href="#">登陆</a> <a href="#">注册</a>
+		</div>
+		<!--头部信息结束-->
+
+		<!--banner开始-->
+		<div id="header">
+			<div class="banner"><a href=""><img src="images/logo.png" /></a></div>
+			<div class="logo">
+				<a href="">首页</a>
+				<a href="">出境游</a>
+				<a href="">国内游</a>
+				<a href="">特价游</a>
+				<a href="">签 证</a>
+			</div>
+			<!--搜索开始-->
+			<div class="search">
+				<form>
+					<input type="text" class='txt' value="输入目的地"/>
+					<input type="submit" class='but' value=""/>
+				</form>
+			</div>
+			<!--搜索结束-->
+		</div>
+		<!--banner结束-->
+
+		<!--导航开始-->
+		<div class="Nav">
+			<div class="mainNav">
+				<ul>
+					<li><a href="#">出境跟团游</a>
+						<div class="menu">
+							<p><span>台湾港澳:</span> <a href="#">台湾</a> | <a href="#">香港</a> | <a href="#">澳门</a></p>
+							<p><span>东南亚:</span> <a href="#">泰国</a> | <a href="#">新加坡</a> | <a href="#">马来西亚</a> | <a href="#">越南</a> | <a href="#">柬埔寨</a> | <a href="#">老挝</a> | <a href="#">印度</a> | <a href="#">尼泊尔</a></p>
+							<p><span>台湾港澳:</span> <a href="#">台湾</a> | <a href="#">香港</a> | <a href="#">澳门</a></p>
+							<p><span>东南亚:</span> <a href="#">泰国</a> | <a href="#">新加坡</a> | <a href="#">马来西亚</a> | <a href="#">越南</a> | <a href="#">柬埔寨</a> | <a href="#">老挝</a> | <a href="#">印度</a> | <a href="#">尼泊尔</a></p>
+						</div>
+					</li>
+
+					<li><a href="#">出境自由行</a>
+						<div class="menu"></div>
+					</li>
+
+					<li><a href="#">国内跟团游</a>
+						<div class="menu"></div>
+					</li>
+
+					<li><a href="#">国内自由行</a>
+						<div class="menu"></div>
+					</li>
+
+					<li><a href="#">湖南周边游</a>
+						<div class="menu"></div>
+					</li>
+				</ul>
+			</div>
+			<div class="smallNav"><a href="#">泰国</a> <a href="#">台湾</a> <a href="#">普吉</a></div>
+		</div>
+		<!--导航结束-->
+	</div>
+	<!--Top end-->
+	<!--Adv start-->
+	<div id="Adv">
+		<div class="ImgList"
+			style="background:url('images/adv1.jpg') center">
+		</div>
+		<div class="ImgList"
+			style="background:url('images/adv2.jpg') center">
+		</div>
+		<div class="ImgList"
+			style="background:url('images/adv3.jpg') center">
+		</div>
+		<div class="ImgList"
+			style="background:url('images/adv4.jpg') center">
+		</div>
+		<ul class="button">
+			<li class="hover"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!--Adv end-->
+	<!--
+	1、构建一个大的长方形，用来放图片列表和按扭，然后我们在里面构建四个大小一样的长方形，用来放图片列表(图片是当成背景图片插入进去，千万不能直接插入图片)
+	2、相对和绝对定位，把四个长方形图片区块，放在一起;
+	3、利用ul 无序列表来制切换按扭,同样是通过相对和绝对定位来进行位置的调整
+	4、如何让ul 的宽度，自适应(他里面的内容有多宽，他就有多宽)定位的元素会在所有没有定位的元素上面
+	5、发现导航出不来，是因为背图片给覆盖了，我们通过z-index:3;来改控制那个在上面，(值越大越在上面)
+	6、利用js搞定，鼠标放上去时的图片切换效果
+	-->
+	<!--引用外部jquery类库-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!--最后面引用才可用-->
+	<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

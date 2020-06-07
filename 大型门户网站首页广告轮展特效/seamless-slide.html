@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	 <head>
+	  <title> New Document </title>
+		<style type="text/css">
+			#ctrl{position:absolute;left:50%;top:50%;margin-left:-240px;margin-top:-95px;overflow:hidden;}
+			#ctrl,#conA,#conB{position:absolute;width:480px;height:190px;}
+			#ctrl .common{position:relative;float:left;width:160px;height:190px;}
+		</style>
+	  <script type="text/javascript">
+		var timer;
+		function mytop(){
+			conA.style.pixelLeft -= 2; // pixelLeft 没有单位的，left 有单位
+			conB.style.pixelLeft -= 2;
+			if(conA.style.pixelLeft<=-480){
+				conA.style.pixelLeft = 480;
+			}
+			if(conB.style.pixelLeft<=-480){
+				conB.style.pixelLeft = 480;
+			}
+			timer = setTimeout("mytop()",10);
+		}
+		window.onload=mytop;
+	  </script>
+	 </head>
+	 <body>
+		 <div id="ctrl">
+				<div id="conA" style="left:0px;">
+				   <div id="innerA1" class="common">
+					  <img src="ad-04.jpg" width="160" height="190">
+				   </div>
+				   <div id="innerA2" class="common">
+					  <img src="ad-05.jpg" width="160" height="190">
+				   </div>
+				   <div id="innerA3" class="common">
+					  <img src="ad-06.jpg" width="160" height="190">
+				   </div>
+				</div>
+				<div id="conB" style="left:480px;">
+				   <div id="innerB1" class="common">
+					  <img src="ad-04.jpg" width="160" height="190">
+				   </div>
+				   <div id="innerB2" class="common">
+					  <img src="ad-05.jpg" width="160" height="190">
+				   </div>
+				   <div id="innerB3" class="common">
+					  <img src="ad-06.jpg" width="160" height="190">
+				   </div>
+				</div>
+		 </div>
+	</body>
+</html>

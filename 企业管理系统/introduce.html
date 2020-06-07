@@ -1,0 +1,352 @@
+
+
+
+<html lang="en">
+	 <head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>企业管理系统--简介</title>
+		<style type="text/css">
+			html,body,div,ul,li,span,input,a,img,table,tr,td{margin:0px;padding:0px;}
+			body{font-size:14px;font-family:"微软雅黑";background:url(images/top_01.gif);}
+
+			/*commonality S*/
+			ul li{list-style:none;}
+			li,img{cursor:pointer}
+			a{color:#353535;text-decoration:none;}
+			a:hover{text-decoration:underline;color:#C13232;}
+			span.font{font-size:22px;color:#0b66a8;margin:0px 0px;line-height:34px;
+			background:url(images/class_46.jpg);display:block;border-radius:12px 12px 0px 0px;}
+			span.font img{border-radius:12px 0px 0px 0px;}
+			span img{float:left;}
+			input,textarea{outline:none;}
+			/*commonality E*/
+			
+			/*head S*/
+			.head{width:1001px;height:91px;margin:0px auto;}
+			.head .logo{width:384px;height:91px;float:left;padding-bottom:0px;
+			background:url(images/logo.gif);}
+			.head ul{width:617px;height:91px;float:right;background:url(images/top_04.gif) no-repeat;}
+			.head ul li{width:75px;float:right;
+			margin:40px 20px;position:relative;text-align:center;line-height:20px;}
+			.head ul li img{width:3px;height:3px;position:absolute;bottom:7px;left:-20px;}
+			.head ul li a{color:#fff;}
+			/*head E*/
+			
+			/*banner S*/
+			.banner{width:980px;height:37px;margin:0px auto;}
+			.banner ul li{width:80px;height:37px;float:left;}
+			.banner ul li.b1{background:url(images/top_06.gif);width:81px;}
+			.banner ul li.b1:hover{background:url(images/top_06_b.gif);}
+			.banner ul li.b2{background:url(images/top_07.gif);}
+			.banner ul li.b2:hover{background:url(images/top_07_b.gif);}
+			.banner ul li.b3{background:url(images/top_08.gif);}
+			.banner ul li.b3:hover{background:url(images/top_08_b.gif);}
+			.banner ul li.b4{background:url(images/top_09.gif);}
+			.banner ul li.b4:hover{background:url(images/top_09_b.gif);}
+			.banner ul li.b5{background:url(images/top_10.gif);}
+			.banner ul li.b5:hover{background:url(images/top_10_b.gif);}
+			.banner ul li.b6{background:url(images/top_11.gif);}
+			.banner ul li.b6:hover{background:url(images/top_11_b.gif);}
+			.banner ul li.b7{background:url(images/top_12.gif);}
+			.banner ul li.b7:hover{background:url(images/top_12_b.gif);}
+			.banner ul li.b8{background:url(images/top_13.gif);}
+			.banner ul li.b8:hover{background:url(images/top_13_b.gif);}
+			.banner ul li.b9{background:url(images/top_14.gif);}
+			.banner ul li.b9:hover{background:url(images/top_14_b.gif);}
+			.banner ul li.b10{background:url(images/top_15.gif);}
+			.banner ul li.b10:hover{background:url(images/top_15_b.gif);}
+			.banner ul li.b11{background:url(images/top_16.gif);}
+			.banner ul li.b11:hover{background:url(images/top_16_b.gif);}
+			.banner ul li.b12{background:url(images/top_17.gif);width:99px;}
+			.banner ul li.b12:hover{background:url(images/top_17_b.gif);}
+			/*banner E*/
+
+			/*carousel S*/
+			.carousel{width:980px;height:249px;margin:0px auto;}
+			/*carousel E*/
+
+			/*search S*/
+			.search{width:984px;height:40px;margin:10px auto;position:relative;}
+			.search img{margin:11px 0px 0px 5px;border-radius: 9px;}
+
+			/*check S*/
+			.search .check,img#search{border-radius:16px;}
+			.search .check
+			{width:380px;height:28px;background:#EDEDED;border:1px solid grey;position:absolute;top:6px;right:20px;}
+			.search .check img#search{margin:0px;}
+			.search .check span{color:353535;position:absolute;top:3px;left:104px;}
+			.search .check input{width:150px;position:absolute;top:3px;left:163px;}
+			.search .check img#go{position:absolute;top:-6px;right:13px;}
+			/*check E*/
+
+			/*hovertxt S*/
+			.search	.hovertxt{margin-left:100px;width:300px;line-height:40px;position:absolute;top:0px;left:0px;font-size:14px;color:#AB4408;font-size:16px;text-shadow:2px 2px 5px #fff;}
+			/*hovertxt E*/
+
+			/*search E*/
+
+			/*bottom S*/
+			.bottom div{border-radius:12px;}
+			.bottom{width:980px;height:530px;background:#F0F8FC;margin:0px auto;border-radius:20px;position:relative;}
+
+			/*left S*/
+			.bottom .left{width:200px;height:500px;padding:20px 12px;}
+			.bottom .left .product{width:200px;height:185px;border:1px solid #BEE0EC;}			
+			.bottom .left ul{background:url(images/class_100.gif);border-radius:0px 0px 12px 12px;}
+			.bottom .left ul li{width:200px;height:30px;}
+			.bottom .left ul li a{text-align:center;line-height:30px;display:block;}
+			.bottom .left .tele{width:200px;height:125px;border:1px solid #BEE0EC;margin-top:30px;}
+			.bottom .left .tele ul li{margin-left:10px;}
+			.bottom .left .download{width:200px;height:95px;border:1px solid #BEE0EC;margin-top:31px;}
+			/*left E*/
+
+			/*right S*/
+			.bottom .introduce{width:735px;height:470px;border:1px solid #BEE0EC;
+			position:absolute;top:20px;right:16px;background:#fff;}
+			.bottom .introduce span.abstruct{display:block;text-indent:30px;line-height:25px;padding:3px 40px;}
+			/*right E*/
+
+			/*bottom E*/
+
+			/*link S*/
+			.link{width:980px;height:90px;background:url(images/btm_177.gif);margin:50px auto 0px;}
+			.link div{width:980px;height:44px;}
+			.link span{display:block;text-align:center;line-height:44px;}
+			.link span a{margin-left:10px;}
+			/*link E*/
+			
+			/*address S*/
+			.address{width:980px;height:96px;background:url(images/btm_186.gif);
+			margin:0px auto;}
+			.address span{display:block;color:#fff;text-align:center;line-height:31px;}
+			/*address E*/			
+		
+		</style>
+	</head>
+	<body>
+			<!--head S-->
+			<div class="head">
+
+				<!--logo S-->
+				<div class="logo"></div>
+				<!--logo E-->
+					<ul>
+						<li><img src="images/yd.gif" alt="圆点" /><a href="#">返回首页</a></li>
+						<li><img src="images/yd.gif" alt="圆点" /><a href="#">设为首页</a></li>
+						<li><img src="images/yd.gif" alt="圆点" /><a href="#">加入收藏</a></li>
+						<li><img src="images/yd.gif" alt="圆点" /><a href="#">在线客服</a></li>
+					</ul>
+			</div>
+			<!--head E-->
+			
+			<!--banner S-->
+			<div class="banner">
+				<ul>
+					<li class="b1"></li>
+					<li class="b2"></li>
+					<li class="b3"></li>
+					<li class="b4"></li>
+					<li class="b5"></li>
+					<li class="b6"></li>
+					<li class="b7"></li>
+					<li class="b8"></li>
+					<li class="b9"></li>
+					<li class="b10"></li>
+					<li class="b11"></li>
+					<li class="b12"></li>
+				</ul>
+			</div>
+			<!--banner E-->
+
+			<!--carousel S-->
+			<div class="carousel">
+				<script type="text/javascript">
+						var img=new Array();
+						var txt=new Array();
+						var lnk=new Array();
+
+						img[0]='flash/1.jpg'
+						lnk[0]=escape('http://www.fspt.net');
+						txt[0]='';
+
+						img[1]='flash/2.jpg'
+						lnk[1]=escape('http://www.fspt.net');
+						txt[1]='';
+
+						img[2]='flash/3.jpg'
+						lnk[2]=escape('http://www.fspt.net');
+						txt[2]='';
+
+						img[3]='flash/2.jpg'
+						lnk[3]=escape('http://www.fspt.net');
+						txt[3]='';
+
+						img[4]='flash/1.jpg'
+						lnk[4]=escape('http://www.fspt.net');
+						txt[4]='';
+						 var focus_width=980;
+						 var focus_height=249;
+						 var text_height=0;
+						var swf_height = focus_height+text_height;
+						var pics=img.join("|");
+						var links=lnk.join("|");
+						var texts=txt.join("|");
+						 
+						 document.write('<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="[url]http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6[/url],0,0,0" width=984 height=249>');
+						document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="flash/pixviewer.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+						document.write('<param name="menu" value="false"/><param name="wmode" value="transparent"/>');
+						document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+						document.write('<embed src="flash/pixviewer.swf" wmode="transparent" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"  pluginspage="[url]http://www.macromedia.com/go/getflashplayer[/url]" />');
+						document.write('</object>');    
+				</script>
+			</div>
+			<!--carousel E-->
+
+			<!--search S-->
+			<div class="search">
+				<img src="images/lb.jpg" alt="喇叭" width="18" height="18" />
+				<div class="hovertxt">
+						<marquee behavior="scroll" direction="left" loop="-1" onmouseover="this.stop()" onmouseout="this.start()">
+						 本站公告：14计算机应用技术 2班 黄坚毅！
+						</marquee>
+				</div>
+				<div class="check">
+					<img id="search" src="images/search.gif" alt="搜索" width="100" height="28" /> 
+					<span>关键字：</span>
+					<input type="text" name="关键字" placeholder="请输入您想查找的内容！" />
+					<img id="go" src="images/go.gif" alt="go" width="40" height="20" />
+				</div> 
+			</div>
+			<!--search E-->
+
+			<!--bottom S-->
+			<div class="bottom">
+
+				<!--left S-->
+				<div class="left">
+					<!--product S-->
+					<div class="product">
+						<span class="font">
+							<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />产品分类
+						</span>
+						<ul>
+							<li><a href="#">轴承配件产品</a></li>
+							<li><a href="#">直线系列轴承</a></li>
+							<li><a href="#">机构装饰物件</a></li>
+							<li><a href="#">精密汽车配件</a></li>
+							<li><a href="#">轴承配件产品</a></li>
+						</ul>
+					</div>
+					<!--product E-->
+
+					<!--telt S-->
+					<div class="tele">
+						<span class="font">
+							<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />联系我们
+						</span>
+						<ul>
+							<li><a href="#">地址：佛山三水市乐平镇</a></li>
+							<li><a href="#"> 电话：0757-38888888</a></li>
+							<li><a href="#"> 邮件：123456@163.com</a></li>
+						</ul>
+					</div>
+					<!--telt E-->
+
+					<!--download S-->
+					<div class="download">
+						<span class="font">
+							<img src="images/class_44.jpg" alt="右箭头" width="38" height="34" />下载中心
+						</span>	
+						<ul>
+							<li><a href="#">aws服务器rar文件</a></li>
+							<li><a href="#">doc文档</a></li>
+						</ul>
+					</div>
+					<!--download E-->
+				</div>
+				<!--left E-->
+
+				<!--right S-->
+				<div class="introduce">
+					<div class="r_top">
+						<span class="font">
+							<img src="images/product_50.gif" alt="箭头" width="45" height="34" />企业简介
+						</span>
+					</div>
+					<span class="abstruct">
+						  ShyPost企业管理系统是一套基于ASP的智能建站软件！产品具有界面新颖美观、动感时尚等特点，是一套服务于中小企业CMS内容管理系统，软件使用门槛低，无须专业电脑知识，全后台操作管理，操作简单且功能强大，同时软件还具有极强的可扩展性，可以适应各行业不同的需求。
+						 ShyPost企业管理系统采用流行的蓝色基调开发完成，动感十足。可以适合各类企业使用，流行的蓝色基调彰显科技以人为本的宗旨，时刻给人以无限的美感！软件具有强大的前台展示和后台管理两部分组成。支持长幅动态广告图片调用。商品滚动展示功能。导航栏目内容划分清晰明了，包括公司简介、产品中心、公司新闻、成功安全、人才招聘、在线留言、下载中心等十几个栏目内容，完全可以满足各类企业的需求。
+						  ShyPost具有强大的后台管理功能，后台管理菜单采用动态展示，支持滑动切换及菜单折叠，方便管理员的使用。菜单栏目划分合理清晰。产品、新闻、下载等功能均支持多级分类划分，支持审核显示功能。支持图片在线管理操作功能、数据库备份功能。系统采用多级模块组合调用，页面执行速度更快！
+						 完美整合Kindeditor编辑器。ShyPost采用当今最流行的Kind编辑器。添加商品、新闻、下载等信息支持图文混排，可以在线浏览或选择早期上传的图片。且兼容所有浏览器操作。安全方面截止目前已做了大量的安全防护措施！确保网站安全、高效运行。最新版中我们对程序代码进行了全面的检查。
+						 系统支持人才招聘功能，可以方便的发布招聘信息，用户可以在线提交招聘资料；下载栏目支持多级下载分类管理，在线发布下载信息，并可在线上传所要下载的资料。公司简介栏目可以添加任意个子目录信息，以方便不同企业的需求。成功案例、企业荣誉、营销网络、售后服务栏目后台添加具体内容，支持图文混排。系统还支持友情链接功能，并可自定义网站公共部分文件信息，方便调用操作。
+					</span>
+				</div>
+				<!--right E-->
+			</div>
+			<!--bottom E-->
+
+			<!--link S-->
+			<div class="link">
+				<div class="l_top">
+					<span>
+						友情链接 ： 
+						<a href="http://www.chinaz.com/">中国站长站</a> 
+						 <a href="http://www.xina.com.cn/">新浪 </a> 
+						 <a href="http://www.taobao.com/">淘宝 </a> 
+						 <a href="http://www.163.com/">网易163</a> 
+						 <a href="http://www.microsoft.com/zh-cn/"> 微软中国</a>  
+						 <a href="http://www.baidu.com/"> 百度</a>  
+						 <a href="http://fs.58.com/?utm_source=d_2345&utm_campaign=2345-101"> 58同城</a> 
+					</span>
+				</div>
+				<img src="images/btm_182.gif" alt="img" width="961" height="2" />
+				<div class="l_bottom">
+					<span>
+						<a href="www.baidu.com">网站首页</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">关于我们</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">新闻中心</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">产品展示</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">营销网站</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">人才招聘</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">在线留言</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">联系我们</a> &nbsp;&nbsp;&nbsp;|
+						<a href="www.baidu.com">在线客服</a> &nbsp;&nbsp;&nbsp;|
+					</span>
+				</div>
+			</div>
+			<!--link E-->
+			
+			<!--address S-->
+			<div class="address">
+				<span>
+					ShyPost企业管理系统版权所有 2012 版权所有 COPYRIGHT 2012-2014 ShyPost.COM ALL RIGHTS RESRVED<br />
+					通讯地址:石家庄市红旗南大街328号汇丰商务大厦802 联系电话:0769-88888888 联系QQ：12345678 
+				</span>
+			</div>
+			<!--address E-->
+	</body>
+	<!--
+	<script type="text/javascript">
+		var _index = 0;
+		var timeInterval =null;
+		$(".bottom .center .c_product ul li").hover(function(){
+			_index = $(this).index();
+			alert(_index); 
+			clearInterval(timeInterval);//清除定时器
+		},function(){
+			play();
+		});
+		function play(){
+			timeInterval = setInterval(function(){
+				if (_index)
+				{
+				}
+			},1000);
+		}
+		play();
+	</script>-->
+</html>
+
+

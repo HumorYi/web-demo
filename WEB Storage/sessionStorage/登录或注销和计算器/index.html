@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<script type="text/javascript">
+		window.onload = onLoad;
+
+		function onLoad(){
+			inputSpan.style.display = 'none';	 /*隐藏输入框及提交按钮*/
+
+			if (typeof(Storage) == 'undefined') {
+				alert("Sorry!! 您的浏览器不支持WEB Storage");
+			}else{		
+				/*判断姓名是否已存入localStorage，已存入时才执行{}内的命令*/
+				if (localStorage.username) { 
+					/*localStorage.counter数据不存在时传回undefined*/
+					if (!localStorage.counter) {  
+						localStorage.counter = 1;          /*初始值设为1*/
+					} else {
+						localStorage.counter++;      /*递增*/
+					}	
+					btn_login.style.display='none';   /*隐藏登录按钮*/
+					show_LocalStorage.innerHTML= localStorage.username+" 你好,这是你第"+localStorage.counter+"次来到网站~";
+				}
+				btn_login.addEventListener("click", login);
+				btn_send.addEventListener("click", sendok);
+				btn_loginOut.addEventListener("click", clearLocalStorage);
+			}
+		}
+
+
+		function login(){
+			inputSpan.style.display = '';	/*显示姓名输入框以及提交按钮*/
+		}
+
+		function clearLocalStorage(){
+			localStorage.clear();
+			show_LocalStorage.innerHTML = '已成功注销!!';
+			btn_login.style.display = '';	/*显示登录按钮*/
+			inputSpan.style.display = '';	/*显示姓名输入框以及提交按钮*/
+		}
+
+		function sendok(){
+			localStorage.username = inputname.value;
+			location.reload();	/*重载网页*/
+		}
+	</script>
+</head>
+<body>
+	<button id="btn_login">登录</button>
+	<button id="btn_loginOut">注销</button><br />
+	<img src="images/welcome.jpg" /><br />
+	<span id="inputSpan">
+		请输入你的姓名：<input type="text" id="inputname" value="" />
+		<button id="btn_send">提交</button>
+	</span><br />
+	<div id="show_LocalStorage"></div><br />
+</body>
+</html>

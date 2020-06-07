@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body,div,p{
+			margin: 0; padding: 0; 
+		}
+
+		.none{ font-size:40px; color: #ddd; position: absolute; top: 0; left: 0; }
+
+		.red{ color: red; width: 0; overflow:hidden; white-space:nowrap; z-index: 10;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p id="pid" class="none">该割舍却又无法去割舍,是伤痛让成长的过程更深刻</p>
+	</div>
+
+	<script type="text/javascript">
+		function getStyle(elem, name){
+			if (elem.style[name]) {
+				return elem.style[name];
+			}else if (elem.currentStyle) {
+				return elem.currentStyle;
+			}else if (document.defaultView && document.defaultView.getComputedStyle) {
+				name = name.replace(/([A-Z])/g,"-$1");
+				name = name.toLowerCase();
+				var s = document.defaultView.getComputedStyle(elem,'');
+				return s && s.getPropertyValue(name);
+			}
+			else{
+				return null;
+			}
+		}
+
+		(function(){
+			var pid = document.getElementById('pid');
+			var i = 0;
+			var sw = parseInt(getStyle(pid,'width'));
+			//克隆节点
+			var pNode = pid.cloneNode(true);
+			pNode.setAttribute('id',pid.getAttribute('id')+"1");
+			pNode.className = 'none red';
+			pid.parentNode.appendChild(pNode);
+
+			window.timer = setInterval(function(){
+				if (parseInt(getStyle(pNode,'width')) >= sw) {
+					pNode.style['width'] = 0;
+					i = 0;
+				}
+				pNode.style['width'] = i++ + 'px';
+			},10);
+		})();
+	</script>
+</body>
+</html>

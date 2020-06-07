@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				ul li{list-style:none;}
+				a img{border:0px;}
+				#banner{width:1226px;height:460px;background:#f9f;margin:100px auto;position:relative;}
+				#banner .pic{width:1226px;height:460px;position:relative;}
+				#banner .pic ul li{width:1226px;height:460px;float:left;position:absolute;top:0px;left:0px;display:none;}
+				#banner .tab{width:120px;height:12px;position:absolute;bottom:10px;right:10px;}
+				#banner .tab ul li{width:8px;height:8px;background:#757575;border:2px solid rgba(255,255,255,.4);border-radius:50%;float:left;margin:0px 6px;cursor:pointer;}
+				#banner .tab ul li.on{background:rgba(255,255,255,.5);border:2px solid rgba(50,50,50,.4);}
+				#banner .btn div{width:40px;line-height:70px;background:rgba(0,0,0,.5);color:#fff;font-size:26px;
+				font-weight:bold;text-align:center;cursor:pointer;position:absolute;top:50%;margin-top:-35px;}
+				#banner .btn .left{left:235px;border-radius:0px 3px 3px 0px;}
+				#banner .btn .right{right:0px;border-radius:3px 0px 0px 3px;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+		<div id="banner">
+			<!--图片区-->
+			<div class="pic">
+				<ul>
+					<li style="display:block;">
+						<a href="#"><img src="images/1.png" alt="img" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/2.jpg" alt="img" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/3.jpg" alt="img" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/4.jpg" alt="img" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/5.jpg" alt="img" /></a>
+					</li>
+				</ul>
+			</div>
+			<!--切换卡-->
+			<div class="tab">
+				<ul>
+					<li class="on"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<!--按钮区-->
+			<div class="btn">
+				<div id="left"></div>
+				<div id="right"></div>
+			</div>
+		</div>
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript">
+				window.onload = function(){ 
+					var otab = getClass('tab');
+			//		var otab = document.getElementsByClassName('tab');
+					var otabli = otab[0].getElementsByTagName('li');
+					var opic = otab[0].getElementsByTagName('li');
+					for (var i=0; i<otabli.length ;i++ )
+					{
+						otabli[i].onclick = function(){
+							for (var j= 0 ; j<otabli.length ; j++ )
+							{
+								otabli[j].className = '' ;
+							}
+							this.className = 'on';
+						}
+					}
+
+					function fadeIn( obj , time ){
+						time = time || 400 ;
+						var startTime = new Date();
+						obj.style.display='block';
+						obj.style.opacity=0;
+						var startVal = getStyle(obj,'opacity');
+						var opicli = opic[0].getElementsByTagName('li');
+						var timer = setInterval(function(){
+							var nowTime = new Date();
+							var ptop = (nowTime - startTime) / time ;
+							if (prop>=1)
+							{
+								clearInterval(timer);
+							}
+							obj.style.opacity = prop;
+						},30);
+					}
+
+					function fadeOut( obj , time ){
+						time = time || 400 ;
+						var startTime = new Date();
+						var startVal = parseInt(getStyle(obj,'opacity'));
+						var opicli = opic[0].getElementsByTagName('li');
+						var timer = setInterval(function(){
+							var nowTime = new Date();
+							var ptop = (nowTime - startTime) / time ;
+							if (prop>=1)
+							{
+								prop = 1;
+								clearInterval(timer);
+								obj.style.display ='none';
+							}
+							obj.style.opacity = (1-prop) * startVal ;
+						},30);
+					}
+					
+					function getStyle(obj , attr){
+						return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+					}
+
+					function getClass(classN){
+						if (document.getElementByClassName)
+						{
+							return document.getElementsByClassName(classN);
+						}else{
+							var arr = [];
+							var allE = document.getElementsByTagName('*');
+							var reg = new RegExp('\\b'+classN+'\\b'); /*正则表达式*/
+							for (var i=0; i<arr.length;i++ )
+							{
+								if (reg.test(allE[i].className))
+								{
+									arr.push(allE[i]);
+								}
+								return arr;
+							}
+						}
+					}
+				}
+		</script>
+</html>

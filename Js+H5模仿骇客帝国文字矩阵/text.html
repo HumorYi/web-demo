@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html,body,canvas{ margin: 0; padding: 0; }
+		html{ overflow: hidden; }
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		//获取屏幕分辨率的宽高度
+		var s = window.screen;
+		var w = s.width;
+		var h = s.height;
+
+		//获取canvas对象
+		var canvas = document.getElementById('canvas');
+		//2d环境
+		var ctx = canvas.getContext('2d');
+
+		//把获取到的屏幕分辨率的宽高度赋给canvas
+		canvas.width = w;
+		canvas.height = h;
+
+		//自定义文字
+		var str = '每天都在挑战自己的极限，贵在坚持';
+		//自定义字体大小
+		var fontSize = 20;
+		//获取列数
+		var cols = Math.floor(w/fontSize);
+
+		//定义一个数组获取y的所有坐标
+		var drops = [];
+
+		//利用循环把数组获取到的y坐标堆在一起输出
+		for (var i = 0; i < cols; i++) {
+			drops.push(0);
+		}
+
+		//绘画方法
+		function draw(){
+			//通过透明色 实现渐变
+			ctx.fillStyle = "rgba(0,0,0,0.05)";
+			//绘制矩形
+			ctx.fillRect(0,0,w,h);
+			//文字样式
+			ctx.font = '600 '+fontSize+'px 微软雅黑';
+
+			ctx.fillStyle = ranColor();
+
+			//遍历定义坐标的位置
+			for (var i = 0; i < cols; i+=6) {
+				//随机获取文字位置的下标
+				var index = Math.floor(Math.random()*str.length);
+				//动态定义x，y坐标的位置
+				var x = i*fontSize;
+				var y = drops[i]*fontSize;
+				//填充文字
+				ctx.fillText(str[index],x,y);
+				//判断边界
+				if (y>canvas.height && Math.random()>0.89) {
+					drops[i] = -1;
+				}
+				//循环y
+				drops[i]++;
+			}
+		};
+
+		draw();
+		setInterval(draw,20);
+
+		//设置随机颜色
+		function ranColor(){
+			var r = Math.floor(Math.random()*255);
+			var g = Math.floor(Math.random()*255);
+			var b = Math.floor(Math.random()*255);
+			return 'rgb('+r+','+g+','+b+')';
+		}
+	</script>>
+</body>
+</html>

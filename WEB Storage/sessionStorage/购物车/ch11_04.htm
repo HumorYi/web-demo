@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>ch11_04</title>  
+<link rel=stylesheet type="text/css" href="color.css">
+<script type="text/javascript">
+function sendok(){	
+	if(userid.value!="" && userpwd.value!=""){		
+		localStorage.userid=userid.value;
+		sessionStorage.userpwd=userpwd.value;
+		return true;
+	}else{
+		alert("ÇëÊäÈëÕËºÅ");
+		return false;
+	}
+}
+
+function isload(){
+if(localStorage.userid)
+	userid.value=localStorage.userid;
+}
+</script> 
+</head> 
+<body onload="isload()">
+<img src="images/logo.png" />
+<form method="post" action="ch11_05.htm" onsubmit="return sendok();">
+	ÇëÊäÈëÄãµÄÕËºÅ£º<br />
+	<input type="text" id="userid" value="" autofocus><br />
+	ÇëÊäÈëÄãµÄÃÜÂë£º<br />
+	<input type="password" id="userpwd" value=""><br /><font style="font-size:12px">
+	(²âÊÔÕËºÅ£ºguest ÃÜÂë:1234)</font><br />
+	<input id="btn_send" type="submit" value="µÇÂ¼"><br />	
+</form>
+</body> 
+</body> 
+</html>

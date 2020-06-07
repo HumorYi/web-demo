@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    background-color: #222;
+}
+#c {
+    width: 620px;
+    height: 620px;
+    display: block;
+    margin: 0 auto;
+    margin: calc(50vh - 310px) auto;
+}

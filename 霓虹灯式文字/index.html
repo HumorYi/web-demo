@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机背景颜色下的霓虹灯式文字</title>
+	<script type="text/javascript">
+		var bg = new Array(3);
+		bg[0] = '#f00';
+		bg[1] = 'green';
+		bg[2] = 'blue';
+		var index = Math.floor(Math.random() * bg.length);
+		document.write("<body bgcolor="+bg[index]+">");
+
+		var text = 'dddddddddd';
+		var color1 = '#333';
+		var color2 = '#0f0';
+		var fontsize = '14px';
+		var speed = 100;
+		var i = 0;
+		document.write("<center><div id=word></div></center>");
+
+		function changeCharColor(){
+			var str = "<span style='font-size:30px;'><span style='color:"+color1+";'>"
+			var locat = text.charAt(i);
+
+			for (var j = 0; j < text.length; j++) {
+				
+				if (j == i) {
+					str += "<span style='color:"+color2+";'>"+locat+"</span>"
+				}else{
+					str += locat;
+				}
+			}
+
+			str += "</span></span>"
+			word.innerHTML = str;
+			(i == text.length)?i=0:i++;
+		}
+
+		setInterval(changeCharColor,speed);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin：0px;padding：0px; }
+				html{ width：100%; height：100%; font-family："微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--窗口中的内容
+			<a href="javascript：void(0);">这是一个链接</a>
+			<b>粗体字</b>-->
+			
+			<font id="f">
+				<b>
+					b1
+					<b>b2</b>
+				</b>
+			</font>
+			<b>b3</b>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//节点类型
+				/*文本节点也是body元素的子节点
+				alert(document.body.firstChild.nodeValue);*/
+				/*
+				with(document.body.firstChild){
+					alert("节点类型："+nodeType+"\n节点名："+nodeName);
+				}*/
+
+				//节点关系
+
+				//节点间的互相访问
+				/*访问document对象的直接子节点
+				var htmlNodeF = document.firstChild.nodeName;
+				var htmlNodeL = document.lastChild.nodeName;
+				var docChilds = document.childNodes.length;
+				//alert(document.parentNode);
+
+				//访问body对象
+				var headNode = document.firstChild.firstChild.nodeName;	//null 报错，去掉
+				var bodyNode = document.lastChild.firstChild.nextSibling.nodeName;
+				var bodyChilds = document.lastChild.lastChild.childNodes.length;
+				//拼接字符串
+				var out = "htmlNodeF："+htmlNodeF+"\nhtmlNodeL："+htmlNodeL+"\ndocChilds："+docChilds;
+				out += "\nheadNode："+headNode+"\nbodyNode："+bodyNode+"\nbodyChilds："+bodyChilds;
+				alert(out);*/
+
+				/*节点访问*/
+				var docChildsSize = document.getElementsByTagName('b').length;
+				var htmlChildsSize = document.documentElement.getElementsByTagName('b').length;
+				var bodyChildsSize = document.body.getElementsByTagName('b').length;
+				var fontNode = document.getElementById('f');
+				var fontChildsSize = fontNode.getElementsByTagName('b').length;
+				var out = "doc："+docChildsSize+"\nhtml："+htmlChildsSize;
+				out += "\nbody："+bodyChildsSize+"\nfont："+fontChildsSize;
+				alert(out);
+			</script>
+
+		</body>
+</html>

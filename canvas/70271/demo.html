@@ -1,0 +1,239 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+            var grd;
+            /*
+            描述
+            当一个路径包含了线段或曲线相交的交点的时候，lineJoin 属性说明如何绘制这些交点。只有当绘制具有宽度的线条的时候，这一属性的效果才能表现出来。
+            这一属性的默认值是 "miter"，它说明了两条线段的外边缘一直扩展到它们相交。当两条线段以一个锐角相交，斜角连接可能变得很长。miterLimit 
+　　　　　　属性为一个斜面的长度设置了上限。超过这一限制，斜面就变成斜角了。
+            值 "round" 说明定点的外边缘应该和一个填充的弧接合，这个弧的直径等于线段的宽度。"bevel" 值说明顶点的外边缘应该和一个填充的三角形相交。           
+            */
+            //飞机尾部右翼
+            context.lineJoion = "round";
+            context.beginPath();
+            context.moveTo(248, 60);
+            context.lineTo(262, 45);
+            context.lineTo(285, 56);
+            context.lineTo(284, 59);
+            context.lineTo(276, 91);
+            context.closePath();
+            context.fillStyle = "#495AFE";
+            context.fill();
+            context.lineWidth = 4;
+            context.stroke(); ///沿着当前路径绘制或画一条直线。
+
+            // right tail wing detail飞机尾部右翼 详细
+            context.beginPath();
+            context.moveTo(281, 54); // 10
+            context.lineTo(273, 84); // 9
+            context.closePath();
+            context.lineWidth = 2;
+            context.stroke();
+            ////飞机前部 右翼
+            context.beginPath();
+            context.moveTo(425, 159);
+            context.lineTo(449, 91);
+            context.lineTo(447, 83);
+            context.lineTo(408, 67);
+            context.lineTo(343, 132);
+            context.fillStyle = "#495AFE";
+            context.fill();
+            context.closePath();
+            context.lineWidth = 4;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(420, 158);
+            context.lineTo(447, 83);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(439, 102);
+            context.lineTo(395, 81);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(541, 300);
+            /*
+            参数
+            参数 描述 
+            cpX, cpY 控制点的坐标。 
+            x, y 曲线终点的坐标。 
+            */
+            context.quadraticCurveTo(529, 252, 490, 228);
+            context.quadraticCurveTo(487, 160, 303, 123);
+            context.lineTo(213, 20);
+            context.lineTo(207, 22);
+            /*
+            描述
+            bezierCurveTo() 为一个画布的当前子路径添加一条三次贝塞尔曲线。
+            这条曲线的开始点是画布的当前点，而结束点是 (x, y)。
+            两条贝塞尔曲线控制点 (cpX1, cpY1) 和 (cpX2, cpY2) 定义了曲线的形状。
+            当这个方法返回的时候，当前的位置为 (x, y)。            
+            */
+            context.bezierCurveTo(208, 164, 255, 207, 412, 271);
+            context.lineTo(427, 271);
+            context.quadraticCurveTo(470, 296, 541, 300);
+            context.closePath();
+            grd = context.createLinearGradient(304, 246, 345, 155);
+            grd.addColorStop(0, "#000E91"); //类似立体效果
+            grd.addColorStop(1, "#495AFE"); //
+            context.fillStyle = grd;
+            context.fill();
+            context.lineWidth = 4;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(297, 124);
+            context.lineTo(207, 22);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(303, 121);
+            context.lineTo(297, 125);
+            context.lineTo(255, 104);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(212, 80);
+            context.lineTo(140, 85);
+            context.lineTo(138, 91);
+            context.lineTo(156, 105);
+            context.lineTo(254, 104);
+            context.lineTo(254, 100);
+            context.lineWidth = 4;
+            context.fillStyle = "#495AFE";
+            context.fill();
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(140, 86);
+            context.lineTo(156, 100);
+            context.lineTo(254, 100);
+            context.lineTo(209, 77);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(262, 166);
+            context.lineTo(98, 208);
+            context.lineTo(96, 215);
+            context.lineTo(136, 245);
+            context.lineTo(339, 218);
+            context.lineTo(339, 215);
+            context.closePath();
+            context.fillStyle = "#495AFE"
+            context.fill();
+            context.lineWidth = 4;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(98, 210);
+            context.lineTo(136, 240);
+            context.lineTo(339, 213);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(165, 235);
+            context.lineTo(123, 203);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(427, 271);
+            context.lineTo(423, 221);
+            context.quadraticCurveTo(372, 175, 310, 155);
+            context.lineWidth = 4;
+            context.stroke();
+
+
+            context.beginPath();
+            context.moveTo(475, 288);
+            context.quadraticCurveTo(476, 256, 509, 243);
+            context.quadraticCurveTo(533, 268, 541, 300);
+            context.quadraticCurveTo(501, 300, 475, 288);
+            grd = context.createLinearGradient(491, 301, 530, 263);
+            grd.addColorStop(0, "#9D0000");
+            grd.addColorStop(1, "#FF0000");
+            context.fillStyle = grd;
+            context.fill();
+            context.lineWidth = 4;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(480, 293);
+            context.quadraticCurveTo(480, 256, 513, 246);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(442, 169);
+            context.quadraticCurveTo(419, 176, 415, 200);
+            context.quadraticCurveTo(483, 250, 490, 228);
+            context.quadraticCurveTo(480, 186, 439, 170);
+            context.lineWidth = 4;
+            context.stroke();
+            grd = context.createRadialGradient(473, 200, 20, 473, 200, 70);
+            grd.addColorStop(0, "#E1E7FF");
+            grd.addColorStop(1, "#737784");
+            context.fillStyle = grd;
+            context.fill();
+
+            context.beginPath();
+            context.moveTo(448, 173);
+            context.quadraticCurveTo(425, 176, 420, 204);
+            context.lineWidth = 2;
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(470, 186);
+            context.quadraticCurveTo(445, 190, 440, 220);
+            context.lineWidth = 2;
+            context.stroke();
+        }
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="800px" height="800px"></canvas>
+</body>
+</html>
+<script>
+    /*
+    CanvasRenderingContext2D 对象的方法
+    方法 描述 
+    arc() 用一个中心点和半径，为一个画布的当前子路径添加一条弧线。 
+    arcTo() 使用目标点和一个半径，为当前的子路径添加一条弧线。 
+    beginPath() 开始一个画布中的一条新路径（或者子路径的一个集合）。 
+    bezierCurveTo() 为当前的子路径添加一个三次贝塞尔曲线。 
+    clearRect() 在一个画布的一个矩形区域中清除掉像素。 
+    clip() 使用当前路径作为连续绘制操作的剪切区域。 
+    closePath() 如果当前子路径是打开的，就关闭它。 
+    createLinearGradient() 返回代表线性颜色渐变的一个 CanvasGradient 对象。 
+    createPattern() 返回代表贴图图像的一个 CanvasPattern 对象。 
+    createRadialGradient() 返回代表放射颜色渐变的一个 CanvasGradient 对象。 
+    drawImage() 绘制一幅图像。 
+    fill() 使用指定颜色、渐变或模式来绘制或填充当前路径的内部。 
+    fillRect() 绘制或填充一个矩形。 
+    lineTo() 为当前的子路径添加一条直线线段。 
+    moveTo() 设置当前位置并开始一条新的子路径。 
+    quadraticCurveTo() 为当前路径添加一条贝塞尔曲线。 
+    rect() 为当前路径添加一条矩形子路径。 
+    restore() 为画布重置为最近保存的图像状态。 
+    rotate() 旋转画布。 
+    save() 保存 CanvasRenderingContext2D 对象的属性、剪切区域和变换矩阵。 
+    scale() 标注画布的用户坐标系统。 
+    stroke() 沿着当前路径绘制或画一条直线。 
+    strokeRect() 绘制（但不填充）一个矩形。 
+    translate() 转换画布的用户坐标系统。         
+    */
+</script>

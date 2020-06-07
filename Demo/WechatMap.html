@@ -1,0 +1,86 @@
+<!--声明当前文档为html文档 符合w3c组织标准规范-->
+<!doctype html>
+<html>
+	<head><!--头部:非可视化标签 提供了一些信息给浏览器-->
+		<meta charset="utf-8" ><!--字符编码:utf-8国际编码 中文编码 gbk  gb2312 -->
+		<title>祝潭州软件学院三周年生日快乐！</title>
+		<meta name="keywords" content="关键词1，关键词2">
+		<meta name="description" content="对网站的描述">
+		<style>/*css层叠样式表的存放地址*/
+		*{/*通用选择器:选择到所有的标签元素*/
+			margin:0px;/*外边距*/padding:0px;/*内边距*/
+		}
+		body{
+			background:url("images/bg.jpg");/*背景图片*/
+		}
+		.phone{/*类名选择器 . */
+			width:322px;/*宽度*/height:100px;
+			/*background:red;背景颜色*/
+			margin:100px auto;/*上下为100px  左右居中*/
+		}
+		.p_top{
+			height:42px;/*高度*/
+			background:url("images/phone_top.png");
+		}
+		.p_info{
+			height:20px;
+			background:url("images/top.jpg");
+		}
+		.p_title{
+			height:40px;background:#000;
+			color:#ccc;
+			line-height:40px;/*行高:垂直居中*/
+			text-align:center;/*水平居中*/
+			font-size:20px;
+			border-right: 1px solid #fff;/*右边框:宽度 类型(实线) 颜色*/
+			border-left: 1px solid #fff;
+		}
+		#myMap{/*id选择器 # */
+			height:480px;
+			border-right:1px solid #fff;
+			border-left:1px solid #fff;
+		}
+		.p_bottom{
+			height:47px;background:url("images/phone_bottom.png")
+		}
+		</style>
+	</head>
+	<body><!--身体-->
+		<!--盒子模型 宽度 高度-->
+		<div class="phone"><!--取名字 class类名(phone 姓名)重复性 见名知意-->
+			<div class="p_top"></div>
+			<div class="p_info"></div>
+			<div class="p_title">
+				生日快乐！
+			</div>
+			<div id="myMap"><!--id名 唯一的（身份证）-->
+			</div>
+			<div class="p_bottom"></div>
+		</div>
+		<script src="http://api.map.baidu.com/api?v=2.0&amp;ak=FW8lWm4EHhoyqd5o17pkeFK4alabnsU6"></script>
+		<script>
+			
+			// 百度地图API功能
+			var map = new BMap.Map("myMap");//把地图放置到id名为myMap的盒子里
+			//位置的坐标（经纬度）
+			var point = new BMap.Point(112.917854,28.221988);
+				
+			var marker = new BMap.Marker(point);  // 创建标注
+			map.addOverlay(marker);              // 将标注添加到地图中
+			map.centerAndZoom(point, 15);//地图的级别(数字越大 地图显示的越详细)
+			map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
+			var opts = {//设置信息窗口的样式
+			  width : 200,     // 信息窗口宽度
+			  height: 100,     // 信息窗口高度
+			  title : "祝潭州软件学院三周年生日快乐！" , // 信息窗口标题
+			  //enableMessage:true,//设置允许信息窗发送短息
+			  //message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+			}
+			var infoWindow = new BMap.InfoWindow("潭州软件学院三周年啦！同学们准备好来学习了吗？？", opts);  // 创建信息窗口对象 
+			marker.addEventListener("click", function(){//点击标准显示信息窗口          
+				map.openInfoWindow(infoWindow,point); //开启信息窗口
+			});
+
+		</script>
+	</body>
+</html>

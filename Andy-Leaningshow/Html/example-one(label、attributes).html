@@ -1,0 +1,727 @@
+<!doctype Frameset DTD>
+<!--<html>标签限定了文档的开始点和结束点-->
+<html lang="en">
+		 <!--<head>标签定义文档的头部，他是所有头部元素的的容器。
+		<head>中的元素可以引用脚本、只是浏览器在哪里找到样式表，提供元信息素等等
+		文档的头部描述了文档的各种属性和信息，包括文档的标题、在web中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。
+		下面这些标签可用在head部分：<base>,<link>,<meta>,<script>,<style>,<title>
+		<title>定义文档的标题，是head部分中唯一必需的元素。
+		 -->
+		 <head>
+					  <!--<meta>无意义，显示里面的内容-->
+					  <meta charset="UTF-8">
+					  <meta name="Author" content="Andy">
+					  <meta name="time" content="2015-10-27-21:25 to 2015/11/3-18 : 28">
+					  <meta name="Keywords" content="关键词，关键词">
+					  <meta name="Description" content="描述">
+					  <title>Andy-Leaningshow-one</title>
+		 </head>
+		 <body bgcolor="#7c6961">
+					<!--<h1>to<h6>标签的字体逐渐变小-->
+					<!--<h1></h1>表示网站内容标题，align表示排列方式-->
+					<!--<hr />被水平线分隔的标题和段落-->
+					<h1 align="center">This is a heading </h1>
+					<h2 >hr Tag define the horizontal line.</h2>
+					<hr />
+					<h3>This  is  a heading</h3>
+					<!--<p>标签定义段落，p元素会自动在其前后创建一些空白。浏览器会自动添加这些空间，您也可以在样式中规定。
+					-->
+					<!--<br />空元素，由于关闭标签没有任何意义，因此它没有结束标签，换行功能-->
+					<p align="center">游子吟<br />
+							慈母手中线，游子身上衣。<br />
+							临行密密缝，意恐迟迟归。<br />
+							谁言寸草心，报得三春晖。
+					</p>
+					<!--<a href=""></a>表示链接
+					title=""鼠标悬停在超链接上时，显示该超链接的文字注释，&#10换行符，注解多行显示	-->
+					<a href="http://849387083.qzone.qq.com/" title="Andy-qzone&#10帅到爆表">Andy-->show</a><br />
+					<!--<img />四要素：src:路径；alt：描述；width:宽度；height：高度-->
+					<img src="images/BB霜.jpg" alt="BB霜-->独此一家" width="150" height="150"/><br/>
+					<span>Super BB cream,you're worth it！！！</span><br />
+					<!--<abbr></abbr>标签用来指示简称或缩写；
+					可以在<abbr>标签中使用全局的title属性这样就能够在鼠标指针移动到<abbr>元素上时显示出简称/缩写的完整版本；
+					<abbr>标签支持HTML中的全局属性和事件属性。
+					-->
+					The <abbr title="People's Republic of China">PRC</abbr> was founded in 1949.<br />
+					<!--<acronym>标签定义首字母缩写
+					title标签可用于在鼠标指针移动到元素上显示出缩写的完整版本
+					HTML5 中不支持 <acronym> 标签，但是在 HTML 4.01 中支持.
+					-->
+					<acronym title="Word Wide Web">WWW</acronym><br />
+					<!--accesskey属性规定激活（是元素获得焦点）元素的快捷键
+					以下元素支持accesskey属性：<a><area><button><input><label><legend><textarea>
+					语法：<element accesskey="character">
+					-->
+					<a href="http://www.w3school.com.cn/html/" accesskey="h">HTML</a><br />
+					<!--<address>标签定义文档或文章的作者/拥有着的联系信息
+					如果<address>元素位于<body>元素内，这它表示文档联系信息；
+					如果<address>元素位于<article>元素内，则它表示文章的联系信息
+					<address>元素中的文本通常呈现为斜体，大多数浏览器会在address元素前后添加折行
+					<address>不应该用于描述通讯地址，除非它是联系信息的一部分；
+					<address>元素通常连同其他信息被包含在<footer>元素中。
+					HTML 4.01 不支持 <article> 标签，因此在 HTML 4.01 中，<address> 标签始终定义文档作者/拥有者的联系信息。
+					-->
+					<address>Written by<a href="http://849387083.qzone.qq.com">Donald Duck</a>.<br>Visit us at:<br>Example.com<br>Box 564,Disneyland<br>USA
+					</address>
+					<!--<applet>标签定义嵌入的applet。
+					HTML5 中不支持 <applet> 标签。请使用 object 元素 标签代替。
+					HTML 4.01 中不赞成使用 <applet> 元素。
+					-->
+					<applet code="Bubbles.class" width="350" height="350">
+					Java applet that draws animated bubbles.
+					</applet><br />
+					<!--<article>规定标签独立的自包含内容
+					<article>元素的潜在来源：论坛帖子，报纸文章，博客条目，用户评论
+					-->
+					<article>
+					<h1>Internet Explorer 9</h2>
+					<p>Windows Internet Explorer 9(abbreviation)Released on March 14, 2011...</p>
+					</article>
+					<!--<aside>标签定义其所处内容之外的内容
+					<aside>的内容应该与附近的内容相关
+					-->
+					<p>Me and my family visited The Epcot center this summer.</p>
+					<aside>
+					<h4>Epcot Center</h4>
+					The Epcot Center is a theme park in Disney World,Florida.
+					</aside><br />
+					<!--<audio>定义声音，比如音乐或其他音频流-->
+					<!--为<audio>标签添加文件时，该文件路径下必须包含该文件的LRC文件才可以播放歌曲-->
+					<audio src="mp3/A Great Big World、Christina Aguilera - Say Something.mp3" controls>
+					Your browser doesn't support the audio tag。
+					</audio><br />
+					<!--<b>标签定义粗体文本
+					注释：根据 HTML5 规范，在没有其他合适标签更合适时，才应该把 <b> 标签作为最后的选项。HTML5 规范声明：应该使用 <h1> - <h6> 来表示标题，使用 <em> 标签来表示强调的文本，应该使用 <strong> 标签来表示重要文本，应该使用 <mark> 标签来表示标注的/突出显示的文本。
+					-->
+					<p>This is a general(or common or ordinary) text.<b>This is a bold text.</b>。</p><br />
+					<!--<base>标签为页面上的所有链接规定默认地址或默认目标
+					通常情况下，浏览器会从当前文档的 URL 中提取相应的元素来填写相对 URL 中的空白。
+					使用 <base> 标签可以改变这一点。浏览器随后将不再使用当前文档的 URL，而使用指定的基本 URL 来解析所有的相对 URL。这其中包括 <a>、<img>、<link>、<form> 标签中的 URL。
+					-->
+					<!--<base target="_blank">浏览器兼容下会在本页打开-->
+					<base href="http://849387083.qzone.qq.com" />
+					<base target="_blank" />
+					<img src="images/BB霜.jpg" /><br />
+					<span>Super BB cream , you're worth it！！！</span>
+					<p><a href="http://www.tianmao.com">tianmao</a></p>
+					<!--<basefont>标签定义基准字体，该标签可以为文档中的所有文本定义默认字体颜色、字体大小和字体系列,只有 Internet Explorer 支持 <basefont> 标签。应该避免使用该标签。
+					-->
+					<basefont color="#360" size="4" />
+					<h1>This is a header</h1>
+					<p>This is a paragraph</p>
+					<!--<bdi>指的是bidi隔离，该表桥允许您设置一段文本，使其脱离其父元素的文本方向设置，在发布用户评论或其他您无法完全控制的内容时，该标签很有用
+					-->
+					<ul>
+					<li>Username <bdi>Bill</bdi>: 80 points</li>
+					<li>Username <bdi>Steve</bdi>: 78 points</li>
+					</ul>
+					<!--<bdo>元素可覆盖默认的文本方向-->
+					<p>
+					If your browser supports bi-directional override (bdo)，the nex line will output from right to left(rtl)；
+					</p>
+					<bdo dir="rtl">Here is some text.</bdo>
+					<!-- <big>标签呈现大号字体，更妙的是，可以嵌套 <big> 标签来放大文本。每一个 <big> 标签都可以使字体大一号，直到上限 7 号文本，正如字体模型所定义的那样。
+					-->
+					<p><big>Andy-<big>leaning</big>show</big></p>
+					<!--<blockquote>标签定义块引用
+					<blockquote>与</blockquote>之间的所有文本都会从常规文本中分离出来。经常会在左、右两边进行缩进（增加外边距），而且有时使用斜体。也就是说，块引用拥有他们自己的空间.浏览器在blockquote元素前后添加了换行，并增加了外边距。（从周围内容分离出来比较长的部分（通常显示为所进的块））
+					<q>标签标记短的引用（简短的行内引用）。
+					如需把页面作为 strict XHTML 进行验证，那么<blockquote>元素必须包含块级元素。
+					-->
+					<!--cite属性规定引用的来源，该属性的值是一个包含在引号中并指向联机文档的URL，以及（如果有可能的话）引用在该文档中的确切位置
+					主浏览器均不支持cite属性。不过，搜索引擎可能会使用该属性获得更多有引用的信息。
+					-->
+					<blockquote cite="http://www.taobao.com">
+					 <q>Here is a long quotation here is a long quotation here is a long quotation.</q>
+					Here is a long quotation here is a long quotation here is a long quotation.
+					<p>Here is a long quotation here is a long quotation here is a long quotation.</p>
+					</blockquote>
+					<!--<body>标签定义文档的主体，包含文档的所有内容（比如文本、超链接、图像、表格和列表等等）
+					-->
+					<!--<button>标签定义一个按钮
+					在button蒜素内部，可以放置内容，比如文本或图像。这支钙元素与使用input元素城隍间的按钮之间的不同之处。
+					<button>控件与<input type="button">相比，提供了更为强大的功能和更丰富的内容。
+					<button>与</button>标签之间的所有内容都是按钮的内容，其中包括任何可接受的正文内容，比如文本或媒体内容。例如，我们可以在按钮中包括一个图像和相关的文本。用他们在按钮中创建一个吸引人的标记图像。
+					唯一禁止使用的元素试图向映射，因为他对鼠标和键盘敏感的动作会干扰表单按钮的行为。
+					始终为按钮规定type属性，IE的默认类型是“button”，而其它浏览器（包括W3C规范）的默认值是“submit”。
+					-->
+					<!--<form>用于输入为用户创建HTML表单。
+					表单能够包含input元素。比如文本字段、复选框、单选框、提交按钮等等。
+					表单还可以包含menus、textarea、fieldset、legend和label元素。
+					表单用于向服务器传输数据。
+					-->
+					<!--<input>标签用于搜集用户信息，
+					根据不同的type属性值，输入字段拥有很多形式。输入字段可以是文本字段、复选框、掩码后的文本控件、单选按钮、按钮等等。
+					-->
+					<!--如果让本页转向新的页面则用-->
+					<a href="http://www.jd.com">
+					<input id="jd" value="jd-show" type=button  onclick="window.location.href('连接')">
+					</a>
+					<!--如果需要打开一个新的页面进行转向，则用-->
+
+					<form action="form_action.asp" method="post">
+					  <p>First name: <input type="text" name="fname" /></p>
+					  <p>Last name: <input type="text" name="lname" /></p>
+									    <input type="submit" value="Andy-show" />
+					</form>
+					<!--<canvas>标签定义图形，比如图表和其他图像
+					<canvas>标签纸定义图形容器，您必须使用脚本来绘制图形
+					-->
+					<!--<script>标签用于定义客户端脚本，script元素既可以包含脚本语句，也可以通过src属性指向外部脚本文件。必须的type属性规定脚本的MIME类型。JavaScript的常见应用是图像操作、表单验证以及动态内容更新。-->
+					<canvas id="myCanvas">your browser does not support the canvas tag</canvas>
+					<script type="text/javascript">
+					var canvas=document.getElementById('myCanvas');
+					var ctx=canvas.getContext('2d');
+					ctx.fillStyle='#360';
+					ctx.fillRect(0,0,80,100);
+					</script>
+					<!--<caption>标签定义表格标题。
+					<caption>标签必须紧随table标签之后。您只能对每个表格定义一个标题。通常这个标题会被居中于表格之上。
+					-->
+					<!--<table>标签定义ＨＴＭＬ表格。
+					简单的HTML表格有table元素以及一个或多个tr、th或td元素组成。
+					tr元素定义表格行，th标签定义表头，td标签定义表格单元。
+					要复杂的表格也可能包括caotion,col,colgroup,thead,tfoot以及tbody元素。
+					-->
+					<table border="6">
+						<caption>Monthly savings</caption>
+						<tr>
+							<th>Month</th>
+							<th>Saving</th>
+							<th>What</th>
+						</tr>
+						<tr>
+							<td>January</td>
+							<td>$100</td>
+							<td>fuck</td>
+						</tr>
+					</table>
+					<!--<center>对其所包括的文本进行水平居中
+					请使用CSS样式来居中文本！
+					-->
+					<!--<cite>标签通常表示它所包含的文本对某个参考文献的引用，比如书籍或杂志的标题。按照惯例，引用的文本将以斜体显示
+					用<cite>标签把指向其他文档的引用分离出来，尤其是分离那些传统媒体中的文档，如书籍 、杂志、期刊。如果引用的这些文档有联机版本，还应该把引用包括在一个<a>标签中，从而把一个超链接指向该联机版本。
+					<cite>标签还有一个隐藏的功能，他可以使你或者其他人从文档中自动摘录参考书目。我们可以很容易的想象一个浏览器，它能自动整理引用表格，并把它们作为脚注或者独立的文档来显示。<cite>标签的语意已经远远超过它所包含的文本外观的作用，它使浏览器能够以各种使用的方式来向客户表达文档的内容。
+					-->
+					<!--<em>标签把文本定义为强调的内容,对于所有的老浏览器，这意味着要把这段文字用斜体来显示。
+					<strong>标签把文本定义为语气更强的强调的内容，比<em>标签强调的程度更强，浏览器通常使用加粗的字体（相对于斜体）来显示其中的内容。
+					<dfn>标签可标记那些对特殊术语或短语的定义。浏览器中用斜体显示<dfn>中的文本，将来，<dfn>还可能有助于创建文档的索引或术语表。
+					<code>标签用于表示计算机源代码或者其他机器可以阅读的文本内容
+					<samp>标签表示一段用户应该对其没有什么其他解释的文本字符，要从正常的上下文抽取这些字符时，通常要用到这个标签。
+					<kdd>定义键盘文本。它表示文本是从建安上键入的。它经常用在与计算机相关的文档或手册中。
+					<var>标签表示变量的名称，或者由用户提供的值，标记的文本通常显示为斜体。
+					-->
+					Character sequence<samp>ae</samp>May be converted&aelig;en dash<br />
+					<kbd>quit</kbd>
+					<!--<col>标签为表格中一个或多个列定义属性值。
+					如需对全部列应用样式，<col>标签很有用，这样就不需要对各个单元和各行重复应用样式。只能在table和colgroup元素中使用<col>标签。
+					col元素是仅包含属性的空元素，如需创建列，必须在tr元素内部规定td元素。
+					-->
+					<!--<colgroup>标签用于对表格中的列进行组合，以便对其进行格式化。
+					如需对全部列应用样式，<colgroup>标签很有用，这样就不需要对各个单元和各行重复应用样式了。<colgroup>标签只能在table元素中使用。
+					-->
+					<!--要考虑浏览器兼容性-->
+					<table width="100%" border="1">
+						  <col span="3" align="right" />
+						  <tr>
+							<th>ISBN</th>
+							<th>Title</th>
+							<th>Price</th>
+						  </tr>
+						  <tr>
+							<td>3476896</td>
+							<td>My first HTML</td>
+							<td>$53</td>
+						  </tr>
+						</table>
+					<table width="100%" border="1">
+						<colgroup span="2" align="left"></colgroup>
+						<colgroup align="right" style="color:#360;"></colgroup>
+						<tr>
+							<th>ISBN</th>
+							<th>Title</th>
+							<th>What</th>
+						</tr>
+						<tr>
+							<td>3476896</td>
+							<td>My First HTML.</td>
+							<td>fuck</td>
+						</tr>
+					</table>
+					<!--<command>标签表示用户能够调用的命令
+					<command>标签可以定义命令按钮，比如单选按钮、复选框或按钮。
+					只有当command元素位menu元素内时，该元素才是可见的。否则不会显示这个元素，但是可以规定键盘快捷键。目前只有IE支持<command>标签。
+					-->
+					<menu>
+					<command onclick="alert('Hello Word')">Click Me!</command>
+					</menu>
+					<!--<datalist>标签定义选项列表。请与input元素配合使用该元素，来定义input可能的值。datalist及其选项不会被显示出来，他仅仅是合法的输入列表.使用input元素的list属性来绑定datalist。<input>中的list与<datalist>中的id相对应
+					-->
+					<!--<label>标签为input元素定义标注（标记）。
+					label元素不会向用户呈现任何特殊效果。不过，他为鼠标用户改进了可用性。如果在label元素内点击文本，就会触发此控件。也就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+					-->
+					<label for="country_name">Country : </label><input id="country_name" name="country_name" type="text" list="country" />
+					<datalist id="country">
+					   <option value="Afghanistan 阿富汗">
+					   <option value="Albania 阿尔巴尼亚">
+					   <option value="Algeria 阿尔及利亚">
+					   <option value="Andorra 安道尔共和国">
+					   <option value="Angola 安哥拉">
+					   <option value="China">
+					</datalist>
+					<!--<detalis>标签用于描述文档或文档某个部分的细节
+					与<summary>标签配合使用可以为details定义标题。标题是可见的，用户点击标题时，会显示出details。
+					-->
+					<details>
+					<summary>Copyright 2011.</summary>
+					<p>All pages and graphics on this web site are the property of W3School.</p>
+					</details>
+					<table border="3">
+					<dialog open>This is the chat window open.</dialog>
+					<!--<dir>标签定义目录列表-->
+					<dir>
+						<li>HTML</li>
+						<li>XHTML</li>
+						<li>CSS</li>
+					</dir>
+					<!--<div>标签定义文档中的分区或节
+					<div>标签可以把文档分割为独立的、不同的部分。他可以用做严格的组织工具，并确不使用任何格式与其关联。
+					<div>是一个块级元素，这意味着它的内容自动的开始一个新行。实际上，换行是<div>固有的为一个是表现。可以通过<div>的class或id应用额外的样式。
+					可以对同一个<div>元素应用class或id属性，但是更常见的情况只是应用其中一种。这两者的主要差异是，class用于元素组(类似的元素，或者可以理解为某一类元素)，而id用于标识单独的唯一的元素。
+					-->
+					<div>
+						<h3>This is a header.</h3>
+						<p>This is a paragraph.</p>
+					</div>
+					<!--<dl>标签定义了列表(definition list)
+					<dl>标签用于结合<dt>（定义列表中的项目）和<dd>（描述列表中的项目）
+					-->
+					<dl>
+						<dt>Computer</dt>
+						<dd>Used to calculater the machine.......</dd>
+						<dt>Display</dt>
+						<dd>Visual way display the information of the device。。。。</dd>
+					</dl>
+					<!--<embed>标签定义嵌入的内容，比如插件-->
+					<embed src="images/BB霜.jpg" />
+						<!--<fieldset>可将表单内的相关元素分组，可将表单内容的一部分打包，生成一组相关表单的字段，但一组表单元素放到<fieldset>标签内时，浏览器会以特殊方式来显示它们，它们可能有特殊的边界、3D效果，或者甚至可创建一个子表表单来处理这些元素。
+					<fieldset>标签没有必须或唯一的属性，<legend>标签为fieldset元素定义标题、
+					-->
+					<form>
+						<fieldset>
+							<legend>health information</legend>
+							height：<input type="text" />
+							weight：<input type="text" />
+						</fieldset>
+					</form>
+					<!--<figure>标签用作文档中插图的图像，定义figure元素的标题（caption）
+					"figcaption"元素应该被置于“figure”元素的第一个或最后一个字元素的位置
+					-->
+					<figure>
+						<figcaption>The lupu bridge on the huangpu river</figcaption>
+						<img src="images/卢浦大桥.jpg" width="650" height="413"/>
+					</figure><br />
+					<!--<font>标签规定文本字体、大小和颜色
+					请使用样式来代替（<font>）定义文本的字体、字体颜色、字体尺寸
+					-->
+					<font size="3" color="360">This is some text!</font>
+					<font size="2" color="#ff0099">This is some text!</font>
+					<font face="微软雅黑" color="#996699">This is some text!</font><br />
+				    <!--<footer>标签定义文档或节的页脚
+					<footer>元素应当含有其包含元素的信息。
+					页脚通常包含文档的作者、版本信息、使用条款连接、联系信息等等。
+					可以在一个文档中使用多个<footer>元素。
+					<footer>元素的联系信息应该位于<address>标签中.
+					-->
+					<footer>
+					<p>Posted by : W3School</p>
+					<p>Contact information : <a href="mailto:849387083@qq.com">Andy-email<blockquote></blockquote></a></p>
+					</footer>
+					<!--<header>定义文档的页眉（介绍信息）-->
+					<header>
+					<h1>Welcome to my homepage</h1>
+					<p>My name is Andy</p>
+					</header><br />
+					<!--<i>标签显示斜体文本效-->
+					<!--<iframe>标签会创建包含另外一个文档的内敛框架（即行内框架）-->
+					<!--<ins>标签定义已经被插入文档中的文本，与<del>一同使用，来描述文档中的更新和修正-->
+					a dozen is <del>20</del>  <ins>12</ins>pieces<br />
+					<!--<keygen>标签规定用于表单的密匙对生成器字段
+					当提交表单时，私钥存储在本地，公约发送到服务器。
+					-->
+					<!--浏览器兼容性问题-->
+					<form action="demo.keygen.asp" method="get">
+					Username : <input type="text" name="use_name" />
+					Encryption : <keygen name="security" />
+					<input type="submit" />
+					</form><br />
+					 <!--<li>标签定义列表项目。
+					 <li>标签i安用在有序列表（<ol>）和无序列表(<ul>)中
+					 -->
+					 <ol>
+							 <li>Coffee</li>
+							 <li>Tea</li>
+							 <li>Milk</li>
+					 </ol>
+					 <ul>
+							<li>Coffee</li>
+							<li>Tea</li>
+							<li>Milk</li>
+					 </ul>
+					 <!--<main>标签定义文档的主要内容。
+					 <main>元素中扽内容对于文档来说应当是唯一的。它不应包含在文档中重复出现的内容，比如侧栏、导航栏、版权信息、站点标志或搜索表单。
+					 在一个文档中，不能出现一个以上的<main>元素。<main>元素不能是以下元素的后代：<article>、<aside>、<footer>、<header>、<nav>。
+					 -->
+					 <main>
+							<h1>Web Browsers</h1>
+							<p>Google Chrome、Firefox and Internet Explorer is the beat popular browser by now.</p>
+							<article>
+								<h1>Google Chrome</h1>
+							</article>
+					 </main>
+					 <!--<map>定义一个客户端图像映射。图像映射（image-map）指带有可点击区域的一幅图像。
+					 area元素永远嵌套在map元素内部。area元素可定义图像映射中的区域、
+					 <img>中的use可引用<map>中的id或name属性（取决于浏览器），所以我们应同时向<map>添加id和name属性。
+					 -->
+					 <img src="images/eg_planets.jpg" border="0" usemap="#planetmap"					alt="Planets" />
+					 <map name="planetmap" id="planetmap">
+						<area shape="circle" coords="180,139,14" href="venus.html" target="_blank"	alt="Venus" />
+						<area shape="circle" coords="129,161,10" href="mercury.html" target="_blank" alt="Mercury" />
+						<area shape="rect" coords="0,0,110,260" href="sun.html" target="_blank" alt="Sun" />
+					</map>
+					<!--<mark>标签定义带有记号的文本。在需要突出显示文本时使用<m>标签-->
+					<p>Do  not forget to buy<mark>milk</mark>!!!</p>
+					<!--<menu>标签定义命令的列表或菜单，用于上下文菜单、工具栏以及用于列出表单控件和命令-->
+					<!--"contextmenu"属性规定元素的上下文菜单。当用户右键点击元素时，会出现上下文菜单 。contextmenu属性的值是要打开<menu>元素的id。-->
+					<menu>
+						<li>
+						<menu label="File">
+						<button type="button" onclick="file_new( )">New</button>
+						<button type="button" onclick="file_open( )">Open</button>
+						<button type="button" onclick="file_save( )">Save</button>
+						</menu>
+						</li>
+						<li>
+						<menu label="Edit">
+						<button type="button" onclick="edit_cut( )">Cut</button>
+						<button type="button" onclick="edit_copy( )">Copy</button>
+						<button type="button" onclick="eidt_paste( )">Paste</button>
+						</menu>
+						</li>
+						<div style="background:yellow; border:1px solid #ccc; padding:10px;"					contextmenu="mymenu">
+						<p>Please right click in the box,you can see the shortcut menu!</p>
+						</menu>
+						<!--<menuitem>标签定义用户可以从弹出菜单调用的命令/菜单项目(子菜单)。-->
+						<menu type="context" id="mymenu">
+							<menuitem label="Refresh" onclick="window.location.reload();" icon="ico_reload.png">
+							</menuitem>
+						</menu>
+						<menu label="Share on">
+							<menuitem label="Twitter" onclick="window.open('//twitter.com/intent/tweet?text='+window.location.href);" icon="ico_twitter.png" >
+							</menuitem>
+							<menuitem label="Facebook" onclick="window.open('//facebook.com/sharer/sharer.php?u='+window.location.href);">
+							</menuitem>
+						</menu>
+						<menu >
+							<menuitem label="Email This Page" onclick="window.location='mailto:body'='window.location.href;">
+							</menuitem>
+						</menu>
+					<div>
+					<!--<meta>元素可提供有关页面的元信息（meta-information）,比如针对搜索引擎和更新频度的描述和关键词。<meta>标签位于文档的头部，不包含任何内容.<meta>标签的属性定义了与文档相关联的名称、值对。<meta>标签用于位于head元素内部。元素据总是以名称/值的形式被成对传递的。
+					-->
+					<!--"name"属性提供了名称/对中的名称、-->’
+					<!--"keywords"是一个经常被用到的名称。他为文档定义了一组关键字。某些搜索引擎在遇到这些关键字时，会用这些关键字对文档进行分类。如果没有提供name属性，那么名称/值对中的 名称会采用http-equiv属性的值。-->
+					<meta name="keywords" content="HTML,ASP,PHP,SQL" />
+					<!--"http-equiv"属性为名称/值对提供了名称并指示服务器在发送实际的文档之前先在要传送给浏览器的MIME文档头部包含名称/值对。当服务器向浏览器发送文档时。会先发送许多-名称/值对。虽然有些服务器会发送许多这种名称/值对,但是所有服务器都至少要发送一个：content-type:text/html。这将告诉浏览器准备接受一个HTML文档。
+					使用带有http-type属性的<meta>标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。
+					-->
+					<meta http-equiv="charset" content="utf-8"><meta http-equiv="expires" content="31 Dec 2008" />
+					<!--"content"属性提供了名称/值对中的值。该值可以是任何有效的字符串。
+					content属性始终要和name属性或http-equiv属性一起使用。
+					-->
+					<!--"scheme"属性用于指定要用来翻译属性值的方案。此方案应该在由<head>标签的profile属性指定的概况文件中进行了定义。-->
+					<!--<meter>标签定义已知范围或分数值内的标量测量。也被称为guage（尺度）
+					<meter>标签不应用于指示进度（在进度条中）。如果标记进度条，请使用<progress>。
+					-->
+					<!--浏览器兼容性-->
+					<meter value="3" min="0" max="10">十分之三</meter>
+					<meter value="0.6">60%</meter>
+					<!--<nav>标签定义导航链接的部分，如果文档中有“前后”按钮，则应该把它放到<nav>元素中-->
+					<nav>
+						<a href="http://www.w3school.com.cn/html/index.asp">Home</a>
+						<a href="http://www.w3school.com.cn/html/html_intro.asp">Previous</a>
+						<a href="http://www.w3school.com.cn/html/html_elements.asp">Next</a>
+					</nav>
+					<!--<noscript>元素用来定义在脚本未被执行时的替代内容（文本）.吃标签可被用于可识别<script>标签但无法支持其中的脚本的浏览器。
+					-->
+					<script type="text/javascript">
+					</script>
+					<noscript>Your browser does not support JavaScript!</noscript>
+					<script type="text/vbscript">
+					</script>
+					<noscript>Your browser does not support VBScript!</noscript>
+					<!--定义一个嵌入的对象。请使用此元素向您的 XHTML 页面添加多媒体。此元素允许您规定插入 HTML 文档中的对象的数据和参数，以及可用来显示和操作数据的代码。
+					<object> 标签用于包含对象，比如图像、音频、视频、Java applets、ActiveX、PDF 以及 Flash。
+					object 的初衷是取代 img 和 applet 元素。不过由于漏洞以及缺乏浏览器支持，这一点并未实现。
+					浏览器的对象支持有赖于对象类型。不幸的是，主流浏览器都使用不同的代码来加载相同的对象类型。
+					而幸运的是，object 对象提供了解决方案。如果未显示 object 元素，就会执行位于 <object> 和 </object> 之间的代码。通过这种方式，我们能够嵌套多个 object 元素（每个对应一个浏览器）。
+					注释：不要对图像使用 <object> 标签，请使用 <img> 标签代替。
+					-->
+					<!--<param>标签允许您为XHTML文档的对象规定run-time设置，也就是说，此标签可谓包含它的<object>或者<applet>标签提供参数。-->
+					<object  classid="clsid:F08DF954-8592-11D1-B16A-00C0F0283628" id="Slider1"
+					width="100" height="50" align="center"  >
+					  <param name="BorderStyle" value="1" />
+					  <param name="MousePointer" value="0" />
+					  <param name="Enabled" value="1" />
+					  <param name="Min" value="0" />
+					  <param name="Max" value="10" />
+					</object>
+					<!--<option>元素定义下拉列表中的一个选项（一个条目）。浏览器将<option>标签中的内容作为<select>标签的菜单或是滚动列表中的一个元素显示。
+					<option>标签可以在不带任何属性的情况下使用，但是你通常需要使用value属性，此属性会指示出送往服务器的内容。
+					<option>位于<select>标签内部。<option>标签必须与<select>标签一同使用，否则<option>标签没有意义。如果列表选项很多，可以使用<optgroup>标签对相关选项进行组合。
+					-->
+					<!--<optgroup>标签定义选项组。
+					用于组合选项。当您使用一个长的选项列表时，对相关的选项进行组合会使处理更加容易
+					-->
+					<!--<select>可创建单选或者多选菜单。-->
+					<select>
+						<optgroup label="Swedish Cars">
+							<option value="volvo">Volvo</option>
+							<option value="saab">Saab</option>
+						</optgroup>
+						<optgroup label="German Cars">
+							<option value="mercedes">Mercedes</option>
+							<option value="audi">Audi</option>
+						</optgroup>
+					</select>
+					<!--<output>标签定义不同类型的输出。-->
+					<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+						0<input type="range" id="a" value="50" />100
+						+<input type="number" id="b" value="50" />
+						=<output name="x" for="a b"></output>
+					</form>
+					<!--<pre>标签的一个常见应用就是用来表示计算机的源代码。
+					"pre"元素可定义预格式化的文本。被包围在pre元素中的文本通常都会保留空格和换行符。而文本也会呈现为等宽字体。允许文本可以包括物理样式和基于内容的样式变化，还有链接、图像和水平分隔线、当把其他标签放到<pre>块中时，就像放在HTML和XHTML文档的其他部分中一样即可。如下：
+					( &lt=<;&gt=>;&quot=";&amp=&; )
+					制表符(tab)在<pre>标签定义的块当中可以起到应有的作用，每个指标负占据8个字符的位置。
+					-->
+					<pre>
+					&lt;html&gt;
+					&lt;head&gt;
+						&lt;script type=&quot;text/javascript&quot;&gt;
+					&lt;/script&gt;
+					&lt;/head&gt;
+					&lt;body&gt;
+						&lt;script type=&quot;text/javascript&quot;&gt;
+						xmlDoc=<a href="dom_loadxmldoc.asp">loadXMLDoc</a>(&quot;books.xml&quot;);
+						document.write(&quot;xmlDoc is loaded,ready for use&quot;);
+						&lt;/script&gt;
+					&lt;/body&gt;
+					&lt;/html&gt;
+					</pre>
+					<!--<progress>标签只是任务的进度。请结合<progress>与JavaScript一起使用，来显示任务的进度。该标签不适合用于表示度量衡。如需表示度量衡，请使用<meter>标签代替。-->
+					<progress value="22" max="100"></progress><br />
+					<!--<rp>标签在ruby注解中使用，以定义不支持ruby元素的浏览器所显示的内容。
+					<rt>标签定义字符（中文注音或字符）的解释或发音。
+					ruby注解是中文注音或字符。
+					ruby元素有一个或多个字符（需要一个解释/发音）和一个提供该信息的rt元素组成，还包括可选的rp元素，定义当浏览器不支持ruby元素时显示的内容。
+					-->
+					<ruby>
+					漢 <rt><rp>(</rp>ㄏㄢˋ<rp>)</rp></rt>
+					</ruby><br />
+					<!--<s>标签可定义加删除线文本定义。<s>标签是<strike>标签的缩写-->
+					<s>HTML5 does not support "s" label</s>
+					<!--<section>标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。-->
+					<section>
+					<h1>PRC</h1>
+					<p>The People's Republic of China was born in 1949....</p>
+					</section>
+					<!--<small>标签呈现小号字体效果-。作用同<big>标签差不多-->
+					<!--<source>标签为媒介元素（比如<video>and <audio>)定义媒介资源。
+					<source>标签允许您规定可替换的视频/音频文件供浏览器根据它对媒体类型或者编解码
+					器的支持进行选择。
+					controls属性供添加播放、暂停和音量控件。
+					autoplay autoplay 如果出现该属性，则音频在就绪后马上播放。
+					controls controls 如果出现该属性。则向用户现实控件，比如播放按钮。
+					loop loop 如果出现该属性，则每当音频结束时重新开始播放
+					preload preload  如果出现该属性，则音频在页面加载时进行加载，并预备播放。
+					如果使用autoplay,则忽略该属性。
+					src url 要播放的音频的URL。
+					-->
+					<audio controls>
+						<source src="mp3/horse.ogg" type="audio/ogg" />
+						<source src="mp3/horse.mp3" type="audio/mpeg" />
+						Your browser does not support the audio element.
+					</audio>
+					<!--<span>标签被用来组合文档中的行内元素。<span>没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。
+					可以为span应用id或class属性，这样既可以增加适当的语意，又便于对span应用样式。
+					可以对同一个<span>标签应用class or id 属性，但是跟常见的情况是只应用其中一种。这两者主要的差异是，class用于元素组，id用于标识单独的唯一的元素。
+					-->
+					<p><span >some text.</span>some other text.</p>
+					<!--<style>标签用于为HTML文档定义样式信息。tyle属性是必需的，定义style元素的内容。唯一可能的值是"text/css"
+					如果需要链接外部式表，请使用<link>标签。
+					-->
+					<style type="text/css">
+					h1{color:red}
+					p{color:blue}
+					</style>
+					<!--<sub>标签定义下标文本。包含在<sub></sub>之中的内容将会以当前文本流中字符高度的一半来显示，但是与当前文本流中文字的字体和字号都是一样的。-->
+					This pragraph text include <sub> subscript</sub>
+					<!--<summary>标签包含details元素的标题，“details”元素用于描述有关文档或文档片段的详细信息。
+					请与<details>标签一起使用，标题是可见的，当用户点击标题时会显示出详细信息。
+					"summary"元素应该是"details"元素的第一个子元素。
+					-->
+					<details>
+					<summary>HTML 5</summary>
+					This document teaches you everything you have to learn to about HTML  5.
+					</details>
+					<!--<sup>定义上标文本。包含在<sup></sup>中的内容将会以当前文本流中字符高度的一半来显示，但是当前文本流中文字的字体和字号都是一样的。
+					这个标签在向文档添加脚注以及表示方程式中的值数值时非常有用。如果和<a>标签结合起来使用，就可以创建出很好的超链接脚注。
+					-->
+					This document include <sup>superscript</sup>
+					<!--<tbody>标签表格主体（正文）.该标签用于组合HEML表格的主体内容。
+					tbody元素应该与thead和tfoot元素结合起来使用。
+					thead元素用于对HTML表格中的表头内容进行分组，而tfoot元素用于对HTML表格中的表注（页脚）内容进行分组。
+					如果您使用thead、tfoot以及tbody元素，您就必须使用全部的元素。它们的出现次序是：thead、tfoot、tbody，这样浏览器就可以在收到所有数据前呈现也叫了。您必须在table元素内部使用这些标签。在默认情况下这些元素不会影响到表格布局。不过，您可以使用CSS使这些元素改变表格的外观。
+					-->
+					<table border="1">
+						<thead>
+							<tr>
+								<th>Month</th>
+								<th>Saving</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td>Sum</td>
+								<td>$180</td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td>January</td>
+								<td>$100</td>
+							</tr>
+							<tr>
+								<td>February</td>
+								<td>$80</td>
+							</tr>
+						</tbody>
+					</table>
+					<!--<textarea>标签定义多行的文本输入控件。
+					文本区中可容纳无线数量的文本，其中的文本的默认字体是等宽字体（通常是Courier）。
+					可通过cols和rows属性来规定年textarea的尺寸，不过更好的方法是使用CSS的height和width属性。
+					在文本输入区内的文本行间，用“%OD%OA”（回车/换行）进行分隔。
+					可以通过<textarea>标签的wrap属性设置文本输入区内的换行模式.
+					-->
+					<textarea rows="3" cols="40">
+					How wideg the heart is , how big is the world.
+					My heart is not from the sky.
+					Gentleman to self-improvement ! Remember,every day is a step , a new step toward the eatablished goal !
+					</textarea>
+					<!--<time>标签定义公历的时间（24小时制）或日期，时间和时区偏移是可选的。
+					该元素能够以机器可读的方式对日期和时间进行编码，举例说，用户代理能够把生日提醒或排定的事件添加到用户日程表中，搜索引擎也能够生成更智能的搜索结果。
+					-->
+					<p>We are in the everyday morning <time> 9:00 </time>Start a business</p>
+					<p>I'm here <time datetime="2008-02-14"> Valentine's day </time>have a appointment</p>
+					<!--<track>标签为诸如ideo元素之类的媒介规定外部文本轨道。用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的。-->
+					<video width="320" height="240" controls="controls">
+						<source src="forrset_gump.mp4" type="video/mp4" />
+						<source src="forrset_gump.ogg" type="video/ogg" />
+						<track kind="subtitles" src="subs_chi.srt" srclang="zh" label="Chinese">
+						<track kind="subtitles" src="subs_eng/srt" srclang="en" label="English">
+					</video>
+					<!--<tt>标签呈现类似打字机或者等宽的文本效果。
+					<tt>标签与<code>和<kbd>标签一样，<tt>标签和必需的</tt>标签告诉浏览器，要把其中包含的文本显示为等宽字体。
+					-->
+					<!--<u>标签可定义下划线文本。请尽量避免为文本加下划线，用户会把它混淆为一个超链接。-->
+					<p>If the text isn't a hyperlink , don't <u>use the underscore  for it </u> .</p>
+					<!--<video>标签定义视频，比如电影片段或其他视频流。-->
+					<video src="movie.ogg" controls="controls">
+					Your browser doesn't support video tag.
+					</video>
+					<!--<wbr>标签规定文本中的何处适合添加换行符。（单词换行时机）-->
+					<p>
+						If you want to learning AJAX , so you must familiar with XML<wbr> Http </wbr> Request object .
+					</p>
+					<!--"contenteditale"属性规定元素内容是否可编辑。如果元素未设置contenteditable属性，那么元素会从其父类集成该属性。
+					-->
+					<p contenteditable="true">This is a editable paragraph .</p>
+					<!--"data-*"属性用于存储页面或应用程序的私有自定义数据。
+					“data-*”属性赋予我们在所有HTML元素上嵌入自定义data属性的能力。
+					存储的（自定义）数据能够被页面的JavaScript中利用，以创建更好的用户体验（不进行Ajax调用或服务器端数据查询）。
+					" data-* " 属性包括两个部分:
+					属性名不应该包含任何大写字母，并且在前缀"data-*"之后必须有一个字符。
+					属性值可以是任意字符串。
+					用户代理会完全忽略前缀为"data-*"的自定义属性。
+					-->
+					<ul>
+						<li data-animal-type="bird">Owl</li>
+						<li data-animal-type="fish">Salmon</li>
+						<li data-animal-type="spider">Tarantula</li>
+					</ul>
+					<!--"dir"元素规定元素内容的文本方向。
+					dir属性在以下标签中无效 : <base><br><frame><frameset><hr><iframe><param><script>.
+					ltr : 默认。从左向右的文本方向。
+					rtl : 从右向左的文本方向。
+					-->
+					<p dir="rtl">Write this text right-to-left</p>
+					<p dir="ltr">Write this text left-to-right<p>
+					<element dir="rtl | ltr">
+					<!--"draggable"属性规定元素是否可拖动。链接和图像是可拖动的。
+					draggable属性常用在拖放操作中。
+					-->
+					<p draggable="true">This is a draggable paragraph .</p>
+					<p draggable="false">This is a can't drag paragraph .</p>
+					<p draggable="auto"> browser default behavior .</p>
+					<!--"dropzone"属性规定在元素上拖动数据时，是否拷贝、移动或链接拖动数据。-->
+					<div dropzone="copy"></div>
+					<!--"hidden"属性是布尔属性。如果设置该属性，他规定元素仍未或不再相关。
+					浏览器不应该显示以规定的hidden属性的元素。
+					hidden属性也可用于防止用户查看元素，直到匹配某些条件（比如选择了某个复选框）。然后，JavaScript可以删除hidden属性，以使此元素可见。
+					-->
+					<p hidden>This is paragraph should be hidden . </p>
+					<script type="text/javascript">
+						function change_header(){
+							document.getElementById("myHeader").innerHTML="Nice day !";
+						}
+					</script>
+					<h1 id="myHeader">Hello World !</h1>
+					<button onclick="change_header()">Change text </button>
+					<!--<lang>属性规定元素内容的语言。
+					lang属性在以下标签中无效：<base><br><frame><frameset><hr><iframe><param><script>
+					-->
+					<p lang="fr">Ceci est un paragraphe .</p>
+					<!--"spellcheck"属性规定是否对元素进行拼写和语法检查。
+					可以对以下内容尽心拼音检查：
+						input元素中的文本值（非密码）。
+						<textarea>元素中的文本。
+						可编辑元素中的文本。
+					-->
+					<p contenteditable="true" spellcheck="true">This is a paragraph. </p>
+					<!--"style"属性规定元素的行内样式（inline style）。
+					style属性将覆盖任何全局样式设定，例如在<style>标签或在外部样式表中规定的样式。
+					-->
+					<div>
+					<h1>This is a header!<h1>
+					<p >This is a paragraph!</p>
+					</div>
+					<!--"tabindex"属性规定元素的tab键控制次序（当tab键用于导航时）。
+					以下元素支持tabindex属性：<a><area><button><input><object><select><textarea>
+					-->
+					<a href="http://www.w3school.com.cn/" tabindex="2">W3School</a>
+					<a href="http://www.google.com/" tabindex="1">Google</a>
+					<a href="http://www.microsoft.com/" tabindex="3">Microsoft</a>
+					<!--"title"属性规定关于元素的额外信息。
+					这些信息通常会在鼠标移动到元素上时显示一段工具提示文本（tooltip text）。
+					title属性通常与form以及a元素一同使用，以提供关于输入格式和连接目标的信息。同时它也是abbr和acronym元素的必需属性。
+					-->
+					<abbr title="People's Republic of China">PRC</abbr> was founded in 1949.
+					<p title="Free Web tutorials">W3School.com.cn</p>
+					<!--"translate"属性规定是否应该翻译元素内容
+					请使用classs="notranslate"替代。
+					-->
+					<p translate="no">Please don't translate this section .</p>
+					<p class="yestranslate">This paragraph can translated into any language .</p>
+		 </body>
+</html>

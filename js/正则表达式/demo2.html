@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script type="text/javascript">
+			function findIt(){
+				var input = document.myform.doc.value;
+				var re = new RegExp(document.myform.regexp.value);
+
+				if (input.search(re) != -1) 
+					document.myform.output[0].checked = true;
+				else document.myform.output[1].checked = true;
+			}
+
+			function locateIt(){
+				var input = document.myform.doc.value;
+				var re = new RegExp(document.myform.regexp.value);
+				document.myform.offset.value = input.search(re);
+			}
+
+			function splitit(){
+				var input = document.myform.doc.value;
+				var re = new RegExp(document.myform.regexp.value);
+				var arr = new Array();
+				arr = input.split(re);
+				var s = '';
+				for (var i = 0; i < arr.length; i++) {
+					if (i < arr.length-1) s += arr[i] + ',';
+					else s += arr[i];
+				}
+
+				document.myform.result.value = s;
+			}
+
+			function replaceit(){
+				var input = document.myform.doc.value;
+				var re = new RegExp(document.myform.regexp.value);
+				var str1 = document.myform.rep.value;
+				var str2 = input.replace(re,str1);
+				document.myform.result.value = str2;
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+		    <h1>正则表达式编辑器</h1>
+		    <hr>
+		    <form name="myform">
+		        请输入要进行查询的文本
+		        <br>
+		        <textarea name="doc" cols=40 rows=4 wrap="virtual">
+					you can input some words in this textarea!
+		        </textarea>
+		        <br>
+		        请输入正则表达式：
+		        <br>
+		        <input type="text" name="regexp" size=30 value="\d\d\d">
+		        <br>
+		        <hr>
+		        <input type="button" value="是否匹配" onClick="findIt()">
+		        <input type="radio" name="output">Yes
+		        <input type="radio" name="output">No 
+		        <br>
+		        <input type="button" value="匹配位置" onClick="locateIt()">
+		        <input type="text" name="offset" size=10>
+		        <br>
+		        <input type="button" value="分  割" onClick="splitit()">
+		        <input type="button" value="替换为" onClick="replaceit()">
+		        <input type="text" name="rep" size=10>   
+		        <br>
+		        <textarea name="result" cols=40 rows=4 wrap="virtual">
+					结果显示区
+		        </textarea>
+		        <br>
+		        <input type="reset">
+		    </form>
+		</center>
+	</body>
+</html>

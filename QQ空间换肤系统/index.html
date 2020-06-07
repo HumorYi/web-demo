@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+	 <head>
+			  <meta charset="UTF-8">
+			  <meta name="Generator" content="EditPlus®">
+			  <meta name="Author" content="">
+			  <meta name="Keywords" content="">
+			  <meta name="Description" content="">
+			  <title>QQ空间换肤系统-Andy</title>
+			  <style type="text/css">
+						html,body,div,ul,li{ margin:0px; padding:0px; }
+						body{ /*background-color:#000; background-repeat:no-repeat;
+						background-image:url("images/b1.png"); background-position:top center;*/
+						background:#000 url("images/b1.png") no-repeat top center; }
+						/*Con start*/
+						#Con{ width:900px; height:137px; margin:150px auto 0px; background:rgba(224,17,70,0.5); position:relative; }
+						#Con img{ width:15px; height:24px; cursor:pointer; }
+						#Con img.prev{ position:absolute; top:60px; left:10px; }
+						#Con img.next{ position:absolute; top:60px; right:10px; }
+						/*scroll start*/
+						#Con .scroll{ width:844px; height:137px;margin:0px auto; position:relative; overflow:hidden;/*超出隐藏*/ }
+						#Con .scroll .imgList{ width:9999px; height:137px; position:absolute; left:0px;/*动画原理改变他的值*/}
+						#Con .scroll .imgList ul li{ width:175px; height:110px; border:3px solid #fff; list-style:none; float:left; margin:10px 15px 0px; }
+						#Con .scroll .imgList ul li img{ width:175px; height:110px; }
+						/*scroll end*/
+						/*Con end*/
+			  </style>
+	 </head>
+	 <body>
+				<!--Con start-->
+				<div id="Con">
+						<!--prev and next start-->
+						<img src="images/dirl.png" alt="左按钮" class="prev" />
+						<img src="images/dirr.png" alt="左按钮" class="next" />
+						<!--prev and next end-->
+						<!--scroll start-->
+						<div class="scroll">
+								<div class="imgList">
+									<ul>
+											<li>
+												<img src="images/s1.png" alt="背景皮肤" dataSrc="images/b1.png" />
+											</li>
+											<li>
+												<img src="images/s2.png" alt="背景皮肤" dataSrc="images/b2.png"  />
+											</li>
+											<li>
+												<img src="images/s3.png" alt="背景皮肤" dataSrc="images/b3.png" />
+											</li>
+											<li>
+												<img src="images/s4.png" alt="背景皮肤" dataSrc="images/b4.png" />
+											</li>
+											<li>
+												<img src="images/s5.png" alt="背景皮肤" dataSrc="images/b5.png" />
+											</li>
+											<li>
+												<img src="images/s6.png" alt="背景皮肤" dataSrc="images/b6.png" />
+											</li>
+											<li>
+												<img src="images/s7.png" alt="背景皮肤" dataSrc="images/b7.png" />
+											</li>
+											<li>
+												<img src="images/s8.png" alt="背景皮肤" dataSrc="images/b8.png" />
+											</li><li>
+												<img src="images/s9.png" alt="背景皮肤"  dataSrc="images/b9.png"/>
+											</li>
+											<li>
+												<img src="images/s10.png" alt="背景皮肤" dataSrc="images/b10.png" />
+											</li>
+									</ul>
+								</div>
+						</div>
+						<!--scroll end-->
+				</div>
+				<!--Con end-->
+	 </body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		// $ 查找
+		/*	$(function(){
+				alert(1);
+			});*/
+			$("#Con .scroll .imgList ul li").click(function(){
+		//		alert(1);
+				var bimg = $(this).find("img").attr("dataSrc");//获取大图地址路径 attr 属性
+		//		alert(bimg);
+				$("body").css("background-image","url("+bimg+")");//给body赋值更换背景图片
+			});
+		//点击左按钮，切换效果
+			var numClick = 0;
+			$("#Con img.prev").click(function(){
+		//			alert(10);
+				numClick++;
+		//		alert(numClick);
+				if(numClick==3){alert("左边已经到头了");numClick=2;}
+				$(".imgList").animate({left:-844*numClick},1000);
+			});
+			$("#Con img.next").click(function(){
+		//			alert(10);
+				numClick--;
+		//		alert(numClick);
+				if(numClick==-1){alert("右边已经到头了");numClick=0;}
+				$(".imgList").animate({left:-844*numClick},1000);
+			});
+	</script>
+</html>

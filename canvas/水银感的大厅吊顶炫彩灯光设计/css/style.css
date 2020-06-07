@@ -1,0 +1,8 @@
+body,canvas{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  background: #000;
+ }
+ canvas{display:block; margin:0px auto;}

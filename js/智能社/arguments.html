@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+			</style>	
+			
+			<!--js,各色特效-->
+			<script type="text/javascript" src=""></script>
+			<script type="text/javascript">
+				function css(obj, name, value){
+					if (arguments.length==2)
+					{
+						return obj.style[name];
+					}else{
+						obj.style[name] = value;
+					}
+				}
+
+				window.onload = function(){
+					var oDiv = document.getElementById('div1');
+					//alert(css(oDiv, 'width'));
+					css(oDiv, 'background', 'green');
+				}
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="div1" style='width:200px; height:200px; background:red;'></div>
+		</body>
+</html>
+<!--
+可变参（不定参）：arguments
+	参数的个数可变，参数数组;
+	css(oDiv,"width");	//获取样式
+	css(oDiv,'width','height')	//设置样式
+-->

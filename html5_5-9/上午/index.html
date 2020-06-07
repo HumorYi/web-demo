@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D视频</title>
+	<style type="text/css">
+		
+		/*重置css*/
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			-webkit-perspective:2000;
+		}
+
+		#main {
+			width: 400px;
+			height: 360px;
+			position: relative;
+			margin: 100px auto;
+	
+			-webkit-transform-style:preserve-3d;
+
+			/*动画名称*/
+			-webkit-animation-name:roll;
+			/*动画执行速率*/
+			-webkit-animation-timing-function:linear;
+			/*动画执行一次需要的时间*/
+			-webkit-animation-duration:20s;
+			/*动画执行的次数*/
+			-webkit-animation-iteration-count:infinite;
+		}
+
+		video {
+			width: 400px;
+			height: 360px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.9;
+			cursor:pointer;
+		}
+
+		/*设置每个video的位置*/
+		video:nth-child(1){
+			-webkit-transform:translateZ(350px);
+		}
+		video:nth-child(2){
+			-webkit-transform:rotate3D(0,1,0,60deg) translateZ(350px);
+		}
+		video:nth-child(3){
+			-webkit-transform:rotate3D(0,1,0,120deg) translateZ(350px);
+		}
+		video:nth-child(4){
+			-webkit-transform:rotate3D(0,1,0,180deg) translateZ(350px);
+		}
+		video:nth-child(5){
+			-webkit-transform:rotate3D(0,1,0,240deg) translateZ(350px);
+		}
+		video:nth-child(6){
+			-webkit-transform:rotate3D(0,1,0,300deg) translateZ(350px);
+		}
+
+		/* 定义旋转动画 */
+
+		@-webkit-keyframes roll {
+			from {
+				-webkit-transform:rotateY(0deg);
+			}
+			%17 {
+				-webkit-transform:rotateY(60deg);
+			}
+			%34 {
+				-webkit-transform:rotateY(120deg);
+			}
+			%50 {
+				-webkit-transform:rotateY(180deg);
+			}
+			%67 {
+				-webkit-transform:rotateY(240deg);
+			}
+			%84 {
+				-webkit-transform:rotateY(300deg);
+			}
+			to {
+				-webkit-transform:rotateY(360deg);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div id="main">
+		<video src="video/test1.mp4" ></video>
+		<video src="video/test2.mp4" ></video>
+		<video src="video/test3.mp4" ></video>
+		<video src="video/test4.mp4" ></video>
+		<video src="video/test5.mp4" ></video>
+		<video src="video/test6.mp4" ></video>
+	</div>
+</body>
+
+<script>
+	var animationDiv ;
+	var videos;
+
+	window.onload = function initAnimation(){
+		animationDiv = document.getElementById("main");
+		videos = document.getElementsByTagName("video");
+		for (var i = 0; i < videos.length; i++) {
+			videos[i].onmouseover = videoPlay;
+			videos[i].onmouseout = videoPause;
+		};
+	}
+
+	function videoPlay(){
+		this.play;
+		animationDiv.webkitAnimationPlayState = "pause";
+	}
+	function videoPause(){
+		this.pause;
+		animationDiv.webkitAnimationPlayState = "running";
+	}
+	
+	jQuery(function(){
+		jQuery('#play').click(function(){
+			var video = jQuery("#example")[0];
+			if (video.paused) {
+				video.play();
+			}
+		});
+		jQuery('#stop').click(function(){
+			var video = jQuery("#example")[0];
+			if (!video.paused) {
+				video.pause(); // 暂停
+			}
+		});
+	});
+ 
+</script>
+
+</html>

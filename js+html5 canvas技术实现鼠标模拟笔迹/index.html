@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>鼠标模拟笔迹</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		background: #000;
+	}
+	#canvas{
+		border:solid 1px #4a4a4a;
+		margin-top: 100px;
+		border-radius: 10px;
+	}
+	#btn{
+		position: absolute;
+		margin-top: -680px;
+		margin-left: 1000px;
+		text-decoration: none;
+		text-align: center;
+		display: block;
+		width: 80px;
+		height: 26px;
+		line-height: 26px;
+		padding: 10px;
+		background: #388238;
+		color: #000;
+		border-radius: 10px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	#btn:hover{
+		background: #4a4a4a;
+		color: #fff;
+	}
+</style>
+</head>
+<body>
+<center><canvas id="canvas" width="1000" height="600"></canvas></center>
+<a href="javascript:void(0);"  id="btn" onclick="reStart()">重启画布</a>
+<script>
+//定义获取id 元素的函数
+function $(id){
+	return document.getElementById(id);
+}
+
+//定义了两个数组元素。用于记录鼠标的X Y 轴的位置
+var clickX = [];
+var clickY = [];
+var act = [];
+var canvas = $("canvas");	//画布对象
+var c = canvas.getContext("2d");
+var print = false;
+
+//鼠标按下触发
+canvas.onmousedown = function(e){
+	//记录当前鼠标点
+	var m = window.event || e;
+	print = true;
+	addClick(m.clientX-this.offsetLeft,m.clientY-this.offsetTop,0);
+};
+
+//鼠标移动触发
+canvas.onmousemove = function(e){
+	var m = window.event || e;
+	if(print){	//鼠标按下来移动的话
+		addClick(m.clientX-this.offsetLeft,m.clientY-this.offsetTop,1);	//true为新的点绘画
+		draw();
+	}
+};
+
+//鼠标松开触发
+canvas.onmouseup = function(){
+	print = false;
+};
+
+//鼠标离开触发
+canvas.onmouseleave = function(){
+	print = false;
+};
+
+/*
+ *鼠标点记录
+ * x  鼠标X 轴
+ * y  鼠标Y 轴
+ */
+function addClick(x,y,a){
+	clickX.push(x);
+	clickY.push(y);
+	act.push(a);
+};
+
+/*
+ *开始绘画
+ */
+function draw(){
+	//设置填充路径的颜色
+	c.strokeStyle = "pink";
+	//当两条线条交汇时，创建圆形边角：
+	c.lineJoin = "round";
+	c.lineWidth = 10;
+	for(var i = 0,l = clickX.length;i<l;i++){
+		c.beginPath();	//开始路径绘制
+		if(act[i]){
+			c.moveTo(clickX[i-1],clickY[i-1]);
+		}else{
+			c.moveTo(clickX[i]-1,clickY[i]-1);	//新的点。为了不要和lineTo相等，所以减了一个像素。
+		}
+		c.lineTo(clickX[i],clickY[i]);
+		c.closePath();	//结束路径绘制
+		c.stroke();			//对路径进行填充
+	}
+};
+//重启动画
+function reStart(){
+	window.location.reload();
+};
+</script>
+</body>
+</html>

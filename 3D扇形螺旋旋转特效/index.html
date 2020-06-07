@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>3D扇形螺旋旋转特效 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css" id="css">
+				html,body,div{ 
+					margin:0px;padding:0px; 
+				}
+				html,body{ 
+					width:100%; height:100%; font-family:"微软雅黑";background:#000;
+				}
+				
+				/*wrap S*/
+				#wrap{
+					width: 500px; height:500px; margin:100px auto;
+				}
+				
+				/*box S*/
+				#wrap .box{
+					height:500px; position:relative; transform-style:preserve-3d; perspective:1000px; /*视镜*/ transform:translate3d(200px,200px,-100px); /*3d代表都移动x,y,z轴*/
+				}
+				/*box E*/
+
+				/*helix S*/
+				#wrap .box .helix{
+					width:40px; height:200px; position:absolute; transform-origin:left top; /*x,y,z*/ opacity:.5; box-shadow:3px 1px 3px #000; animation:helix 2s infinite alternate;/*动画名称 时间 次数 方向*/
+				}
+
+				@keyframes helix{
+					to{ transform:rotateZ(0deg) rotate(1080deg);}
+				}
+				/*helix E*/
+				/*wrap E*/
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--wrap S-->
+			<div id="wrap">
+				<!--box S-->
+				<div class="box"></div>
+				<!--box E-->
+			</div>
+			<!--wrap E-->
+
+			<!--js,各色特效-->
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript">
+				var html = "";
+				var css = "";
+				for (var i=1;i<=100 ;i++ )
+				{
+					html +="<div class=helix></div>";
+					css +=".helix:nth-child("+i+"){ transform:translateZ("+(-25*i)+"px) rotate("+13*i+"deg);background:"+color3()+";}";
+				}
+				$(".box").append(html);
+				$("#css").append(css);
+
+				//随机颜色：十六进制 0~9 a~f 位数1~6 #000001 序列号0~15
+
+				//方法一：
+				function color1(){
+					var colors =[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];
+					var color ="";
+					for (var i=0;i<6 ;i++ )
+					{
+						var n = Math.ceil(Math.random()*15); //随机生成0~15之间的整数 向上取整 
+						color += colors[n];
+						if (i==5)
+						{
+							return "#"+color; //在随机获取的六位数前面添加一个（#），形成16进制的颜色值
+						}
+						
+					}
+				}
+
+				//方法二：十六进制的最大数转换为十进制
+				function color2(){
+					//0~16777215之间的随机整数转换为16进制的值 向下取整
+					var color = Math.floor(Math.random()*16777215).toString(16); 
+					while (color.length<6) //条件不满足才跳出循环
+					{
+						color = "0" + color; //随机获取的数如果为5位数，就在前面添加一个0
+					}
+					return "#"+color; //在随机获取的六位数前面添加一个（#），形成16进制的颜色值
+				}
+
+				//方法三：
+				function color3(){
+					return "#"+(function(color){
+						return new Array(7-color.length).join("0")+color;
+					})((Math.random()*0x1000000 << 0).toString(16));
+				}
+			</script>
+			
+		</body>
+</html>
+<!--
+	div.class.*num / div*num ctrl+e 表示构建num个类名为class的div
+	Math.ceil(); 向上取整
+	Math.floor(); 向下取整
+	在函数后面直接添加一个括号(如果有参数要加参数)代表执行函数
+->

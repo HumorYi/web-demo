@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,b,span{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				.item_title{ font-weight:bold;}
+				.item_input{ vertical-align:top; height:20px;}
+				.item_error{ margin-top:1px; display:none; color:#f00; height:14px;}
+				.item_desc{ margin-top:1px; color:#666;}
+				
+				input,textarea{ border:1px solid black;}
+				.border1{border:1px solid black;}
+				.border2{border:1px solid #460;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="item_title">
+				<b>密码：</b>
+				<span style="margin-left:75px;">
+					<b>确认密码：</b>
+				</span>
+			</div>
+			<div class="item_input">
+				<input id='pwd' style="width:96px;" maxlength=14 type="password" onblur="checkPwd(this.value)" name="loginpass" />&nbsp;&nbsp;&nbsp;
+				<input id="pwdver" style="width:96px;" type="password" maxlength=14 onblur="verifyPwd(this.value)" name="verifypass" />
+			</div>
+			<div class="item_error" id="pwd_error">
+				密码最少6个字符，并只能包含数字、字母和下划线
+			</div>
+			<div class="item_error" id="verifypwd_error">
+				密码和确认密码一致。
+			</div>
+			<div class="item_desc">
+				最少6个字符，不能超过14个字符(数字、字母和下划线)
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//验证密码格式
+				function checkPwd(pwd){
+					if(!/^\{6,14}$/.test(pwd)){
+						document.getElementById('pwd_error').style.display = 'block';
+					}else{
+						document.getElementById('pwd_error').style.display = 'none';
+					}
+				}
+
+				//验证两次密码是否相同
+				function verifyPwd(pwd){
+					if(document.getElementById('pwd').value != pwd){
+						document.getElementById('verifypwd_error').style.display = 'block';
+					}else{
+						document.getElementById('verifypwd_error').style.display = 'none';
+					}
+				}
+
+				/*控制焦点样式*/
+				//获取输入框引用
+				var pwd = document.getElementById('pwd');
+				//监听获取焦点事件
+				pwd.onfocus = function(){
+					this.className = 'border2';
+				}
+
+				//追加焦点丢失事件	IE
+				if(pwd.attachEvent){
+					pwd.attachEvent('onblur',function(){
+						pwd.className = 'border1';
+					});
+				}else{
+					pwd.addEventListener('blur',function(){
+						pwd.className = 'border1';
+					},false);
+				}
+
+				var pwdver = document.getElementById('pwdver');
+				pwdver.onfocus = function(){
+					this.className = 'border2';
+				}
+
+				if(pwdver.attachEvent){
+					pwdver.attachEvent('onblur',function(){
+						pwdver.className = 'border1';
+					});
+				}else{
+					pwdver.addEventListener('blur',function(){
+						pwdver.className = 'border1';
+					},false);
+				}
+			</script>
+
+		</body>
+</html>

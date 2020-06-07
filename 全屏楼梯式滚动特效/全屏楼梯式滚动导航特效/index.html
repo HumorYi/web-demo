@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>全屏楼梯式滚动特效-千凡</title>
+  <!--css 衣服 化妆品 -->
+  <!--引入css样式-->
+  <style type="text/css">
+  body{background:url("images/bg.jpg");}
+  *{margin:0;/*外边距*/padding:0;/*内边距*/}
+  .nav{
+	width:164px;/*宽*/
+	position:fixed;/*固定定位*/
+	left:50px;top:200px;
+  }
+  .nav img{display:block;/*块元素显示*/}
+  .nav ul{
+	width:110px;
+	height:190px;
+	background:#943ec9;
+	margin:0 auto;/*上下 左右*/
+  }
+  .nav ul li{
+	width:100%;
+	height:35px;
+	list-style:none;/*去掉默认列表样式*/
+	color:#fff;
+	font-size:12px;/*文字大小*/
+	font-family:"微软雅黑";/*字体*/
+	text-align:center;/*文本对齐方式 居中*/
+	line-height:35px;/*行高*/
+	background:url("images/bg1.png") no-repeat center bottom;
+	cursor:pointer;/*手指*/
+  }
+  .con{
+	width:100%;
+	height:100%;
+	position:fixed;/*固定定位*/
+	left:0;top:0px;
+	z-index:-1;
+  }
+   .con ul{
+	width:100%;
+	height:100%;
+   }
+  .con ul li{
+	width:100%;
+	height:100%;
+	
+  }
+  </style>
+ </head>
+ <body>
+	<div class="nav">
+		<img src="images/index.png" />
+		<ul>
+			<li>意时网</li>
+			<li>谋福利</li>
+			<li>免费保险</li>
+			<li>手机应用</li>
+			<li>意时广告</li>
+		</ul>
+	</div>
+	<div class="con">
+		<ul>
+			<li style="background:url('images/guangGao.png') no-repeat center center;"></li>
+			<li style="background:url('images/MAP.png') no-repeat center center;"></li>
+			<li style="background:url('images/pic_about.png') no-repeat center center;"></li>
+			<li style="background:url('images/pic_culture.png') no-repeat center center;"></li>
+			<li style="background:url('images/pic_joinus.png') no-repeat center center;"></li>
+		</ul>
+	</div>
+  <!--
+	div 盒子模型 有宽度有高度放置内容的长方形区域 
+	命名  姓名=“张三”
+		class="" 重复性  多个  用于布局  .
+		id=""	 名字唯一性    用于js    #
+	名字规范
+		1.不能用中文
+		2.以字母开头，数字，下划线 横线
+		3.见名知义
+
+  
+  -->
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script>
+	//alert($)
+	//如何获取对象
+	$(".nav ul li").click(function(){
+		//获取序列号
+		var _index = $(this).index();
+		//alert(_index)
+		//获取浏览器高度
+		var _height = $(window).height();
+		//alert(_height)
+		//animate()动画
+		$(".con").animate({top:-_height*_index},500)
+	});
+  </script>
+ </body>
+</html>

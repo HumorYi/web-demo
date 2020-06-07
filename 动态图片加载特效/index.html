@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>动态图片加载特效 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,a,p,img{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"Microsoft YaHei";}
+				a{text-decoration:none;}
+				#box{width:480px;height:402px;margin:100px auto;position:relative;color:#fff;text-align:center;}
+				#prev,#next{width:50px;font:70px/402px "Microsoft YaHei";color:#fff;background:rgba(0,0,0,.5);position:absolute;top:0px;}
+				#prev{left:0px;}
+				#next{right:0px;}
+				#prev:hover{background:rgba(255,255,255,.5);color:rgba(0,0,0,.5)}
+				#next:hover{background:rgba(255,255,255,.5);color:rgba(0,0,0,.5);}
+				#p1,#p2{width:100%;font:14px/35px "Microsoft YaHei";background:#000;position:absolute;left:0px;}
+				#p1{top:0px;}
+				#p2{bottom:0px;}
+			</style>		
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				window.onload = function(){
+					var oPrev = document.getElementById("prev");
+					var oNext = document.getElementById("next");
+					var oP1 = document.getElementById("p1");
+					var oP2 = document.getElementById("p2");
+					var oImg = document.getElementById("img1");
+					var arrText = ["时装周","范冰冰","法国美女"];
+					var arrUrl = ["images/part3_1.jpg","images/part3_2.jpg","images/part3_3.jpg"];
+					var num = 0 ;
+					function auto(){						
+						oP1.innerHTML = arrText[num];
+						oP2.innerHTML = (num+1)+"/"+arrText.length;
+						oImg.src = arrUrl[num];						
+					}
+					auto();
+					oPrev.onclick = function(){
+						num--;
+						if (num==-1)
+						{
+							num = arrText.length-1 ;
+						}
+						auto();
+					}
+					oNext.onclick = function(){
+						num++;
+						if (num==3)
+						{
+							num = 0 ;
+						}
+						auto();
+					}
+				}
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="box">
+				<a id="prev" href="javascript:void(0);">&lt;</a>
+				<a id="next" href="javascript:void(0);">&gt;</a>
+				<p id="p1">图片正在加载中...</p>
+				<p id="p2">图片正在加载中...</p>
+				<img id="img1" width="480px" height="402px" />
+			</div>
+		</body>	
+</html>
+<!--
+	font:14px/35px "Microsoft YaHei";字体大小/行高 字体类型
+-->

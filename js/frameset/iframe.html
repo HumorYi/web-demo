@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,span,a,iframe{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#naviBar{ width:100%; height:30px; border-bottom:1px solid #000; text-align:center;}
+				#menuList{ width:30%; height:180px; float:left; border-right:1px solid #000;}
+				a{width:150px; border:1px solid #000; margin-left:5px; margin-top:2em; text-align:center; cursor:pointer; text-decoration:none; color:#000;}
+				a:hover{ background:lightGrey;}
+				#main{ width:69%; height:180px; float:left;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="naviBar">
+				导航：<span id='path'>内容一</span>
+			</div>
+
+			<div id='menuList'>
+				<a href="a.html" target="main">菜单一</a>
+				<a href="b.html" target="main">菜单二</a>
+				<a href="c.html" target="main">菜单三</a>
+				<a href="d.html" target="main">菜单四</a>
+			</div>
+
+			<div id='main'>
+				<iframe name='main' frameborder='0' src='' width='100%' height='100%'></iframe>
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				function callback(){
+					var path = document.getElementById('path');
+					path.innerHTML = this.innerHTML;
+				}
+
+				var links = document.getElementsByTagName('a');
+
+				//为每一个链接第一增加onclick事件监听
+				for(var i=0; i<links.length; i++){
+					links[i].onclick = callback;
+				}
+			</script>
+
+		</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--基于W3C标准 不用做任何修改-->
+<html xmlns="http://www.w3.org/1999/xhtml"><!--起始标准-->
+<head><!--设置初始化文档信息和文档管理标注-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--整个页面编码 utf-8 国际编码 通用性最强，GBK/gb2312 中文-->
+<!--页面三要素-->
+<title>鼠标划过低调显示详细信息</title>
+<meta name="Keywords" content="关键字,关键字">
+<meta name="Description" content="描述">
+<!--js css-->
+<style type="text/css">
+body{background:#EAEAEA;}
+h2,p{margin:0;padding:0;}
+
+.main{width:700px;margin:0 auto;}
+.box{width:200px;height:200px;border:5px solid #fff;box-shadow:0px 0px 3px #ccc;position:relative;overflow:hidden;cursor:pointer;float:left;margin:5px;
+
+}/* box-shadow:水平距离 垂直距离 模糊距离 阴影颜色; */
+.box img{width:200px;height:200px; position:absolute;left:0;top:0;
+transition:all 300ms ease;/*兼容IE9+浏览器*/
+-webkit-transition:all 300ms ease);/*兼容IE9+浏览器*/
+
+}
+
+.cap{width:170px;height:170px;background:#000;color:#fff;line-height:140%;padding:15px;position:absolute;left:0;top:0;
+opacity:0;/*默认让cap透明度为0*/
+transition:all 300ms ease;/*兼容IE9+浏览器*/
+-webkit-transition:all 300ms ease);/*兼容IE9+浏览器*/
+
+}
+.cap h2{font-size:14px;}
+.cap p{font-size:12px;}
+
+.box:hover img{
+transform:scale(1.5);/*兼容IE9+浏览器*/
+-webkit-transform:scale(1.5);/*兼容IE9+浏览器*/
+}
+
+.box:hover .cap{opacity:1;}
+
+</style>
+
+</head>
+
+<body>
+<!--
+div 层 盒子 容器
+class 命名规则(需要一个容易记的名字)  只能使用字母开头 不能使用中文、数字、特殊字符开头
+-->
+<div class="main">
+	<div class="box">
+		<img src="images/1.jpg" />
+		<div class="cap">
+		<h2>为巴神拟头条</h2>
+		<p>巴神第一脚就好漂亮，注定这场比赛会张开翅膀，成精的睡皮，掌控着整个球队的灵魂，伟大的三狮军团，呆梨加油！...</p>
+		</div>
+	</div>
+	<div class="box">
+		<img src="images/2.jpg" />
+		<div class="cap">
+		<h2>父亲如天，遮挡风雨；父亲如地，浇灌希望</h2>
+		<p>父亲节，顾名思义是感恩父亲的节日。约始于二十世纪初，起源于美国，现已广泛流传于世界各地，节日日期因地域而存在差异...</p>
+		</div>
+	</div>	<div class="box">
+		<img src="images/3.jpg" />
+		<div class="cap">
+		<h2>简约风格家居</h2>
+		<p>简约主义的本质就是取消外表多余的浮华以显露家原本的特性，由简单的形象或符号来构筑空间；在结构上，简化结构体系，精简结构构件，讲究结构逻辑，使之产生没有屏障，或屏障极少的建筑空间。...</p>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+</html>

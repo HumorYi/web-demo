@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arrayA,arrayB;
+		function createArray(){
+			var nRow = 3, nCol = 4;
+			var s = new Array(nRow);
+			for (var i = 0; i < s.length; i++) {
+				s[i] = new Array(nCol);
+
+				for (var j = 0; j < s[i].length; j++) {
+					s[i][j] = (i+1)*(j+1);
+				}
+			}
+			return s;
+		}
+
+		arrayA = [ [11,12,13],[21,22,23]];
+		arrayB = createArray();
+
+		with(document){
+			write('遍历二维数组arrayA,返回的数组如下：'+"<br />");
+			for (var i = 0; i < arrayA.length; i++) {
+				for (var j = 0; j < arrayA[i].length; j++) {
+					write('arrayA['+i+']['+j+']：');
+					write(arrayA[i][j]+"<br />");
+				}
+				
+			}
+			write("<br />");
+
+			write('遍历二维数组arrayB,返回的数组如下：'+"<br />");
+			for (var i = 0; i < arrayB.length; i++) {
+				for (var j = 0; j < arrayB[i].length; j++) {
+					write('arrayA['+i+']['+j+']：');
+					write(arrayB[i][j]+"<br />");
+				}
+				
+			}
+		}
+	</script>
+</body>
+</html>

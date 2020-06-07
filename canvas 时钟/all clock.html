@@ -1,0 +1,220 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body>div{
+            width: 500px; margin: 0 auto; text-align: center;
+        }
+
+        body>div>canvas{
+            position:absolute;
+            z-index:0;
+        }
+
+        body>div>canvas:nth-child(1){
+            z-index:-1;
+        }
+        body>div>canvas:nth-child(3){
+            display:none;
+        }
+        body>div>canvas:nth-child(4){
+            position: relative;
+            z-index:2;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas id="clockDial">
+            您的浏览器不支持canvas标签，无法看到时钟
+        </canvas>
+        <canvas id="arabCanvas">
+            您的浏览器不支持canvas标签，无法看到时钟
+        </canvas>
+        <canvas id="romanCanvas">
+            您的浏览器不支持canvas标签，无法看到时钟
+        </canvas>
+        <canvas id="needle">
+            您的浏览器不支持canvas标签，无法看到时钟
+        </canvas>
+
+        <input type="button" value="阿拉伯数字时钟" id="arabBtn" />
+        <input type="button" value="罗马数字时钟" id="romanBtn" />
+        <input type="button" value="无样式时钟" id="notStyleBtn" />
+    </div>
+    <script>
+         
+         var cxt_clockDial = document.getElementById('clockDial').getContext('2d'),
+
+             arabCanvas = document.getElementById('arabCanvas'),
+             cxt_arab = arabCanvas.getContext('2d'),
+
+             romanCanvas = document.getElementById('romanCanvas'),
+             cxt_lm = romanCanvas.getContext('2d'),
+
+             ctx_needle = document.getElementById('needle').getContext('2d');
+
+        (function() {
+             canvas = document.querySelectorAll('canvas');
+            for( i=0; i<canvas.length; i++){
+                canvas[i].width = canvas[i].height = 500;
+            }
+            cxt_clockDial.lineWidth = 10;
+            cxt_clockDial.strokeStyle = "#7ebaeb";
+            drawArc(cxt_clockDial, 250, 250, 200, 0, 360 * Math.PI / 180, false, true);
+
+            //时刻度
+            cxt_clockDial.lineWidth = 7;
+            cxt_clockDial.strokeStyle = "#bb753c";
+            for ( i = 0; i < 12; i++) {
+                common(cxt_clockDial, 250, 250, i, 30, 0, -170, 0, -190);
+            }
+            
+            //分刻度
+            cxt_clockDial.lineWidth = 5;
+            cxt_clockDial.strokeStyle = "#ddba80";
+            for ( i = 0; i < 60; i++) {
+                i % 5 != 0 && common(cxt_clockDial, 250, 250, i, 6, 0, -180, 0, -190);
+            }
+        }());
+
+        function drawNeedle() {
+            ctx_needle.clearRect(0, 0, 500, 500);
+             now = new Date();
+             sec = now.getSeconds();
+             min = now.getMinutes() + sec / 60;
+             hour = now.getHours() + min / 60;
+            if (hour > 12) {
+                hour -= 12;
+            }
+
+            //时针
+            ctx_needle.lineWidth = 10;
+            ctx_needle.strokeStyle = "#ebcea7";
+            common(ctx_needle, 250, 250, hour, 30, 0, -130, 0, 10);
+
+            //分针
+            ctx_needle.lineWidth = 7;
+            ctx_needle.strokeStyle = "#22a7aa";
+            common(ctx_needle, 250, 250, min, 6, 0, -150, 0, 15);
+
+            //秒针
+            ctx_needle.lineWidth = 5;
+            ctx_needle.strokeStyle = "#ddd";
+            common(ctx_needle, 250, 250, sec, 6, 0, -160, 0, 20, true);
+
+            ctx_needle.fillStyle = "#d76a11";
+            drawArc(ctx_needle, 0, 0, 5, 0, 360 * Math.PI / 180, false);
+            drawArc(ctx_needle, 0, -140, 3, 0, 360 * Math.PI / 180, false);
+            ctx_needle.restore();
+        }
+
+        document.getElementById('arabBtn').onclick = function () {
+            showThis(arabCanvas, 'block');
+            showThis(romanCanvas, 'none');
+        }
+        document.getElementById('romanBtn').onclick = function () {
+            showThis(arabCanvas, 'none');
+            showThis(romanCanvas, 'block');
+        }
+        document.getElementById('notStyleBtn').onclick = function () {
+            showThis(arabCanvas, 'none');
+            showThis(romanCanvas, 'none');
+        }
+
+        function setarabClock() {
+            clockAttr(cxt_arab, "40px Arial", 250, 250, '#dc5b00');
+
+            //12刻度
+            cxt_arab.fillText("12", -20, -135);
+            //1刻度
+            cxt_arab.fillText("1", 65, -115);
+            //2刻度
+            cxt_arab.fillText("2", 120, -65);
+            //3刻度
+            cxt_arab.fillText("3", 140, 15);
+            //4刻度
+            cxt_arab.fillText("4", 120, 90);
+            //5刻度
+            cxt_arab.fillText("5", 65, 145);
+            //6刻度
+            cxt_arab.fillText("6", -10, 165);
+            //7刻度
+            cxt_arab.fillText("7", -80, 145);
+            //8刻度
+            cxt_arab.fillText("8", -145, 90);
+            //9刻度
+            cxt_arab.fillText("9", -165, 15);
+            //10刻度
+            cxt_arab.fillText("10", -150, -65);
+            //11刻度
+            cxt_arab.fillText("11", -95, -115);
+        }
+
+        function setromanClock() {
+            clockAttr(cxt_lm, "40px Arial", 250, 250, '#e2b8bc');
+
+            //12刻度
+            cxt_lm.fillText("Ⅻ", -20, -135);
+            //1刻度
+            cxt_lm.fillText("Ⅰ", 60, -115);
+            //2刻度
+            cxt_lm.fillText("Ⅱ", 110, -65);
+            //3刻度
+            cxt_lm.fillText("Ⅲ", 130, 15);
+            //4刻度
+            cxt_lm.fillText("Ⅳ", 110, 90);
+            //5刻度
+            cxt_lm.fillText("Ⅴ", 55, 145);
+            //6刻度
+            cxt_lm.fillText("Ⅵ", -20, 165);
+            //7刻度
+            cxt_lm.fillText("Ⅶ", -90, 145);
+            //8刻度
+            cxt_lm.fillText("Ⅷ", -145, 90);
+            //9刻度
+            cxt_lm.fillText("Ⅸ", -165, 15);
+            //10刻度
+            cxt_lm.fillText("Ⅹ", -150, -65);
+            //11刻度
+            cxt_lm.fillText("Ⅺ", -95, -115);
+        }
+
+        function common(obj, tx, ty, attr, num, mx, my, lx, ly, isRestore) {
+            obj.save();
+            obj.translate(tx, ty);
+            obj.rotate(attr * num * Math.PI / 180);
+            obj.beginPath();
+            obj.moveTo(mx, my);
+            obj.lineTo(lx, ly);
+            obj.stroke();
+            obj.closePath();
+            !isRestore && obj.restore();
+        }
+
+        function drawArc(obj, x, y, r, startDeg, endDeg, isReverse, isFill) {
+            obj.beginPath();
+            obj.arc(x, y, r, startDeg, endDeg, isReverse);
+            !isFill && obj.fill();
+            obj.stroke();
+            obj.closePath();
+        }
+        function clockAttr(obj, font, x, y, color) {
+            obj.font = font;
+            obj.translate(x, y);
+            obj.fillStyle = color;
+        }
+
+        function showThis(obj, str) {
+            obj.style.display = str;
+        }
+
+        drawNeedle();
+        setarabClock();
+        setromanClock();
+
+        setInterval(drawNeedle, 1000);
+    </script>
+</body>
+</html>

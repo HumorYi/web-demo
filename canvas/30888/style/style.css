@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+}
+canvas {
+    width: 400px;
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+}
+h1,
+a {
+    color: Cornsilk;
+    font-family: serif;
+    font-style: italic;
+    font-size: 23px;
+    text-align: center;
+    font-weight: normal;
+}
+a {
+    text-decoration: none;
+}
+h1 {
+    margin: 3em 0 1em;
+}

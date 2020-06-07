@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css" id="css">
+				html,body,div,ul,li,ol,input{ margin:0px;padding:0px; }
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; }
+				ul,ol li{ list-style:none;}
+				#banner{ width:800px; height:360px; margin:50px auto; position:relative; perspective:800px;}
+				#banner ul li{ height:360px; float:left; position:relative; transform-style:preserve-3d; transform:translateZ(-180px) rotateX(0deg);} 
+				#banner ul li div{ height:360px; position:absolute;}
+				#banner ul li div:nth-child(1){ bottom:360px; transform-origin:bottom; transform:translateZ(180px) rotateX(90deg);background-image:url(images/3.png);}
+				#banner ul li div:nth-child(2){ top:360px; transform-origin:top; transform:translateZ(180px) rotateX(-90deg);background-image:url(images/4.png);}
+				#banner ul li div:nth-child(3){transform:translateZ(180px);background-image:url(images/1.png);}
+				#banner ul li div:nth-child(4){transform:translateZ(-180px) rotateX(180deg);background-image:url(images/2.png);}
+				#banner ol{ width:100px; height:20px; position:absolute; bottom:15px; right:15px;}
+				#banner ol li{ width:20px; line-height:20px; background:#000; border-radius:10px; box-shadow:1px 1px 5px #fff; font-family:"微软雅黑"; font-size:12px; text-align:center; float:left; margin:0px 2px; color:#fff; cursor:pointer;}
+				#banner ol li.on{ background:#e87842;}
+
+				#inputNum{
+					width: 300px;
+					margin: 100px auto 0;
+				}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="inputNum">
+				<input type="text" id="num" placeholder="请输入您想要创建的块数" value="200" />
+				<input type="button" id="create" value="创建" />
+			</div>
+			<div id="banner">
+				<ul>
+				</ul>
+				<ol>
+					<li class="on">1</li><li>2</li><li>3</li><li>4</li>
+				</ol>
+			</div>
+			<!--js,各色特效-->
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript">
+				$(function(){
+					var num = document.getElementById("num");
+					play(num.value);
+					$('#create').click(function (){
+						play(num.value);
+					});				
+					
+					//鼠标点击按钮时激活事件
+					$("#banner ol li").click(function(){
+						$(this).addClass('on').siblings().removeClass('on');  //为按钮添加背景颜色
+						var index = $(this).index();  //获取序列号
+						$('#banner ul li').css({
+								'transform':'translateZ(-180px) rotateX('+index*90+'deg)'  //图片旋转
+						});
+					});
+					
+				});
+
+					
+				//构建一个函数
+				function play(x){
+					var uhtml = '';			//添加<li><div>
+					var phtml = '';			//添加div背景定位
+					var zhtml = '',z=0;		//设置层级关系
+					var thtml = '';			//设置各个div旋转时间
+					var lw = 800/x;			//设置宽度
+					//循环添加
+					for (var i=0;i<x ;i++ )
+					{
+						//判断当循环的次数超过自定义的li个数，默认层级为0
+						if (i>=x/2)
+						{
+							z--;
+							zhtml += '#banner ul li:nth-child('+(i+1)+'){ z-index:'+(z-1)+';}';  //自定义层级
+						}
+						uhtml += '<li><div></div><div></div><div></div><div></div></li>';  //为<ul></ul>添加标签
+						phtml += '#banner ul li:nth-child('+(i+1)+') div{ background-position:'+(-i*lw)+'px;}'; //自定义<li><div>标签下的背景定位
+						thtml += '#banner ul li:nth-child('+(i+1)+'){ transition: .7s '+.7*i/x+'s;}'; //自定义li旋转和延迟时间
+					};
+					$('#banner ul').append(uhtml);  //为ul添加uhtml
+					$('#banner ul li').css('width',lw+'px');		//给每个ul li添加宽度
+					$('#banner ul li div').css('width',lw+'px');  //给每个ul li div添加宽度
+					$('#css').append(phtml+zhtml+thtml);	//把三个属性添加到css中
+				};
+			</script>
+
+		</body>
+</html>

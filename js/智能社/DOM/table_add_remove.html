@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTab = document.getElementById('tab1');
+			var oBtn = document.getElementById('add');
+			var oName = document.getElementById('name');
+			var oAge = document.getElementById('age');
+			//用变量获取值避免出现重复的id号
+			var id = oTab.tBodies[0].rows.length+1;
+
+			oBtn.onclick = function(){
+				var oTr = document.createElement('tr');
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = id++;//oTab.tBodies[0].rows.length+1;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = oName.value;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = oAge.value;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = '<a href="javascript:void(0);">删除</a>';
+				oTr.appendChild(oTd);
+
+				oTd.getElementsByTagName('a')[0].onclick = function(){				
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+				
+				oTab.tBodies[0].appendChild(oTr);
+			}
+		}
+	</script>
+</head>
+<body>
+	姓名：<input id="name" type="text" />
+	年龄：<input id="age" type="text" />
+	<input id="add" type="button" value="添加" />
+	<table id="tab1" border="1" width="500">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>green</td>
+				<td>24</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>red</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>gray</td>
+				<td>26</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

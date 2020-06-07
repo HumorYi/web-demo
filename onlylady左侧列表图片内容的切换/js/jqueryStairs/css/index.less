@@ -1,0 +1,34 @@
+@color: #000;
+@color-hover: #90f;
+@width: 70px;
+@height: 50px;
+@border-width: 5px;
+
+ul._content {
+	width: 670px;
+	height: 500px;
+	margin-top: 20px;
+
+	background-color: #ddd;
+	background-repeat: no-repeat;
+
+	li {
+		width: @width;
+		height: @height;
+		margin-bottom: 2px;
+
+		color: @color;
+		font-weight: bold;
+		text-align: center;
+		line-height: @height;
+
+		background-color: #ccc;
+		opacity: .8;
+		cursor: pointer;
+
+		&.active {
+			color: @color-hover;
+			border-left: @border-width solid @color-hover;
+		}
+	}
+}

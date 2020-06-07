@@ -1,0 +1,15 @@
+<div class="list list-inset userLR">
+  <label class="item item-input item-floating-label" for="uname">
+    <span class="input-label">用户名</span>
+    <input type="text" placeholder="请输入用户名" class="text-center" id="uname" ng-model="unameVal" maxlength="10" />
+  </label>
+  <label class="item item-input item-floating-label" for="upwd">
+    <span class="input-label">密码</span>
+    <input type="password" placeholder="请输入密码" class="text-center" id="upwd" ng-model="upwdVal" maxlength="16" />
+  </label>
+  <div class="text-center">
+    <button id="login" ng-click="loginTest()" class="button button-large button-energized">登录</button>
+    <button id="register" ng-click="registerTest()" class="button button-large button-balanced">注册</button>
+    <button class="button button-large button-assertive" ng-click="jump('main')">退出</button>
+  </div>
+</div>

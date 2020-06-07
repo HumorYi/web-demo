@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+		  <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+		  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		  <!--声明当前页面的三要素-->
+		  <title>幸运转盘 --> Andy</title>
+		  <meta name="Keywords" content="关键词，关键词">
+		  <meta name="Description" content="">
+			<!--css/js-->
+		  <style class="text/css">
+			*{margin:0;padding:0;list-style:none;}
+			body{font-size:12px;font-family:"微软雅黑";color:#000;background:url("images/bg1.png");overflow:hidden;/*溢出隐藏*/}
+			/*top start*/
+			.top{width:100%;height:55px;background:#293240;padding:20px 0 0 20px;/*上右下左*/}
+			.top .logo{width:155px;height:65px;cursor:pointer;}
+			.top p a{text-decoration:none;font-size:36px;text-shadow:2px 3px 1px #394ddd;cursor:pointer;color:#fff; text-align:center; display:block;}
+			/*top end*/
+			/*bottom start*/
+			.bottom{width:100%;height:900px;}
+			.bottom .bg{width:509px;height:509px;margin:200px auto;background:url("images/1.png");position:relative;}
+			.bottom .bg .point{position:absolute;left:150px;top:150px;cursor:pointer;/*pointer move*/}
+			/*bottom end*/
+		 </style>
+    </head>
+	<body>
+		<!--top start-->
+		<div class="top">
+			<div class="logo">
+				<a href="http://www.tanzhouedu.com/">
+					<img src="images/logo.png" border=0 alt="商标&logo" width="146" height="38" />
+				</a>
+			</div>
+			<p><a href="http://www.tanzhouedu.com/">潭州幸运大转盘</a></p>
+		</div>
+		<!--top end-->
+		<!--转盘-->
+		<!--bottom start-->
+		<div class="bottom">
+			<div class="bg">
+				<div class="point">
+				<img src="images/point.png" alt="抽奖箭头" width="214" height="214" id="pointbtn" />
+				</div>
+			</div>
+		</div>
+		<!--bottom end-->
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/jQueryRotate.2.2.js"></script>
+		<script>
+		//	alert("andy"); //测试是否正确
+			$(document).ready(function(){
+				//$("#pointbtn").rotate({animateTo:170+(360*3),duration:3000});
+				$("#pointbtn").rotate({
+					bind:{click:function(){
+						var data = [1,2,3,0];
+						//获取随机数.取一个最接近的整数取出
+						var result = Math.floor(Math.random()*data.length);
+						result = data[result];
+						//匹配结果
+						switch(result){
+							case 1:
+								rotateDo(160,"Congratulation first prize ");
+							break;
+							case 2:
+								rotateDo(250,"Congratulation second prize");
+							break;
+							case 3:
+								rotateDo(35,"Congratulation thired prize");
+							break;
+							default:
+								rotateDo(200,"It's a pity that you didn't win");
+							break;
+						}
+					}}
+				});
+			});
+
+			var rotateDo = function(angel,text){
+				//旋转角度和时间
+				$("#pointbtn").stopRotate();
+				$("#pointbtn").rotate(0);
+				$("#pointbtn").rotate({
+					angle:0,
+					animateTo:angel+(360*4),
+					duration:5000,
+					callback:function(){alert(text);}
+				});
+			}
+
+
+		</script>
+	</body>
+</html>
+

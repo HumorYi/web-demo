@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>bird</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css/js-->
+		<style>
+			html,body,div{margin:0;padding:0;}
+			body{background:url("images/linsy.jpg")no-repeat;background-size:cover;}		.big,.middle,.small{border-style:solid;border-radius:50%;transform:rotate(45deg);
+			transition:0.5s;position:absolute;}
+			.bird{width:200px;height:200px;margin:481px 343px;position:relative;}
+			.bird .big{border-width:100px;border-color:transparent transparent #d72928 #db3e2d;/*透明*/left:0;top:0;}
+			.bird .middle{border-width:80px;border-color:#f8d245 transparent #f2f2f2 #fff;left:10%;top:10%;}
+			.bird .small{border-width:40px;border-color:transparent #f7a703 transparent transparent;left:30%;top:30%;}
+			.bird .small:before{/*before 伪类*/
+				content:"";width:20px;height:20px;background:#000;border-radius:50%;position:absolute;top:-10px;right:40px;
+			}
+			.bird:hover .big{transform:rotate(225deg);border-color:transparent  transparent #1fe8b6 #16d7a7;}
+			.bird:hover .middle{transform:rotate(-135deg);border-color:transparent #f8d245  #fff #f2f2f2;}
+			.bird:hover .small{transform:rotate(135deg);}
+		</style>
+    </head>
+	<body>
+		<div class="bird">
+			<div class="big"></div>
+			<div class="middle"></div>
+			<div class="small"></div>
+		</div>
+	</body>
+</html>
+<!--
+	企业优化	代码分离
+	浏览器兼容性( float position margin input)
+	-webkit-transform:rotate(45deg);谷歌
+	-moz-transform:rotate(45deg);火狐
+	-mz-transform:rotate(45deg);ie
+	-o-transform:rotate(45deg);opea
+	html5 移动端
+	border:transparent #f7a703 transparent transparent;右 下 左 上，含有transparent的地方为透明
+-->

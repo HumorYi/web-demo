@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>city3d - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				*{ 
+					margin:0px;padding:0px;
+				}
+				html,body{ 
+					width:100%; 
+					height:100%; 
+					background-color:#5596bc; 
+					perspective:700px; /*望远镜*/
+				}
+				div{ 
+					position:absolute; 
+				}
+				div b{
+					position:absolute;
+					transform-style:preserve-3d;
+				}
+				#city3d{
+					top:50%; 
+					left:50%; 
+					margin-left:-200px;
+					margin-top:-200px; 
+					width:400px;
+					height:400px; 
+					background-color:rgb(185,210,224); 
+					border:10px solid rgb(185,210,224);
+					transform:rotateX(60deg) rotateZ(-140deg);
+				}
+				#city3d div b{
+					width:30px;
+					height:100%;
+					transform:rotateX(90deg);
+					transform-origin:0 0;
+					background-color:rgba(255,0,0,.3);
+				}
+				#city3d div b > b{
+					width:20px;
+					transform:rotateY(90deg);
+					transform-origin:0 0;
+					background-color:rgba(0,255,0,.3);
+				}
+				#city3d div b > b > b{
+					width:30px;
+					transform:rotateY(90deg);
+					transform-origin:100% 0;
+					right:0px;
+					background-color:rgba(0,0,255,.3);
+				}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="city3d">
+				<div style="height:150px; top:0px; left:0px;">
+					<b>
+						<b></b>
+						<b></b>
+					</b>
+				</div>
+			</div>
+
+			<!--js,各色特效-->
+			<script type="text/javascript"></script>
+		</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,input,button,iframe{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+			<script type="text/javascript">
+				//定义异步请求函数
+				function checkName(){
+					var async = document.getElementById('async');
+					//将用户名传递给iframe的地址
+					async.src = 'server.html?userName'+document.getElementById('userName').value;
+				}
+
+				//定义回调函数
+				function callback(result){
+					alert(result?'名称未被占用' : '名称已被占用');
+				}
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			用户名：<input type='text' id='userName' />
+			<button onclick='checkName()'>点此进行异步验证</button>
+			<!--隐藏的iframe-->
+			<iframe style='display:none;' id='async'></iframe>
+
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			
+
+		</body>
+</html>

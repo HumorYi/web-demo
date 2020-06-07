@@ -1,0 +1,11 @@
+@import url(http://fonts.useso.com/css?family=Josefin+Sans);
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: black;
+}
+h1 {
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}

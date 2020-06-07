@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="utf-8" />	
+			<!--网页三要素 标题，关键词，描述-->
+			<title>芒果TV视频 - Andy</title>
+			<meta name="keywords" content="" />
+			<meta name="description" content="" />
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,p{margin:0px;padding:0px;}
+				/*banner S*/
+				#banner{width:100%;height:600px;position:relative;}
+
+				/*con S*/
+				#banner .con{width:100%;height:600px;position:relative;}
+				#banner .con .img{width:100%;height:600px;display:none;/*block inline inline-block*/float:left;position:absolute;top:0px;left:0px;}
+				/*con E*/
+
+				/*curr S*/
+				#banner .curr{width:100%;height:68px;background:rgba(0,0,0,0.4);position:absolute;left:0px;bottom:10px;}
+				#banner .curr ul{width:1000px;height:68px;margin:0px auto;}
+				#banner .curr ul li{list-style:none;width:120px;height:68px;float:left;margin-left:20px;position:relative;cursor:pointer;}
+				#banner .curr ul li img{width:120px;height:68px;}
+				#banner .curr ul li p{position:absolute;top:0px;left:0px;}
+				#banner .curr ul li p.p1{width:114px;height:62px;border:3px solid #dcc092;display:none;}
+				#banner .curr ul li p.p2{width:120px;height:68px;background:rgba(0,0,0,0.5);}
+				/*curr E*/
+
+				/*banner E*/
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--banner start-->
+			<div id="banner">
+				<div class="con">
+					<div class="img" style="background:url(images/d1.jpg) no-repeat center;display:block;"></div>
+					<div class="img" style="background:url(images/d2.jpg) no-repeat center;"></div>
+					<div class="img" style="background:url(images/d3.jpg) no-repeat center;"></div>
+					<div class="img" style="background:url(images/d4.jpg) no-repeat center;"></div>
+					<div class="img" style="background:url(images/d5.jpg) no-repeat center;"></div>
+					<div class="img" style="background:url(images/d6.jpg) no-repeat center;"></div>
+					<div class="img" style="background:url(images/d7.jpg) no-repeat center;"></div>
+				</div>
+				<div class="curr">
+					<ul>
+						<li>
+							<img src="images/1.jpg" alt="img" />
+							<p class="p1" style="display:block;"></p><!--边框-->
+							<p class="p2" style="display:none;"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/2.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/3.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/4.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/5.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/6.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+						<li>
+							<img src="images/7.jpg" alt="img" />
+							<p class="p1"></p><!--边框-->
+							<p class="p2"></p><!--遮罩层-->
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--banner end-->
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			/*	$(function(){
+					alert(1);
+				});*/
+			var _index = 0;
+			var clearTime = null;
+			$("#banner .curr ul li").hover(function(){
+				clearInterval(clearTime);
+				_index = $(this).index();
+				common();
+			},function(){
+				autoPlay();
+			});
+			function autoPlay(){
+				clearTime=setInterval(function(){
+					_index++;
+					if (_index>6)
+					{
+						_index=0;
+					}	
+					common();
+				},5000);
+			}
+			function common(){
+				$("#banner .curr ul li").eq(_index).find(".p1").show().parent().siblings().find(".p1").hide();
+				$("#banner .curr ul li").eq(_index).find(".p2").hide().parent().siblings().find(".p2").show();
+				$("#banner .con .img").eq(_index).fadeIn(500).siblings().fadeOut();
+			}
+			autoPlay();
+		</script>
+</html>

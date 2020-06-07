@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<meta name="Description" content="">
+			<title>湖南海外旅游网景点导航 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,span,a{margin:0px;padding:0px;}
+				.banner{width:728px;height:305px;margin:100px auto;position:relative;overflow:hidden;}
+				.banner ul{position:absolute;}
+				.banner ul li{width:100%;height:305px;list-style:none;}
+				.banner ul li img{width:728px;height:305px;}
+				.banner .trigger{position:absolute;bottom:10px;right:10px;}
+				.banner .trigger span{width:10px;height:10px;background:#2e2e2e;display:block;
+				/*inline-block none inline*/float:left;margin-right:5px;border-radius:50%;cursor:pointer;}
+				.banner .trigger span.hover{background:#f84e4e;}
+				.banner a
+				{background:url(images/sprite.png);width:45px;height:100px;display:inline-block;
+				position:absolute;top:102px;transition:all 0.3s linear;}
+				.banner a.prev{background-position:left top;left:-45px;}
+				.banner a.next{background-position:right top;right:-45px;}
+				.banner:hover a.prev{left:0px;}
+				.banner:hover a.next{right:0px;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+		<div class="banner">
+			 <ul>
+				<li><img src="images/1.jpg" alt="img" /></li>
+				<li><img src="images/2.jpg" alt="img" /></li>
+				<li><img src="images/3.jpg" alt="img" /></li>
+				<li><img src="images/4.jpg" alt="img" /></li>
+				<li><img src="images/5.jpg" alt="img" /></li>
+				<li><img src="images/6.jpg" alt="img" /></li>
+			 </ul>
+			<div class="trigger">
+				<span  class="hover"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>			
+			</div>
+			<a href="#" class="prev"></a>
+			<a href="#" class="next"></a>
+		</div>
+		</body>
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<!--js,各色特效-->
+		<script type="text/javascript">
+			//	alert(1);
+			var _index=0;
+			$(".trigger span").click(function(){
+				_index =$(this).index();
+				common();
+			});
+			$(".banner a.prev").click(function(){
+				_index--;
+				if (_index<0)
+				{
+					_index=5;
+				}
+				common();
+			});
+			$(".banner a.next").click(function(){
+				_index++;
+				if (_index>5)
+				{
+					_index=0;
+				}
+				common();
+			});
+			function common(){
+				$(".trigger span").eq(_index).addClass("hover").siblings().removeClass("hover");
+				$(".banner ul").animate({top:-_index*305},500);
+			}
+		</script>
+</html>

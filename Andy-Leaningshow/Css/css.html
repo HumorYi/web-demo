@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<!-- <meta name="Keywords" content=""> -->
+			<!-- <meta name="Description" content=""> -->
+			<title>css example - Andy</title>
+			<!--若内部样式表和外部样式表同时存在时，首先调用内部样式表的样式，内部样式表中没有的样式才去调用外部样式表中的样式-->
+			<!--外部样式表链接-->
+			<link rel="stylesheet" type="text/css" href="css/css.css" />
+			<!--内部样式表
+			<style type="text/css">
+			</style>-->
+		</head>
+
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--内联样式-->
+			<p style="color:sienna;"><strong>我是粗体字，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用</strong></p>
+			<!--<ol> 有序列表 <strong>加粗-->
+			<ol>
+				<li><strong>我是斜体字。这是因为 strong 元素位于 li 元素内。</strong></li>
+				<li>我是正常的字体。</li>
+			</ol>
+			<p class="color">The strongly emphasized word in this paragraph is<strong>red</strong>.</p>
+			<h2>This subhead is also red.</h2>
+			<h2>The strongly emphasized word in this subhead is<strong>blue</strong>.</h2>
+
+			<p id="red">这个段落是红色。</p>
+			<p id="green">这个段落是绿色。</p>
+
+			<h2 title="Hello world">Hello world</h2>
+			<a title="W3School" href="http://w3school.com.cn">W3School</a>
+			
+			<p lang="en-us">Hello</p>
+
+			<input type="text" name="text" value="Andy show" />
+			<input type="button" name="button" value="What the fuck!" />
+
+			<p class="bgc">Andy show </p>
+			<a>Andy sistence</a>
+			<a class="fly">Andy fly</a>
+			<p class="white-space">Andy      while-space</p>
+			<div class="direction">Andy direction</div>
+			<span class="font">Andy font show</span>
+		</body>
+</html>

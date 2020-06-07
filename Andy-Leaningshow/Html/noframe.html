@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+  <!--<frame>标签定义frameset中的一个特定的窗口（框架）
+		 frameset中的每个框架都可以设置不同的属性，比如border、scrolling、noresize。。
+		<frameset>标签有一个必需的属性：要么是rows。，要么是cols。他们定义了文档窗口种框架或嵌套的框架集的行或列的大小级数目。
+		这两个属性都接受用引号括起来并用逗号分开的值得列表值，这些数值指定了框架的绝对（像素点）或相对（百分比或其余空间）宽度（对列而言），或者绝对或相对高度（对行而言）。这些属性值的树木决定了浏览器将会在文档窗口中显示多少行货列的框架。
+		example:<frameset rows="25%,50%,25%">or<frameset rows="10%,3*,*,*">or
+		<frameset rows="150,300,150">
+ -->
+ <!--<noframes>元素可为那些不支持框架的浏览器显示文本。noframes元素位于frameset元素内部	。	   如果浏览器有能力处理框架，就不会显示出frameset元素中的文本。
+	如果您希望frameset添加<noframes>标签，就必须把其中的文本包装在<body></body>标签中。如果您希望验证包含框架的页面，请确保DTD被设置为"Frameset DTD"
+-->
+		<frameset cols="25%,25%,*">
+				<noframes>
+				<body>Your browser does not handle frames!</body>
+				</noframes>
+				<frame src="frame_a.html" />
+				<frame src="frame_b.html"/>
+				<frame src="frame_c.html"/>
+		</frameset>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var tempArray = [];
+		var numberArray = [3,324,432,123,3412,234];
+
+		function SortFunction(a,b){	//如果第一个参数大于第二个参数返回正值，想等返回0，小于返回负值。
+			return a-b;	//b-a降序排序
+		}
+
+		with(document){
+			write('数字数组numberArray = [3,324,432,123,3412,234]：'+"<br />");
+			write("<br />")
+
+			write("使用不带参数的sort方法排序，返回的数组如下：（按ASCII字符顺序进行升序排列）"+'<br />');
+			tempArray = numberArray.sort(); 
+			for (var i = 0; i < tempArray.length; i++) {
+				write(tempArray[i]+'<br />');
+			}
+
+			write("<br />")
+			write("使用带参数的sort方法顺序排序，返回的数组如下：（按数字数值大小排序）"+'<br />');
+			tempArray = numberArray.sort(SortFunction); 
+			for (var i = 0; i < tempArray.length; i++) {
+				write(tempArray[i]+'<br />');
+			}
+		}
+	</script>
+</body>
+</html>

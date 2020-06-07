@@ -1,0 +1,255 @@
+<!--
+	声明文档类型:html 符合w3c统一标准规范
+	为什么要做这个声明？不声明有什么影响？
+	每个浏览器对html css js都有不同的编译模式
+-->
+<!doctype html>
+<html><!--人-->
+	<head><!--规定一些信息(提供给浏览器用) 用户看不到 非可视化标签-->
+		<meta charset="utf-8"><!--字符编码:utf-8国际编码 -->
+		<!--网页文档三要素-->
+		<title>唱吧-最时尚的手机KTV-玄武老师</title>
+		<meta name="Keywords" content="唱吧,手机KTV">
+		<meta name="description" content="描述:对页面内容的大概简介">
+		<style>/*css样式表的存放位置*/
+		/*
+			第一步:找到对应的标签元素
+			第二步:设置所需的样式
+		*/
+		*{/* *通用选择器：选择到所有的标签元素*/
+			margin:0px;/*外边距*/padding:0px;/*内边距*/
+		}
+		/*#container{/* # id选择器*
+			width:500px;/*宽度*height:500px;/*高度*
+			background:red;/*背景颜色*
+		}*/
+		body{
+			font-family:"微软雅黑";/*设置字体类型*/
+		}
+		#header{
+			width:100%;height:720px;
+			background:#f94b2d;
+		}
+		.wrap{
+			width:960px;
+			margin:0 auto;/*上下外边距为0  居中*/
+		}
+		#header div.top{/* . class选择器*/
+			height:80px;
+			/*background:blue;*/
+			line-height:80px;
+		} 
+		
+		#header div.top div.logo{
+			width:190px;height:80px;
+			float:left;/*与父元素的左端对齐依次往右显示*/
+		}
+		#header div.top div.nav{
+			float:left;
+		}
+		#header div.top div.nav ul li{
+			list-style:none;/*去除前面的小黑圆点*/
+			float:left;
+			margin:0 24px;/*上下为0  左右为25px*/
+			color:#fff;/*文本颜色*/
+			cursor:pointer;/*鼠标显示手的形状*/
+			height:78px;
+			line-height:78px;
+			border-top:2px solid transparent;/*边框:宽度 类型(实线)  颜色(透明颜色)*/
+		}
+		/*能用css实现的动画就不要用js*/
+		#header div.top div.nav ul li:hover{/*鼠标移上去实现什么效果*/
+			color:#ccc;
+			border-top:2px solid #fff;/*边框:宽度*/
+		}
+		#header div.ktv{
+			height:166px;
+		}
+		#header div.ktv img{
+			display:block;/*块级元素*/
+			margin:auto;
+		}
+		#header div.ktv a{
+			display:block;
+			margin:auto;
+			width:103px;
+			height:48px;
+			color:#fff;
+			line-height:48px;
+			font-size:20px;/*文本大小*/
+			text-decoration:none;/*去除下划线*/
+			margin-top:10px;
+			padding-left:60px;
+			background:url("images/download.png");/*设置背景图片*/
+		}
+		.imgItem{
+			height:474px;
+			position:relative;/*相对定位元素：参考物*/
+		}
+		.imgItem img{
+			position:absolute;/*绝对定位元素*/
+		}
+		.imgItem img.top1{
+			left:-320px;
+			bottom:22px;
+			animation:anim1 0.7s 0.5s ease-out forwards;/*名称 执行时间 延迟时间 运动曲线  运动完成保持结束状态*/
+		}
+		.imgItem img.top2{
+			left:-320px;
+			bottom:66px;
+			animation:anim2 0.7s 0.2s ease-out forwards;
+		}
+		.imgItem img.top3{
+			left:322px;
+			bottom:63px;
+			animation:anim3 0.5s linear;/*css3自定义动画 : anim名称  时间 匀速*/
+		}
+		.imgItem img.top4{
+			right:-350px;/*距离参考物左端的距离*/
+			top:43px;/*距离参考物下端的距离*/
+			animation:anim4 0.7s 0.2s ease-out forwards;
+		}
+		.imgItem img.top5{
+			right:-350px;/*距离参考物右端的距离*/
+			top:22px;/*距离参考物上端的距离*/
+			animation:anim5 0.7s 0.5s ease-out forwards;
+		}
+		/*执行动画*/
+		@keyframes anim1{
+			0%{
+				left:-320px;
+			}
+			100%{
+				left:0px;
+			}
+		}
+		@keyframes anim2{
+			0%{
+				left:-320px;
+			}
+			100%{
+				left:166px;
+			}
+		}
+		@keyframes anim3{/*执行anim动画*/
+			0%{/*动画开始时*/
+				transform:scale(0.5);/*动画开始时为原图的0.5倍*/
+				opacity:0.5;/*透明度*/
+			}
+			50%{/*动画执行到50%*/
+				transform:scale(1);/*css3 变换 ：缩放*/
+				opacity:1;
+			}
+			75%{
+				transform:scale(0.75);
+			}
+			100%{
+				transform:scale(1);
+			}
+		}
+		@keyframes anim4{
+			0%{
+				right:-350px;
+			}
+			100%{
+				right:147px;
+			}
+		}
+		@keyframes anim5{
+			0%{
+				right:-350px;
+			}
+			100%{
+				right:0px;
+			}
+		}
+		#content{
+			width:100%;
+			margin-top:30px;
+		}
+		#content .star div.imgCon{
+			float:left;
+			margin-right:8px;
+			width:232px;
+			text-align:center;/*文本左右居中*/
+		}
+		#content .star div.imgCon p{
+			margin-top:10px;
+		}
+		#content .star div.imgCon img:hover{
+			opacity:0.7;
+		}
+		</style>
+	</head>
+	<body><!--身体-->
+		<!--盒子模型标签div 宽度 高度 位置-->
+		<!-- header start -->
+		<div id="header"><!--id="自定义名称" 唯一的(身份证号) 见名知意-->			
+			<div class="top wrap"><!--class="自定义名称" 重复性 -->
+				<div class="logo">
+					<!--插入logo图片-->
+					<img src="images/logo.png">
+				</div>
+				<div class="nav">
+					<!--导航区域块-->
+					<ul>  <!--无序列表标签-->    
+						<li>首页</li>
+						<li>精彩表演</li>
+						<li>会员中心</li>
+						<li>金币充值</li>
+						<li>分享伴奏</li>
+						<li>唱吧直播间</li>
+						<li>加入唱吧</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ktv wrap">
+				<img src="images/ktv.png">
+				<a href="javascript:;">点击下载</a><!--超链接-->
+			</div>
+			<div class="imgItem wrap">
+				<img class="top1" src="images/top1.png">
+				<img class="top2" src="images/top2.png">
+				<img class="top3" src="images/top3.png">
+				<img class="top4" src="images/top4.png">
+				<img class="top5" src="images/top5.png">
+			</div>
+		</div>
+		<!-- end header -->
+		<!-- content start-->
+		<div id="content">
+			<div class="star wrap">
+				<div class="imgCon">
+					<img src="images/display1.jpg">
+					<p>最时尚的手机KTV</p>
+				</div>
+				<div class="imgCon">
+					<img src="images/display2.jpg">
+					<p>上百万高品质伴奏</p>
+				</div>
+				<div class="imgCon">
+					<img src="images/display3.jpg">
+					<p>人气最高的K歌社区</p>
+				</div>
+				<div class="imgCon">
+					<img src="images/display4.jpg">
+					<p>附近的兴趣群组</p>
+				</div>
+			</div>
+			<div class="download">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+		<!-- end content -->
+
+		<script type="text/javascript">
+			document.onmousedown = function(){
+				return false;
+			}
+		</script>
+	</body>
+</html>

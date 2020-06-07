@@ -1,0 +1,158 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				html{ width:100%; height:100%; font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="shop">
+
+			</div>
+
+			<!--
+				js,各色特效 
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script language="javascript" type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script language="javascript" type="text/javascript">
+				/*Number S*/
+					//Number 类型有三个特殊的常量值，NaN、+Infinity、-Infinity
+					
+					/*
+						//NaN(非数值类型)，验证一个变量的值是否是数值
+						var str = 'andy';
+						//alert(str==NaN); 错误的比较方法
+						alert(isNaN(str));	 //正确的比较方法
+
+						//+Infinity正无穷常量表示一个数值表达式的计算结果是无穷大
+						alert(Math.pow(2,1024));
+						
+						//-Infinity负无穷常量与正无穷相反，但他们的数量及时相同的
+						alert(-Math.pow(2,1024));
+					*/
+				/*Number E*/
+
+				/*引用类型 S*/
+					/*	
+						//值传递
+						var a = 1;
+						var b = a;
+						a = 2;
+						alert(b);
+					*/
+					/*
+						//引用传递
+						var c = Object;
+						var d = c;
+						c.name = 'ylem';
+						alert(d.name);//alert(d.ylem); undefined
+					*/
+				/*引用类型 E*/
+
+				/*类型转换 S*/
+					/*转换成数值类型 S*/
+						//隐式转换
+							/*
+								//字符串转数字
+								alert('101'-1);
+								//null转数值
+								alert(1-null);
+								//布尔值转数值
+								alert(true+false+1);
+								//undefined转数值
+								alert(1-undefined);
+							*/
+						//显式转换
+							//链接	http://www.cnblogs.com/ecalf/archive/2012/11/26/2789820.html
+							//parseInt() 转换成整数的函数，只能对字符串类型转换，其他类型被转换的结构都将得到NaN。parseInt()的转换过程是，从字符串的第一个字符开始一次进行判断，如果发现字符串不是数字字符，那么将停止转换，例如parseInt('123a4')的转换结果是123，如果字符串的第一个字符是除了减号（表示负数）外的任何非数字字符，那么将得到NaN的结果。
+							//alert(parseInt('a123'));
+							/*
+								parseInt(string, radix)  有2个参数，第一个string 是传入的数值，第二个radix是 传入数值的进制，参数radix 可以忽略，默认为 10，各种进制的数转换为 十进制整数（如果不是整数，向下取整）。
+
+								radix 的取值范围是 2~36，如果 radix 为 1 或 radix>36 ，转换结果将是 NaN ，如果 radix 为 0 或其它值将被忽略，radix 默认为 10 。
+								
+								该函数要求第一个参数是字符串，如果不是字符串将被转换成字符串，而且，在进行转换之前，字符串参数的左侧符合进制数所使用字符集的字符被截取出来用于进制数的转换。
+
+								字符串参数开头和结尾的空格会被忽略
+							*/
+							/*
+								alert(parseInt('8')); //忽略 radix ,传入的 第一个参数 被识别为 10进制数	
+								alert(parseInt(032,8)); //0 开头,8进制数
+								alert(parseInt(0x10,16));	//0x 开头,16进制数											
+								alert(parseInt(010,7)); // parseInt('8',7) , 8 超出 7 进制数所使用字符的范围被丢弃，转换结果为 NaN						
+								alert(parseInt(0x13,8)); // parseInt('19',8) 字符 9 超出了8进制数所使用字符的范围，被丢弃，转换结果为 1
+								alert(parseInt(0x10,8)); // parseInt('16',8) 得到 14
+							*/
+
+							/*
+								如果第一个参数直接传入 字符串,忽略 radix ，则：
+								字符串以 0 开头后继数字小于8，默认被识别为 8 进制(ie 6-8 识别为 8 进制，低版本Firefox 识别为8进制， 高版本Firefox， Chrome 识别为10进制，IE 9 之后  识别为 10进制 )
+
+								字符串以 0x 开头，默认被识别为 16 进制
+
+								否则识别为 10进制
+
+								parseInt('010') //8  ,ie9 得到 10 
+
+								parseInt('018') //1  ,ie9 得到 18 
+
+								parseInt('017') //15 ， ,ie9 得到 15
+
+								parseInt('010',8) //直接识别为8进制 ，转换结果 8
+
+								parseInt('010',7) //直接识别为7进制 ，转换结果 7
+
+								parseInt('010',16) //直接识别为16进制 ，转换结果 16
+								 
+								parseInt('0x10') //16
+
+								parseInt('0x1g') //1
+
+								parseInt('0x1f') //31
+							 
+								parseInt('0x10',8) //直接识别为8进制 ，字符 x 超出 8进制数所使用字符的范围，转换结果 0
+
+								parseInt('0x10',15) // 转换结果 0 
+
+								parseInt('0x10',16) // 0x 符合 16进制数的表达格式，被正确识别为 16 进制数，转换结果同 parseInt('10',16) 为 16
+
+								parseInt('0x10',17) // 识别为17进制，字符 x 超出 17进制数所使用字符的范围，转换结果 0
+
+								parseInt(true) //NaN ,注意区别  布尔型在 Number 函数中的用法， Number(true) //1
+							*/
+							//parseFloat() 是没有进制参数的，只能处理10进制数,也不处理八进制和十六进制字符串。
+							//alert(parseFloat('1.12'));
+					/*转换成数值类型 E*/
+
+					//转换成字符串类型	+""
+					//alert('ylem'+undefined);
+				/*类型转换 E*/.
+			</script>
+
+		</body>
+</html> 

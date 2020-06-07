@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
+		<title>水果宅配购物网</title>
+		<link rel=stylesheet type="text/css" href="cart_color.css">
+		<script type="text/javascript">
+			//仿真检测账号、密码
+			if(localStorage.userid != "guest" || sessionStorage.userpwd != "1234") {
+				alert("账号密码错误，请回首页登录!!");
+				sessionStorage.removeItem('userpwd');
+				document.location = "ch11_04.htm";
+			}
+
+			function isLoad() {
+				//显示用户账号
+				document.getElementById("showuserid").innerHTML = localStorage.userid;
+				var div_list = "";
+				//将商品信息存在数组
+				var sale_item = new Array("水果蛋糕", "葡萄", "奇异果", "柠檬", "苹果派", "菠萝", "水果组合", "苹果", "水果茶");
+				//显示商品
+				for(i in sale_item) {
+					div_list += "<div class='fruit'>"
+					div_list += "<img class='img_fruit' src='images/fruit" + i + ".png'><br/>"
+					div_list += "<font style='color:#ff0000'>" + sale_item[i] + "</font><br />"
+					div_list += "<input type='checkbox' name='chkitem' value='" + sale_item[i] + "'>"
+					div_list += "我要选购</div>"
+				}
+				document.getElementById("div_sale").insertAdjacentHTML("beforeend", div_list);
+
+				//检查Cartlist是否仍有数据，有则加载
+				if(localStorage.Cartlist)
+					shopping_list.value = "你的购买列表：" + localStorage.Cartlist;
+				else
+					shopping_list.value = "你的购买列表：";
+
+				//创建按钮的事件侦听
+				clearButton.addEventListener("click", clearCart);
+				cartButton.addEventListener("click", addtoCart);
+
+			}
+			/***********清除购物车************/
+			function clearCart() {
+				shopping_list.value = "你的购买列表：";
+				localStorage.removeItem("Cartlist"); /*清空localStorage*/
+			}
+			/***********加入购物车************/
+			function addtoCart() {
+				var checkselect = "";
+				var checkBoxList = document.getElementsByName('chkitem');
+
+				for(i in checkBoxList) {
+					if(checkBoxList[i].checked) {
+						checkselect += "\n" + checkBoxList[i].value;
+					}
+
+				}
+				/*localStorage.Cartlist是空的，表示首次新增，就把勾选商品存入localStorage.Cartlist；
+				如果localStorage.Cartlist有值，表示已经新增过商品，新勾选商品继续存入localStorage.Cartlist*/
+				if(!localStorage.Cartlist)
+					localStorage.Cartlist = checkselect;
+				else
+					localStorage.Cartlist += checkselect;
+
+				shopping_list.value = "你的购买列表：" + localStorage.Cartlist;
+			}
+			//注销
+			function logout() {
+				localStorage.removeItem('userid');
+				sessionStorage.clear();
+				document.location = 'ch11_04.htm';
+			}
+		</script>
+	</head>
+
+	<body onload="isLoad()">
+		<div id="main">
+			<header> 欢迎光临水果宅配购物网 <input type="button" value="注销" onclick="logout();"></header>
+			<span id="showuserid">aaa</span> 你好<br />请选择要购买的商品!<br />
+			<button id="clearButton">清除购物车</button><br>
+			<button id="cartButton">放入购物车</button>
+			<textarea id="shopping_list" rows="15" cols="30" readonly="readonly"></textarea>
+			<div id="div_sale"></div>
+		</div>
+		<footer>
+			门市营业时间：周一～周五8:30～20:30<br /> 服务信箱：fruitshop@happy.net
+			<br /> 宅配电话︰123-45678
+		</footer>
+	</body>
+
+</html>

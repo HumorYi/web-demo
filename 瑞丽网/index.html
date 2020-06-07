@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--声明当前页面的编码格式 国际编码 UTF-8  中文编码 GBK-->
+	<meta charset="utf-8">
+	<!--声明当前页面的三要素-->
+	<meta name="Keywords" content="关键词，关键词">
+	<meta name="description" content="描述">
+	<title>学员案例 --瑞丽无缝滚动--千凡</title>
+	<!--样式css 一件美丽的外衣  化妆品 修饰-->
+	<style type="text/css">
+	/*兼容问题*/
+	*{margin:0;padding:0;}
+	.imglist{width:1180px;/*宽*/height:500px;/*高*/
+			margin:50px auto 0;/*上 左右  下*/
+			overflow:hidden;
+	}
+	/*左按钮*/
+	.imglist .but_left{width:80px;height:500px;background:rgba(0,0,0,0.5);float:left;}
+	.imglist .but_left img{display:block;/*块级元素*/margin:218px auto;}
+	/*中间内容*/
+	.imglist .con{width:1020px;height:500px;float:left;position:relative;/*参照物 相对定位*/
+
+	}
+	.imglist .con .big_con{width:1000%;height:500px;background:red;position:absolute;
+			top:0;left:-1020px;z-index:-1;
+	}
+	.imglist .con .big_con ul li{width:1020px;height:500px;background:yellow;
+			list-style:none;float:left;
+	}
+	.imglist .con .big_con ul li .left{width:360px;height:480px;background:#ff9933;float:left;
+			border:5px solid #000;border-top:10px solid #000;border-bottom:10px solid #000;
+			position:relative;/*参照物 相对定位*/
+	}
+	.imglist .con .big_con ul li .left p{color:#fff;background:rgba(0,0,0,0.5);width:100%;
+			font-size:20px;line-height:50px;position:absolute;/*绝对定位*/bottom:0;left:0;
+	}
+	.imglist .con .big_con ul li .right{width:640px;height:480px;background:#00cc00;float:left;
+			border:5px solid #000;border-top:10px solid #000;border-bottom:10px solid #000;
+			position:relative;/*参照物 相对定位*/
+	}
+	.imglist .con .big_con ul li .right p{color:#fff;background:rgba(0,0,0,0.5);width:100%;
+			font-size:20px;line-height:50px;position:absolute;/*绝对定位*/bottom:0;left:0;
+	}
+
+	/*右边按钮*/
+	.imglist .but_right{width:80px;height:500px;background:rgba(0,0,0,0.5);float:left;}
+	.imglist .but_right img{display:block;/*块级元素*/margin:218px auto;}
+	</style>
+
+</head>	
+<body>
+	<div class="imglist">
+		<div class="but_left"><img src="images/btn_left.png" /></div>
+		<div class="con">
+			<div class="big_con">
+				<ul>
+					<li>
+						<div class="left"><img src="images/6-6.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/6.jpg"><p>高定时装周 一起去看包包</p></div>
+					</li>
+
+					<li>
+						<div class="left"><img src="images/1-1.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/1.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+					<li>
+						<div class="left"><img src="images/2-2.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/2.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+					<li>
+						<div class="left"><img src="images/3-3.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/3.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+					<li>
+						<div class="left"><img src="images/4-4.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/4.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+					<li>
+						<div class="left"><img src="images/5-5.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/5.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+					<li>
+						<div class="left"><img src="images/6-6.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/6.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+
+					<li>
+						<div class="left"><img src="images/1-1.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+						<div class="right"><img src="images/1.jpg"><p>旁氏米粹润白洁面乳 免费申领</p></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="but_right"><img src="images/btn_right.png" /></div>
+	</div>
+	<!--div盒子模型 有宽度 有高度 放内容的长方形区域
+		命名 class="" 姓名=“张三”
+		插入图片标签 img src="地址"
+	-->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+	var num = 1;
+	var t;
+		$(".imglist .but_left img").click(function(){
+			//alert("喜欢我，就点我吧")
+			autoplay();
+		});
+		function autoplay(){
+			num++;
+			if(num>6){
+				num=1;
+				$(".imglist .con .big_con").css({left:0+"px"})
+			}
+			$(".imglist .con .big_con").animate({left:-num*1020+"px"},500);
+		}
+		$(".imglist .but_right img").click(function(){
+			//alert("喜欢我，就点我吧")
+			num--;
+			if(num<1){
+				num=6;
+				$(".imglist .con .big_con").css({left:-7*1020+"px"})
+			}
+			$(".imglist .con .big_con").animate({left:-num*1020+"px"},500);
+		});
+		//定时器
+		$(".imglist .but_left img").hover(function(){
+			clearInterval(t);
+		},function(){
+			t = setInterval(autoplay,3000);
+		});
+		$(".imglist .but_right img").hover(function(){
+			clearInterval(t);
+		},function(){
+			t = setInterval(autoplay,3000);
+		});
+		t = setInterval(autoplay,3000);
+	</script>
+</body>
+</html>

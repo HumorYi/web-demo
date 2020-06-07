@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body,div,font,span,p{margin: 0; padding: 0;}
+		html{width: 100%; height: 100%;}
+		body{ background: url(images/bg.jpg) no-repeat right center; background-size: cover; font-size:12px; font-family:"微软雅黑"; }
+		/*Message S*/
+		#Message{ width: 658px; height: 160px; background: #fff; margin: 200px auto 0; border-radius:4px; border: 1px solid #5d5d5d; padding: 20px 0 0 20px; position: relative;}
+		
+		/*MesCon S*/
+		#Message .MesCon{ width: 612px; height: 100px; border: 1px solid #5c5c5c;}
+		#Message .MesCon .Edit{ width: 500px; height: 90px; float: left; padding: 10px 0 0 10px; outline:none;}
+		#Message .MesCon .imgBut{ width: 100px; height: 100px; line-height: 140px; background: url(images/tu.png) no-repeat center; float:right; text-align:center; border-left:1px solid #5c5c5c; cursor:pointer;}
+		/*MesCon S*/
+		
+		/*MesBut S*/
+		#Message .MesBut{ width: 612px; height: 34px; margin-top: 10px; }
+		#Message .MesBut font{ margin: 0 20px; line-height: 34px; cursor: pointer; }
+		#Message .MesBut span{ width: 70px; line-height: 34px; text-align:center; background: #414141; display:inline-block; float: right; border-radius:4px; color: #fff; cursor: pointer;}
+		#Message .MesBut span:hover{ background: #378da0; }
+		/*MesBut S*/
+
+		/*MesImg S*/
+		#Message .MesImg{ width: 624px; height: 240px; background: rgba(0,0,0,.3); box-shadow:2px 3px 1px #000; position:absolute; left: 25px; top: 100%; display: none; }
+		#Message .MesImg .txt{ width: 100%; height: 100%; font-size:24px; color:#fff; text-align:center; line-height: 220px; text-shadow:2px 3px 1px #000; position: absolute; z-index:1;}
+		/*MesImg S*/
+		/*Message E*/
+	</style>
+</head>
+<body>
+	<!--Message S-->
+	<div id="Message">
+		<!--MesCon S-->
+		<div class="MesCon">
+			<div class="Edit" contenteditable="true"></div>
+			<div class="imgBut">上传图片</div>
+		</div>
+		<!--MesCon E-->
+		
+		<!--MesBut S-->
+		<div class="MesBut">
+			<font>本地相册</font>
+			<font class="UpLoad">拖拽上传</font>
+			<span id="send">发表按钮</span>
+		</div>
+		<!--MesBut E-->
+		
+		<!--MesImg E-->
+		<div class="MesImg">
+			<p class="txt">请将图片拖拽到此区域</p>
+		</div>
+		<!--MesImg E-->
+	</div>
+	<!--Message E-->
+
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script>
+		//点击（上传图片）
+		$('#Message .MesCon .imgBut').click(function(){
+			$('#Message .MesImg').slideToggle(700);
+		});
+
+		//点击（拖拽上传）
+		$('#Message .MesBut .UpLoad').click(function(){
+			$('#Message .MesImg').slideToggle(700);
+		});
+
+		//点击编辑框
+		$('#Message .MesCon .Edit').click(function(){
+			$('#Message .MesImg').slideToggle(700);
+		});
+		
+		//获取拖拽元素
+		var oDiv = $('#Message .MesImg').get(0);
+		var op = $('#Message .MesImg .txt');
+
+		//图片拖拽进去透明框时
+		oDiv.ondragenter = function(){
+			op.html('可以放手了');
+		};
+
+		//图片拖拽离开透明框时
+		oDiv.ondragleave = function(){
+			op.html('请将图片拖拽到此区域');
+		};
+
+		//图片在透明框里面移动时
+		oDiv.ondragover = function(e){
+			oEvent = e || event;
+			//取消浏览器默认行为
+			oEvent.preventDefault();
+		};
+
+		//图片在透明框里面释放时
+		oDiv.ondrop = function(e){
+			oEvent = e || event;
+			//取消浏览器默认行为
+			oEvent.preventDefault();
+
+			//获取拖过来的文件
+			var fs = oEvent.dataTransfer.files;
+
+			//获取拖过来的文件个数
+			var len = fs.length;
+
+			for (var i = 0; i < len; i++) {
+				//获取文件类型
+				var _type = fs[i].type;
+				/*var name = fs[i].type;
+				var size = fs[i].type;*/
+
+				//判断是否为图片
+				if (_type.indexOf("image") != -1) {
+					//文件读取
+					var fd = new FileReader();
+					//把选中的图片转换成base64文件编码
+					fd.readAsDataURL(fs[i]);
+
+					//如果文件读取完毕
+					fd.onload = function(){
+						//添加<img />标签
+						var oImg = $("<img src='' width='100' height='100' style='margin: 10px; z-index:10;' />");
+						oImg.attr('src',this.result);
+						$('#Message .MesImg').append(oImg);
+					};
+				};
+			};
+		};
+	</script>
+</body>
+</html>

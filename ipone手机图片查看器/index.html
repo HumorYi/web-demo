@@ -1,0 +1,118 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>ipone手机图片查看器 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,a{margin:0px;padding:0px;}/*去除默认外边距、内边距*/
+				body{
+					font-size:12px; font-family:"Microsoft YaHei";
+				}
+
+				ul li
+					list-style:none;
+				}
+
+				a{
+					text-decoration:none;
+				}
+
+				#iphone{ 
+					width:900px; height:600px; background:url(images/bg.png); margin:100px auto; position:relative;
+				}
+
+				#iphone #wrap{
+					width:240px; height:360px; position:absolute; left:326px; top:121px; overflow:hidden;
+				}
+				
+				#iphone #wrap ul#ul{
+					width:960px; height:361px; position:absolute; left:0px; top:0px; cursor:pointer;
+				}
+
+				#iphone #wrap ul#ul li{
+					width:240px; height:360px; float:left;
+				}
+			</style>
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				window.onload = function(){
+					var oul = document.getElementById("ul");
+					var oli = oul.getElementsByTagName("li");
+					var disX = 0;
+					var downX = 0;
+					var inow = 0;
+					var timer = null;
+					var ispeed = 0;
+					oul.onmousedown = function(ev){
+						var ev = ev || window.event;
+						disX = ev.clientX - oul.offLeft;
+						downX = ev.clientX;
+						document.onmousemove = function(ev){
+							var ev = ev || window.event;
+							oul.style.left = ev.clientX - disX+"px";
+						}
+						document.onmouseup = function(ev){
+							document.onmousemove = document.onmouseup = null;
+							var ev = ev || window.event;
+							if(ev.clientX < downX)
+							{
+								if(inow != oli.length - 1)
+								{
+									inow++;
+								}
+								startMove(-inow*oli[0].offsetWidth);
+							}else{
+								if(inow !=0)
+								{
+									inow--;
+								}
+								startMove(-inow*oli[0].offsetWidth);
+							}
+						}
+						return false;
+					}
+					function startMove(itarget){
+						clearInterval(timer);
+						timer = setInterval(function(){
+							ispeed += (itarget - oul.offsetLeft)/6;
+							ispeed *= 0.75;
+							if (Math.abs(ispeed)<=1 && Math.abs(itarget - oul.offsetLeft)<=1)
+							{
+								clearInterval(timer);
+								ispeed = 0;
+								oul.style.left = itarget+"px";
+							}else{
+								oul.style.left = oul.offsetLeft + ispeed +"px";
+							}
+						},30);
+
+					}
+				}
+			</script>		
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="iphone">
+				<div id="wrap">
+					<ul id="ul">
+						<li style="background:url(images/pic1.png);"></li>
+						<li style="background:url(images/pic2.png);"></li>
+						<li style="background:url(images/pic3.png);"></li>
+						<li style="background:url(images/pic4.png);"></li>
+					</ul>
+				</div>
+			</div>
+		</body>	
+</html>

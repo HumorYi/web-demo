@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<center>
+        <h1>多种信息格式验证</h1>
+        <hr>
+        <form name="myform">
+            <input type=text name="email" size=30>
+            <input type=button value="邮件地址" onclick="click1()">
+            <br>
+            <input type=text name="ip" size=30>
+            <input type=button value="IP  地址" onclick="click2()">
+            <br>
+            <input type=text name="card" size=30>
+            <input type=button value="身份证号" onclick="click3()">
+            <br>
+            <input type=text name="date" size=30>
+            <input type=button value="日期格式" onclick="click4()">
+            <br>
+            <input type=text name="time" size=30>
+            <input type=button value="时间格式" onclick="click5()">
+            <br>
+        </form>
+    </center>
+	
+	<script type="text/javascript">
+		function click1(){
+			var str = document.myform.email.value;
+			/*var reg = /^[A-Za-z0-9_]+@[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)+$/g;*/
+			var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+			if(reg.test(str))
+            {
+                alert("格式正确！");
+            }
+            else
+            {
+                alert("格式错误！");
+            }
+		}
+
+		function click2(){
+			var str = document.myform.ip.value;
+			//0-99|100-199|200-249|250-255
+			var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}$/; 
+			if(reg.test(str))
+            {
+                alert("格式正确！");
+            }
+            else
+            {
+                alert("格式错误！");
+            }
+		}
+
+		function click3(){
+			var str = document.myform.card.value;
+			var reg = /^\d{15}|\d{17}(\d|X)$/; 
+			if(reg.test(str))
+            {
+                alert("格式正确！");
+            }
+            else
+            {
+                alert("格式错误！");
+            }
+		}
+
+		function click4(){
+			var str = document.myform.date.value;
+			var reg = /^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\d|3[0-1])$/; 
+			if(reg.test(str))
+            {
+                alert("格式正确！");
+            }
+            else
+            {
+                alert("格式错误！");
+            }
+		}
+
+		function click5(){
+			var str = document.myform.time.value;
+			var reg = /^[0-1]\d|2[0-3]:[0-5]\d:[0-5]\d$/; 
+			if(reg.test(str))
+            {
+                alert("格式正确！");
+            }
+            else
+            {
+                alert("格式错误！");
+            }
+		}
+	</script>
+</body>
+</html>

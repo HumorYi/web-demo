@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="16.2.2.jpg" name="pic" border="1" />
+
+	<script type="text/javascript">
+		var size = 1;
+		var end = true;
+
+		function deformation(){
+			if (end == true) {
+				size++;
+			}else{
+				size--;
+			}
+
+			if (size == 10) {
+				size++;
+				end = true;
+			}
+
+			if(size == 100){
+				size--;
+				end = false;
+			}
+
+			pic.width = 150 + size;
+			pic.height = 120 - size;
+			setTimeout(deformation,100);
+		}
+
+		window.onload = deformation;
+	</script>
+</body>
+</html>

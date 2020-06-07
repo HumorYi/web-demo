@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式基本操作示例</title>
+    <h1 align="center">正则表达式基本操作示例</h1>
+    <script type="text/javascript">
+		var mystring="AbcAbcEFabc11abc23ABc4545aBcGHabc6767abc";
+
+    	function myfun1(){
+    		var reg = /(abc)(\d*)(\2)(\1)/;
+    		var arr;
+            arr = mystring.match(reg);
+    		var str="匹配结果：\n";
+    		str += arr[0];
+    		alert(str);
+    	}		
+
+    	function myfun2(){
+    		var reg = /(abc)(\d*)(\2)(\1)/g;
+    		var arr;
+            arr = mystring.match(reg);
+    		var str="匹配结果：\n";
+
+    		for (var i = 0; i < arr.length; i++) {
+    			if (i < arr.length-1) str += arr[i] + ','; 				
+    			else str += arr[i];
+    		}
+    		alert(str);
+    	}
+
+    	function myfun3(){
+    		var reg = /(abc)(\d*)(\2)(\1)/i;
+    		var arr;
+            arr = mystring.match(reg);
+    		var str="匹配结果：\n";
+    		str += arr[0];
+    		alert(str);
+    	}
+
+    	function myfun4(){
+    		var reg = /(abc)(\d*)(\2)(\1)/gi;
+    		var arr;
+            arr = mystring.match(reg);
+    		var str="匹配结果：\n";
+
+    		for (var i = 0; i < arr.length; i++) {
+    			if (i < arr.length-1) str += arr[i] + ',';
+    			else str += arr[i];
+    		}
+    		alert(str);
+    	}
+    </script>
+</head>
+<body>
+	<center>
+	    <input type="button" value="不设置任何标志" onclick="myfun1()">
+	    <input type="button" value="设置标志g" onclick="myfun2()">
+	    <input type="button" value="设置标志i" onclick="myfun3()">
+	    <input type="button" value="同时设置标志g和i" onclick="myfun4()">
+	</center>
+</body>
+</html>

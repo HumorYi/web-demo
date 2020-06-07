@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>demo - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div{ 
+					margin:0px;padding:0px; 
+				}
+				html,body{ 
+					width:100%; height:100%; font-family:"微软雅黑";
+				}
+				canvas{background:#000;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<canvas id="mycanvas" width="400" height="400">
+				您的浏览器不支持canvas标签，请您更换浏览器！！！
+			</canvas>
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				var mycanvas = document.getElementById("mycanvas");
+				var can = mycanvas.getContext("2d");
+				can.fillStyle = "#fff";
+				can.strokeStyle ="#fff";
+				can.font = "60px 微软雅黑";
+				can.textBaseline = "top";
+				can.fillText("感恩节",0,0);
+				can.strokeText("感恩节快乐",0,100);
+				
+				//预加载才能显示图片
+				var img = new Image();
+				img.src = "images/3.png";
+				img.onload = draw;
+				function draw(){
+					can.drawImage(img,200,200,50,50); //图片，坐标x，坐标y，宽度，高度
+				};
+				
+			</script>
+
+		</body>
+</html>

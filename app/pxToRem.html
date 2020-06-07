@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="luoxing">
+	<meta name="email" content="luoxing8493@126.com">
+	<meta name="date" content="2017-12-13 21:12:13">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimun-scale=1, user-scalable=no" />
+
+	<title>移动端布局，rem 用法</title>
+
+	<link rel="stylesheet" href="">
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 2rem;
+			height: 2rem;
+			background: #000;
+		}
+
+		@media screen and (max-width: 321px) {
+		    body {
+		        font-size:16px
+		    }
+		}
+		 
+		@media screen and (min-width: 321px) and (max-width:400px) {
+		    body {
+		        font-size:17px
+		    }
+		}
+		 
+		@media screen and (min-width: 400px) {
+		    body {
+		        font-size:19px
+		    }
+		}
+
+		@media screen and (max-width: 321px) {
+		    header,footer {
+		        font-size:16px
+		    }
+		}
+		 
+		@media screen and (min-width: 321px) and (max-width:400px) {
+		    header,footer {
+		        font-size:17px
+		    }
+		}
+		 
+		@media screen and (min-width: 400px) {
+		    header,footer {
+		        font-size:19px
+		    }
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="box"></div>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+
+	</script>
+</body>
+</html>

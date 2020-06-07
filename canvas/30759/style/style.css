@@ -1,0 +1,7 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #00a3ef;
+    background-image: -webkit-radial-gradient(circle farthest-corner at left top, #00a3ef 0%, #fff 100%);
+    background-image: radial-gradient(circle farthest-corner at left top, #00a3ef 0%, #fff 100%);
+}

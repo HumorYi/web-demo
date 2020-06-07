@@ -1,0 +1,106 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码：utf-8国际编码  gb2312中文编码-->
+		<meta name="Keywords" content="关键词">
+		<meta name="Description" content="描述">
+		<title>Document</title>
+		<style>/*css样式表的衣柜*/
+		html,body,div{margin:0px;padding:0px;}/*去除默认外边距、内边距*/
+		body{background:#000;}
+		#wrap{width:500px;height:500px;margin:100px auto;}
+		.box{height:500px;position:relative;
+		transform-style:preserve-3d;perspective:1000px;/*视镜 根据视镜的大小可以形成不同的效果*/
+		transform:translate3d(200px,200px,-100px);
+		}
+		.helix{width:40px;height:200px;position:absolute;/*绝对定位*/
+		transform-origin:left top;/*旋转的起点方向*/
+		opacity:0.5;box-shadow:3px 3px 3px #fff;
+		animation:helix 2s infinite;/*css3自定义动画：名称 时间 无限重复*/
+		}
+		@keyframes helix{
+			to{transform:rotateX(0deg) rotate(360deg)}
+		}
+		.helix:nth-child(1){transform:translateX(-25px) rotate(13deg);background:#660099}
+		.helix:nth-child(2){transform:translateX(-50px) rotate(26deg);background:#660000}
+		.helix:nth-child(3){transform:translateX(-75px) rotate(39deg);background:#ff3399}
+		.helix:nth-child(4){transform:translateX(-100px) rotate(42deg);background:#ffcc66}
+		.helix:nth-child(5){transform:translateX(-125px) rotate(55deg);background:#cccc66}
+		.helix:nth-child(6){transform:translateX(-150px) rotate(68deg);background:#336699}
+		.helix:nth-child(7){transform:translateX(-175px) rotate(71deg);background:#0033ff}
+		.helix:nth-child(8){transform:translateX(-200px) rotate(84deg);background:#660099}
+		.helix:nth-child(9){transform:translateX(-225px) rotate(97deg);background:#660000}
+		.helix:nth-child(10){transform:translateX(-250px) rotate(110deg);background:#ff3399}
+		.helix:nth-child(11){transform:translateX(-275px) rotate(123deg);background:#ffcc66}
+		.helix:nth-child(12){transform:translateX(-300px) rotate(136deg);background:#cccc66}
+		.helix:nth-child(13){transform:translateX(-325px) rotate(149deg);background:#336699}
+		.helix:nth-child(14){transform:translateX(-350px) rotate(162deg);background:#336699}
+		.helix:nth-child(15){transform:translateX(-375px) rotate(175deg);background:#660099}
+		.helix:nth-child(16){transform:translateX(400px) rotate(188deg);background:#660000}
+		.helix:nth-child(17){transform:translateX(425px) rotate(201deg);background:#ff3399}
+		.helix:nth-child(18){transform:translateX(450px) rotate(214deg);background:#ffcc66}
+		.helix:nth-child(19){transform:translateX(475px) rotate(227deg);background:#cccc66}
+		.helix:nth-child(20){transform:translateX(500px) rotate(240deg);background:#336699}
+		.helix:nth-child(21){transform:translateX(525px) rotate(253deg);background:#0033ff}
+		.helix:nth-child(22){transform:translateX(550px) rotate(268deg);background:#660099}
+		.helix:nth-child(23){transform:translateX(575px) rotate(281deg);background:#660000}
+		.helix:nth-child(24){transform:translateX(600px) rotate(294deg);background:#ff3399}
+		.helix:nth-child(25){transform:translateX(625px) rotate(307deg);background:#ffcc66}
+		.helix:nth-child(26){transform:translateX(650px) rotate(320deg);background:#cccc66}
+		.helix:nth-child(27){transform:translateX(675px) rotate(333deg);background:#336699}
+		.helix:nth-child(28){transform:translateX(700px) rotate(346deg);background:#336699}
+		.helix:nth-child(29){transform:translateX(725px) rotate(359deg);background:#336699}
+		.helix:nth-child(30){transform:translateX(750px) rotate(372deg);background:#cccc66}
+		.helix:nth-child(31){transform:translateX(775px) rotate(385deg);background:#336699}
+		.helix:nth-child(32){transform:translateX(800px) rotate(398deg);background:#336699}
+		.helix:nth-child(33){transform:translateX(825px) rotate(411deg);background:#336699}
+		.helix:nth-child(34){transform:translateX(850px) rotate(424deg);background:#cccc66}
+		.helix:nth-child(35){transform:translateX(875px) rotate(437deg);background:#336699}
+		</style>
+	</head>
+	<body><!--身体-->
+		<div id="wrap">
+			<div class="box">
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+				<div class="helix"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<!--
+	设置旋转轴分别为XYZ轴时，有不同的旋转效果，设置旋转轴的正负像素和旋转正负度数也有不同的效果
+	transform-origin:left top;/*旋转的起点方向不同也有不同的效果*/
+-->

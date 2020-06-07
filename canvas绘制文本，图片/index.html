@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<!--网页头部-->
+<head>
+    <!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+    <meta charset="UTF-8">
+    <!--网页三要素 标题，关键词，描述-->
+    <meta name="Keywords" content="">
+    <!--80个字以内，小于等于76个字是标准-->
+    <meta name="Description" content="">
+    <!--<title>小于等于31个字是标准-->
+    <title>canvas绘制文本，图片 - Andy</title>
+    <!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: hychf, "黑体";
+        }
+
+        canvas {
+            display: block;
+            margin: 50px auto;
+        }
+
+        label {
+            margin-left: 200px;
+        }
+
+        @font-face {
+            font-family: hychf;
+            src: url("fonts/hychf.ttf");
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="800" height="400">
+        您的浏览器不支持canvas标签，请您更换浏览器！！！
+    </canvas>
+    <div>
+        <label>请输入内容：</label>
+        <input type="text" id="txt" value="感恩节快乐！"/>
+        请选择背景图片：
+        <select id="bg">
+            <option value="bg1.png">bg1.png</option>
+            <option value="bg2.png">bg2.png</option>
+            <option value="bg3.png">bg3.png</option>
+            <option value="bg4.png">bg4.png</option>
+            <option value="bg5.png">bg5.png</option>
+            <option value="bg6.png">bg6.png</option>
+        </select>
+    </div>
+
+    <script type="text/javascript">
+        var mycanvas = document.getElementById("mycanvas");
+        var can = mycanvas.getContext("2d");
+        var bg = document.getElementById("bg");
+        var txt = document.getElementById("txt");
+
+        var img = new Image();
+        var bgImg = new Image();
+
+        img.src = "images/3.png";
+        bgImg.src = "images/bg1.png";
+
+        bgImg.onload = function () {//图片预加载
+            bgImg.src = "images/" + bg.value;
+            can.drawImage(img, 0, 0, mycanvas.width, mycanvas.height);
+            can.save(); //保存当前的内容
+            var padd = 50; //规定文字内边距
+            var fz = Math.ceil(mycanvas.width - padd * 2) / (txt.value.length); //文字尺寸取整 设置文本的尺寸
+            can.font = fz + "px hychf"; //设置文本字体大小和类型为自定义字体
+            can.textBaseline = "top"; //设置文本的文本基线 必须这么写才能获取自定义的字体
+            var tw = can.measureText(txt.value).width; //获取文本的真实宽度
+            var ftop = (mycanvas.height - fz) / 2; //设置绘制文本的top偏移量
+            var fleft = (mycanvas.width - tw) / 2; //设置绘制文本的left偏移量
+
+            var color = can.createPattern(bgImg, "repeat"); //设置笔刷为背景图片
+            can.fillStyle = color;
+            can.shadowOffsetX = 20; //阴影x偏移量
+            can.shadowOffsetY = 20; //阴影y偏移量
+            can.shadowBlur = 10; //阴影模糊度
+            can.shadowColor = "rgba(0,0,0,.5)"; //阴影的颜色
+            can.fillText(txt.value, fleft, ftop); //填充文本：文本内容，left ，top
+        }
+    </script>
+
+</body>
+</html>

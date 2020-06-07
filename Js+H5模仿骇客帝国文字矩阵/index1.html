@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>Js+H5模仿骇客帝国文字矩阵 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,canvas,img{margin:0px;padding:0px;}
+				html{overflow:hidden;}
+				#img{display:none;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<img id="img" src="images/Andy.jpg" width="640" height="852" />
+			<canvas id="canvas"></canvas>
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				function $(id){
+					return document.getElementById("canvas");
+				};
+				//获取浏览器的分辨率
+				var s = window.screen;
+				var w = s.width;
+				var h = s.height;
+				var img = $("img");
+				var canvas = $("canvas");
+				var ctx = canvas.getContext("2d");
+				canvas.width = w;
+				canvas.height = h;
+				var str = "Andy canvas Show";
+				//设置字体大小
+				var fontSize = 14;
+				//获取输出文字在浏览器上的列数 Math.floor(); 向下取整
+				var cols  = Math.floor(w/fontSize);
+				//定义一个数组存放每一个y的坐标
+				var drops = [];
+				//遍历定义所有的y坐标为0
+				for (var i = 0 ; i<cols ; i++ )
+				{
+					drops.push(0);
+				}
+				//绘画
+				function draw(){
+					ctx.fillStyle = "rgba(0,0,0,.1)";
+					ctx.fillRect(0,0,w,h);
+					//文字颜色
+					ctx.fillStyle = "green";
+					//文字的样式　粗细　大小　字体类型
+					ctx.font = "600 "+fontSize+"px 微软雅黑"
+					for (var i = 0; i<cols ; i+=10)
+					{
+						//让文字一个一个的下落
+						var index = Math.floor(Math.random()*str.length);
+						//动态定义文字x y轴的坐标
+						var x = i*fontSize;
+						//每一个文字都有一个y坐标
+						var y = drops[i]*fontSize;
+						//ctx.fillText(文字,x,y);
+					//	ctx.fillText(str[index],x,y);
+					//	ctx.drawImage(img,x,y,w,h);
+						ctx.drawImage(img,x,y,60,100);
+						//Math.random()取值范围为0~1 得到一种不定时消失的效果
+						if (y>canvas.height && Math.random()>0.89)
+						{
+							drops[i] = 0;
+						}
+						drops[i]++;
+						//console.log(Math.random());
+					}
+				};
+				draw();
+				//定时器
+				setInterval(draw,33);
+			</script>
+		</body>	
+</html>

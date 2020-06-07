@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById('txt1');
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){
+				//oTxt.value = 'asdf';
+				//oTxt['value'] = 'sadgasd';
+				oTxt.setAttribute('value','asdgsa');
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt1" />
+	<input type="submit" id="btn1" />
+</body>
+</html>

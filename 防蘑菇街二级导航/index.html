@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+ <head>
+	  <!--声明当前页面的编码格式为国际编码 UTF-8 中文编码 GBK -->
+	  <title> 蘑菇街二级导航</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	  <meta name="Author" content="Andy">
+	  <meta name="time" content="2015/11/7 00:59">
+	  <meta name="Keywords" content="">
+	  <meta name="Description" content="">
+	  <!--样式css 修饰 衣服 化妆?-->
+	<style type="text/css">
+		*{margin:0px;/*外边框*/padding:0px;/*内边框*/list-style:none;/*去掉小圆点*/}
+		#nav{width:245px;/*宽度 px像素*/height:500px;/*高度*/ /*background:#ccc;*/ /*背景颜色*/
+		margin:50px 0px 0px 100px;/*顺时针方向*/border:1px solid #ddd;/*边框 宽度 风格(dashed dotted solid) 颜色*/box-shadow:-1px 1px 1px #999;/*阴影 水平偏移 垂直偏移 半径 颜色*/}
+		#nav ul li{/*border:1px solid red;*/width:245px;background:#f36;line-height:45px;/*行高*/position:relative;/*相对定位 参考对*/}
+		#nav ul li p{width:235px;color:#fff;/*文字字体颜色*/font-size:14px;/*文字大小*/font-family:"微软雅黑";border-bottom:1px dashed #ddd;/*下边框*/margin:0px 5px;}
+		#nav ul li p a{color:#fff;text-decoration:none;/*去掉文字的下划线*/margin:0px 8px;/*上下 左右*/font-size:12px;}
+		#nav ul li p span{font-weight:bold;/*文字风格*/}
+		#nav ul li .con{width:300px;height:400px;border:1px solid #f97996;position:absolute;/*绝对定位 能够任意移动*/top:0px;left:245px;display:none;/*隐藏 block inline-block inline*/}
+		#nav ul li .bor_bottom{width:245px;height:1px;background:#ddd;position:absolute;bottom:0px;/*或者top:46px;*/left:0px;display:none;/*隐藏*/}
+		#nav ul li .bor_top{width:245px;height:1px;background:#ddd;position:absolute;top:-1px;left:0px;display:none;}
+		#nav ul li .bor_right{width:1px;height:100%;background:#fff;position:absolute;top:0px;right:-1px;display:none;}/*right显示不出来，效果在左*/
+		#nav ul li p a:hover{text-decoration:underline;}
+		#nav ul li:hover{background:#f06;}
+		#nav ul li.curr .con{display:block;}
+		#nav ul li.curr .bor_bottom{display:block;}
+		#nav ul li.curr .bor_top{display:block;}
+		#nav ul li.curr .bor_right{display:block;}
+	</style>
+</head>
+ <body>
+		<div id="nav">
+				<ul>
+					<li>
+						<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+							<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+							<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+							<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+							<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+						<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+						<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+					<li>
+						<p>
+							<span>上衣</span><a href="#">秋季热卖</a><a href="#">套装</a><a href="#">必备内搭</a>
+						</p>
+						<div class="con"></div><!--右边盒子-->
+						<div class="bor_bottom"></div><!--底边框-->
+						<div class="bor_top"></div><!--上边框-->
+						<div class="bor_right"><div><!--右边框-->
+					</li>
+				</ul>
+		</div>
+		<!--引用js文件-->
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+				$("#nav ul li").hover(function(){
+				var _height=$(".con").height();//右边盒子的高 让浏览器显示  alert(_height);
+				var _top=$(this).position().top;//获取当前li与top的高
+				// alert(_top);
+				var top_height=(_top-_height)/3;
+				if(_top>top_height){
+					$(".con").css("top",top_height);
+				}
+				$(this).addClass("curr").siblings().removeClass("curr");  //this 当前变量本身
+			 },function(){
+				$(this).removeClass("curr");
+			 });
+		</script>
+ </body>
+</html>
+
+

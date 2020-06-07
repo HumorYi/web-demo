@@ -1,0 +1,155 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>Clock - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<canvas id="clock" width="500" height="500">您的浏览器不支持canvas标签，请升级浏览器或者更换最新的浏览器！！！</canvas>
+
+			<script>
+
+				var clock = document.getElementById("clock");
+				var cxt = clock.getContext("2d");
+				
+				function drawclock(){
+					//清空画布
+					cxt.clearRect(0,0,500,500);
+					var now = new Date();
+					var sec = now.getSeconds();
+					var min = now.getMinutes();
+					var hour = now.getHours();
+					//三元表达式，把时间转换为12进制如果hour>12，则hour-=12；如果hour=12,则hour=12
+					hour = hour>12?hour-12:hour;
+					/*
+						if(hour>12){
+							hour-=12;
+						}
+					*/
+					min+=sec/60;
+					hour+=min/60;
+
+					//画出表盘
+
+					//设置笔触
+					cxt.lineWidth = 10;
+					//设置笔触颜色
+					cxt.strokeStyle = "#7ebaeb";
+					//开始路径
+					cxt.beginPath();
+					//圆心x 圆心y 半径 绘图的起点 终点 绘制的方向（false逆时针 true顺时针）
+					cxt.arc(250,250,200,0,360,false);
+					//结束路径
+					cxt.closePath();
+					//释放画布
+					cxt.stroke();
+
+					//画出时针刻度
+					for (var i=0;i<12 ;i++ )
+					{	
+						cxt.save();
+						cxt.lineWidth = 10;
+						cxt.strokeStyle = "#000";
+						//设置圆心
+						cxt.translate(250,250);
+						//设置旋转角度（弧度转为度数）
+						cxt.rotate(i*30*Math.PI/180);
+						cxt.beginPath();
+						//圆点的上和左边为负值，下和右为正值
+						cxt.moveTo(0,-170);
+						cxt.lineTo(0,-190);
+						cxt.closePath();
+						cxt.stroke();
+						cxt.restore();
+					}
+					
+					//画出分针刻度
+					for (var i=0;i<60 ;i++ )
+					{	
+						cxt.save();
+						cxt.lineWidth = 7;
+						cxt.strokeStyle = "#000";
+						//设置圆心
+						cxt.translate(250,250);
+						//设置旋转角度（弧度转为度数）
+						cxt.rotate(i*6*Math.PI/180);
+						cxt.beginPath();
+						//圆点的上和左边为负值，下和右为正值
+						cxt.moveTo(0,-180);
+						cxt.lineTo(0,-190);
+						cxt.closePath();
+						cxt.stroke();
+						cxt.restore();
+					}
+					
+						//画出时针
+						cxt.save();
+						cxt.lineWidth = 10;
+						cxt.strokeStyle = "#ebcea7";
+						//设置圆心
+						cxt.translate(250,250);
+						cxt.rotate(hour*30*Math.PI/180);
+						cxt.beginPath();
+						cxt.moveTo(0,-140);
+						cxt.lineTo(0,10);
+						cxt.closePath();
+						cxt.stroke();
+						cxt.restore();
+
+						//画出分针
+						cxt.save();
+						cxt.lineWidth = 7;
+						cxt.strokeStyle = "#22a7aa";
+						//设置圆心
+						cxt.translate(250,250);
+						cxt.rotate(min*6*Math.PI/180);
+						cxt.beginPath();
+						cxt.moveTo(0,-160);
+						cxt.lineTo(0,15);
+						cxt.closePath();
+						cxt.stroke();
+						cxt.restore();
+
+						//画出秒针
+						cxt.save();
+						cxt.lineWidth = 3;
+						cxt.strokeStyle = "#d76a11";
+						//设置圆心
+						cxt.translate(250,250);
+						cxt.rotate(sec*6*Math.PI/180);
+						cxt.beginPath();
+						cxt.moveTo(0,-170);
+						cxt.lineTo(0,20);
+						cxt.closePath();
+						cxt.stroke();
+
+						//画出时针、分针、秒针的交叉点
+						cxt.beginPath();
+						cxt.arc(0,0,5,0,360,false);
+						cxt.closePath();
+						cxt.fillStyle = "#7a8580";
+						cxt.fill();
+						cxt.stroke();
+						cxt.beginPath();
+						cxt.arc(0,-150,5,0,360,false);
+						cxt.closePath();
+						cxt.fillStyle = "#d2204d";
+						cxt.fill();
+						cxt.stroke();
+						cxt.restore();
+				}
+				
+				drawclock();
+				setInterval(drawclock,1000);
+			</script>
+		</body>
+</html>

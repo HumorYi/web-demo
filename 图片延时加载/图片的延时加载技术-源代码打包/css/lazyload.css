@@ -1,0 +1,15 @@
+.loadAll{width:1000px;margin: 0 auto;}
+.loadAll h1{line-height:75px;overflow:hidden;}
+.channel_box{width:1000px;padding-top:20px;overflow:hidden;}
+.channel_caption{line-height:65px;overflow:hidden;}
+.channel_caption h3 a{color:#333;text-decoration:none;}
+.channel_caption h3 a:hover{color:#3eaf0e;}
+.channel_row{width:1020px;height:352px;overflow:hidden;}
+.channel_row .img_box{float:left;margin-right:20px;box-shadow:0 1px 1px rgba(0,0,0,0.15);
+border-radius:2px;overflow:hidden;display:inline;}
+.channel_row a{display:block;width:100%;height:100%;overflow:hidden;position:relative;
+background:#fff;text-decoration:none;}
+.channel_row .large{width:490px;height:350px;}
+.channel_row .small{width:235px;height:165px;margin-bottom:20px;}
+.banquan {color: #000000;font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;margin: 0 auto;overflow: hidden;
+padding: 20px 0;text-align: center;width: 100%;margin-bottom: 10px;margin-top:30px;}

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<!--网页头部-->
+<head>
+    <!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+    <meta charset="UTF-8">
+    <!--网页三要素 标题，关键词，描述-->
+    <meta name="Keywords" content="">
+    <!--80个字以内，小于等于76个字是标准-->
+    <meta name="Description" content="">
+    <!--<title>小于等于31个字是标准-->
+    <title>css3制作百叶窗图片轮播效果 - Andy</title>
+    <!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+    <style type="text/css">
+        html, body, div{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+
+        #Con {
+            width: 900px;
+            height: 500px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        #Con #content {
+            width: 900px;
+            height: 500px;
+        }
+
+        #Con #content div {
+            width: 225px;
+            height: 500px;
+            background: #7be7ec;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #Con #content div span {
+            width: 225px;
+            height: 500px;
+            display: block;
+            position: absolute;
+            left: 225px;
+            top: 0px;
+        }
+
+        #content div span:nth-child(1) {
+            background-image: url(images/1.jpg);
+        }
+
+        #content div span:nth-child(2) {
+            background-image: url(images/2.jpg);
+        }
+
+        #content div span:nth-child(3) {
+            background-image: url(images/3.jpg);
+        }
+
+        #content div span:nth-child(4) {
+            background-image: url(images/4.jpg);
+        }
+
+        #content div:nth-child(1) span {
+            background-position: 0px;
+        }
+
+        #content div:nth-child(2) span {
+            background-position: -225px 0px;
+        }
+
+        #content div:nth-child(3) span {
+            background-position: -450px 0px;
+        }
+
+        #content div:nth-child(4) span {
+            background-position: -675px 0px;
+        }
+
+        input#but1:checked ~ #content div span:nth-child(1),
+        input#but2:checked ~ #content div span:nth-child(2),
+        input#but3:checked ~ #content div span:nth-child(3),
+        input#but4:checked ~ #content div span:nth-child(4) {
+            left: 0;
+            -webkit-transition: all 1s ease;
+        }
+
+        label {
+            width: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            background: #34c4dc;
+            display: block;
+            color: #fff;
+            font-size: 16px;
+            position: absolute;
+            bottom: 20px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        input#but1 + label {
+            right: 210px;
+        }
+
+        input#but2 + label {
+            right: 150px;
+        }
+
+        input#but3 + label {
+            right: 90px;
+        }
+
+        input#but4 + label {
+            right: 30px;
+        }
+
+        input {
+            display: none;
+        }
+
+        input:checked + label {
+            background: #6fccce;
+            border: 5px solid #fff;
+            bottom: 15px;
+            color: #ffd600;
+        }
+    </style>
+</head>
+
+<body>
+<div id="Con">
+    <input type="radio" name="but" id="but1" checked/>
+    <label for="but1">1</label>
+    <input type="radio" name="but" id="but2"/>
+    <label for="but2">2</label>
+    <input type="radio" name="but" id="but3"/>
+    <label for="but3">3</label>
+    <input type="radio" name="but" id="but4"/>
+    <label for="but4">4</label>
+    <div id="content"></div>
+</div>
+
+<script type="text/javascript">
+    for (var i = 0, conList = ''; i < 4; i++) {
+        conList += '<div><span></span><span></span><span></span><span></span></div>';
+    }
+    document.getElementById('content').innerHTML = conList;
+</script>
+</body>
+</html>

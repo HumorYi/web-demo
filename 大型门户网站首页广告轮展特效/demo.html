@@ -1,0 +1,47 @@
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <script type="text/javascript">
+    var timer;
+	function mytop(){
+		conA.style.pixelLeft -= 2; // pixelLeft 没有单位的，left 有单位
+		conB.style.pixelLeft -= 2;
+	    if(conA.style.pixelLeft<=-480){
+			conA.style.pixelLeft = 480;
+		}
+		if(conB.style.pixelLeft<=-480){
+			conB.style.pixelLeft = 480;
+		}
+		timer = setTimeout("mytop()",10);
+		
+	}
+	window.onload=mytop;
+  </script>
+ </HEAD>
+ <BODY>
+ <div id="ctrl" style="position:absolute;left:50px;top:50px;width:550px;height:190px;overflow:hidden;"  >
+		<div id="conA" style="position:absolute;left:0px;width:480px;height:190px;">
+		   <div id="innerA1" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-04.jpg" width="160" height="190">
+		   </div>
+		   <div id="innerA2" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-05.jpg" width="160" height="190">
+		   </div>
+		   <div id="innerA3" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-06.jpg" width="160" height="190">
+		   </div>
+		</div>
+		<div id="conB" style="position:absolute;left:480px;width:480px;height:190px;">
+		   <div id="innerB1" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-04.jpg" width="160" height="190">
+		   </div>
+		   <div id="innerB2" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-05.jpg" width="160" height="190">
+		   </div>
+		   <div id="innerB3" STYLE="position:relative;float:left;left:0px;width:160px;height:190px;">
+			  <img src="ad-06.jpg" width="160" height="190">
+		   </div>
+		</div>
+ </div>
+</BODY>
+</HTML>

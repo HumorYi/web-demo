@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>日历 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,pre{ margin:0px;padding:0px; }
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; }
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--js,各色特效-->
+			<pre>
+				<script type="text/javascript">
+					//prompt弹出窗口
+					var year = prompt("请输入年份：");
+					var month = prompt("请输入月份：")-1;//程序默认月份是从0开始
+
+					var date = new Date(year,month,1); //年份,月份,天（默认从1开始）
+					document.write(year+"年"+(month+1)+"月");
+					document.write("<br />");
+					document.write("<br />");
+					document.write("日	一	二   	三	四	五	六");
+					document.write("<br />");
+
+					//打印星期
+					var day = date.getDay();
+					for (var i =0;i<day ;i++ )
+					{
+						document.write("	");
+					}
+
+					//打印天数
+					var count = new Date(year,month+1,0).getDate();
+					for (var i=1;i<=count ; i++)
+					{
+						document.write(i+"	");
+						//判断天数是否为一个星期
+						if ((i+day)%7==0)
+						{
+							document.write("<br />");
+						}
+					}
+				</script>
+			</pre>
+		</body>
+</html>
+<!--
+	<pre></pre>文本标签
+-->

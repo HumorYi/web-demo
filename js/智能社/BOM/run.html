@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById('txt1');
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){
+				var oNewWin = window.open('about:blank', '_blank'); //打开空白页
+				oNewWin.document.write(oTxt.value);
+			}
+		}
+	</script>
+</head>
+<body>
+	<textarea id="txt1"></textarea>
+	<input id="btn1" type="button" value="打开窗口" />
+</body>
+</html>

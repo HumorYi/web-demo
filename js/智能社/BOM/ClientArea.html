@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){
+				alert('宽：' + document.documentElement.clientWidth + '\n' + '高：' + document.documentElement.clientHeight);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="可视区大小" />
+</body>
+</html>

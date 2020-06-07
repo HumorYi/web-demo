@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+    width: 100%;
+}
+canvas {
+    width: 40%;
+    transform: translate(100%, 30%);
+}

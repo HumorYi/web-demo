@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--表单信息自动收集 -->
+			<form id="atuoForm">
+				用户名：<input type="text" name="userName" />
+				密码：<input type="password" name="userPwd" />
+				<input type="submit" />
+			</form>
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				/*使用时copy到form中	 onsubmit="getQueryString()"
+				function getQueryString(){
+					var atuoForm = document.getElementById('atuoForm');
+					var queryString = "";
+					var element;
+					for(var i=0;i<atuoForm.elements.length;i++){
+						element = atuoForm.elements[i];
+						if(element.name!=''){
+							queryString += element.name +' = '+ element.value + '&';
+						}
+					}
+					//去掉字符串最后面的 '&'号
+					queryString = queryString.substring(0,queryString.length-1);
+					alert(queryString);
+				}*/
+
+				//元素引用
+				/*通过name属性访问表单元素，不提倡多使用，因为name属性在HTML中无法被限制重复，直接导致的问题就是多个元素拥有同样的名字
+				var atuoForm = document.getElementById('atuoForm');
+				//获取文本框的引用
+				alert(atuoForm.userName);
+				//获取文本框的值
+				alert(atuoForm.userName.value);
+				//获取密码框的引用
+				alert(atuoForm.userPwd);
+				//获取密码框的值
+				alert(atuoForm.userPwd.value);*/
+
+				/*使用elements属性访问
+				var atuoForm = document.getElementById('atuoForm');
+				//获取文本框的引用
+				alert(atuoForm.elements['userName']);
+				alert(atuoForm.elements[0]);
+				//获取密码框的引用
+				alert(atuoForm.elements['userPwd']);
+				alert(atuoForm.elements[1]);*/
+
+				/*输入框对象/
+				var atuoForm = document.getElementById('atuoForm');
+				//获取焦点
+				atuoForm.userName.onfocus = function(){
+					this.style.border = '1px solid #9f6';
+				}
+				//失去焦点
+				atuoForm.userName.onblur = function(){
+					this.style.border = '1px solid #f66';
+				}
+
+				/*按钮对象
+				atuoForm.elements[atuoForm.elements.length-1].onclick = function(e){
+					//检测表单必填
+					if(atuoForm.userName.value == '' || atuoForm.userPwd.value == ''){
+						//阻止默认行为
+						if(e){
+							e.preventDefault();	//标准方式
+							alert('请输入账号和密码');
+						}else{
+							event.returnValue = false;	// IE
+						}
+					}
+				}*/
+			</script>
+
+		</body>
+</html>

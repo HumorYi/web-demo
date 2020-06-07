@@ -1,0 +1,28 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码：utf-8国际编码  gb2312中文编码-->
+		<meta name="Keywords" content="关键词">
+		<meta name="Description" content="描述">
+		<title>图片放大镜功能</title>
+		<link rel="stylesheet" href="css/demo.css">
+	</head>
+	<body><!--身体-->
+		<!--盒子模型标签 -->
+		<div id="box"><!--id名唯一性(身份证号)-->
+			<div id="upload">
+				<a href="javascript:;"><!--超链接标签-->
+					<!--onchange 当input的内容方式改变的时候就出触发并执行后面的js代码-->
+					<input type="file" onchange="uploadImg(this)"><!--上传文件-->
+				</a>
+				<!--文本输入框 type就是input的类型 value 输入框的值-->
+				<input type="text" id="fileName" value="">
+			</div>
+			<div id="faceImg">
+				<img id="img" src="" width="283" height="283">
+			</div>
+		</div>
+		<script src="js/magnifier.js"></script>
+		<script src="js/upload.js"></script>
+	</body>
+</html>

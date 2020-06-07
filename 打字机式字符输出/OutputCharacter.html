@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打字机式字符输出</title>
+	<style type="text/css">
+		html,body,form,textarea{
+			margin: 0;
+			padding: 0;
+		}
+
+		form{
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+		}
+
+		textarea{
+			font: 16px '微软雅黑';
+			background-color: #fef4d9;
+			color: #000;
+			overflow: auto;
+			outline: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = typer;
+
+		var mytext = new Array("如梦令\n\n常记溪亭日暮，沉醉不知归路。\n兴尽晚回舟，误入藕花深处。\n争渡，争渡，惊起一滩鸥鹭。"," 一剪梅\n\n红藕香残玉簟秋。\n轻解罗裳，独上兰舟。\n云中谁寄锦书来？\n雁字回时，月满西楼。\n花自飘零水自流。\n一种相思，两处闲愁。\n此情无计可消除，才下眉头，却上心头。");
+
+		var index = 0;
+		var position = 0;
+		var mytextLength = mytext[0].length;
+
+		function typer(){
+			document.myform.mytextarea.value = mytext[index].substring(0,position) + "|";
+
+			if (position++ == mytextLength) {
+				position = 0;
+				index++;
+
+				if (index == 2) {
+					index = 0;
+				}
+
+				mytextLength = mytext[index].length;
+
+				setTimeout(typer, 3000);
+			}else{
+				setTimeout(typer, 100);					
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<form name="myform">
+		<textarea name="mytextarea" rows="10" cols="35"></textarea>
+	</form>
+
+	<font color="#0f0">1243</font>
+</body>
+</html>

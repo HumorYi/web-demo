@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>图片生成原理 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,input{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				#div1{position:relative;}
+				input{width:100px;height:100px;background:#fadb89;border-radius:50%;outline:none;margin:50px auto;display:block;border:0px;cursor:pointer;font-size:30px;color:#353535;}
+				#div1{width:520px;height:520px;cursor:pointer;margin:0px auto;display:block;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<input type="button" value="按钮" />
+			<div id="div1"></div>
+			<!--js,各色特效-->
+			<script type="text/javascript">
+				//图片加载完成
+				window.onload = function(){
+				  var oBtn = document.getElementsByTagName("input")[0];
+				  var oDiv = document.getElementById("div1");
+				  var aDiv = oDiv.getElementsByTagName("div");
+				  oBtn.onclick = function(){
+					var len = 100;
+					var str = "";
+					for ( var i = 0 ; i < len ; i++ )
+					{
+							str += '<div style="width:50px;line-height:50px;text-align:center;background:url(images/李冰冰.jpg) no-repeat '+(-i%10*52)+'px '+(-Math.floor(i/10)*52)+'px;opacity:.5;transition:all 2s ease;position:absolute;left:'+i%10*52+'px;top:'+Math.floor(i/10)*52+'px;">'+i+'</div>';
+					}
+					oDiv.innerHTML =  str;
+					for ( i = 0 ; i < len ; i++ )
+					{
+						aDiv[i].onmouseover = function(){
+							this.style.opacity = 1;
+							this.style.left = this.offsetLeft+20+"px";
+							this.style.top = this.offsetTop+20+"px";
+						}
+					}
+				  }
+				}
+			</script>
+		</body>	
+</html>

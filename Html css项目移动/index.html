@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <meta name="Author" content="Andy">
+    <meta name="time" content="2015/11/5 15:30">
+    <!--声明当前页面的三要素-->
+    <meta name="Keywords" content="关键词，关键词">
+    <meta name="Description" content="">
+    <title>Document</title>
+
+    <!--CSS样式-->
+    <!--
+                1、给页面添加一个有宽度有高度的DIV盒子模型；
+                2、阴影box-shadow：2px 2px 5px #0f0;
+                3、解决浏览器兼容性问题 外边距margin:0;内边距padding:0;
+    -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*阴影水平线*/
+        .shadow {
+            width: 1000px;
+            height: 10px;
+            box-shadow: 2px 2px 5px #0f0;
+            /*水平位移 垂直方向 半径 颜色  */
+            margin: 60px auto;
+        }
+
+        .demo {
+            width: 1000px;
+            height: 300px;
+            margin: 10px auto; /*外边距*/
+            position: relative;
+        }
+
+        .demo ul li {
+            width: 214px;
+            height: 300px;
+            list-style: none; /*去掉圆点*/
+            float: left;
+            margin-right: 29px;
+            background: url("images/bg_icon.png") no-repeat; /*水平位移 垂直方向 半径 颜色  *//*背景 url （“图片路径”）*/
+            cursor: pointer; /*鼠标经过样式*/
+            position: relative;
+            overflow: hidden;
+        }
+
+        /*li start 背景*/
+        .demo ul li:nth-child(1) {
+            background: #00A0EA;
+            margin-left: 28px;
+        }
+
+        .demo ul li:nth-child(2) {
+            background: #97C412;
+        }
+
+        .demo ul li:nth-child(3) {
+            background: #ED9644;
+        }
+
+        .demo ul li:nth-child(4) {
+            background: #5CC8B0;
+        }
+
+        /*end li 背景*/
+        .demo li div {
+            position: absolute;
+            text-align: center;
+            transition: all 1000ms; /*时间过度*/
+        }
+
+        .demo li div.icon {
+            width: 80px;
+            height: 80px;
+            text-align: center; /*文本剧中*/
+            margin: auto;
+            padding: auto;
+            top: 40px;
+            left: 0px;
+            right: 0px;
+        }
+
+        .demo li div.icon img {
+            width: 80px;
+            height: 80px;
+            transition: transform 1000ms;
+        }
+
+        .demo li div.info {
+            width: 214px;
+            height: 130px;
+            bottom: 0px;
+            transition-delay: 200ms;
+        }
+
+        .demo li div.info p {
+            margin: 0px auto 10px;
+        }
+
+        .demo li div.more {
+            bottom: 0px;
+            width: 174px;
+            height: 110px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.4);
+            left: 214px;
+            padding: 20px;
+        }
+
+        .demo li div.more .title {
+            border-left: 6px solid #fff; /*左边框*/
+        }
+
+        p {
+            color: #fff;
+            text-shadow: 2px 2px 5px #000; /*文字阴影*/
+        }
+
+        p.mak {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        p.btn {
+            width: 100px;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 10px auto;
+            line-height: 30px;
+            display: block;
+            padding-left: 10px;
+        }
+
+        .demo li:hover {
+            background-image: none;
+        }
+
+        .demo li:hover div.info {
+            bottom: -130px;
+        }
+
+        .demo li:hover div.more {
+            left: 0px;
+            transition-delay: 200ms;
+        }
+
+        .demo li:hover div.icon img {
+            width: 100px;
+            height: 100px;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<!--网页主体 文字 图片 音频 视频-->
+<body>
+<body>
+<div class="shadow"></div>
+<div class="demo">
+    <ul>
+        <li>
+            <div class="icon"><img src="images/html.png"/></div>
+            <div class="info">
+                <p class="mak">网页制作</p>
+                <p>html</p>
+                <p class="btn">立即查看</p>
+            </div>
+            <div class="more">
+                <span class="title"></span>
+                <p class="mak">网页制作<p>
+                <p>课程：HTML+DIV+CSS项目实战。2个月一期。</p>
+            </div>
+        </li>
+        <li>
+            <div class="icon"><img src="images/html5.png"/></div>
+            <div class="info">
+                <p class="mak">网页制作</p>
+                <p>html</p>
+                <p class="btn">立即查看</p>
+            </div>
+            <div class="more">
+                <span class="title"></span>
+                <p class="mak">网页制作<p>
+                <p>课程：HTML+DIV+CSS项目实战。2个月一期。</p>
+            </div>
+        </li>
+        <li>
+            <div class="icon"><img src="images/js.png"/></div>
+            <div class="info">
+                <p class="mak">网页制作</p>
+                <p>html</p>
+                <p class="btn">立即查看</p>
+            </div>
+            <div class="more">
+                <span class="title"></span>
+                <p class="mak">网页制作<p>
+                <p>课程：HTML+DIV+CSS项目实战。2个月一期。</p>
+            </div>
+        </li>
+        <li>
+            <div class="icon"><img src="images/dome.png"/></div>
+            <div class="info">
+                <p class="mak">网页制作</p>
+                <p>html</p>
+                <p class="btn">立即查看</p>
+            </div>
+            <div class="more">
+                <span class="title"></span>
+                <p class="mak">网页制作<p>
+                <p>课程：HTML+DIV+CSS项目实战。2个月一期。</p>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</body>
+</html>

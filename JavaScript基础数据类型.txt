@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+
+	<style type="text/css">
+	
+	</style>
+ </head>
+	
+ <body>
+	<!-- 
+		JavaScript数据类型
+		1. 字符型  String  以“” 或 ‘’ 包裹
+		2.  数字 number 
+		3.  布尔 boolean   false  或者true  
+		4.  object    数组、  对象、  日期 、 json、 null…… 
+		6.  undefined    未定义 表示变量不含有值 
+	-->
+	<script type="text/javascript">
+		console.log("String （字符串）类型******");
+		var a = "小明";
+		console.log(typeof a);
+
+		console.log("number （数字）类型******");
+		var  b = 1;
+		var  b1= 10/1;
+		var  b2= 3.4545454;
+		console.log(typeof b);
+		console.log(typeof b1);
+		console.log(typeof b2);
+		
+		console.log("布尔（boolean） 类型******");
+		var falg = true ;
+		var falg1 = false ;
+		console.log(typeof falg);
+		console.log(typeof falg2);
+		
+		console.log("对象（object） 类型******");
+		var  arr = [];		 //数组
+		var date = new Date();  //日期 
+		var obj = {};  //对象object
+		var json = {"name":"Ide","name":"大宝"}; /* 键值对*/
+		var n = null;
+		console.log(typeof arr);
+		console.log(typeof date);
+		console.log(typeof obj);
+		console.log(typeof json);
+		console.log(typeof n);
+
+		console.log("undefined（未定义） 类型******");
+		var  un ;
+		console.log(typeof un);   
+
+	</script>
+ </body>
+</html>
+
+

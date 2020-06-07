@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>3D立方体翻转效果3 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css" id="css">
+				html,body,div{ margin:0px;padding:0px; }
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; background:#000;}
+
+				.wrap{ width:1150px; height:100%; perspective:800px; margin:0px auto; position:relative; }
+
+				.wrap .cube{ transform-style:preserve-3d; width:50px; height:200px; top:50%; margin-top:-100px; margin-left: 24px; animation:spin 3s infinite alternate;}
+
+				@keyframes spin{
+					0%,25%{ transform: translateZ(-600px) rotateX(90deg);}
+					75%,100%{ transform: rotateX(-90deg);}
+				}
+				.wrap .cube,.top,.bottom,.side{ position:absolute;}
+				.wrap .cube .top,.bottom{ width:50px; height:50px; }
+				.wrap .cube .top{ transform:translateZ(100px);}
+				.wrap .cube .bottom{ transform: rotateY(180deg) translateZ(100px);}
+				.wrap .cube .side:nth-child(3){ width:50px; height:200px; transform: rotateX(90deg) translateZ(50px);}
+				.wrap .cube .side:nth-child(4){ width:200px; height:50px; transform: rotateY(90deg) translateZ(-100px);}
+				.wrap .cube .side:nth-child(5){ width:200px; height:50px; transform: rotateY(-90deg) translateZ(50px);}
+				.wrap .cube .side:nth-child(6){ width:50px; height:200px; transform: rotateX(-90deg) translateZ(-100px);}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="wrap"></div>
+
+			<!--js,各色特效-->
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript">
+				var html = "";
+				var css ="";
+				for (var i=1;i<=20 ;i++ )
+				{
+					html +="<div class=cube><div class=top></div><div class=bottom></div><div class=side></div><div class=side></div><div  class=side></div><div class=side></div></div>";
+					css +=".cube:nth-child("+i+"){ left:"+50*i+"px; animation-delay:"+(0.075*i)+"s !important;} .cube:nth-child("+i+") div{ border:1px solid "+color()+"; background:"+color()+"; opacity:.6;}";
+				}
+
+				$(".wrap").html(html);
+				jQuery("#css").append(css);
+
+				function color(){
+					var color = Math.ceil(Math.random()*16777215).toString(16); // 0~16777215之间的向上取整的整数
+					while (color.length<6)
+					{
+						color += "0";
+					}
+					return "#"+color;
+				}
+			</script>
+
+		</body>
+</html>
+
+<!--
+	混合选择器优先级大于直接选择器
+	混合选择器导致了css样式的层叠，直接选择可以
+	要想实现在混合选择器下显示效果 ，必须添加 !important
+	animation:spin 3s infinite alternate; //没有给出延时加载时间，默认为0
+	animation-delay:"+(-0.075*i)+"s !important; //延时加载
+	animation:spin 3s 1s infinite alternate; //给出延时加载时间,要不要添加 !important没什么影响
+	animation-delay:"+(-0.075*i)+"s; //延时加载
+-->

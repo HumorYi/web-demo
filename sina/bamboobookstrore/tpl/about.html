@@ -1,0 +1,15 @@
+<ion-modal-view>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <h1 class="text-center">关于落星书屋</h1>
+      </ion-item>
+      <ion-item ng-repeat="info in infoList">
+        {{info.name+&quot; : &quot;+info.value}}
+      </ion-item>
+      <ion-item>
+        <button ng-click="close()" class="button button-balanced button-block"> 关闭</button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

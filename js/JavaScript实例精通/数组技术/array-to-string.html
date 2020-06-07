@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function ConcatDemo(){
+			var a,b;
+			a = new Array('My','name','is','FooBar!');
+			b = '';
+			for (var i = 0; i < a.length; i++) {
+				b += a[i]+' ';
+			}			
+			return (b);
+		}
+
+		function JoinDemo(){
+			var a,b;
+			a = new Array('0','1','2','3','4');
+			b = a.join('-');
+			return (b);
+		}
+
+		with(document){
+			write('执行ConcatDemo()函数的结果如下：');
+			write(ConcatDemo()+"<br />");
+			write('执行JoinDemo()函数的结果如下：');
+			write(JoinDemo());
+		}
+	</script>
+</body>
+</html>

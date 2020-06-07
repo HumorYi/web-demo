@@ -1,0 +1,65 @@
+<!doctype html>
+<html >
+		 <head>
+				  <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+				  <meta name="Author" content="Andy">
+				  <meta name="time" content="2015/11/5 15:30">
+				  <!--声明当前页面的三要素-->
+				  <meta name="Keywords" content="关键词，关键词">
+				  <meta name="Description" content="">
+				  <title>Document</title>
+					
+				<!--CSS样式-->
+				<style>
+						*{margin:0;padding:0;}
+						/*阴影水平线*/
+						.shadow{width:1000px;height:10px;box-shadow:2px 2px 5px #0f0;/*水平位移 垂直方向 半径 颜色  */margin:60px auto;}
+						.demo{width:1000px;height:300px;margin:10px auto;/*外边距*/ }
+						.demo ul li{width:214px;height:300px	;list-style:none;/*去掉圆点*/float:left;margin-right:10px;background:url("images/BB霜.jpg")no-repeat;/*水平位移 垂直方向 半径 颜色  *//*背景 url （“图片路径”）*/cursor:pointer;/*鼠标经过样式*/
+						position:relative;}
+						/*li start 背景*/
+						.demo ul li:nth-child(1){background:#00A0EA;}
+						.demo ul li:nth-child(2){background:#97C412;}
+						.demo ul li:nth-child(3){background:#ED9644;}
+						.demo ul li:nth-child(4){background:#5CC8B0;}
+						/*end li 背景*/
+						.demo li div{position:absolute;text-align:center;}
+						.demo li div.icon{width:80px;height:80px;text-align:center;/*文本剧中*/
+						border:1px solid red;margin:auto;padding:auto;top:40px;right:0px;}
+						.demo li div.icon img{width:80px;height:80px;}
+
+				</style>
+					
+
+		 </head>
+		 <!--网页主体 文字 图片 音频 视频-->
+		 <body>
+					<body>
+						<div class="shadow">
+	
+						</div>
+						<div class="demo">
+								<ul>
+									<li>
+										<div class="icon"><img src="images/html.png" /></div>
+									</li>	
+									<li>
+										<div class="icon"><img src="images/html.png" /></div>
+									</li>	
+									<li>
+										<div class="icon"><img src="images/html.png" /></div>
+									</li>	
+									<li>
+										<div class="icon"><img src="images/html.png" /></div>
+									</li>	
+								</ul>
+						</div>
+						
+						<!--
+							1、给页面添加一个有宽度有高度的DIV盒子模型；
+							2、阴影box-shadow：2px 2px 5px #0f0;
+							3、解决浏览器兼容性问题 外边距margin:0;内边距padding:0;
+						-->
+					</body>	
+		 </body>
+</html>

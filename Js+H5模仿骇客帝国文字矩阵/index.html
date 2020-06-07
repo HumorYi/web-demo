@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>Canvas解析 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,a,canvas{margin:0px;padding:0px;}
+				html,body{width:100%;height:100%;overflow:hidden;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				ul li{list-style:none;}
+				a{text-decoration:none;}
+				#box{width:600px;margin:20px auto;}
+				#box #canvas{border:1px solid red;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+					canvas 默认宽高度为300*150
+			-->
+			<div id="box">
+				<canvas id="canvas" width="600" height="600px"></canvas>
+			</div>
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript">
+			//1 获取到canvas对象
+			var canvas =document.getElementById("canvas");
+			/*查找元素类型
+			var box =document.getElementById("box");
+			alert(canvas+"==="+box);
+			*/
+			//2 获取上下文
+			var ctx = canvas.getContext("2d");
+			//3 绘画开始
+			ctx.beginPath();
+			ctx.strokeStyle = "red";//默认黑色
+			ctx.lineWidth = "1";//默认1
+			//4 起点
+			ctx.moveTo(0,100);
+			//5 终点
+			ctx.lineTo(600,100);
+			//6 喷墨
+			ctx.stroke();
+			//矩形的绘画 fillRect(x,y,width,height)
+			ctx.fillRect(200,200,200,200);
+			//重新定义一个路径
+			ctx.beginPath();
+			//画圆圈方法 arc(x,y,r,起点，圆的类型);PI半圆
+			ctx.arc(500,500,30,0,Math.PI*2);
+			ctx.fill();
+		</script>
+</html>

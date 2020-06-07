@@ -1,0 +1,27 @@
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #f66 20%, #fff 30%, #fff 70%, #66f 80%);
+}
+p {
+    font: 29px Verdana;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .2);
+    padding-bottom: 6px;
+    padding-top: 10px;
+}
+span {
+    font: 13px Verdana;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .2);
+    padding-bottom: 10px;
+}

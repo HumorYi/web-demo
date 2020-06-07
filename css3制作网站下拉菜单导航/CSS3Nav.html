@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<!--网页头部-->
+<head>
+    <!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+    <meta charset="UTF-8">
+    <!--网页三要素 标题，关键词，描述-->
+    <meta name="Keywords" content="">
+    <!--80个字以内，小于等于76个字是标准-->
+    <meta name="Description" content="">
+    <!--<title>小于等于31个字是标准-->
+    <title>css3制作网站下拉菜单导航 - Andy</title>
+    <!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+    <style type="text/css">
+        html, body, div, ul, li, a {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #Logo {
+            width: 895px;
+            height: 45px;
+            background-image: -webkit-linear-gradient(rgba(41, 41, 41, 0.75) 0%, rgba(54, 54, 54, 0.72) 50%, rgba(24, 23, 23, 0.94) 51%); /*径向渐变*/
+            margin: 50px auto;
+            border-radius: 5px;
+            box-shadow: 1px 1px 33px #fff;
+        }
+
+        #Logo ul li {
+            float: left;
+            width: 127px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            font-size: 14px;
+            border-right: 1px solid #000;
+            position: relative;
+        }
+
+        #Logo ul li.last {
+            border: 0px;
+        }
+
+        #Logo ul li a {
+            color: #fff;
+        }
+
+        #Logo ul li:hover {
+            background: rgba(10, 5, 5, 0.5);
+        }
+
+        #Logo ul li.last:hover {
+            border-radius: 0px 5px 5px 0px;
+        }
+
+        #Logo ul li ul li {
+            border: 0px;
+            background: rgba(10, 5, 5, 0.45);
+            border-top: 1px solid #989898;
+        }
+
+        #Logo ul li ul li:hover {
+            background: rgba(10, 5, 5, 0.7);
+        }
+
+        #Logo ul li ul {
+            display: none;
+            position: absolute;
+            left: 0px;
+            top: 45px;
+        }
+
+        #Logo ul li:hover ul {
+            display: block;
+            -webkit-animation: animated .5s ease;
+        }
+
+        @-webkit-keyframes animated {
+            0% {
+                -webkit-transform: rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: rotate(-360deg);
+                opacity: .7;
+            }
+        }
+
+        #Logo ul li.procedure:hover ul {
+            -webkit-animation: procedure 1s ease;
+        }
+
+        @-webkit-keyframes procedure {
+            from {
+                -webkit-transform: rotateX(0deg);
+                opacity: 0;
+            }
+            to {
+                -webkit-transform: rotateX(360deg);
+                opacity: .7;
+            }
+        }
+
+        #Logo ul li.last:hover ul {
+            -webkit-animation: last 1s ease;
+        }
+
+        @-webkit-keyframes last {
+            0% {
+                -webkit-transform: rotateY(0deg);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: rotateY(360deg);
+                opacity: .7;
+            }
+        }
+
+        #Logo ul li.first ul {
+            height: 0px;
+            display: block;
+            transition: all 1.5s ease;
+            overflow: hidden;
+        }
+
+        #Logo ul li.first:hover ul {
+            border-radius: 5px 0px 0px 5px;
+            -webkit-animation: none;
+            height: 138px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="Logo">
+    <ul>
+        <li class="first">
+            <a href="javascript:void(0);">前端设计</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">网页设计</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">动画设计</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">编程语言</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">手机开发</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li class="procedure">
+            <a href="javascript:void(0);">开源程序</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+        <li class="last">>
+            <a href="javascript:void(0);">我的博客</a>
+            <ul>
+                <li><a href="javascript:void(0);">HTML5</a></li>
+                <li><a href="javascript:void(0);">CSS3</a></li>
+                <li><a href="javascript:void(0);">JQUERY</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<!--
+1、插入两张背景图片的用法：
+background:url(images/bg_title.jpg) repeat-x,url(images/bg.jpg);
+repeat-x:往x轴平铺
+2、背景径向渐变：
+background-image: -webkit-linear-gradient(rgba(41, 41, 41, 0.75) 0%, rgba(54, 54, 54, 0.72) 50%, rgba(24, 23, 23, 0.94) 51%);
+0%,50%,51%代表开始到结束的各个节点的位置
+3、添加动画：
+-webkit-animation:animated .5 ease;(名字,时间,速度)
+如上的几种写法
+-->

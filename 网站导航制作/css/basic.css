@@ -1,0 +1,46 @@
+
+body,img,input,ul{margin:0px;border:0px;padding:0px; font-family:"微软雅黑";}
+a{text-decoration:none;}
+/*引入阿里图标样式*/
+@font-face {font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot'); /* IE9*/
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+/*广告样式*/
+#topAdv{width:100%; height:100px; background:url("../images/advbg.png"); text-align:center;
+		position:relative;/*相对定位*/}
+#topAdv a{ display:block; /*变成块级元素*/}
+#topAdv img.close{position:absolute;/*绝对定位*/ top:0px; right:0px; cursor:pointer;/*手指*/}
+
+/*Top样式*/
+#Top{width:1000px; height:70px;  margin:0px auto;/*水平距中*/ padding-top:30px;}
+#Top .banner{width:215px; height:70px; float:left;/*左浮动*/}
+#Top .search{width:370px; height:70px;float:left; position:relative;}
+#Top .user{width:400px; height:70px; float:right;/*右浮动*/font-size:12px; color:#666;
+			 text-align:right;/*水平距右*/}
+#Top .user span.iconfont{font-family:"iconfont" !important; font-size:20px; color:#ed145b;
+			padding:0px 10px;}
+#Top .user font{padding-right:20px;}
+#Top .user font a{text-decoration:none; color:#666;}
+#Top .user font a:hover{color:#ed145b;}
+#Top .user a.usertxt{color:#ed145b; text-decoration:none; padding:0px 5px;}
+
+#Top .search input.txt{width:310px; height:38px;overflow:hidden; border:1px solid #ddd; outline:none;}
+#Top .search input.but{width:42px;height:40px; border:0px;background:url("../images/ser_but.png");
+				position:absolute; left:312px; top:0px;}
+
+/*导航样式*/
+#Logo{width:100%;height:50px; background:#000;}
+#Logo ul{width:1200px; height:50px;margin:0px auto;/*水平居中*/position:relative; }
+#Logo ul li{ height:50px;list-style-type:none; float:left;
+			color:#fff; font-size:14px; text-align:center; line-height:50px; 
+			}
+#Logo ul li a{color:#fff;  display:block;padding:0px 30px; position:relative;z-index:3;}
+#Logo ul li.first{width:190px; background:#f42760;}
+#Logo ul li.first span{font-family:"iconfont" !important; color:#fff; font-size:20px; padding-right:10px;}
+#Logo ul li.last{width:100px; height:50px; background:green; position:absolute;
+				left:190px;z-index:2; display:none;}
+.gd{position:fixed; top:0px;}

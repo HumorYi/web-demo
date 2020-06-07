@@ -1,0 +1,118 @@
+<!--
+	声明文档类型:html(html5最新版本规范) 符合W3C统一的标准规范
+	为什么要做这个申明 ？不声明有什么影响？
+	每个浏览器对html css js代码有不同的编译模式(怪异模式)
+-->
+<!doctype html>
+<html><!--人-->
+	<head><!--头:抽象的概念 规定一些信息提供给浏览器识别(用户看不到)-->
+		<meta charset="utf-8"><!--字符编码:utf-8 国际编码 gbk gb2312中文编码-->
+		<!--网页文档三要素-->
+		<title>腾讯新闻轮播</title>
+		<meta name="keywords" content="关键词1,关键词2">
+		<meta name="description" content="描述:网站内容的大概介绍">
+		<style>/*css样式的存放位置*/
+		*{/*通用选择器:选择到所有的标签元素*/
+			margin:0px;/*外边距*/padding:0px;/*内边距*/
+		}
+		/*
+			第一步:找到对应的标签元素
+			第二步:对相应的标签设置样式
+		*/
+		#box{/*# id选择器*/
+			width:640px;/*宽度*/height:400px;/*高度*/
+			/*一个优秀的开发工程师一定是一个为服务器、CPU考虑的:网页加载速度*/
+			/*background:#93c;背景颜色: 红 99  绿 33 蓝 cc*/
+			margin:100px auto;/*上下为100px  左右居中*/
+		}
+		.bigImg{/*. class选择器*/
+			width:450px;height:330px;
+			margin:0 auto;
+		}
+		.nav{
+			width:100%;
+			height:60px;
+			margin-top:10px;/*上外边距*/
+			/*background:#093;*/
+			overflow:hidden;/*超出隐藏*/
+			border:1px solid red;/*边框:宽度 类型(实线) 颜色*/
+		}
+		.nav ul{
+			width:1034px;
+			position:relative;/*相对定位:相对于元素本身的位置来定位*/
+			left:0px;
+			top:0px;
+			/*transform:translate(0px);*/
+		}
+		.nav ul li{
+			list-style:none;/*去除前面的圆点*/
+			width:80px;height:60px;
+			/*background:#ff3;*/
+			float:left;/*左浮动:与父元素的左端对齐依次往右排列*/
+			margin-right: 14px;
+			cursor:pointer;/*鼠标显示手的形状*/
+		}
+		</style>
+	</head>
+	<body><!--身体:用户能够看到的内容-->
+		<!--盒子模型标签div 宽高 背景 边框-->
+		<div id="box"><!--躯干 id="自定义名字" 唯一性(身份证号) 见名知意 不用中文(拼音) -->
+			<div class="bigImg"><!--class="自定义名字" 重复性(姓名)-->
+				<!--img图片四要素: src(图片路劲) width height alt-->
+				<img src="images/1.jpg" width="450" height="330" alt="三个美女">
+			</div>
+			<div class="nav">
+				<ul><!--无序列表标签-->
+					<li><img src="images/1.jpg" width="80" height="60"></li>
+					<li><img src="images/2.jpg" width="80" height="60"></li>
+					<li><img src="images/3.jpg" width="80" height="60"></li>
+					<li><img src="images/4.jpg" width="80" height="60"></li>
+					<li><img src="images/5.jpg" width="80" height="60"></li>
+					<li><img src="images/6.jpg" width="80" height="60"></li>
+					<li><img src="images/7.jpg" width="80" height="60"></li>
+					<li><img src="images/8.jpg" width="80" height="60"></li>
+					<li><img src="images/9.jpg" width="80" height="60"></li>
+					<li><img src="images/10.jpg" width="80" height="60"></li>
+					<li><img src="images/11.jpg" width="80" height="60"></li>
+				</ul>
+			
+			</div>
+		</div>
+		<script src="js/jquery-1.12.1.min.js"></script>
+		<script>
+			//alert($);//js弹出jquery的代理函数$
+			//点击切换大图图片
+				//$(".nav ul li")找到所有的li
+			$(".nav ul li").click(function(){//点击实现什么效果
+				//点击谁就获取到谁下面的img图片路劲
+					//$(this)点击谁就指代谁
+					//$(this).find("img")找到被点击的li里面的img标签
+					//attr("src")获取到img的src属性值 attr("src")
+				var url = $(this).find("img").attr("src");
+				//console.log(src);//在审查元素控制台里面显示出来
+				//把获取到的src值赋值给大图图片的src 通过attr()来设置
+				//attr("src",url) 设置src属性值
+				$(".bigImg img").attr("src",url);
+
+				//点击移动ul盒子
+				var index = $(this).index();//点击谁就获取谁的序列号
+				//console.log(index);
+				if ( index <= 3 )//前面四个元素点击不动
+				{
+					//通过animate自定义动画在一秒钟之内改变left
+					$(".nav ul").animate({"left":"0px"},1000);
+				}else if (index > 3 && index <=7 )//中间的点击每次移动一个li宽度
+				{
+					$(".nav ul").animate({"left":-(index-3)*94+"px"},1000);
+				}else{//最后四个元素  点击也不动
+					$(".nav ul").animate({"left":"-376px"},1000);
+				}
+			});
+
+			document.onmousedown = function(){
+				return false;
+			}
+			
+		</script>
+	</body>
+</html>

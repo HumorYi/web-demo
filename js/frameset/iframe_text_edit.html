@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#main{ width:370px; height:150px; border:1px solid #ccc; position:absolute;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="main">
+				<iframe allowTransparency='true' scrolling='auto' width='100%' height='122' src='' id='editor' frameBorder='0'></iframe>
+				<!--allowTransparency设置或获取对象是否可为透明。-->
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//定义编辑窗口引用
+				var editPane = null;
+
+				//初始化编辑窗口
+				(function(){
+					editPane = document.getElementById('editor').contentWindow;
+					//打开编辑模式
+					editPane.document.designMode = 'on';
+					editPane.document.contentEditable = true;
+					//打开文档流
+					editPane.document.open();
+					//写入文档信息
+					editPane.document.write('<font color="blue" size=+2>富文本编辑器</font>');
+					//关闭流
+					editPane.close();
+				})();
+			</script>
+
+		</body>
+</html>

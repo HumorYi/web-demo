@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>登录窗口 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,form,input,pa{ 
+					margin:0px;padding:0px; 
+				}
+				html,body{ 
+					width:100%; height:100%; font-family:"微软雅黑"; background:#E2E2E2;
+				}
+				.login{
+					width:300px; height:270px; margin:50px auto; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,.4); background:-webkit-radial-gradient(center,ellipse cover,#64d5ff 0%,#009bd5 100%); position:relative; padding:100px 30px 0 30px;
+				}
+				
+				.login:before{
+					content:"会员登录"; font-size:18px; font-weight:bold; color:#F3C800; background:url(images/arr.png) no-repeat; padding-left:30px; position:absolute; top:10px; left:10px;
+				}
+
+				.login-form input[type="email"],.login-form input[type="password"]{
+					width:260px; border:1px solid #314D89; padding:15px 20px; cursor:pointer;
+				}
+
+				.login-form input[type="email"]{ 
+					border-radius:4px 4px 0px 0px; box-shadow:0 1px 2px rgba(0,0,0,.4) inset;
+				}
+				.login-form input[type="password"]{ 
+					border-radius:0px 0px 4px 4px; box-shadow:0 -1px 2px rgba(0,0,0,.4) inset;
+				}
+				.login-form input[type="submit"]{
+					width:300px; padding:8px 0;	border-radius:3px;	 border:0; text-shadow:0 1px 0px rgba(255,255,255,.5) inset; font-size:18px; font-weight:bold; color:#636363; cursor:pointer; box-shadow:0 1px 2px rgba(255,255,255,.5) inset; background:-webkit-linear-gradient(top,#f2f2f2 0%,#cfcfcf 100%); margin-top:20px; 	
+				}
+
+				.login-form input[type="submit"]:hover{ 
+					background:-webkit-linear-gradient(top,#cfcfcf 0%,#f2f2f2 100%); -webkit-animation:login 1500ms linear infinite alternate;
+				}
+				@-webkit-keyframes login{
+					0%{ box-shadow:0px 1px 2px rgba(255,255,255,.8);}
+					100%{ box-shadow:0px 1px 30px rgba(0,0,0,1);}
+				}
+
+				.login-form input[type="submit"]:active{ 
+					background:#ddd; padding-top:9px; padding-bottom:7px;
+				}
+
+				.login p{ text-align:center; margin-top:40px;}
+				.login p a{ text-decoration:none; color:#fff; font-size:14px; font-weight:bold;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="login">
+				<form id="login" name="login" class="login-form">
+					<input type="email" name="email" placeholder="邮箱" required />
+					<input type="password" name="password" placeholder="密码" required />
+					<input type="submit" name="submit" value="登录" />
+				</form>
+				<p><a href="javascript:void(0);">忘记密码</a></p>
+			</div>
+
+		</body>
+</html>
+<!--
+
+	.login-form input[type="email"]类选择器，标签[类型]
+
+	background:radial-gradient(center,ellipse cover,#64d5ff 0%,#009bd5 100%);背景径向渐变(坐标,形状,颜色 开始位置,颜色,结束位置)
+	background:linear-gradient(center,ellipse cover,#64d5ff 0%,#009bd5 100%);背景线性渐变(坐标,形状,颜色 开始位置,颜色,结束位置)
+	伪类 :before(在内容前面显示)，:after(在内容后面显示),两者必须用content:"";添加内容
+	
+	<input type="password" name="password" placeholder="密码" required />
+	placeholder表示默认显示一些文本，鼠标点击输入文字之后自动消失，required表示输入框为必填状态
+	
+	box-shadow:0 -1px 2px rgba(0,0,0,.4) inset;默认为外阴影outset，内阴影为inset，改变垂直方向的正负值可以实现上下阴影
+
+	:hover鼠标移动事件，:active鼠标点击事件
+
+	学会用内边距(padding)撑开标签样式
+-->

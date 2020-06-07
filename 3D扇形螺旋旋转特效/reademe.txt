@@ -1,0 +1,37 @@
+该动画效果与原效果不符，浏览器问题
+（潭州玄武老师独一台机子chrome运行，专利来着，不是代码为题）
+
+从demo.html到index.html的过度：
+
+demo.html:
+
+1、在外面嵌套一层div，居中显示；
+<div id="wrap"></div>
+#wrap{
+	width: 500px; height:500px; margin:100px auto;
+}
+2、在里面添加一个div，设置位置，
+<div class="box"></div>
+#wrap .box{ heigth:500px;}
+3、在里面添加七个div，取类名相同,利用相对定位和旋转基点位置把该盒子定在指定位置
+#wrap .box .helix{
+	width:40px; height:200px; position:absolute; transform-origin:left top; /*x,y,z*/
+	opacity:.5; box-shadow:3px 1px 3px #000; animation:helix 2s infinite;
+}
+执行完第四步之后接着定义动画
+@keyframes helix{
+	to{ transform:rotateZ(0deg) rotate(1080deg);}
+}
+4、通过类控制器控制把每一个div定义在不同位置，
+translateZ(-25px) 设置为负值，把第一个div定位到最上方
+.helix:nth-child(1){ transform:translateZ(-25px) rotate(13deg); background:#ffff00;}
+.helix:nth-child(2){ transform:translateZ(-50px) rotate(26deg); background:#ff9900;}
+.helix:nth-child(3){ transform:translateZ(-75px) rotate(39deg); background:#33ffff;}
+.helix:nth-child(4){ transform:translateZ(-100px) rotate(52deg); background:#0000cc;}
+.helix:nth-child(5){ transform:translateZ(-125px) rotate(65deg); background:#9966cc;}
+.helix:nth-child(6){ transform:translateZ(-150px) rotate(78deg); background:#993333;}
+.helix:nth-child(7){ transform:translateZ(-175px) rotate(91deg); background:#cc9933;}
+
+index.html:
+
+1、定义两个变量，利用for循环，分别获取100个div和css的值，然后把该值添加到指定位置

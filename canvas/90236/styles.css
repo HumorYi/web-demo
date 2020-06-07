@@ -1,0 +1,111 @@
+@font-face
+{
+    font-family: HUD;
+    src: url("gamefont.ttf");
+}
+
+H1 {
+    color: Gray;
+    font-size: 200%;
+    font-family: Arial, Vernanda;
+    text-align: left;
+}
+
+P {
+    color: White;
+ 
+    padding-left: 20px;
+}
+
+A, A:active  {
+    color: White;
+}
+
+A:visited {
+    color: DarkGray;
+}
+
+A:hover {
+    color: #fc3;
+}
+
+body 
+{
+    background: url("images/pageback.jpg");
+}
+
+table {
+    color: black;
+    border: 4px double black;
+    background: #fc3;
+    padding: 10 px;
+    margin: 0 auto;
+}
+
+.centerobj {
+    text-align: center;
+}
+
+#game_container 
+{
+	left:0%;
+	position: relative;
+	width: 572px;
+    height: 24px;
+    top: 7px;
+}
+
+#game_bezel {
+	position: absolute;
+    right: 33%;
+    left: 33%;
+}
+
+#invaders-canvas, #background-canvas, #glass-canvas 
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#glass-canvas {
+    background-image: url("images/glass.png");
+}
+
+#background-canvas {
+    background-image: url("images/background.jpg");
+}
+
+#hud 
+{
+    font-family: HUD;
+	font-size: 1.45em;
+	width: 570px;
+	height: 350px;
+	color: #e4ff00;
+	font-weight: bold;
+	position: absolute; 
+	top: 3px; 
+	left: 0px;
+}
+
+#gameover 
+{
+    font: Calibri;
+	display: none;
+	margin-top: 150px;
+	width: 570px;
+	color: #ff2400;
+	text-align: center;
+	font-size: 3em;
+}
+
+.score,.lives {
+	width: 69%;
+	float: right;
+    height: 23px;
+}
+
+.lives {
+	width: 30%;
+}	

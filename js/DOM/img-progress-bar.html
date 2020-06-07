@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,table,tr,td{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#bg{ width:100%; height:100%; background:#555; font-size:40px; color:#ccc; text-align:center; position:absolute; left:0; top:0;}
+
+				#colorLine{ width:400px;}
+				#colorLine div{ width:5px; height:2px; float:left; overflow:hidden; display:none;/*去掉显示进度条*/}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<table id='bg'>
+				<tr height='300'>
+					<td>图片加载进度</td>
+				</tr>
+				<tr height='100'>
+					<td align='center'>
+						<div id='colorLine'></div>					
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//判断浏览器类别
+				var IE6 = navigator.userAgent.toLowerCase().indexOf('ie')+1 && /MSIE ( 5\ .5|6\ . )/i.test(navigator.userAgent);
+				var CL = document.getElementById('colorLine');
+
+				//创建彩虹条
+				function makeCLine(){
+					var r = 255;
+					var g = 0;
+					var b = 0;
+					var step = 1;
+
+					//1.增加绿色
+					//2.减少红色
+					//3.增加蓝色
+					//4.减少绿色
+					for(var i=0; i<80; i++){
+						//动态创建div元素
+						var node = document.createElement('div');
+						if(g>255 && step==1){
+							step = 2;
+						}
+						if(r<0 && step==2){
+							step = 3;
+						}
+						if(b>255 && step==3){
+							step =4;
+						}
+
+						//根据规则设置div的颜色
+						node.style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+						CL.appendChild(node);
+						if(step==1){
+							g += 14;
+						}
+						if(step==2){
+							r -= 14;
+						}
+						if(step==3){
+							b += 14;
+						}
+						if(step==4){
+							g -= 14;
+						}
+					}
+
+					var oNodeL = IE6 ? CL.firstChild : CL.firstChild.nextSibling;
+					var oNodeR = CL.lastChild;
+
+					//制作进度条两端渐变效果
+					for(var i=0; i<20; i++){
+						oNodeL.style.cssText += ';opacity:'+(0.05*i)+';filter:Alpha(Opacity='+(0.05*i*100)+');';
+						oNodeR.style.cssText += ';opacity:'+(0.05*i)+';filter:Alpha(Opacity='+(0.05*i*100)+');';
+						oNodeL = oNodeL.nextSibling;
+						oNodeR = oNodeR.previousSibling;
+					}
+				}
+
+				//移动彩虹进度条
+				function makeCLMove(){
+					var colors = [];
+					for(var i=CL.lastChild; i; i=i.previousSibling){
+						if(i.style){
+							colors.unshift(i.style.backgroundColor);
+						}
+					}
+					var flag = 1;
+					var j = 0;
+					//使用一个定时起来不断的修改每个div的颜色来创造移动效果
+					setInterval(function(){
+						var sTempColor = CL.lastChild.style.backgroundColor;
+						//IE与FF在DOM结果上有分歧。FF认为firstChild是一个文本节点，IE认为是一个元素节点
+						var oNodeL = IE6 ? CL.firstChild : CL.firstChild.nextSibling;
+						for(var i=CL.lastChild; i; i=i.previousSibling){
+							if(i.previousSibling && i.previousSibling.style){
+								i.style.backgroundColor = i.previousSibling.style.backgroundColor;
+							}
+						}
+						if(j > (colors.length-1)){
+							flag = 0;
+						}else if(j < 1){
+							flag = 1;								
+						}
+						oNodeL.style.backgroundColor = flag ? colors[ j++ ] : colors[ j-- ];						
+					},1);
+				}
+
+				//调用方法
+				makeCLine();
+				makeCLMove();
+
+				//定义图片加载总数
+				var accomplished = 0;
+				var arrImgSrc = new Array(
+					"https://img.alicdn.com/tps/TB1sgnVKpXXXXa5XXXXXXXXXXXX-520-280.jpg",
+					"https://aecpm.alicdn.com/simba/img/TB1mFDyKpXXXXXCXVXXSutbFXXX.jpg",
+					"https://ossgw.alicdn.com/creatives-assets/screenshots/creations/2016/04/22/5719e466b7269c730c842b58-1agui8cmb.jpg",
+					"https://aecpm.alicdn.com/simba/img/TB13nnIKpXXXXa0XVXXSutbFXXX.jpg",
+					"https://img.alicdn.com/tps/TB1DqwiKpXXXXaEXVXXXXXXXXXX-520-280.jpg",
+					"https://img.alicdn.com/tps/TB1sgnVKpXXXXa5XXXXXXXXXXXX-520-280.jpg",
+					"https://aecpm.alicdn.com/simba/img/TB1mFDyKpXXXXXCXVXXSutbFXXX.jpg",
+					"https://ossgw.alicdn.com/creatives-assets/screenshots/creations/2016/04/22/5719e466b7269c730c842b58-1agui8cmb.jpg",
+					"https://aecpm.alicdn.com/simba/img/TB13nnIKpXXXXa0XVXXSutbFXXX.jpg",
+					"https://img.alicdn.com/tps/TB1DqwiKpXXXXaEXVXXXXXXXXXX-520-280.jpg"
+				);
+				var seg = 80/arrImgSrc.length;
+				//定义图片组加载函数
+				function imagePreload(images){
+					for(var i=0, l=images.length; i<1; i++){
+						var img = new Image();
+						img.onload = function(){
+							//改变进度条
+							for(var j=0; j<seg; j++){
+								//显示进度条
+								try{
+									CL.childNodes[ accomplished*seg+j+(IE6?0:1) ].style.display = 'block';
+								}catch(el){}
+							}
+							//完成数加1
+							accomplished += 1;
+							if(accomplished == images.length){
+								alert('图片加载完毕，点确定开始浏览');
+								location.href = 'img-progress bar.html';
+							}
+						}
+						img.src = images[i];
+						//IE
+						img.style.diaplay = 'none';
+						document.body.appendChild(img);
+					}
+				}
+				imagePreload(arrImgSrc);
+			</script>
+
+		</body>
+</html>

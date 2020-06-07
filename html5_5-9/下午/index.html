@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#imgDiv {
+			width: 200px;
+			height: 200px;
+			position: relative;
+			float: left;
+			border: 1px red solid;
+		}
+		#oriImage {
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#indicator {
+			width: 90px;
+			height: 90px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			/*在ie6 如何设置透明度*/
+			opacity: 0.4;
+			background-color: green;
+			display: none;
+		}
+
+		#zoomDiv{
+			width: 225px;
+			height: 225px;
+			float: left;
+			background-image: url(1.jpg);
+			background-repeat: no-repeat;
+			border: 1px blue solid;
+			display: none;
+		}
+
+
+	</style>
+
+</head>
+<body>
+	<div id="imgDiv">
+		<img src="1.jpg" alt="" id="oriImage">
+		<div id="indicator"></div>
+	</div>
+	<div id="zoomDiv"></div>
+</body>
+
+<script>
+	var imgDiv = document.getElementById("imgDiv");
+	var oriImage = document.getElementById("oriImage");
+	var indicator = document.getElementById("indicator");
+	var zoomDiv = document.getElementById("zoomDiv");
+
+	imgDiv.onmousemove = function(event){
+		// 适配不同浏览器的event事件
+		var event = event || window.event;
+
+		indicator.style.display = 'block';
+		zoomDiv.style.display = 'block';
+
+		//当鼠标移动时要确认indicator的top 和 left 的值
+		var left = event.clientX - imgDiv.offsetLeft -  indicator.offsetWidth/2;
+		var top = event.clientY  - imgDiv.offsetTop - indicator.offsetHeight/2;
+
+		if (left < 0) {left = 0;};
+		if (top < 0) {top = 0;};
+
+		var maxLeft = imgDiv.clientWidth - indicator.offsetWidth;
+		if (left > maxLeft) {
+			left = maxLeft;
+		};
+
+		var maxTop = imgDiv.clientHeight - indicator.offsetHeight;
+		if (top > maxTop) {
+			top = maxTop;
+		};
+
+		indicator.style.left = left + "px";
+		indicator.style.top = top + "px";
+
+
+		zoomDiv.style.backgroundPositionX = -indicator.offsetLeft * 2.5 + "px"; 
+		zoomDiv.style.backgroundPositionY = -indicator.offsetTop * 2.5 + "px";
+	}
+
+	imgDiv.onmouseout = function(){
+		indicator.style.display = 'none';
+		zoomDiv.style.display = 'none';
+	}
+
+
+
+
+
+</script>
+
+</html>

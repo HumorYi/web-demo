@@ -1,0 +1,184 @@
+<!--
+	声明文档类型:html 就是让它符合w3c统一标准规范
+	为什么要声明？不声明会有什么影响？
+	每个浏览器对css html js这些代码都有不同的编译模式(怪异模式)，所以就需要一个统一的规范
+-->
+<!doctype html>
+<html><!--根节点标签:人-->
+	<head><!--头：规定一些信息(提供给浏览器识别) 用户看不到(非可视化标签)-->
+		<meta charset="utf-8"><!--规定字符编码:utf 国际编码 gbk gb2312中文编码-->
+		<!--网页文档三要素-->
+		<title>3D轮播banner特效</title>
+		<meta name="keywords" content="关键词1,关键词2"><!--提供给SEO搜索引擎用找到对应关键词的网站-->
+		<meta name="description" content="描述:对网页内容的大概简介">
+		<style>/*css样式的存放位置*/
+			/*
+				第一步:获取到对应的标签元素
+				第二步:设置所需的css样式
+			*/
+			*{/*通用选择器:选择到所有的标签*/
+				margin:0px;/*外边距*/padding:0px;/*内边距*/
+			}
+
+			img{cursor: pointer;}
+
+			#banner{/*# id选择器*/
+				width:980px;/*宽度 px单位(像素)*/height:410px;/*高度*/
+				/*background:red;/*背景颜色*/
+				margin:100px auto;/*上下为100px 左右居中*/
+				position:relative;/*相对定位:参考物*/
+			}
+
+			#banner img.left,img.right{
+				position:absolute;/*绝对定位*/
+				top:50%;/*距离参考物上端的距离*/
+				margin-top:-23px;/*向上移动为负值  向下为正值*/
+				z-index:1000;/*层级:层级越高越显示在前面*/
+			}
+
+			#banner img.left{/*. class类名选择器*/
+				left:60px;/*距离参考物左端的距离*/
+			}
+
+			#banner img.right{
+				right:60px;/*距离参考物右端的距离*/
+			}
+
+			#banner ul li{
+				list-style:none;/*去除前面的小黑圆点*/
+				width:540px;height:230px;
+				position:absolute;top:90px;
+				background:#000;/*黑色背景颜色*/				
+			}
+
+			#banner ul li img{
+				width:100%;/*父元素的100%*/height:100%;
+				opacity:0.5;/*透明度:0-1之间*/
+			}
+
+			#banner ul li.img1{
+				width:640px;height:270px;
+				left:170px;top:70px;
+				z-index:100;
+			}
+
+			#banner ul li.img1 img{
+				opacity:1;
+			}
+
+			#banner ul li.img2{
+				right:0px;
+				z-index:10;
+			}
+
+			#banner ul li.last{
+				left:0px;
+			}
+
+			#banner ul li.img{
+				left:200px;
+			}
+		</style>
+	</head>
+	
+	<body><!--身体：可视化标签-->
+	<!--盒子模型标签:div 宽度 高度 位置-->
+		<div id="banner"><!--id="自定义的名字" 唯一性(身份证号) 见名知意-->
+			<img src="images/left.png" class="left"><!--插入图片-->
+			<img src="images/right.png" class="right"><!--class="自定义名字" 重复性(姓名)-->
+			<ul><!--无序列表标签-->
+				<li class="img1"><img src="images/1.jpg"></li>
+				<li class="img2"><img src="images/2.jpg"></li>
+				<li class="img"><img src="images/3.jpg"></li>
+				<li class="img"><img src="images/4.jpg"></li>
+				<li class="img"><img src="images/5.jpg"></li>
+				<li class="img"><img src="images/6.jpg"></li>
+				<li class="img"><img src="images/7.jpg"></li>
+				<li class="img"><img src="images/8.jpg"></li>
+				<li class="img"><img src="images/9.jpg"></li>
+				<li class="last"><img src="images/10.jpg"></li>
+			</ul>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+			//alert($);//js弹出jquery的代理函数$
+			//点击实现切换
+			//$("#banner img.left")获取左边箭头
+			var time = new Date();//新建一个当前时间
+			
+			$("#banner img.left").click(function(){//点击左边按钮实现什么效果
+				//让图片做切换动画
+				if (new Date() - time >500)//当两次点击的时间间隔大于500ms的时候再执行下一次点击图片切换事件
+				{
+					change(0);//自定义一个函数
+				}
+				time = new Date();//重新赋值新的时间
+			});
+
+			$("#banner img.right").click(function(){//点击右边按钮实现什么效果
+				if (new Date() - time >500)
+				{
+					change(1);//自定义一个函数
+				}
+				time = new Date();//重新赋值新的时间
+			});
+
+			//定义变量来保存属性值然后做更替
+			var arrWidth = [];
+			var arrHeight = [];
+			var arrTop = [];
+			var arrLeft = [];
+			var arrOpacity = [];
+			var arrZindex = [];
+			var n = 0;//循环替换变量
+			var oLi = $("#banner ul li");//获取到所有的li标签元素
+			
+			function change(mark){
+				for (var i= 0 ;i < oLi.length;i++ )
+				{
+					//用arrWidth这个数组来保存所有元素的width值
+					//eq(i)具体的序列号为i的li
+					//css("width") 具体的li的宽度
+					arrWidth[i] = oLi.eq(i).css("width");
+					arrHeight[i] = oLi.eq(i).css("height");
+					arrTop[i] = oLi.eq(i).css("top");
+					arrLeft[i] = oLi.eq(i).css("left");
+					arrOpacity[i] = oLi.eq(i).find("img").css("opacity");
+					arrZindex[i] =  oLi.eq(i).css("z-index");
+				}
+
+				for (var i = 0;i < oLi.length ;i++ )//for循环  i是循环变量
+				{
+					if (mark == 0)
+					{
+						if (i==0)
+						{
+							n = 9;
+						}else{
+							n = i-1;
+						}	
+					}else if(mark == 1){
+						if (i==9)
+						{
+							n = 0;
+						}else{
+							n = i+1;
+						}
+					}
+
+					oLi.eq(i).css("z-index",arrZindex[n]);
+					oLi.eq(i).find("img").css("opacity",arrOpacity[n]);
+					oLi.eq(i).animate({//自定义动画:在500ms时间之内改变
+						"width" : arrWidth[n],
+						"height" : arrHeight[n],
+						"top" : arrTop[n],
+						"left"	: arrLeft[n]
+						
+					},500)//当鼠标点击速度小于500ms的时候就会发生错乱
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #333;
+    display: flex;
+    justify-content: center;
+}
+canvas {
+    background: #000;
+}

@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>js - example - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				*{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";}
+				p{color:#f00;}
+			</style>
+		</head>
+		<!--网页身体-->		
+		<body>
+			<p id="demo">JavaScript 能改变HTML元素的内容。</p>
+			<button type="button" onclick="myFunction()">Click</button>
+			<button type="button" onclick="myFunction1()">Come out to mix or to return</button>
+			<!--对事件作出反应-->
+			<button type="button" onclick="alert('Welcome!')">Barrage</button><br />
+			<img id="light" onclick="changeImage()" src="images/eg_bulboff.gif" />
+			<p>点击灯泡来点亮或熄灭这盏灯</p><br />
+			<p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+			<input id="demo2" type="text" />
+			<button type="button" onclick="myFunction2()">Check</button><br />
+			<button type="button" onclick="myFunction3()">Who</button><br />
+			<button type="button" onclick="myFunction4()">Text Length And toUpperCase </button>
+			<button onclick="myFunction5('Andy','CEO')">Hello</button>
+			<p>本例调用的函数会执行一个计算，然后返回结果：</p>
+			<p id="demo3"></p>
+			<button onclick="myFunction6()">Hour</button>
+			<p id="demo4"></p>			
+			<button onclick="myFunction7()">Day</button>
+			<p id="demo5"></p>
+			<button onclick="myFunction8()">for 循环</button>
+			<p id="demo6"></p>
+			<button onclick="myFunction9()">for/in 循环</button>
+			<p id="demo7"></p>
+			<button onclick="myFunction10()">while 循环</button>
+			<p id="demo8"></p>
+			<button onclick="myFunction11()">do while 循环</button>
+			<p id="demo9"></p>
+			<button onclick="myFunction12()">break 语句</button>
+			<p id="demo10"></p>
+			<button onclick="myFunction13()">continue 语句</button>
+			<p id="demo11"></p>
+			<button onclick="myFunction14()">标签引用 break 语句</button><br />
+			<button onclick="myFunction15()">try catch</button><br />
+			<p>请输入 5 到 10 之间的数字：</p>
+			<input id="demo12" type="text">
+			<button onclick="myFunction16()">throw 语句</button><br />
+			<p id="mess"></p>
+			请输入英文小写字符：<input type="text" id="fname" onchange="myFunction17()">
+			<p>当您离开输入字段时，会触发将输入文本转换为大写的函数。</p>
+			请输入英文大写字符：<input type="text" id="fname1" onchange="myFunction18()">
+			<p>当您离开输入字段时，会触发将输入文本转换为小写的函数。</p>
+			<div onmouseover = "mOver(this)" onmouseout = "mOut(this)" style="background-color:green; width:120px;height:20px; padding:40px; color:#fff;" >把鼠标移到上面</div>
+			<div id="div1">
+				<p>创建和删除HTML元素 ：</p>
+				<p id="p1">这是一个段落。</p>
+				<p id="p2">这是另一个段落。</p>
+			</div>
+			<div id="txt1"></div>
+			<input type="button" value="加载新文档" onclick="newDoc()">
+			<input type="button" value="Back" onclick="goBack()">
+			<input type="button" value="Forward" onclick="goForward()">
+			<button id="example" onclick="navigatorMessage()">navigator</button><br />
+			<input type="button" onclick="show_confirm()" value="确认框" />
+			<input type="button" onclick="disp_prompt()" value="显示提示框" />
+			<input type="button" value="显示定时的警告框" onClick = "timedMsg()">
+			<input type="button" value="显示计时的文本" onClick="timedText()">
+			<input type="text" id="seconds"><br />
+			<input type="button" value="开始计时！" onClick="timedCount()">
+			<input type="text" id="Counttime">
+			<input type="button" value="停止计时！" onClick="stopCount()"><br />
+			<input type="button" value="显示当前时间" onClick="startTime()">
+			<input id="clock" type="text"><br />
+			<input type="button" value="cookie" onClick="checkCookie()">
+			<h1 id="h01">jQuerymethod</h1>
+			<h2 id="h02">jQuerymethod2</h2>
+			<h3 id="h03">Prototypemethod</h3>
+			<h4 id="h04">Prototypemethod2</h4>
+
+			<!--js,各色特效-->
+			<script type="text/javascript" src="jquery/jquery-1.11.1.min.js"></script>
+			<script type="text/javascript">
+				
+				/*写入 HTML 输出*/
+				document.write("<h1>This is	a heading</h1>");	
+				/*对代码行进行折行*/
+				document.write("<p>This is \
+				a paragraph</p>");
+
+				/*改变 HTML 内容、样式*/
+				function myFunction(){
+					var x = document.getElementById("demo"); //找到元素
+					x.innerHTML = "Hello JavaScript !";	//改变内容(innerHTML)
+					x.style.color = "blue";
+				}
+			
+				function myFunction1(){
+					document.getElementById("demo").innerHTML = "JavaScript 能改变HTML元素的内容。";	//改变内容
+				}
+				
+				/*改变 HTML 图像*/
+				function changeImage(){
+					element = document.getElementById("light");
+					if (element.src.match("bulbon")){
+						element.src="images/eg_bulboff.gif"
+					}
+					else{
+						element.src="images/eg_bulbon.gif";
+					}
+				}
+				
+				/*验证输入*/
+				function myFunction2(){
+					var a = document.getElementById("demo2").value;
+					if ( a == "" || isNaN(a) )
+					{
+						alert("Not Numeric");
+					}
+				}
+
+				/*创建 JavaScript 对象*/
+				function myFunction3(){
+					person=new Object();
+					person.firstname="Bill";
+					person.lastname="Gates";
+					person.age=56;
+					person.eyecolor="blue";
+					document.write(person.firstname + " is " + person.age + " years old.");	
+				}	
+
+				/*点击按钮弹出窗口*/
+				function myFunction4(){
+					var message="Hello World!";
+					var x=message.length; // String 对象的 length 属性来查找字符串的长度：
+					var y=message.toUpperCase(); //使用 String 对象的 toUpperCase() 方法来把文本转换为大写：
+					alert(x);
+					alert(y);
+			 	}
+				
+				function MyFunction5(name,job){
+					alert("Welcome " + name + ",the " + job);
+				}
+
+				/*两个数相乘*/
+				function MyFunction(a,b)
+				{
+					return a*b;
+				}
+				document.getElementById("demo3").innerHTML=MyFunction(4,3);
+				
+				/*if else 语句*/
+				function myFunction6(){
+					var x = "", time = new Date().getHours();
+					if (time<20)
+					{
+						x = "Good day";
+					}else{
+						x = "Good evening";
+					}
+					document.getElementById("demo4").innerHTML = x;
+				}
+
+				/* Switch 语句*/
+				function myFunction7(){
+					var x , d = new Date().getDay();
+					switch(d){
+						case 0:
+							x = "Today it's Sunday";
+							break;
+						case 1:
+							x="Today it's Monday";
+							break;
+						case 2:
+							x="Today it's Tuesday";
+							break;
+					    case 3:
+							x="Today it's Wednesday";
+							break;
+					    case 4:
+							x="Today it's Thursday";
+							break;
+					    case 5:
+							x="Today it's Friday";
+							break;
+					    default:
+							x="Today it's Saturday";
+					}
+					document.getElementById("demo5").innerHTML=x;
+				}
+				
+				/*For循环 循环代码块一定的次数*/
+				function myFunction8(){
+					var x = "";
+					for(var i=0;i<5;i++){
+						x = x + "The number is " + i + "<br />";
+					}
+					document.getElementById("demo6").innerHTML=x;
+				}
+
+				/*for/in 语句循环遍历对象的属性*/
+				function myFunction9(){
+					var x, txt = "", person = {fname:"Bill", lname:"Gates", age:56};
+					for (x in person )
+					{
+						txt += person[x];
+					}
+					document.getElementById("demo7").innerHTML=txt;
+				}
+
+				/*While 循环会在指定条件为真时循环执行代码块。*/
+				function myFunction10(){
+					var x="", i=0;
+					while(i<5){
+						x = x + "The number is " + i + "<br />";
+						i++;
+					}
+					document.getElementById("demo8").innerHTML=x;
+				}
+
+				/*do/while 循环是 while 循环的变体。该循环会执行一次代码块，在检查条件是否为真之前，然后如果条件为真的话，就会重复这个循环。该循环至少会执行一次，即使条件是 false，隐藏代码块会在条件被测试前执行：*/
+				function myFunction11(){
+					var x = "", i = 0;
+					do{
+						x = x + "The number is" + i + "<br />";
+						i++;
+					}while(i<5)
+					document.getElementById("demo9").innerHTML=x;
+				}
+
+				/*break 语句跳出循环后，会继续执行该循环之后的代码（如果有的话*/
+				function myFunction12(){
+					var x="",i=0;
+					for (i=0;i<10;i++)
+					  {
+					  if (i==3)
+						{
+							break;
+						}
+					  x=x + "The number is " + i + "<br>";
+					  }
+					document.getElementById("demo10").innerHTML=x;
+				}
+				
+				/*continue 语句中断循环中的迭代，如果出现了指定的条件，然后继续循环中的下一个迭代。*/
+				function myFunction13(){
+					var x ="" , i = 0;
+					for (i=0;i<10 ;i++ )
+					{
+						if (i==3)
+						{
+							continue;
+						}
+						x = x + "The number is " + i + "<br />";
+					}
+					document.getElementById("demo11").innerHTML = x; 
+				}
+
+				/*continue 语句（带有或不带标签引用）只能用在循环中。
+				  break 语句（不带标签引用），只能用在循环或 switch 中
+				  通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：  
+				*/
+				function myFunction14(){
+					cars=["BMW","Volvo","Saab","Ford"];
+					list:
+					{
+						document.write(cars[0] + "<br>"); 
+						document.write(cars[1] + "<br>"); 
+						document.write(cars[2] + "<br>"); 
+						break list;
+						document.write(cars[3] + "<br>"); 
+						document.write(cars[4] + "<br>"); 
+						document.write(cars[5] + "<br>"); 
+					}
+				}
+
+				/*try 语句允许我们定义在执行时进行错误测试的代码块。
+				catch 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。*/
+				var txt="";
+				function myFunction15(){
+					try{
+						 adddlert("Welcome guest!");
+					}
+					catch(err){
+					  txt="There was an error on this page.\n\n";
+					  txt+="Error description: " + err.message + "\n\n";
+					  txt+="Click OK to continue.\n\n";
+					  alert(txt);
+					}
+				}
+
+				/*throw 语句允许我们创建自定义错误。*/
+				function myFunction16(){
+					try{
+					  var x=document.getElementById("demo12").value;
+					  if(x=="")    throw "empty";
+					  if(isNaN(x)) throw "not a number";
+					  if(x>10)     throw "too high";
+					  if(x<5)      throw "too low";
+					}
+					catch(err){
+					  var y=document.getElementById("mess");
+					  y.innerHTML="Error: " + err + ".";
+					}
+				}
+				//输出当前的时间
+				document.write(Date());
+				
+				//英文小写转大写
+				function myFunction17(){
+					var x=document.getElementById("fname");
+					x.value=x.value.toUpperCase();
+				}
+
+				//
+				function myFunction18(){
+					var x=document.getElementById("fname1");
+					x.value=x.value.toLocaleLowerCase();
+				}
+				
+				//鼠标移上去事件
+				function mOver(obj){
+					obj.innerHTML= "Thank You";
+				}
+				//鼠标移开事件
+				function mOut(obj){
+					obj.innerHTML = "把鼠标移到上面";
+				}
+
+				//创建新的 HTML 元素
+				//如需向 HTML DOM 添加新元素，您必须首先创建该元素（元素节点），然后向一个已存在的元素追加该元素。
+
+				//删除已有的 HTML 元素
+				//如需删除 HTML 元素，您必须首先获得该元素的父元素：
+				var para = document.createElement("p");
+				var node = document.createTextNode("这是新段落.");
+				para.appendChild(node);
+				var element = document.getElementById("div1");
+					child = document.getElementById("p2");
+				element.appendChild(para);
+				element.removeChild(child);
+
+				//如何为字符串添加样式,改变样本字体样式
+				var txt="Hello World!"
+				document.write("<p>字体样式 ：</p>");
+				document.write("<p>Big: " + txt.big() + "</p>");
+				document.write("<p>Small: " + txt.small() + "</p>");
+
+				document.write("<p>Bold: " + txt.bold() + "</p>");
+				document.write("<p>Italic: " + txt.italics() + "</p>");
+
+				document.write("<p>Blink: " + txt.blink() + " (does not work in IE)</p>");
+				document.write("<p>Fixed: " + txt.fixed() + "</p>");
+				document.write("<p>Strike: " + txt.strike() + "</p>");
+
+				document.write("<p>Fontcolor: " + txt.fontcolor("Red") + "</p>");
+				document.write("<p>Fontsize: " + txt.fontsize(16) + "</p>");
+
+				document.write("<p>Lowercase: " + txt.toLowerCase() + "</p>");
+				document.write("<p>Uppercase: " + txt.toUpperCase() + "</p>");
+
+				document.write("<p>Subscript: " + txt.sub() + "</p>");
+				document.write("<p>Superscript: " + txt.sup() + "</p>");
+
+				document.write("<p>Link: " + txt.link("http://www.w3school.com.cn") + "</p>");
+
+				//如何使用 indexOf() 来定位字符串中某一个指定的字符首次出现的位置。
+				document.write("<p>indexOf()方法 ：</p>");
+				var str="Hello world!"
+				document.write(str.indexOf("Hello") + "<br />");
+				document.write(str.indexOf("World") + "<br />");
+				document.write(str.indexOf("world") + "<br />");
+				
+				//如何使用 match() 来查找字符串中特定的字符，并且如果找到的话，则返回这个字符。
+				document.write("<p>match()方法 ：</p>");
+				document.write(str.match("world") + "<br />");
+				document.write(str.match("World") + "<br />");
+				document.write(str.match("worlld") + "<br />");
+				document.write(str.match("world!") + "<br />");
+
+				//如何使用 replace() 方法在字符串中用某些字符替换另一些字符。
+				document.write("<p>replace()方法 ：</p>");
+				var str1="Visit Microsoft!"
+				document.write(str1.replace(/Microsoft/,"W3School" + "<br />"));
+
+				//如何使用 setFullYear() 设置具体的日期。
+				document.write("<p>setFullYear()方法 ：</p>");
+				var d = new Date();
+				d.setFullYear(1995,10,3);
+				document.write(d);
+
+				//如何使用 toUTCString() 将当日的日期（根据 UTC）转换为字符串。
+				document.write("<p>toUTCString()方法 ：</p>");
+				var d = new Date();
+				document.write(d.toUTCString());
+
+				//如何使用 getDay() 和数组来显示星期，而不仅仅是数字。
+				document.write("<p>getDay()方法 ：</p>");
+				var d=new Date();
+				var weekday=new Array(7);
+				weekday[0]="星期日";
+				weekday[1]="星期一";
+				weekday[2]="星期二";
+				weekday[3]="星期三";
+				weekday[4]="星期四";
+				weekday[5]="星期五";
+				weekday[6]="星期六";
+				document.write("今天是" + weekday[d.getDay()]+"<br />");
+
+				//如何使用 concat() 方法来合并两个数组。
+				document.write("<p>concat()方法 ：</p>");
+				var arr = new Array(3);
+				arr[0] = "George";
+				arr[1] = "John";
+				arr[2] = "Thomas";
+
+				var arr2 = new Array(3);
+				arr2[0] = "James";
+				arr2[1] = "Adrew";
+				arr2[2] = "Martin";
+				document.write(arr.concat(arr2)+"<br />");
+
+				//如何使用 join() 方法将数组的所有元素组成一个字符串。
+				document.write("<p>join()方法 ：</p>");
+				var arr = new Array(3);
+				arr[0] = "George";
+				arr[1] = "John";
+				arr[2] = "Thomas";
+				document.write(arr.join()+"<br />");
+				document.write(arr.join(".")+"<br />");
+
+				//如何使用 sort() 方法从字面上对数组进行排序。
+				document.write("<p>文字数组sort()方法 ：</p>");
+				var arr = new Array(6);
+				arr[0] = "George";
+				arr[1] = "John";
+				arr[2] = "Thomas";
+				arr[3] = "James";
+				arr[4] = "Adrew";
+				arr[5] = "Martin";
+				document.write(arr+"<br />");
+				document.write(arr.sort()+"<br />");
+
+				//如何使用 sort() 方法从数值上对数组进行排序。
+				//如果不添加sortNumber()方法，则会按照第一个数字的大小进行排序
+				document.write("<p>数字数组sort()方法 ：</p>");
+				function sortNumber(a,b){
+					return a-b;
+				}
+				var arr = new Array(6);
+				arr[0] = "10";
+				arr[1] = "5";
+				arr[2] = "40";
+				arr[3] = "25";
+				arr[4] = "1000";
+				arr[5] = "1";
+				document.write(arr + "<br />");
+				document.write(arr.sort(sortNumber)+ "<br />");
+
+				//检查逻辑对象是 true 还是 false。
+				document.write("<p>检查逻辑对象是 true 还是 false ：</p>");
+				var b1=new Boolean( 0);
+				var b2=new Boolean(1);
+				var b3=new Boolean("");
+				var b4=new Boolean(null);
+				var b5=new Boolean(NaN);
+				var b6=new Boolean("false");
+
+				document.write("0 是逻辑的 "+ b1 +"<br />");
+				document.write("1 是逻辑的 "+ b2 +"<br />");
+				document.write("空字符串是逻辑的 "+ b3 + "<br />");
+				document.write("null 是逻辑的 "+ b4+ "<br />");
+				document.write("NaN 是逻辑的 "+ b5 +"<br />");
+				document.write("字符串 'false' 是逻辑的 "+ b6 +"<br />");
+
+				/*Math 对象  
+				Math（算数）对象的作用是：执行普通的算数任务。
+				Math 对象提供多种算数值类型和函数。无需在使用这个对象之前对它进行定义。
+				Math 对象的 round 方法对一个数进行四舍五入。
+				如何使用 random() 来返回 0 到 1 之间的随机数。
+				如何使用 max() 来返回两个给定的数中的较大的数。
+				如何使用 min() 来返回两个给定的数中的较小的数。*/
+				document.write("<p>round()方法、random()、max()、min() ：</p>");
+				document.write(Math.round(4.5) +"<br />");
+				document.write(Math.random() +"<br />");
+				document.write(Math.max(5,76) + "<br />");
+				document.write(Math.min(5,76) + "<br />");
+				//Math 对象的 floor() 方法和 random() 来返回一个介于 0 和 10 之间的随机数：
+				document.write(Math.floor(Math.random()*11) + "<br />") 
+
+
+				/*算数值
+					JavaScript 提供 8 种可被 Math 对象访问的算数值：
+					常数
+					圆周率
+					2 的平方根
+					1/2 的平方根
+					2 的自然对数
+					10 的自然对数
+					以 2 为底的 e 的对数
+					以 10 为底的 e 的对数
+
+					这是在 Javascript 中使用这些值的方法：（与上面的算数值一一对应）
+					Math.E
+					Math.PI
+					Math.SQRT2
+					Math.SQRT1_2
+					Math.LN2
+					Math.LN10
+					Math.LOG2E
+					Math.LOG10E
+				*/
+
+				/*什么是 RegExp？
+				RegExp 是正则表达式的缩写。
+				当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。
+				简单的模式可以是一个单独的字符。
+				更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。
+				您可以规定字符串中的检索位置，以及要检索的字符类型，等等。
+
+				RegExp 对象的方法
+				RegExp 对象有 3 个方法：test()、exec() 以及 compile()。
+
+				test() 方法检索字符串中的指定值。返回值是 true 或 false。			
+				*/
+				document.write("<p>RegExp（正则表达式） 对象有 3 个方法：test()、exec() 以及 compile() ：</p>");
+				var patt1 = new RegExp("e");
+				document.write(patt1.test("The best things in life are free") + "<br />");
+				
+
+				/*exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null。
+				在使用 "g" 参数时，exec() 的工作原理如下：
+				找到第一个 "e"，并存储其位置
+				如果再次运行 exec()，则从存储的位置开始检索，并找到下一个 "e"，并存储其位置、
+				*/
+				document.write(patt1.exec("The best things in life are free") + "<br />");
+				var patt2=new RegExp("e","g");
+				do{
+				result=patt2.exec("The best things in life are free");
+				document.write(result);
+				}
+				while (result!=null) 
+				document.write("<br />");
+				/*compile() 方法用于改变 RegExp。
+				compile() 既可以改变检索模式，也可以添加或删除第二个参数。
+				*/
+				var patt3=new RegExp("e");
+				document.write(patt3.test("The best things in life are free") + "<br />");
+				patt3.compile("d");
+				document.write(patt3.test("The best things in life are free") + "<br />");
+
+				//Window Screen 可用宽度和高度
+				//screen.availWidth 属性返回访问者屏幕的宽度，以像素计，减去界面特性，比如窗口任务栏。
+				//screen.availHeight 属性返回访问者屏幕的高度，以像素计，减去界面特性，比如窗口任务栏。
+				document.write("<p>Window 信息：</p>");
+				document.write("可用宽度：" + screen.availWidth + "<br />");
+				document.write("可用高度：" + screen.availHeight + "<br />");
+
+				/*
+					window.location 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。
+					Window Location
+					window.location 对象在编写时可不使用 window 这个前缀。
+					一些例子：
+					location.hostname 返回 web 主机的域名
+					location.pathname 返回当前页面的路径和文件名
+					location.port 返回 web 主机的端口 （80 或 443）
+					location.protocol 返回所使用的 web 协议（http:// 或 https://）
+				*/
+
+				document.write("<p>location 信息：</p>");
+				//location.href 属性返回当前页面的 URL。
+				document.write(location.href + "<br />");
+				//location.pathname 属性返回 URL 的路径名。
+				document.write(location.pathname + "<br />");
+				//location.assign() 方法加载新的文档。
+				function newDoc(){
+				 	window.location.assign("http://www.w3school.com.cn")
+				}
+
+				/*
+					Window History
+					window.history 对象在编写时可不使用 window 这个前缀。
+					为了保护用户隐私，对 JavaScript 访问该对象的方法做出了限制。
+					一些方法：
+					history.back() - 与在浏览器点击后退按钮相同
+					history.forward() - 与在浏览器中点击按钮向前相同	
+				*/
+				function goBack(){
+					window.history.back();
+				}
+				function goForward(){
+					window.history.forward();
+				}
+
+				/*
+					window.navigator 对象包含有关访问者浏览器的信息。window.navigator 对象在编写时可不使用 window 这个前缀。
+
+					警告：来自 navigator 对象的信息具有误导性，不应该被用于检测浏览器版本，这是因为：
+					navigator 数据可被浏览器使用者更改
+					浏览器无法报告晚于浏览器发布的新操作系统
+
+					浏览器检测
+					由于 navigator 可误导浏览器检测，使用对象检测可用来嗅探不同的浏览器。
+					由于不同的浏览器支持不同的对象，您可以使用对象来检测浏览器。
+				*/
+				function navigatorMessage(){
+					txt = "<p>Browser CodeName : "+navigator.appCodeName+"</p>";
+					txt += "<p>Browser Name : "+navigator.appVersion+"</p>";
+					txt += "<p>Cookies Enabled : "+navigator.cookieEnabled+"</p>";
+					txt += "<p>Platform : "+navigator.platform+"</p>";
+					txt += "<p>User-agent header : "+navigator.userAgent+"</p>";
+					txt+= "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+					document.getElementById("example").innerHTML = txt;
+				}
+
+				//确认对话框
+				function show_confirm(){
+					var r=confirm("Press a button!");
+					if (r==true){
+					  alert("You pressed OK!");
+					}
+					else{
+					  alert("You pressed Cancel!");
+					}
+				}
+				//提示框
+				function disp_prompt(){
+				  var name=prompt("请输入您的名字","Bill Gates")
+				  if (name!=null && name!="")
+				    {
+				   	 alert("你好！" + name + " 今天过得怎么样？")
+				    }
+				}	
+
+				//单击本例中的按钮后，会在 5 秒后弹出一个警告框。
+				function timedMsg(){
+					var t = setTimeout("alert('5秒 !')",5000);
+				}
+
+				//本例中的程序会执行 2 秒、4 秒和 6 秒的计时。
+				function timedText(){
+					var t1=setTimeout("document.getElementById('seconds').value='2 秒'",2000)
+					var t2=setTimeout("document.getElementById('seconds').value='4 秒'",4000)
+					var t3=setTimeout("document.getElementById('seconds').value='6 秒'",6000)
+				}
+
+				//在本例中，点击计数按钮后根据用户输入的数值开始倒计时，点击停止按钮停止计时。
+				var c=0 , t ;
+				function timedCount(){
+					document.getElementById('Counttime').value=c;
+					c=c+1;
+					t=setTimeout("timedCount()",1000);
+				}
+				function stopCount(){
+					c = 0;
+					setTimeout("document.getElementById('Counttime').value=0",0);
+					clearTimeout(t);
+				}
+				
+				function startTime(){
+					var today=new Date();
+					var h=today.getHours();
+					var m=today.getMinutes();
+					var s=today.getSeconds();
+					// add a zero in front of numbers<10
+					m=checkTime(m);
+					s=checkTime(s);
+					document.getElementById('clock').value=h+":"+m+":"+s;
+					t=setTimeout('startTime()',500);
+				}
+
+				function checkTime(i){
+					if (i<10){
+						i+="0";
+					}
+					  return i;
+				}
+
+				/*
+					什么是cookie?
+						cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。
+
+					有关cookie的例子：
+						名字 cookie
+						当访问者首次访问页面时，他或她也许会填写他/她们的名字。名字会存储于 cookie 中。当访问者再次访问网站时，他们会收到类似 "Welcome John Doe!" 的欢迎词。而名字则是从 cookie 中取回的。
+						密码 cookie
+						当访问者首次访问页面时，他或她也许会填写他/她们的密码。密码也可被存储于 cookie 中。当他们再次访问网站时，密码就会从 cookie 中取回。
+						日期 cookie
+						当访问者首次访问你的网站时，当前的日期可存储于 cookie 中。当他们再次访问网站时，他们会收到类似这样的一条消息："Your last visit was on Tuesday August 11, 2005!"。日期也是从 cookie 中取回的。
+				*/
+				function getCookie(c_name){
+					if (document.cookie.length>0){
+					  c_start=document.cookie.indexOf(c_name + "=");
+					  if (c_start!=-1){ 
+						c_start += c_name.length+1;
+						c_end=document.cookie.indexOf(";",c_start);
+						if (c_end==-1) {
+							c_end=document.cookie.length;				
+						}
+						return unescape(document.cookie.substring(c_start,c_end));
+					  } 
+					}
+					return ""
+				}
+
+				function setCookie(c_name,value,expiredays){
+					var exdate=new Date();
+					exdate.setDate(exdate.getDate()+expiredays);
+					document.cookie=c_name+ "=" +escape(value)+
+					((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+				}
+
+				function checkCookie(){
+					username=getCookie('username');
+					if (username!=null && username!=""){
+						alert('Welcome again '+username+'!');
+					}
+					else{
+					  username=prompt('Please enter your name:',"");
+					  if (username!=null && username!=""){
+						setCookie('username',username,365);
+					  }
+					}
+				}
+				
+				//jQuery方法
+				function jQuerymethod(){
+					$("#h01").html("Hello jQuery")
+				}
+				$(document).ready(jQuerymethod);
+				
+				function jQuerymethod2(){
+					$("#h02").attr("style","color:#f00;"),html("Hello jQuery");
+				}
+				$(document).ready(jQuerymethod2);
+
+				//Prototype方法
+				function Prototypemethod(){
+					$("#h03").insert("Hello Prototype");
+				}
+				Event.observe(window,"load",Prototypemethod);
+
+				function Prototypemethod2(){
+					$("#h04").writeAttribute("style","color:red").insert("Htllo Prototype");
+				}
+				Event.observe(window,"load",Prototypemethod2);
+			</script>
+		</body>
+</html>

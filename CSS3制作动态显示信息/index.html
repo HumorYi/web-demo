@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBliC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--基于W3C标准 不用做任何修改-->
+<html xmlns="http://www.w3.org/1999/xhtml"><!--起始标准-->
+<head><!--设置初始化文档信息和文档管理标注-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><!--整个页面编码 utf-8 国际编码 通用性最强，GBK/gb2312 中文-->
+    <!--页面三要素-->
+    <title>利用CSS3制作动态显示信息</title>
+    <meta name="Keywords" content="关键字,关键字">
+    <meta name="Description" content="描述">
+    <style type="text/css">
+        body {
+            background: #EAEAEA;
+        }
+
+        ul, li, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 400px;
+        }
+
+        .box li {
+            width: 290px;
+            height: 190px;
+            border: 5px solid #fff;
+            list-style: none;
+            float: left;
+            margin: 10px;
+            box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.6);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .box li img {
+            width: 290px;
+            height: 190px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 300ms ease-out;
+            -webkit-transition: all 300ms ease-out;
+        }
+
+        .box li .cap {
+            width: 270px;
+            height: 170px;
+            background: rgba(0, 0, 0, .7);
+            color: #fff;
+            line-height: 140%;
+            padding: 10px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 300ms ease-out;
+            -webkit-transition: all 300ms ease-out;
+        }
+
+        .box li .cap h2, .box li .cap p {
+            position: relative;
+            left: -290px;
+            transition: all 300ms ease-out;
+            -webkit-transition: all 300ms ease-out;
+
+        }
+
+        .box li .cap h2 {
+            font-size: 14px;
+        }
+
+        .box li .cap p {
+            font-size: 12px;
+            transition-duration: 700ms;
+            -webkit-transition-duration: 700ms;
+        }
+
+        .box li:hover .cap {
+            opacity: 1;
+        }
+
+        /*第一种方法 让文字从左到右*/
+        .box li:hover .cap h2, .box li:hover .cap p {
+            left: 0;
+        }
+
+        /*第二种方法。。
+
+        .box li:hover .cap h2, .box li:hover .cap p {
+            transform: translateX(290px);
+            -webkit-transform: translateX(290px);
+        }*/
+
+        .box li:hover img {
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+        }
+
+        .box li:hover {
+            box-shadow: 0 0 10px #008fff;
+        }
+    </style>
+
+</head>
+
+<body>
+<!--
+class 命名规则(需要一个容易记的名字)  只能使用字母开头 不能使用中文、数字、特殊字符开头
+-->
+<ul class="box">
+    <li>
+        <img src="images/1.jpg"/>
+        <div class="cap">
+            <h2>广东惠州一小学校长涉猥亵17名女童</h2>
+            <P>公安局获悉，龙门县龙华镇蓝滘教学点负责人翁某涉嫌猥亵17名10岁左右女童，被公安部门刑事拘留。疑遭猥亵的女童家长携子女集体送医验伤。...</p>
+        </div>
+    </li>
+    <li>
+        <img src="images/2.jpg"/>
+        <div class="cap">
+            <h2>成都准空姐拜叶问传人练咏春反恐</h2>
+            <P>咏春拳本身简单、直接、适用，长处在于埋身搏击，拳快而防守紧密，攻守兼备及守攻同期，有利于民航人员在机舱狭窄的环境中迅速制服不法分子...</p>
+        </div>
+    </li>
+    <li>
+        <img src="images/3.jpg"/>
+        <div class="cap">
+            <h2>一只狗的遗愿清单</h2>
+            <P>罗密欧（Romeo）是加拿大一只 9 岁的拳师犬，2013 年底被诊断出骨癌，当它主人 Riina Cooke
+                得知这个消息以后，像电影《遗愿清单》的剧情一样，帮狗狗列出了死前必做清单，清单内容丰富多彩。...</p>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

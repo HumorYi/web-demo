@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+/*设置页面菜单样式*/
+.menu{ 
+background:#000;
+display:block;
+
+}
+.menu li{
+display:inline-block;
+}
+.menu li a{
+color:#FFF;
+display:block;
+text-decoration:none;
+line-height: 20px;
+font-size: 24px;
+padding: 15px 10px;
+}
+.three{
+	position:relative;
+
+}
+	/* 通过点击触发 */
+	.three:hover .box, 
+	.three:focus .box {
+		transform: translateZ(-25px) rotateX(90deg);
+		-webkit-transform: translateZ(-25px) rotateX(90deg);
+		-o-transform: translateZ(-25px) rotateX(90deg);
+	}
+
+.box{
+	transition:all .3s ease-out;
+	transform:translateZ(-25px);
+	transform-style:preserve-3d;
+	-webkit-transition:all .3s ease-out;
+	-webkit-transform:translateZ(-25px);
+	-webkit-transform-style:preserve-3d;
+	-o-transition:all .3s ease-out;
+	-o-transform:translateZ(-25px);
+	-o-transform-style:preserve-3d;
+	position:absolute;
+	top:0;
+	left:0;
+	display:block;
+	width:100%;
+	height:100%;
+}
+.front {
+	transform: rotatex(0deg) translatez(25px);
+	-webkit-transform: rotatex(0deg) translatez(25px);
+	-o-transform: rotatex(0deg) translatez(25px);
+	
+}
+
+.back {
+	transform: rotatex(-90deg) translatez(25px);
+	-webkit-transform: rotatex(-90deg) translatez(25px);
+	-o-transform: rotatex(-90deg) translatez(25px);
+}
+.front, .back {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: black;
+	padding: 15px 10px;
+	color: white;
+
+}
+</style>
+</head>
+
+<body>
+<ul class="menu">
+	<li>
+    	<a class="three" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=edc48c9937cc4157e3593115b1e9c10126e3d322f651af916c6fb19c5cd77508">
+        官方QQ群
+        	<span class="box">
+            	<span class="front">官方QQ群</span>
+                <span class="back">官方QQ群</span>
+            </span>
+        </a>
+    </li>
+	<li>
+    	<a class="three" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=edc48c9937cc4157e3593115b1e9c10126e3d322f651af916c6fb19c5cd77508">
+        官方QQ群
+        	<span class="box">
+            	<span class="front">官方QQ群</span>
+                <span class="back">官方QQ群</span>
+            </span>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

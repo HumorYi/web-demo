@@ -1,0 +1,16 @@
+/*
+ Create By luoxing on 2018/4/9 15:29
+*/
+
+.registerOrLogin {
+    margin-top : -210px;
+}
+
+#formRegister .verifyCode {
+    margin-right : 13px;
+    padding      : 0;
+}
+
+#formRegister .verifyCode + div {
+    cursor : pointer;
+}

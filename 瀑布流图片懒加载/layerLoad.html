@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>瀑布流加载技术 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,ul,li,img{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#box{/*#id选择器 box*/
+					width:1100px;/*宽度*//*height:500px;高度*/
+					background:red;/*背景颜色*/
+					margin:100px auto;/*上下为100px  左右居中*/
+				}
+
+				ul li{
+					list-style:none;/*去除前面的小黑圆点*/
+					width:250px;
+					box-shadow:0px 0px 5px #8b8b8b;/*阴影:X方向的偏移 Y方向偏移 模糊度 颜色*/
+					padding:5px;
+					background:#fff;
+					float:left;/*左浮动*/
+					margin:5px;
+				}
+
+				img{
+					width:250px;
+					transition:1s;/*css3动画过度*/
+				}
+			</style>
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="box"><!--取名字 id(唯一性 身份证)-->
+				<ul><!--无序列表标签-->
+					<!--第一列-->
+					<li class="list"><!--class类名 可重复利用性（姓名）-->
+						<!--图片四要素:src  width height alt-->
+						<!--<img src="images/1.jpg" width="250" height="448" alt="1号美女">-->
+					</li>
+					<!--第二列-->
+					<li class="list"></li>
+					<!--第三列-->
+					<li class="list"></li>
+					<!--第四列-->
+					<li class="list"></li>
+				</ul>
+			</div>
+
+			<!--外嵌入-->
+			<script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+			<!--内嵌入-->
+			<script language="javascript" type="text/javascript">
+				//用arr数组存储图片地址
+				var arr = [
+					{src : "images/1.png"},
+					{src : "images/2.jpg"},
+					{src : "images/3.jpg"},
+					{src : "images/4.jpg"},
+					{src : "images/5.jpg"},
+					{src : "images/6.jpg"},
+					{src : "images/7.jpg"},
+					{src : "images/8.jpg"},
+					{src : "images/9.jpg"},
+					{src : "images/10.jpg"},
+					{src : "images/11.jpg"},
+					{src : "images/12.jpg"},
+				];
+
+				//试下瀑布流特效，添加图片
+				var i = 0;
+				var sum = '';
+				function onload(){
+					if (i < 12)
+					{
+						for (; i<12; i++)
+						{
+							create();
+						}
+					}else {
+						sum = i;
+						for (; i<sum+4; i++)
+						{
+							create();
+						}
+					}
+					//图片scr从1开始
+					i++;
+				}
+				onload();
+
+				function create(){
+					//创建一个div盒子存放图片
+					var oDiv = document.createElement("div");
+					//新建一个图片对象
+					var oImg = new Image();
+					//给oImg对象添加图片src路径
+					oImg.src = arr[i % arr.length].src;
+					//设置图片样式
+					oImg.style.cssText = "opacity: 0; transform: scale(0);";
+					//把图片对象添加到div盒子中
+					oDiv.appendChild(oImg);
+					//把div盒子添加到li标签中
+					getListDiv($(".list")).append(oDiv);
+					//图片延时加载
+					(function(oImg){
+						setTimeout(function(){
+							oImg.style.cssText = "opacity: 1; transform: scale(1);";
+						},100);
+					})(oImg);
+				}
+				
+				//获取瀑布流的列数
+				function getListDiv(obj){
+					//获取div总列数
+					var length = obj.length;
+					//设置每一列的高度	无线高
+					var h = Infinity;
+					//获取div列表
+					var getList;					
+					//获取每一列然后判断高度
+					//eq(i) 所有列中的第i列
+					for (var i=0; i<length; i++)
+					{
+						if (obj.eq(i).height() < h)
+						{
+							h = obj.eq(i).height();
+							getList = obj.eq(i);
+						}
+					}
+					return getList;
+				}
+
+				//滚动添加图片
+				//文档高度
+				var scrollH = '';
+				//滚动条高度
+				var scrollT = '';
+				
+				//等同于window.onload = function(){};
+				$(function (){
+					//获取可视区高度
+					var _height = $(window).height(); 
+					//滚动条事件
+					$(window).scroll(function (){
+						//文档高度
+						scrollH = document.body.scrollHeight;
+						//滚动条高度
+						scrollT = document.body.scrollTop;
+						//当可视区域高度与滚动条高度大于文档高度的时候就添加图片
+						if (_height + scrollT + 50 > scrollH)
+						{
+							onload();
+						}
+					});
+				});
+				
+				
+			</script>
+		</body>
+</html>

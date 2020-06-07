@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,a,img,iframe,table,tr,td{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#main{ width:370px; height:150px; border:1px solid #ccc; margin:100px auto;}
+				#main #toolbar{ width:100%; height:30px; background:#d1d1d1;}
+				#main #toolbar a{ width:24px; line-height:24px; text-align:center; text-decoration:none; color:#000; font-weight:bold; font-size:15px; float:left;}
+				#main #toolbar a:hover{ border-right:1px solid #aaa; border-bottom:1px solid #aaa;}
+				#main #face{ display:none; position:absolute; top:130px; left:100%; border:1px solid #aaa; background:#fff;}
+			</style>
+ 		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="main">
+				<!--工具条-->
+				<div id="toolbar">
+					<a href='javascript:void(0);' onclick='onEffect("Bold")'>B</a>
+					<a href='javascript:void(0);' onclick='onEffect("Italic")' style='font-style:italic;'>I</a>
+					<a href='javascript:void(0);' onclick='onEffect("Underline")' style='text-decoration:underline;'>U</a>
+					<a href='javascript:void(0);' onclick='onEffect("copy")'>C</a>
+					<a href='javascript:void(0);' onclick='onEffect("cut")'>T</a>
+					<a href='javascript:void(0);' onclick='onEffect("paste")'>P</a>
+					<a href='javascript:void(0);' onclick='onEffect("delete")'>D</a>
+					<a href='javascript:void(0);' onclick='onEffect("selectAll")'>S</a>
+					<img width=24 height=24 src='images/bgl.gif' style='float:right; cursor:pointer;' onclick='showFace(this)' />
+				</div>
+
+				<!--编辑区-->
+				<iframe allowTansparency='true' scrolling='auto' width='100%' height='122' src='' id='editor' frameBorder='0'></iframe>
+
+				<!--表情框-->
+				<table id='face'>
+					<tr>
+						<td><img src='images/88_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/angrya_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/bba_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/boboshengmenqi_thumb.gif' onclick='insertFace(this)' /></td>
+					</tr>
+					<tr>
+						<td><img src='images/bofubianlian_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/bs_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/bs2_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/bz_thumb.gif' onclick='insertFace(this)' /></td>
+					</tr>
+					<tr>
+						<td><img src='images/cake.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/camera_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/cat_yunqizhong_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/cf_thumb.gif' onclick='insertFace(this)' /></td>
+					</tr>
+					<tr>
+						<td><img src='images/chn_buyaoya_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/cj_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/clock_thumb.gif' onclick='insertFace(this)' /></td>
+						<td><img src='images/come_thumb.gif' onclick='insertFace(this)' /></td>
+					</tr>
+				</table>
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				//定义编辑窗口引用
+				var editPane = null;
+
+				//打开表情窗口
+				function showFace(img){
+					var face = document.getElementById('face');
+					face.style.display = 'block';
+					face.style.left = img.offsetLeft + img.offsetWidth - face.offsetWidth + 'px';
+					face.onclick = function(){ face.style.display = 'none';};
+					editPane.document.onclick = function(){ face.style.display = 'none';};
+				}
+
+				//插入图片
+				function insertFace(img){
+					var image = "<img src='"+img.src+"' />";
+					editPane.focus();
+					editPane.document.execCommand('insertImage',false,img.src);
+				}
+
+				//初始化编辑窗口
+				(function(){
+					editPane = document.getElementById('editor').contentWindow;
+					//打开编辑模式
+					editPane.document.designMode = 'on';
+					editPane.document.contentEditable = true;
+					//打开文档流
+					editPane.document.open();
+					editPane.document.close();
+				})();
+
+				//改变效果
+				function onEffect(effect){
+					editPane.document.execCommand(effect,false,true);
+				}
+			</script>
+
+		</body>
+</html>

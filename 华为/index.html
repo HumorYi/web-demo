@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta Keywords="" content="">
+		<meta Descrition="" content="">
+		<title>html+css布局课程一结课练习</title>
+		<style type="text/css">
+		html,body{width:100%;height:100%;font-family:"Microsoft yahei";font-size:12px;}
+		*{margin:0px;padding:0px;}
+		ul,li{list-style-type:none;}
+		a{text-decoration:none;}
+		img{border:none;}
+		/*顶部导航开始*/
+		#topnav{width:100%;height:40px;background:#333;position:relative;}
+		#topnav div.tnav{width:1190px;height:40px;background:#333;margin:0 auto;}
+		#topnav div.tnav ul li a{
+							padding:0 15px;
+							height:40px;
+							float:left;
+							line-height:40px;
+							font-size:14px;
+							color:#ccc;
+							}
+		/*顶部导航end*/
+		/*顶部下拉导航开始*/
+		#topnav_down{
+						width:100%;
+						height:68px;
+						background:#f4f4f4;
+						border-bottom:1px solid red;
+						box-shadow:0px 0px 1px #000;
+						}
+		#topnav_down div.tnav_d ul i.hw_logo{
+											width:175px;height:68px;
+											background:url("img/hw_logo.jpg") no-repeat;
+											float:left;
+											}
+		#topnav_down div.tnav_d{width:1190px;height:68px;margin:0 auto;background:#f4f4f4;}
+		#topnav_down div.tnav_d ul li {
+									float:left;
+									margin:0 30px 0px 30px;
+									height:68px;
+									line-height:68px;
+									font-size:18px;
+									font-weight:bold;
+									color:#666;
+									}
+		#topnav_down div.tnav_d ul li a{color:#666;}
+		/*li下滑动红块start*/
+		#topnav_down div.tnav_d ul li div.slide{width:100%;height:68px;position:relative;}
+		#topnav_down div.tnav_d ul li div.slide div.box
+		{	width:100%;height:4px;
+			background:red;
+			position:absolute;
+			left:0px;bottom:0px;
+			display:none;
+			}
+		#topnav_down div.tnav_d ul li:hover div.slide div.box{display:block;}
+		/*li下滑动红块end*/
+		/*li下滑动slide_nav 开始*/
+		#topnav_down div.tnav_d ul li div.slide_nav
+		{
+		width:100%;height:320px;
+		background:rgba(0,0,0,.9);
+		box-shadow:0px 0px 1px #000;
+		position:absolute;
+		left:0px;top:-320px;
+		transition:all 1s linear;
+		-webkit-transition:all 1s linear;
+		-moz-transition:all 1s linear;
+		-o-transition:all 1s linear;
+		z-index:1;
+		}
+		#topnav_down div.tnav_d ul li:hover div.slide_nav{top:108px;}
+		#topnav_down div.tnav_d ul li div.slide_nav div.slide_nav_down
+		{width:1190px;height:280px;margin:20px auto;}
+		.slide_nav_down #select{
+								width:228px;height:280px;
+								float:left;
+								border-right:1px solid #999;
+								text-align:center;
+								position:relative;
+								transition:all .5s linear;
+								}
+		.slide_nav_down #select h2{height:50px;line-height:50px;}
+		.slide_nav_down #select a{font-weight:normal;}
+		.slide_nav_down #select a p{color:#fff;}
+		.slide_nav_down #select a p span{color:red;}
+		.slide_nav_down #select a div.more{position:absolute;left:50%;
+											margin-left:-40px;
+											width:80px;height:20px;
+											border:1px solid #fff;
+											font-size:12px;
+											line-height:20px;
+											bottom:10px;
+											color:#fff;
+											opacity:0;
+											transition:all .3s linear;
+											-webkit-transition:all 1s linear;
+											-moz-transition:all 1s linear;
+											-o-transition:all 1s linear;
+											}
+		.slide_nav_down #select:hover a div.more{opacity:1;}
+		.slide_nav_down #select a div.more:hover{background:#999;}
+
+		/*li下滑动slide_nav 结束*/
+		/*顶部下拉导航end*/
+		/*banner开始*/
+		#banner_box{width:100%;height:816px;overflow:hidden;}
+		#banner_box div.banner{width:100%;height:816px;}
+		#banner_box div.banner ul{width:1920px;height:816px;margin:0 auto;}
+		#banner_box div.banner ul li{width:1920px;height:816px;}
+		#banner_box div.banner div.btn_l{width:100px;height:50px;
+										position:absolute;left:120px;top:450px;
+										font-size:40px;
+										font-weight:999;
+										text-align:center;
+										line-height:50px;
+										background:rgba(255,0,0,.5);
+										color:#fff;
+										display:none;
+										}
+		#banner_box:hover div.banner div.btn_l{display:block;}
+
+		#banner_box div.banner div.btn_r{width:100px;height:50px;
+										position:absolute;right:120px;top:450px;
+										font-size:40px;
+										font-weight:999;
+										text-align:center;
+										line-height:50px;
+										background:rgba(255,0,0,.5);
+										color:#fff;
+										display:none;
+										}
+		#banner_box:hover div.banner div.btn_r{display:block;}								
+		
+		/*banner结束*/
+
+		/*content内容开始*/
+		#content{width:100%;min-height:1000px;background:url("img/con-bj.jpg") no-repeat center;background-size:cover;}
+		#content div.con{width:1231px;min-height:1800px;margin:0px auto;position:relative;}
+		/*top滑动效果开始*/
+		#content div.con div.box_top{width:1310px;height:460px;position:absolute;left:0px;top:50px;}
+		#content div.con div.box_top div.bx1{width:610px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_top div.bx1 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_top div.bx1:hover img{left:-20px;}
+		#content div.con div.box_top div.bx1 div.shadow{width:610px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_top div.bx1:hover div.shadow{opacity:0;}
+		#content div.con div.box_top div.bx1 div.text{
+													width:610px;height:58px;
+													background:rgba(4,107,182,.6);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_top div.bx1:hover div.text{bottom:0px;}
+		#content div.con div.box_top div.bx2{width:305px;height:450px;background:blue;float:left;margin-right:5px;overflow:hidden;}
+		#content div.con div.box_top div.bx2{width:305px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_top div.bx2 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_top div.bx2:hover img{left:-20px;}
+		#content div.con div.box_top div.bx2 div.shadow{width:305px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_top div.bx2:hover div.shadow{opacity:0;}
+		#content div.con div.box_top div.bx2 div.text{
+													width:305px;height:58px;
+													background:rgba(4,107,182,.8);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_top div.bx2:hover div.text{bottom:0px;}
+		#content div.con div.box_top div.bx3{width:305px;height:450px;background:pink;float:left;overflow:hidden;}
+		#content div.con div.box_top div.bx3{width:305px;height:450px;background:blue;float:left;margin-right:5px;overflow:hidden;}
+		#content div.con div.box_top div.bx3{width:305px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_top div.bx3 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_top div.bx3:hover img{left:-20px;}
+		#content div.con div.box_top div.bx3 div.shadow{width:305px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_top div.bx3:hover div.shadow{opacity:0;}
+		#content div.con div.box_top div.bx3 div.text{
+													width:305px;height:58px;
+													background:rgba(4,107,182,.8);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_top div.bx3:hover div.text{bottom:0px;}
+		/*middle滑动效果开始*/
+		#content div.con div.box_middle{width:1310px;height:460px;position:absolute;left:0px;top:505px;}
+		#content div.con div.box_middle div.bx1{width:616px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_middle div.bx1 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_middle div.bx1:hover img{left:-20px;}
+		#content div.con div.box_middle div.bx1 div.shadow{width:616px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_middle div.bx1:hover div.shadow{opacity:0;}
+		#content div.con div.box_middle div.bx1 div.text{
+													width:616px;height:58px;
+													background:rgba(4,107,182,.8);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_middle div.bx1:hover div.text{bottom:0px;}
+		#content div.con div.box_middle div.bx2{width:300px;height:450px;background:blue;float:left;margin-right:5px;overflow:hidden;}
+		#content div.con div.box_middle div.bx2{width:300px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_middle div.bx2 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_middle div.bx2:hover img{left:-20px;}
+		#content div.con div.box_middle div.bx2 div.shadow{width:300px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_middle div.bx2:hover div.shadow{opacity:0;}
+		#content div.con div.box_middle div.bx2 div.text{
+													width:300px;height:58px;
+													background:rgba(4,107,182,.8);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_middle div.bx2:hover div.text{bottom:0px;}
+		#content div.con div.box_middle div.bx3{width:305px;height:450px;background:pink;float:left;overflow:hidden;}
+		#content div.con div.box_middle div.bx3{width:305px;height:450px;background:blue;float:left;margin-right:5px;overflow:hidden;}
+		#content div.con div.box_middle div.bx3{width:305px;height:450px;background:red;float:left;margin-right:5px;position:relative;overflow:hidden;}
+		#content div.con div.box_middle div.bx3 img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		#content div.con div.box_middle div.bx3:hover img{left:-20px;}
+		#content div.con div.box_middle div.bx3 div.shadow{width:305px;height:450px;opacity:0.5;position:absolute;left:0px;top:0px;background:#000;}
+		#content div.con div.box_middle div.bx3:hover div.shadow{opacity:0;}
+		#content div.con div.box_middle div.bx3 div.text{
+													width:305px;height:58px;
+													background:rgba(249,220,69,.8);
+													position:absolute;
+													left:0px;bottom:-50px;
+													line-height:58px;
+													font-size:18px;
+													color:#fff;
+													text-indent:2em;
+													transition:all .5s linear;
+													}
+		#content div.con div.box_middle div.bx3:hover div.text{bottom:0px;}
+		/*bottom滑动效果开始*/
+		#content div.con div.box_bottom{width:1231px;height:684px;position:absolute;left:0px;top:962px;}
+		#content div.con div.box_bottom div.l{width:610px;height:696px;margin-right:5px;float:left;}
+		#content div.con div.box_bottom div.l div.top
+		{width:610px;height:230px;background:blue;overflow:hidden;position:relative;}
+		.l div.top div.shadow
+		{width:610px;height:230px;background:#000;opacity:0.8;position:absolute;left:0px;top:0px;transition:all .5s linear;}
+		.l div.top:hover div.shadow{opacity:0;}
+		.l div.top img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		.l div.top:hover img{left:-20px;}
+		.l div.top div.text{width:100%;height:57px;
+					background:rgba(4,107,182,.8);
+					position:absolute;
+					left:0px;bottom:-50px;
+					line-height:58px;
+					font-size:18px;
+					color:#fff;
+					text-indent:2em;
+					transition:all .5s linear;
+					}
+		.l div.top:hover div.text{bottom:0px;}
+		
+
+		#content div.con div.box_bottom div.l div.bottom
+		{width:610px;height:449px;background:blue;margin-top:5px;overflow:hidden;position:relative;}
+		.l div.bottom div.shadow
+		{width:100%;height:449px;background:#000;position:absolute;left:0px;top:0px;opacity:0.8;transition:all .5s linear;}
+		.l div.bottom img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		.l div.bottom:hover img{left:-20px;}
+		.l div.bottom:hover div.shadow{opacity:0;}
+		.l div.bottom div.text{
+								width:100%;height:57px;
+								background:rgba(202,93,89,.8);
+								position:absolute;
+								left:0px;bottom:-50px;
+								line-height:58px;
+								font-size:18px;
+								color:#fff;
+								text-indent:2em;
+								transition:all .5s linear;
+							}
+		.l div.bottom:hover div.text{bottom:0px;}
+		#content div.con div.box_bottom div.r{width:609px;height:696px;float:left;}
+		#content div.con div.box_bottom div.r div.top
+		{width:614px;height:449px;margin-bottom:5px;overflow:hidden;}
+		#content div.con div.box_bottom div.r div.top div.left{width:306px;height:449px;background:#ff00ff;float:left;margin-right:5px;overflow:hidden;position:relative;}
+		.r div.top div.left div.shadow
+		{width:100%;height:449px;background:#000;position:absolute;left:0px;top:0px;opacity:0.8;transition:all .5s linear;}
+		.r div.top div.left img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		.r div.top div.left:hover img{left:-20px;}
+		.r div.top div.left:hover div.shadow{opacity:0;}
+		.r div.top div.left div.text{
+								width:100%;height:57px;
+								background:rgba(249,220,69,.8);
+								position:absolute;
+								left:0px;bottom:-50px;
+								line-height:58px;
+								font-size:18px;
+								color:#fff;
+								text-indent:2em;
+								transition:all .5s linear;
+							}
+		.r div.top div.left:hover div.text{bottom:0px;}
+		#content div.con div.box_bottom div.r div.top div.right{width:298px;height:460px;background:#99cc99;float:right;overflow:hidden;position:relative;}
+		.r div.top div.right div.shadow
+		{width:100%;height:449px;background:#000;position:absolute;left:0px;top:0px;opacity:0.8;transition:all .5s linear;}
+		.r div.top div.right img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		.r div.top div.right:hover img{left:-20px;}
+		.r div.top div.right:hover div.shadow{opacity:0;}
+		.r div.top div.right div.text{
+								width:100%;height:57px;
+								background:rgba(4,107,182,.8);
+								position:absolute;
+								left:0px;bottom:-50px;
+								line-height:58px;
+								font-size:18px;
+								color:#fff;
+								text-indent:2em;
+								transition:all .5s linear;
+							}
+		.r div.top div.right:hover div.text{bottom:0px;}
+		#content div.con div.box_bottom div.r div.bottom
+		{width:614px;height:231px;background:gray;overflow:hidden;position:relative;}
+
+		.r div.bottom div.shadow
+		{width:100%;height:449px;background:#000;position:absolute;left:0px;top:0px;opacity:0.8;transition:all .5s linear;}
+		.r div.bottom img{position:absolute;left:0px;top:0px;transition:all 1s linear;}
+		.r div.bottom:hover img{left:-20px;}
+		.r div.bottom:hover div.shadow{opacity:0;}
+		.r div.bottom div.text{
+								width:100%;height:57px;
+								background:rgba(202,93,89,.8);
+								position:absolute;
+								left:0px;bottom:-50px;
+								line-height:58px;
+								font-size:18px;
+								color:#fff;
+								text-indent:2em;
+								transition:all .5s linear;
+							}
+		.r div.bottom:hover div.text{bottom:0px;}
+		/*connet内容结束*/
+		</style>
+	</head>
+	<body>
+		<!--顶部导航开始-->
+		<div id="topnav">
+			<div class="tnav">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">个人与家庭用户</a></li>
+					<li><a href="#">企业用户</a></li>
+					<li><a href="#">运营商用户</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--顶部导航结束-->
+		<!--顶部下拉导航开始-->
+		<div id="topnav_down">
+			<div class="tnav_d">
+				<ul>
+					<i class="hw_logo"></i>
+					<li>
+						<div class="slide">
+							<a href="#">手机</a>
+							<div class="box"></div>
+						</div>
+						<div class="slide_nav">
+							<div class="slide_nav_down">
+								<div id="select" class="box1">
+									<h2>Mate系列</h2>
+									<a href="#">
+										<p>Mate<span>7</span>移动版本</p>
+										<img src="img/1.jpg">
+										<div class="more">了解更多</div>	
+									</a>
+								</div>
+								<div id="select" class="box2" >
+									<h2>P系列</h2>
+									<a href="#">
+										<p>P<span>8</span></p>
+										<img src="img/1.jpg">
+										<div class="more">了解更多</div>	
+									</a>
+								</div>
+								<div id="select" class="box3">
+									<h2>G系列</h2>
+									<a href="#">
+										<p>G<span>7</span>移动版本</p>
+										<img src="img/1.jpg">
+										<div class="more">了解更多</div>	
+									</a>
+								</div>
+								<div id="select" class="box4">
+									<h2>Y系列</h2>
+									<a href="#">
+										<p>Mate<span>4</span>移动版本</p>
+										<img src="img/1.jpg">
+										<div class="more">了解更多</div>	
+									</a>
+								</div>
+								<div id="select" class="box5">
+									<h2>Mate系列</h2>
+									<a href="#">
+										<p>Mate<span>7</span>移动版本</p>
+										<img src="img/1.jpg">
+										<div class="more">了解更多</div>	
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="slide">
+							<a href="#">平板电脑</a>
+							<div class="box"></div>
+						</div>
+
+					</li>
+					<li>
+						<div class="slide">
+							<a href="#">智能穿戴</a>
+							<div class="box"></div>
+						</div>
+					</li>
+					<li>
+						<div class="slide">
+							<a href="#">软件中心</a>
+							<div class="box"></div>
+						</div>
+					</li>
+					<li>
+						<div class="slide">
+							<a href="#">更多产品</a>
+							<div class="box"></div>
+						</div>
+					</li>
+					<li>
+						<div class="slide">
+							<a href="#">服务与支持</a>
+							<div class="box"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--顶部下拉导航end-->
+		<!--banner开始-->
+		<div id="banner_box">
+			<div class="banner">
+				<ul>
+					<li><img src="img/banner1.jpg"/></li>
+					<li><img src="img/banner2.jpg"/></li>
+					<li><img src="img/banner3.jpg"/></li>
+					<li><img src="img/banner4.jpg"/></li>
+				</ul>
+				<div class="btn_l"><span>&lt</span></div>
+				<div class="btn_r"><span>&gt</span></div>
+			</div>
+		</div>
+		<!--banner结束-->
+		<div id="content">
+			<div class="con">
+				<div class="box_top">
+					<div class="bx1">
+						<img src="img/06.jpg" />
+						<div class="shadow"></div>
+						<div class="text">似水流年，华为P8TVC广告</div>
+					</div>
+					<div class="bx2">
+						<img src="img/08.jpg"/>
+						<div class="shadow"></div>
+						<div class="text">华为P8max 产品视频</div>
+					</div>
+					<div class="bx3">
+						<img src="img/09.jpg"/>
+						<div class="shadow"></div>
+						<div class="text">华为B2 产品视频</div>
+					</div>
+				</div>
+				<div class="box_middle">
+					<div class="bx3">
+						<img src="img/04.jpg" />
+						<div class="shadow"></div>
+						<div class="text">跨越里程碑 决胜格局年</div>
+					</div>
+					<div class="bx2">
+						<img src="img/05.jpg"/>
+						<div class="shadow"></div>
+						<div class="text">华为B2——引领全新生活方式</div>
+					</div>
+					<div class="bx1">
+						<img src="img/10.jpg"/>
+						<div class="shadow"></div>
+						<div class="text">华为P8 产品视频</div>
+					</div>
+				</div>
+
+				<div class="box_bottom">
+					<div class="l">
+						<div class="top">
+							<img src="img/07x.jpg"/>
+							<div class="shadow"></div>
+							<div class="text">似水流年之卓然，华为P8时光故事</div>
+						</div>
+						<div class="bottom">
+							<img src="img/01.jpg"/>
+							<div class="shadow"></div>
+							<div class="text">似水流年之卓然，华为P8时光故事</div>
+						</div>
+					</div>	
+					<div class="r">
+						<div class="top">
+							<div class="left">
+								<img src="img/02.jpg"/>
+								<div class="shadow"></div>
+								<div class="text">似水流年之卓然，华为P8时光故事</div>
+							</div>
+							<div class="right">
+								<img src="img/03.jpg"/>
+								<div class="shadow"></div>
+								<div class="text">似水流年之卓然，华为P8时光故事</div>
+							</div>
+						</div>
+						<div class="bottom">
+							<img src="img/11x.jpg">
+							<div class="shadow"></div>
+							<div class="text">似水流年之卓然，华为P8时光故事</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<script tyep="text/javascript" src="js/jquery.js"></script>
+		<script tyep="text/javascript">
+			var i=0;
+			$("#banner_box div.banner div.btn_l").click(function(){
+				(i<0)?(i=2):(i--)
+				$("#banner_box div.banner ul li").eq(i).fadeIn(400).siblings().fadeOut(400);			
+			});
+			$("#banner_box div.banner div.btn_r").click(function(){
+				(i>2)?(i=0):(i++)
+				$("#banner_box div.banner ul li").eq(i).fadeIn(400).siblings().fadeOut(400);			
+			});
+		</script>
+	</body>
+</html>

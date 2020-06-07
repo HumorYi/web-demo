@@ -1,0 +1,1283 @@
+<html>
+
+<head>
+    <title>级联菜单</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        body, h1, div, ol {
+            margin: 0;
+            pcreateing: 0;
+        }
+
+        h1, #menus, #editMenuArea {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        #menus > #fnArea > button {
+            margin-right: 40px;
+        }
+
+        #menus > #showMenuArea,
+        #menus > #editMenuArea {
+            vertical-align: middle;
+        }
+
+        #menus > #editMenuArea, #menus {
+            -moz-box-sizing: border-box; /*Firefox3.5+*/
+            -webkit-box-sizing: border-box; /*Safari3.2+*/
+            -o-box-sizing: border-box; /*Opera9.6*/
+            -ms-box-sizing: border-box; /*IE8*/
+            box-sizing: border-box; /*W3C标准(IE9+，Safari5.1+,Chrome10.0+,Opera10.6+都符合box-sizing的w3c标准语法)*/
+        }
+
+        #menus > #editMenuArea {
+            display: none;
+            height: 200px;
+            margin: 20px 0;
+            padding: 30px;
+            border: 4px dotted green;
+        }
+
+        #menus > #editMenuArea > #menuForm > button {
+            margin: 10px 0;
+        }
+
+        #menus > #editMenuArea > #menuForm > ol > li {
+            margin-left: 60px;
+            margin-top: 10px;
+        }
+
+        #menus > #submitMenuBtn {
+            display: none;
+            width: 100%;
+        }
+
+        #menus > #showMenuArea > select {
+            width: 140px;
+            margin-right: 20px;
+        }
+
+        #menus > #editMenuArea > #menuForm > input:first-child {
+            width: 300px;
+        }
+
+        #menus > #editMenuArea > #menuForm > ol:first-of-type > li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>菜单show</h1>
+
+<div id="menus">
+    <!--功能按钮-->
+    <div id="fnArea">
+        <button id="createMenuBtn">新增菜单</button>
+        <button id="updateMenuBtn">修改菜单</button>
+        <button id="delMenuBtn">删除菜单</button>
+        <button id="cancelBtn">取消</button>
+    </div>
+    <hr/>
+
+    <!--功能对应的内容显示区域-->
+    <div id="editMenuArea">
+        <div id="updateAndDelBtn"></div>
+        <form id="menuForm" onsubmit="return false;"></form>
+    </div>
+
+    <button id="submitMenuBtn" type="submit" form="menuForm">提交菜单</button>
+    <hr/>
+
+    <!--菜单展示-->
+    <div id="showMenuArea">
+        一级菜单 : <select class="firstLvlMenuSel"></select>
+        二级菜单 : <select class="secondLvlMenuSel"></select>
+        价格(元) : <select class="thirdLvlMenuSel"></select>
+    </div>
+</div>
+
+<script>
+    // 封装$方法
+    window.$ = HTMLElement.prototype.$ = function (selector) {
+        var elems = (this === window ? document : this).querySelectorAll(selector);
+        return elems.length === 0 ? null : elems.length === 1 ? elems[0] : elems;
+    };
+
+    // 菜单JSON
+    var menu = [
+        {
+            "type_id": 1,
+            "name": "大菜",
+            "foods": [
+                {
+                    "food_id": 1,
+                    "name": "鱼鲜肉丝",
+                    "price": "10"
+                },
+                {
+                    "food_id": 2,
+                    "name": "红烧肉",
+                    "price": "11"
+                },
+                {
+                    "food_id": 3,
+                    "name": "香辣粉",
+                    "price": "12"
+                }
+            ]
+        },
+        {
+            "type_id": 2,
+            "name": "中菜",
+            "foods": [
+                {
+                    "food_id": 4,
+                    "name": "小炒肉",
+                    "price": "13"
+                },
+                {
+                    "food_id": 5,
+                    "name": "云吞",
+                    "price": "14"
+                }
+            ]
+        },
+        {
+            "type_id": 3,
+            "name": "小菜",
+            "foods": [
+                {
+                    "food_id": 6,
+                    "name": "雪糕",
+                    "price": "15"
+                },
+                {
+                    "food_id": 7,
+                    "name": "黄瓜",
+                    "price": "16"
+                }
+            ]
+        }
+    ];
+
+    // 功能button
+    var fnArea_createMenuBtn = $('#menus > #fnArea > #createMenuBtn');
+    var fnArea_updateMenuBtn = $('#menus > #fnArea > #updateMenuBtn');
+    var fnArea_delMenuBtn = $('#menus > #fnArea > #delMenuBtn');
+
+    // 显示菜单操作内容区域
+    var editMenuArea = $('#menus > #editMenuArea');
+    var editMenuArea_menuForm = $('#menus > #editMenuArea > #menuForm');
+
+    // 各级别select
+    var showMenuArea_firstLvlMenuSel = $('#menus > #showMenuArea > .firstLvlMenuSel');
+    var showMenuArea_secondLvlMenuSel = $('#menus > #showMenuArea > .secondLvlMenuSel');
+    var showMenuArea_thirdLvlMenuSel = $('#menus > #showMenuArea > .thirdLvlMenuSel');
+
+    //　提交按钮
+    var submitMenuBtn = $('#menus > #submitMenuBtn');
+
+    var fnArea_btnList = [fnArea_createMenuBtn, fnArea_updateMenuBtn, fnArea_delMenuBtn];
+
+    // 设置操作类型，通过操作类型来判断提交数据的操作，针对不同的操作，进行不同的处理
+    var operate_type = '';
+    var menu_lvl = '';
+
+    var operateType = {
+        create: 'create',
+        update: 'update',
+        del: 'del'
+    };
+
+    var menuLvl = {
+        first: 'first',
+        second: 'second'
+    };
+
+    // 页面加载同时加载JS内容
+    window.onload = initMenu;
+
+    // 新增菜单
+    fnArea_createMenuBtn.onclick = function () {
+        operateFnBtn(operateType.create, this);
+    };
+
+    // 修改菜单
+    fnArea_updateMenuBtn.onclick = function () {
+        operateFnBtn(operateType.update, this);
+    };
+
+    // 删除菜单
+    fnArea_delMenuBtn.onclick = function () {
+        operateFnBtn(operateType.del, this);
+    };
+
+    // 点击展示区一级菜单选项同步更新二级菜单内容
+    showMenuArea_firstLvlMenuSel.onchange = initSecondLvlMenu;
+
+    // 点击展示区二级菜单时，更新三级菜单被选中项
+    showMenuArea_secondLvlMenuSel.onchange = function () {
+        showMenuArea_thirdLvlMenuSel.options[showMenuArea_secondLvlMenuSel.selectedIndex].selected = true;
+    };
+
+    // 点击展示区三级菜单时，更新二级菜单被选中项
+    showMenuArea_thirdLvlMenuSel.onchange = function () {
+        showMenuArea_secondLvlMenuSel.options[showMenuArea_thirdLvlMenuSel.selectedIndex].selected = true;
+    };
+
+    // 提交数据
+    submitMenuBtn.onclick = function () {
+        // 新增和删除菜单操作传递的数据验证都是一样的，所以混和在一起，在内部做操作判断
+        switch (operate_type) {
+            case operateType.create:
+            case operateType.update:
+                createOrUpdateMenu(operate_type, menu_lvl);
+                break;
+            case operateType.del:
+                switch (menu_lvl) {
+                    case menuLvl.first:
+                        delFirstLvlMenuDate();
+                        break;
+                    case menuLvl.second:
+                        delSecondLvlMenuDate();
+                        break;
+                    default:
+                        alert(menu_lvl + ' 无效');
+                        break;
+                }
+                break;
+            default:
+                alert(operate_type + ' 无效');
+                break;
+        }
+    };
+
+    // 取消操作功能
+    $('#cancelBtn').onclick = function () {
+        // 如果新增菜单内容已显示，则隐藏
+        if (editMenuArea.style.display === "block") {
+            editMenuArea.style.display = "none";
+        }
+
+        // 如果提交菜单　按钮已显示，则隐藏
+        if (submitMenuBtn.style.display === "block") {
+            submitMenuBtn.style.display = "none";
+        }
+
+        fnArea_btnList.forEach(function (button) {
+            // 如果有当前功能按钮被禁用了，则启用
+            if (button.getAttribute("disabled")) {
+                button.removeAttribute("disabled");
+                button.setAttribute("enabled", "true");
+                return;
+            }
+        });
+    };
+
+    // 初始化所有菜单数据
+    function initMenu() {
+        initFirstLvlMenu();
+
+        initSecondLvlMenu();
+    }
+
+    // 初始化一级菜单
+    function initFirstLvlMenu() {
+        if (menu.length === 0) {
+            return;
+        }
+
+        var first_Lvl_menu_html = "";
+        // 初始化一级菜单
+        menu.forEach(function (item) {
+            first_Lvl_menu_html += "<option value=" + item["type_id"] + ">" + item["name"] + "</option>";
+        });
+
+        showMenuArea_firstLvlMenuSel.innerHTML = first_Lvl_menu_html;
+        first_Lvl_menu_html = null;
+    }
+
+    // 初始化二级菜单
+    function initSecondLvlMenu() {
+        var index = showMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+        var currentFoods = menu[index]["foods"];
+
+        var second_Lvl_menu_html = "";
+        var third_Lvl_menu_html = "";
+
+        if (currentFoods.length > 0) {
+            currentFoods.forEach(function (food) {
+                second_Lvl_menu_html += "<option value=" + food["food_id"] + ">" + food["name"] + "</option>";
+                third_Lvl_menu_html += "<option value=" + food["food_id"] + ">" + food["price"] + "</option>";
+            });
+        }
+
+        showMenuArea_secondLvlMenuSel.innerHTML = second_Lvl_menu_html;
+        showMenuArea_thirdLvlMenuSel.innerHTML = third_Lvl_menu_html;
+
+        index = null;
+        second_Lvl_menu_html = null;
+        third_Lvl_menu_html = null;
+        currentFoods = null;
+    }
+
+    /**
+     * 删除当前二级菜单，即移除子元素
+     * index 当前子节点的索引
+     * */
+    function delCurrentSecondMenuInEditMenuArea(that) {
+        that.parentNode.parentNode.removeChild(that.parentNode);
+    }
+
+    /**
+     * 修改 和 删除 菜单功能页面点击一级菜单下拉框时，
+     * 同步更新二级菜单内容
+     * */
+    function selectedFirstLvlMenuToUpdateSecondLvlMenuInEditMenuArea() {
+        initEditMenuAreaHeight();
+
+        editMenuArea_secondLvlMenuContent();
+    }
+
+    /**
+     * 改变新增菜单区域宽度
+     * height: 要改变菜单区域高度的值
+     * */
+    function updateEditMenuAreaHeight(height) {
+        var value = parseInt(getCss(editMenuArea, "height")) + height + 'px';
+        setCss(editMenuArea, "height", value);
+
+        value = null;
+    }
+
+    /**
+     * 控制功能按钮的状态，启用和禁用
+     * @param btnList    按钮列表
+     * @param currentBtn　当前按钮
+     * */
+    function updateBtnState(btnList, currentBtn) {
+        initEditMenuAreaHeight();
+
+        // 如果菜单内容区域被隐藏了，则显示
+        if (getCss(editMenuArea, "display") === "none") {
+            setCss(editMenuArea, "display", "block");
+        }
+
+        // 如果提交菜单按钮被隐藏了，则显示
+        if (getCss(submitMenuBtn, "display") === "none") {
+            setCss(submitMenuBtn, "display", "block");
+        }
+
+        var str_enabled = 'enabled';
+        var str_disabled = 'disabled';
+
+        btnList.forEach(function (btn) {
+            if (btn === currentBtn) {
+                if (btn.getAttribute(str_enabled) === null || btn.getAttribute(str_enabled)) {
+                    btn.removeAttribute(str_enabled);
+                    btn.setAttribute(str_disabled, "false");
+                }
+            }
+            else {
+                if (btn.getAttribute(str_disabled) === null || btn.getAttribute(str_disabled)) {
+                    btn.removeAttribute(str_disabled);
+                    btn.setAttribute(str_enabled, "true");
+                }
+            }
+        });
+    }
+
+    // 二级菜单内容
+    function editMenuArea_secondLvlMenuContent() {
+    	if (operate_type === operateType.create) {
+    		setEditMenuAreaMenuFormFirstOlInnerHTML('二级菜单内容 :');
+    		return;
+   		}
+
+        var editMenuArea_firstLvlMenuSel = $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel');
+
+        var index = editMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+        editMenuArea_firstLvlMenuSel.options[index].selected = true;
+
+        var currentFoods = menu[index]["foods"];
+
+        if (currentFoods.length === 0) {
+            setEditMenuAreaMenuFormFirstOlInnerHTML(getEditMenuAreaMenuFormFirstOl().innerHTML);
+            return;
+        }
+
+        var second_Lvl_menu_html = "";
+
+        currentFoods.forEach(function (food, index) {
+            second_Lvl_menu_html += generateAMenuData(menu_lvl, food, index);
+        });
+
+        setEditMenuAreaMenuFormFirstOlInnerHTML(second_Lvl_menu_html);
+
+        updateEditMenuAreaHeight(currentFoods.length * 35);
+
+        index = null;
+        editMenuArea_firstLvlMenuSel = null;
+        currentFoods = null;
+        second_Lvl_menu_html = null;
+    }
+
+    /**
+     * 点击提交按钮后，同步更新展示区的一级菜单下拉框默认选项　为　编辑区域的一级菜单下拉框对应的选项
+     * @param selectedIndex　选项下标
+     * @param element　要更新的元素
+     *
+     * */
+    function updateMenu(selectedIndex, element) {
+
+        initMenu();
+
+        element.options[selectedIndex].selected = true;
+    }
+
+    /**
+     * 创建一级菜单数据
+     * @param typeId: 一级菜单typeId
+     * @param name: 菜单名
+     * */
+    function createOneFirstMenu(typeId, name) {
+        return {
+            "type_id": typeId,
+            "name": name,
+            "foods": []
+        };
+    }
+
+    /**
+     * 获取指定元素的指定css样式值
+     * @param element 指定元素
+     * @param style css样式
+     *
+     * 使用getPropertyValue方法不必可以驼峰书写形式（不支持驼峰写法），
+     *  例如：style.getPropertyValue("border-top-left-radius")
+     * */
+    function getCss(element, style) {
+        var api = element.currentStyle ? element.currentStyle : document.defaultView.getComputedStyle(element, null);
+
+        return api.getPropertyValue(style);
+    }
+
+    /**
+     * 设置指定元素的指定css样式值
+     * @param element 指定元素
+     * @param attr css样式
+     * @param value css样式值
+     * */
+    function setCss(element, attr, value) {
+        element.style[attr] = value;
+    }
+
+    /**
+     * 获取一级菜单的type_id
+     * */
+    function getFirstLvlMenuTypeId() {
+        var typeId = 1;
+
+        if (menu.length > 0) {
+            // typeId 为 最后一个一级菜单的 type_id + 1
+            typeId = menu[menu.length - 1]["type_id"] + 1;
+        }
+
+        return typeId;
+    }
+
+    /**
+     * 获取二级菜单的food_id
+     * */
+    function getSecondLvlMenuFoodId() {
+        if (menu.length === 0) {
+            return 1;
+        }
+
+        // 获取所有菜单中最后一个一级菜单
+        var lastMenu = menu[menu.length - 1];
+
+        // 获取所有菜单中最后一个一级菜单中最后一个二级菜单
+        var lastFood = lastMenu["foods"];
+
+        // 先倒序遍历最后一个一级菜单中的二级菜单
+        if (lastFood.length > 0) {
+            return lastFood[lastFood.length - 1]["food_id"];
+        }
+
+        // 倒序遍历每个一级菜单中的二级菜单
+        for (var i = menu.length - 2; i >= 0; i--) {
+            var currentFoods = menu[i]["foods"];
+
+            if (currentFoods.length > 0) {
+                return currentFoods[currentFoods.length - 1]["food_id"];
+            }
+        }
+
+        // 当前所有一级菜单中均没有二级菜单
+        return 1;
+    }
+
+    /**
+     * 验证一级菜单数据中是否有重复的名字
+     * */
+    function isExistsRepeatNameInFirstLvlMenu() {
+
+        // 判断新建一级菜单内容是否已存在于 以及菜单列表中
+        var firstLvlNameList = [];
+        var Lis = $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+
+        if (Lis === null) {
+            return;
+        }
+
+        if (Lis.length === undefined) {
+            firstLvlNameList.push(Lis.getElementsByTagName('input')[0].value.trim());
+        }
+        else {
+            for (var i = 0, len = Lis.length; i < len; i++) {
+                var name = Lis[i].getElementsByTagName('input')[0].value.trim();
+
+                if (name === '') {
+                    continue;
+                }
+
+                if (firstLvlNameList.indexOf(name) !== -1) {
+                    return alert("一级菜单内容：" + name + " 已存在!");
+                }
+
+                firstLvlNameList.push(name);
+            }
+
+            name = null;
+        }
+
+        Lis = null;
+
+        var menuLength = menu.length;
+
+        if (menuLength === 0) {
+            return true;
+        }
+
+        for (var i = 0; i < menuLength; i++) {
+            var name = menu[i]["name"];
+
+            if (operate_type === operateType.update && firstLvlNameList[i] === name) {
+                continue;
+            }
+
+            if (firstLvlNameList.indexOf(name) !== -1) {
+                return alert("一级菜单内容：" + name + " 已存在!");
+            }
+        }
+
+        firstLvlNameList = null;
+        return true;
+    }
+
+    /**
+     * 验证二级菜单数据中是否有重复的名字
+     * */
+    function isExistsRepeatNameInSecondLvlMenu() {
+        // 判断二级菜单中是否有重复菜单名
+        var secondLvlNameList = [];
+        var Lis = $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+
+        if (Lis === null) {
+            return;
+        }
+
+        if (menu.length === 0) {
+            return alert('请先创建一级菜单，谢谢！');
+        }
+
+        if (Lis.length !== undefined) {
+
+            for (var i = 0, len = Lis.length; i < len; i++) {
+                var foodName = Lis[i].getElementsByTagName("input")[0].value.trim();
+
+                if (foodName === '') {
+                    continue;
+                }
+
+                if (secondLvlNameList.indexOf(foodName) !== -1) {
+                    return alert("二级菜单内容：" + foodName + " 已存在!");
+                }
+
+                secondLvlNameList.push(foodName);
+            }
+        }
+
+        var index = $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel').selectedIndex || 0;
+
+        var currentSecondMenuFoods = menu[index]["foods"];
+        var currentSecondMenuFoodsLength = currentSecondMenuFoods.length;
+
+        for (var i = 0; i < currentSecondMenuFoodsLength; i++) {
+            var name = currentSecondMenuFoods[i]["name"];
+
+            if (operate_type === operateType.update && secondLvlNameList[i] === name) {
+                continue;
+            }
+
+            if (secondLvlNameList.indexOf(name) !== -1) {
+                return alert("二级菜单内容：" + name + " 已存在!");
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 创建一级菜单数据
+     * */
+    function createFirstLvlMenuData() {
+
+        // 判断新建一级菜单内容是否已存在于 以及菜单列表中
+        var Lis = $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+
+        if (Lis === null) {
+            return;
+        }
+
+        var optoinHtmls = '';
+
+        if (Lis.length === undefined) {
+            var optionHtml = createFirstMenuAndGenerateOptHtml(Lis);
+
+            if (optionHtml === false) {
+                return;
+            }
+
+            optoinHtmls += optionHtml;
+        }
+        else {
+            for (var i = 0, len = Lis.length; i < len; i++) {
+                var optionHtml = createFirstMenuAndGenerateOptHtml(Lis[i]);
+
+                if (optionHtml === false) {
+                    continue;
+                }
+
+                optoinHtmls += optionHtml;
+            }
+        }
+
+        showMenuArea_firstLvlMenuSel.innerHTML += optoinHtmls;
+
+        alert('创建一级菜单成功');
+
+        Lis = null;
+
+        function createFirstMenuAndGenerateOptHtml(li) {
+            var typeId = getFirstLvlMenuTypeId();
+            var name = li.getElementsByTagName('input')[0].value.trim();
+
+            if (name === '') {
+                return false;
+            }
+
+            menu.push(createOneFirstMenu(typeId, name));
+
+            var lastMenu = menu[menu.length - 1];
+
+            return generateOptHtml(lastMenu["type_id"], lastMenu["name"]);
+        }
+    }
+
+    /**
+     * 创建二级菜单数据
+     * */
+    function createSecondLvlMenuData() {
+        // 判断二级菜单中是否有重复菜单名
+        var Lis = $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+        if (Lis === null) {
+            return;
+        }
+        var secondOptHtmls = '';
+        var thirdOptHtmls = '';
+
+        if (Lis.length === undefined) {
+            var htmls = createSecondMenuAndGenerateOptHtml(Lis);
+        }
+        else {
+            for (var i = 0, len = Lis.length; i < len; i++) {
+
+                var htmls = createSecondMenuAndGenerateOptHtml(Lis[i]);
+
+                if (htmls === false) {
+                    continue;
+                }
+            }
+        }
+
+        showMenuArea_secondLvlMenuSel.innerHTML += secondOptHtmls;
+        showMenuArea_thirdLvlMenuSel.innerHTML += thirdOptHtmls;
+
+        alert('创建二级菜单成功');
+
+        function createSecondMenuAndGenerateOptHtml(li) {
+            var inputs = li.getElementsByTagName('input');
+            var foodName = inputs[0].value.trim();
+            var foodPrice = inputs[1].value.trim();
+
+            if (foodName !== '' || foodPrice !== '') {
+
+	            var food = {
+	                "food_id": getSecondLvlMenuFoodId(),
+	                "name": foodName,
+	                "price": foodPrice
+	            };
+
+	            var index = showMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+	            menu[index]["foods"].push(food);
+	        }
+        }
+    }
+
+    /**
+     * 修改一级菜单数据
+     * */
+    function updateFirstLvlMenuData() {
+        if (menu.length === 0) {
+            return alert('请先创建一级菜单，谢谢！');
+        }
+
+        var Lis = $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+
+        if (Lis === null) {
+            return alert('别闹');
+        }
+
+        var menuLength = menu.length;
+
+        // 只有一条，随便改
+        if (menuLength === 1 && Lis.length === undefined) {
+            return true;
+        }
+
+        if (menu.length !== Lis.length) {
+            return alert('一级菜单数据与被修改的数据长度不相等');
+        }
+
+        for (var i = 0; i < menuLength; i++) {
+            var newName = Lis[i].getElementsByTagName('input')[0].value.trim();
+
+            if (menu[i]["name"] !== newName) {
+                menu[i]["name"] = newName;
+
+                showMenuArea_firstLvlMenuSel.options[i].text = menu[i]["name"];
+            }
+        }
+
+        alert('修改一级菜单成功');
+    }
+
+    /**
+     * 修改二级菜单数据
+     * */
+    function updateSecondLvlMenuData() {
+        if (menu.length === 0) {
+            return alert('请先创建一级菜单，谢谢！');
+        }
+
+        var Lis = getEditMenuAreaMenuFormFirstOlLis();
+
+        if (Lis === null) {
+            return alert('别闹');
+        }
+
+        var editMenuArea_firstLvlMenuSel = $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel');
+
+        var index = editMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+        var currentFoods = menu[index]["foods"];
+
+        var foodLength = currentFoods.length;
+
+        if (foodLength === 0) {
+            return alert('请先创建二级菜单，谢谢！');
+        }
+
+        // 只有一条，随便改
+        if (foodLength === 1 && Lis.length === undefined) {
+            return true;
+        }
+
+        if (foodLength !== Lis.length) {
+            return alert('一级菜单数据与被修改的数据长度不相等');
+        }
+
+        for (var i = 0; i < foodLength; i++) {
+            var newName = Lis[i].getElementsByTagName('input')[0].value.trim();
+            var newPrice = Lis[i].getElementsByTagName('input')[1].value.trim();
+
+            if (currentFoods[i]["name"] !== newName) {
+                currentFoods[i]["name"] = newName;
+
+                showMenuArea_secondLvlMenuSel.options[i].text = currentFoods[i]["name"];
+            }
+
+            if (currentFoods[i]["price"] !== newPrice) {
+                currentFoods[i]["price"] = newPrice;
+
+                showMenuArea_thirdLvlMenuSel.options[i].text = currentFoods[i]["price"];
+            }
+        }
+
+        alert('修改二级菜单成功');
+    }
+
+    /**
+     * 删除一级菜单
+     * */
+    function delFirstLvlMenuDate() {
+        var Lis = getEditMenuAreaMenuFormFirstOlLis();
+
+        var menuLength = menu.length;
+
+        if (menuLength === 0) {
+            return alert('没有一级菜单');
+        }
+
+        // 如果都删除，则同步更新展示区的各级菜单内容
+        if (Lis === null) {
+            menu = [];
+            showMenuArea_firstLvlMenuSel.innerHTML = '';
+            showMenuArea_secondLvlMenuSel.innerHTML = '';
+            showMenuArea_thirdLvlMenuSel.innerHTML = '';
+
+            return;
+        }
+        else {
+            if (menuLength === Lis.length ||
+                (menuLength === 1 && Lis.length === undefined)
+
+            ) {
+                return alert('没有删除');
+            }
+
+            var newMenu = [];
+            if (Lis.length === undefined) {
+                var index = getIndexOfCurrentElmeInFatherElems(Lis);
+                newMenu.push(menu[index]);
+            }
+            else {
+                var newMenu = [];
+                Lis.forEach(function (li) {
+                    var index = getIndexOfCurrentElmeInFatherElems(li);
+
+                    newMenu.push(menu[index]);
+                });
+
+            }
+            menu = newMenu;
+        }
+
+        initMenu();
+    }
+
+    /**
+     * 删除二级菜单
+     * */
+    function delSecondLvlMenuDate() {
+        if(menu.length === 0){
+            return alert('没有一级菜单');
+        }
+
+        var Lis = getEditMenuAreaMenuFormFirstOlLis();
+
+        var editMenuArea_firstLvlMenuSel = $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel');
+
+        var index = editMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+        if (Lis === null) {
+            showMenuArea_secondLvlMenuSel.innerHTML = '';
+            showMenuArea_thirdLvlMenuSel.innerHTML = '';
+
+            if (menu[index]["foods"].length === 0) {
+                alert('一级菜单 :  "' + showMenuArea_firstLvlMenuSel.options[index].text + ' 没有二级内容');
+            }
+            else {
+                menu[index]["foods"] = [];
+            }
+
+            return;
+        }
+        else {
+            var currentFoods = menu[index]["foods"];
+            var currentFoodsLength = currentFoods.length;
+
+            if (currentFoodsLength === 0) {
+                return alert('一级菜单 "' + currentFoods + '" 没有二级菜单');
+            }
+
+            if (currentFoodsLength === Lis.length ||
+                (currentFoodsLength === 1 && Lis.length === undefined)
+            ) {
+                return alert('没有删除');
+            }
+
+            var newFoods = [];
+            if (Lis.length === undefined) {
+                var foodsIndex = getIndexOfCurrentElmeInFatherElems(Lis);
+
+                newFoods.push(menu[index]["foods"][foodsIndex]);
+
+                menu[index]["foods"] = newFoods;
+            }
+            else {
+                Lis.forEach(function (li) {
+                    var foodsIndex = getIndexOfCurrentElmeInFatherElems(li);
+                    newFoods.push(menu[index]["foods"][foodsIndex]);
+                });
+
+                menu[index]["foods"] = newFoods;
+            }
+
+            currentFoods = null;
+            currentFoodsLength = null;
+        }
+
+        updateMenu(index, showMenuArea_firstLvlMenuSel);
+
+        Lis = null;
+        editMenuArea_firstLvlMenuSel = null;
+        index = null;
+
+        initMenu();
+
+        showMenuArea_firstLvlMenuSel.options[index].selected = true;
+    }
+
+    // 在编辑菜单内容区域，点击一级菜单操作按钮，展示对应的二级菜单内容
+    function editMenuAreaMenuFormOperateBtnHtml() {
+        setEditMenuAreaMenuFormInnerHTML('');
+
+        var LvlCount = 2;
+        var currentLvlText = '一级';
+
+        var allButtonHtml = '';
+
+        menu_lvl = '"' + menuLvl.first + '"';
+
+        // 从第二级开始循环
+        for (var i = 1; i <= LvlCount; i++) {
+            switch (i) {
+                case 2:
+                    menu_lvl = '"' + menuLvl.second + '"';
+                    currentLvlText = '二级';
+                    break;
+            }
+
+            allButtonHtml += "<button style='margin-right: 30px;' onclick='showEditMenuAreaMenu(" + menu_lvl + ")'>" + currentLvlText + "菜单</button>";
+        }
+
+        $('#menus > #editMenuArea > #updateAndDelBtn').innerHTML = allButtonHtml + '<br /><br />';
+
+        menu_lvl = menu_lvl.substring(1, menu_lvl.length - 1);
+
+        LvlCount = null;
+        currentLvlText = null;
+        allButtonHtml = null;
+    }
+
+    /**
+     * 一条菜单列表内容
+     * @param menu_lvl 菜单级别
+     * @param menuMsg 菜单信息
+     * @param index menuMsg在父级中的索引
+     * */
+    function generateAMenuData(menu_lvl, menuMsg, index) {
+        console.log(menu_lvl);
+        var buttonHtml = '';
+        if (operate_type === operateType.del) {
+            buttonHtml = '<button type="button" onclick="delCurrentSecondMenuInEditMenuArea(this)" style="margin-left: 30px;">删除</button>';
+        }
+
+        var typeId = 0;
+
+        if (menu_lvl === menuLvl.first) {
+            typeId = menuMsg["type_id"];
+        }
+
+        var startLi = "<li>菜单名 : <input type='text' location='" + index + "' typeId=" + typeId + " value=" + menuMsg['name'] + " />";
+
+        var endLi = "</li>";
+
+        if (menu_lvl === menuLvl.first) {
+            return startLi + buttonHtml + endLi;
+        }
+        else if (menu_lvl === menuLvl.second) {
+            var priceHtml = "&nbsp;&nbsp;&nbsp;&nbsp; 价格(元) : <input type='number' location='" + index + "' foodId='" + menuMsg["food_id"] + "' value=" + menuMsg['price'] + " />";
+            return startLi + priceHtml + buttonHtml + endLi;
+        }
+    }
+
+    // 初始化编辑区域高度
+    function initEditMenuAreaHeight() {
+        setCss(editMenuArea, 'height', '200px');
+    }
+
+    // 菜单内容展示
+    function showEditMenuAreaMenu(currentMenuLvl) {
+        menu_lvl = currentMenuLvl;
+
+        initEditMenuAreaHeight();
+
+        var firstLevelMenuBtn = $('#menus > #editMenuArea > #updateAndDelBtn > button:nth-of-type(1)');
+        var secondLevelMenuBtn = $('#menus > #editMenuArea > #updateAndDelBtn > button:nth-of-type(2)');
+
+        var buttonList = [firstLevelMenuBtn, secondLevelMenuBtn];
+        var clickBtn = null;
+
+        if (menu_lvl === menuLvl.first) {
+            clickBtn = firstLevelMenuBtn;
+        }
+        else if (menu_lvl === menuLvl.second) {
+            clickBtn = secondLevelMenuBtn;
+        }
+
+        updateBtnState(buttonList, clickBtn);
+
+        firstLevelMenuBtn = null;
+        secondLevelMenuBtn = null;
+        buttonList = null;
+        clickBtn = null;
+
+        setEditMenuAreaMenuFormInnerHTML('');
+
+        var levelText = '一级';
+
+        if (operate_type === operateType.create) {
+            var btnHtml = '<button onclick="createMenuHtml(' + "'" + menu_lvl + "'" + ')">新增</button><br/>';
+
+            setEditMenuAreaMenuFormInnerHTML(btnHtml);
+
+            btnHtml = null;
+        }
+        else if (menu.length === 0) {
+            return;
+        }
+
+        var menuFormHtml = '';
+
+        var currentMenu = menu;
+
+        if (menu_lvl === menuLvl.second) {
+
+            levelText = '二级';
+
+            var optionHtml = '';
+
+            menu.forEach(function (item) {
+                optionHtml += "<option value = " + item["type_id"] + ">" + item["name"] + "</option>";
+            });
+
+            menuFormHtml += '一级菜单 : <select class="firstLvlMenuSel" onchange="selectedFirstLvlMenuToUpdateSecondLvlMenuInEditMenuArea()">' + optionHtml + '</select><br /><br />';
+
+            optionHtml = null;
+
+            var index = showMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+            currentMenu = menu[index]["foods"];
+
+            index = null;
+        }
+
+        menuFormHtml += '<ol>' + levelText + '菜单内容 : </ol>';
+
+        setEditMenuAreaMenuFormInnerHTML(editMenuArea_menuForm.innerHTML + menuFormHtml);
+
+        levelText = null;
+        menuFormHtml = null;
+
+        var menuFormOl = getEditMenuAreaMenuFormFirstOl();
+
+        /*if (menu_lvl === menuLvl.second) {
+            menuFormOl.style.marginLeft = 40 + 'px';
+        }*/
+
+        if (operate_type !== operateType.create) {
+            var menuHTML = '';
+            currentMenu.forEach(function (item, index) {
+                menuHTML += generateAMenuData(menu_lvl, item, index);
+            });
+
+            setEditMenuAreaMenuFormFirstOlInnerHTML(menuFormOl.innerHTML + menuHTML);
+            menuHTML = null;
+        }
+
+        updateEditMenuAreaHeight(menu.length * 40);
+
+        if(menu.length > 0 && menu_lvl === menuLvl.second){
+            menuFormOl.style.marginLeft = 40 + 'px';
+	        var index = showMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+	        $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel').options[index].selected = true;
+
+	        index = null;
+        }
+
+        menuFormOl = null;
+    }
+
+    /**
+     * 新增菜单内容HTML
+     * @param menu_lvl 菜单级别
+     * */
+    function createMenuHtml(menu_lvl) {
+
+        var li = document.createElement('li');
+        li.innerHTML = '菜单名 : ';
+        var inputName = document.createElement('input');
+        li.appendChild(inputName);
+
+        if (menu_lvl === menuLvl.second) {
+            var span = document.createElement('span');
+            var inputPrice = document.createElement('input');
+            inputPrice.type = 'number';
+            span.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp; 价格(元) : ";
+
+            li.appendChild(span);
+            li.appendChild(inputPrice);
+
+            span = null;
+            inputPrice = null;
+        }
+
+        getEditMenuAreaMenuFormFirstOl().appendChild(li);
+
+        updateEditMenuAreaHeight(40);
+
+        li = null;
+        inputName = null;
+    }
+
+    /**
+     * 生成一条option 的 Html内容
+     * @param id: option中的value
+     * @param val：option中的text
+     * */
+    function generateOptHtml(id, val) {
+        return '<option value="' + id + '">' + val + '</option>';
+    }
+
+    /**
+     * 点击 新增、修改、删除 按钮的操作
+     * @param currentOperate: 当前操作名称
+     * @param clickButton：点击的按钮
+     * */
+    function operateFnBtn(currentOperate, that) {
+        operate_type = currentOperate;
+        updateBtnState(fnArea_btnList, that);
+        editMenuAreaMenuFormOperateBtnHtml();
+    }
+
+    /**
+     * 创建或更新菜单
+     * @param  operate_type 操作类型
+     * @param  menu_lvl 菜单级别
+     * */
+    function createOrUpdateMenu(operate_type, menu_lvl) {
+        var isExits = null;
+        if (menu_lvl === menuLvl.first) {
+
+            isExits = isExistsRepeatNameInFirstLvlMenu();
+
+            if (isExits !== true) {
+                return isExits;
+            }
+
+            switch (operate_type) {
+                case operateType.create:
+                    createFirstLvlMenuData();
+                    break;
+                case operateType.update:
+                    updateFirstLvlMenuData();
+                    break;
+                default:
+                    alert(operate_type + ' 无效');
+                    break;
+            }
+
+        	initFirstLvlMenu();
+        }
+        else if (menu_lvl === menuLvl.second) {
+            isExits = isExistsRepeatNameInSecondLvlMenu();
+
+            if (isExits !== true) {
+                return isExits;
+            }
+
+            switch (operate_type) {
+                case operateType.create:
+                    createSecondLvlMenuData();
+                    break;
+                case operateType.update:
+                    updateSecondLvlMenuData();
+
+			        var editMenuArea_firstLvlMenuSel = $('#menus > #editMenuArea > #menuForm > .firstLvlMenuSel');
+
+			        var index = editMenuArea_firstLvlMenuSel.selectedIndex || 0;
+
+		            showMenuArea_firstLvlMenuSel.options[index].selected = true;
+
+                    break;
+                default:
+                    alert(operate_type + ' 无效');
+                    break;
+            }
+
+            initSecondLvlMenu();
+
+        }
+        isExits = null;
+    }
+
+    /**
+     * 获取编辑菜单区域下面的菜单表单下面的第一个ol元素
+     * */
+    function getEditMenuAreaMenuFormFirstOl() {
+        return $('#menus > #editMenuArea > #menuForm > ol:first-of-type');
+    }
+
+    /**
+     * 获取编辑菜单区域下面的菜单表单下面的第一个ol元素下面的所有li元素
+     * */
+    function getEditMenuAreaMenuFormFirstOlLis() {
+        return $('#menus > #editMenuArea > #menuForm > ol:first-of-type > li');
+    }
+
+    /**
+     * 设置编辑菜单区域下面的菜单表单下面的第一个ol元素的内容
+     * @param html ol元素的html内容
+     * */
+    function setEditMenuAreaMenuFormFirstOlInnerHTML(html) {
+        getEditMenuAreaMenuFormFirstOl().innerHTML = html;
+    }
+
+    /**
+     * 设置编辑菜单区域下面的菜单表单的内容
+     * @param html 表单的html内容
+     * */
+    function setEditMenuAreaMenuFormInnerHTML(html) {
+        editMenuArea_menuForm.innerHTML = html;
+    }
+
+    /**
+     * 获取当前元素在父元素中的索引
+     * */
+    function getIndexOfCurrentElmeInFatherElems(li) {
+        return li.getElementsByTagName('input')[0].getAttribute('location');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function ConcatArrayDemo(){
+			var a,b,c,d;
+			a = new Array(1,2,3);
+			b = "JScritp";
+			c = new Array(42,'VBScript');
+			d = a.concat(b,c);
+			return (d);
+		}
+
+		with(document){
+			write('执行ConcatArrayDemo()函数返回的数组的结果如下：'+"<br />");
+			var array = ConcatArrayDemo();
+			for (var i = 0; i < array.length; i++) {
+				write('Array['+i+']：');
+				write(array[i]+"<br />");
+			}
+
+		}
+	</script>
+</body>
+</html>

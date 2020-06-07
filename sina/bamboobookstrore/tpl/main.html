@@ -1,0 +1,52 @@
+<ion-side-menus id="settingSide">
+  <ion-side-menu side="left" width="200">
+    <ul class="list sideMenu">
+      <li class="item" ng-show="isLogin">
+        <img src="img/bkCover.jpg" alt="logo" class="logo" ng-click="jump('userMsg')" />
+        <span class="myName" ng-click="jump('userMsg')">{{uname}}</span>
+      </li>
+      <li class="item" ng-hide="isLogin">
+        <img src="img/bkCover.jpg" alt="logo" class="logo" ng-click="jump('user')" />
+        <span ng-click="jump('user')">登录 / 注册</span>
+      </li>
+      <li class="item" ng-click="open()">
+        <i class="icon ion-ios-chatbubble"></i>关于落星书屋
+      </li>
+      <li class="item" ng-click="jump('start'); exitApp()">
+        <i class="icon ion-log-out"></i>退出
+      </li>
+    </ul>
+  </ion-side-menu>
+
+  <ion-side-menu-content>
+    <div ng-include="'./tpl/include/header.html'"></div>
+
+    <ion-content class="content has-header has-footer">
+      <div class="list list-inset">
+        <div class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" ng-model="info.kw" placeholder="请输入书名或者作者名" />
+        </div>
+      </div>
+
+      <div class="list list-inset" ng-show="hasBooks">
+        <a ng-repeat="book in books track by $index" ng-click="jump('detail', {bid: book.bid})" class="item item-thumbnail-left">
+          <img ng-src="img/{{book.img_sm}}" alt="{{book.img_alt}}" />
+          <h2 class="fs">{{book.name}}</h2>
+          <p class="energized">{{book.author}}</p>
+          <p class="price">{{book.price | currency:'&yen;'}}</p>
+          已有
+          <span class="buyNum">{{book.buyCount}}</span>人购买
+        </a>
+      </div>
+
+      <div class="list list-inset" ng-hide="hasBooks">没有该书籍</div>
+
+      <ion-infinite-scroll immediate-check="false" ng-if="hasMore" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+      <p ng-hide="hasMore" class="text-center">没有更多数据可以加载了</p>
+    </ion-content>
+
+    <div ng-include="'./tpl/include/footer.html'"></div>
+  </ion-side-menu-content>
+</ion-side-menus>

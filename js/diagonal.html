@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				#p{ width:200px; height:200px; border:1px solid red; position:relative; margin:100px auto;}
+				#p #c{ width:50px; height:50px; border:1px solid #000; position:absolute; left:75px; top:75px;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--IE
+			<div style="filter:progid:DXImageTransform.Microsoft.engrave(bias=0.5); height:1; font-size:20pt; background-color:blue;">
+				<p align="center">Y L E M</p>
+			</div>-->
+
+			<div id="p">
+				<div id="c" ></div>
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var c = document.getElementById("c");
+				//边界
+				var limitXR = 150;
+				var limitYB = 150;
+
+				//X轴移动方向 1 左	，0 右
+				var dirX = 0;
+				//Y轴移动方向 1 上	，0 下
+				var dirY = 0;
+
+				//当前坐标
+				var cX = c.offsetLeft;
+				var cY = c.offsetTop;
+
+				//移动速度
+				var randomX = 3;
+				var randomY = 3;
+
+				//启动动画
+				setInterval(function(){
+					//移动
+					c.style.left = cX + (dirX ? -randomX:randomX) + 'px';
+					c.style.top = cX + (dirY ? -randomY:randomY) + 'px';
+
+					//更新坐标
+					cX = parseInt(c.style.left);
+					cY = parseInt(c.style.top);
+
+					//判断边界
+					if(cX>=limitXR){
+						dirX = 1;
+						c.style.left = limitXR;
+						randomX = Math.random()*5+1;
+					}
+					else if(cX<=0){
+						dirX = 0;
+						c.style.left = 0;
+						randomX = Math.random()*4+1;
+					}
+					if(cY>=limitYB){
+						dirY = 1;
+						c.style.top = limitYB;
+						randomY = Math.random()*4+1;
+					}
+					else if(cY<=0){
+						dirY = 0;
+						c.style.top =0;
+						randomY = Math.random()*3+1;
+					}
+				});
+			</script>
+
+		</body>
+</html>

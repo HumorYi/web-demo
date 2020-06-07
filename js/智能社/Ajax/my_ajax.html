@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="new_ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){	
+				ajax('a.txt', function(str){
+					alert(str);
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="读取" />
+</body>
+</html>
+<!--
+	oAjax.readyState == x 	浏览器和服务器，进行到哪一步
+	当x=0，（未初始化）还没有调用open()方法
+	当x=1，（载入）以调用send()方法，正在发送请求
+	当x=2，（载入完成）send()方法完成，已收到全部响应内容
+	当x=3，（解析）正在解析响应内容
+	当x=3，（完成）响应内容解析完成，可以在客户端调用了
+-->

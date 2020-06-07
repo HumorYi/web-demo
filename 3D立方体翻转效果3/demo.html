@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>3D立方体 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div{ margin:0px;padding:0px;}
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; background:#000; }
+
+				.wrap{ width:200px; height:200px; margin:100px auto; position:relative; transform-style:preserve-3d; perspective:800px;}
+
+				.wrap div{ width:200px; height:200px; border:2px solid red; position:absolute; color:#fff; font-weight:bold;}
+
+				.wrap div:nth-child(1){ left:0; top:0;}
+				.wrap div:nth-child(2){ left:0; top:0; transform:translateZ(-200px); }
+				.wrap div:nth-child(3){ left:0; top:-204px; transform:rotateX(90deg); transform-origin:bottom;}
+				.wrap div:nth-child(4){ left:0; top:204px; transform:rotateX(-90deg); transform-origin:top;}
+				.wrap div:nth-child(5){ left:-204px; top:0;transform:rotateY(-90deg); transform-origin:right;}
+				.wrap div:nth-child(6){ left:204px; top:0;transform:rotateY(90deg); transform-origin:left;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="wrap">
+				<div>front</div>
+				<div>back</div>
+				<div>top</div>
+				<div>bottom</div>
+				<div>left</div>
+				<div>right</div>
+			</div>
+
+			<!--js,各色特效-->
+			<script type="text/javascript">
+			
+			</script>
+
+		</body>
+</html>
+<!--
+	transform-origin:50% 50% 0 ;旋转默认基点：x,y,z
+-->

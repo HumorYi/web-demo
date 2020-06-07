@@ -1,0 +1,125 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码：utf-8国际编码  gb2312中文编码-->
+		<meta name="Keywords" content="关键词">
+		<meta name="Description" content="描述">
+		<title>圣诞节快乐！</title>
+		<style>/*css样式表的衣柜*/
+		*{margin:0px;padding:0px;}/*去除默认外边距、内边距*/
+		html{width:100%; height:100%;overflow:hidden;}
+		body{background:url("images/1.jpg") no-repeat;/*添加背景*/
+		background-size:100% 100%;/*背景尺寸*/
+		}
+		#nav{width:100%;height:100px;background:rgba(0,0,0,0.5);/*背景颜色*/
+		padding:20px;/*内边距：上下左右都为20px*//*position:relative;相对定位*/
+		display:none;/*隐藏*/
+		}
+		ul{width:900px;height:80px;margin:10px auto;/*上下10px，左右居中*/}
+		ul li{list-style:none;/*去除li前面的小圆点*/width:135px;height:80px;
+		background:blue;float:left;/*浮动*/border:1px solid #fff;/*边框线：宽度 实线 颜色*/
+		margin-right:10px; cursor:pointer;
+		}
+		div.btn{width:50px;height:50px;background:url("images/upseek.png") no-repeat;
+		position:absolute;/*绝对定位：上下左右*/top:0px;right:0px; cursor:pointer;
+		}
+		div.btn:hover{/*鼠标滑上去发生的效果*/
+			background-position:0px -66px;/*背景图片定位:左右 上下*/
+		}
+		</style>
+	</head>
+	<body><!--身体-->
+		<!--盒子模型标签-->
+		<div id="nav">
+			<ul><!--无序列表-->
+				<li><!--块级元素：占满一行-->
+					<img src="images/1.jpg" width="135" height="80" />
+				</li>
+				<li>
+					<img src="images/2.jpg" width="135" height="80"/>
+				</li>
+				<li>
+					<img src="images/3.jpg" width="135" height="80" />
+				</li>
+				<li>
+					<img src="images/4.jpg" width="135" height="80" />
+				</li>
+				<li>
+					<img src="images/5.jpg" width="135" height="80" />
+				</li>
+				<li>
+					<img src="images/6.jpg" width="135" height="80" />
+				</li>
+			</ul>
+			
+		</div>
+		<div class="btn"></div>
+		<script src="js/jquery.js"></script>
+		<script src="js/snow.js"></script>
+		<script>
+			//alert($);//弹出jquery的代理函数 $
+			$.fn.snow({
+				minSize : 5,
+				maxSize :100,
+				newOn :500,
+				flakeColor:  color()
+			});
+			$.fn.snow({
+				minSize : 1,
+				maxSize :50,
+				newOn :500,
+				flakeColor:  color()
+			});
+			$.fn.snow({
+				minSize : 3,
+				maxSize :100,
+				newOn :500,
+				flakeColor:  color()
+			});
+			$.fn.snow({
+				minSize : 20,
+				maxSize :100,
+				newOn :500,
+				flakeColor: color()
+			});
+			var mark = true;
+			$("div.btn").click(function(){//点击事件
+				//$("#nav").show();//显示
+				//第一种方法
+			/*if (mark)
+				{
+					$("#nav").slideDown();//向下滑动显示
+					mark = false;
+				}else{
+					$("#nav").slideUp();//向上滑动隐藏
+					mark =true;
+				}*/
+				//第二种方法
+				$("#nav").slideToggle("slow");//自己判断nav的显隐性
+				
+			});
+			$("ul li").click(function(){
+				var src = $(this).children().attr("src");//获取到img标签的src属性值
+				//console.log(src);
+				$("body").css("background-image","url("+src+")");
+			});
+
+			//随即颜色
+			function color(){
+				var colors = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];//元素的序列号：0-15
+				var color = "";
+				for (var i=0; i<6;i++ )
+				{
+					var n = Math.ceil(Math.random()*15); //0-15之间的随机整数
+					color += "" + colors[n];
+					if ( i == 5 )
+					{
+						return "#"+color;
+					}
+					//console.log(color);
+				}
+			
+			}
+		</script>
+	</body>
+</html>

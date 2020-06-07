@@ -1,0 +1,74 @@
+    <!DOCTYPE HTML>  
+    <html>  
+    <head>  
+    <meta charset='gbk'>  
+    <script type="text/javascript">  
+    window.onload = function() {  
+        document.getElementById('draw').onclick = function() {  
+            var count = parseInt(document.getElementById('count').value);  
+            var canvas = document.getElementById('canvas');  
+            var context = canvas.getContext('2d');  
+            context.clearRect(0, 0, canvas.width, canvas.height)  
+            draw_multi_deg(context, count, '#F00', 250, 250, 200 );  
+        };  
+    /**  
+    *  count, n：正多角星角的个数  
+    *  color: 颜色  
+    *  x：横坐标  
+    *  y：纵坐标  
+    *  r：多角星外接圆半径  
+    */  
+    function draw_multi_deg(context, n, color, x, y, r) {  
+        if(color)  
+            context.strokeStyle = color;  
+        var deg = getDegree(n);  
+        context.beginPath();  
+        for(i = 0 ;i < n; i ++) {  
+            var sintheta = Math.sin(deg * i);  
+            var costheta= Math.cos(deg * i);  
+            context.lineTo(x + r * sintheta, y + r * costheta);  
+        }  
+        context.closePath();  
+        context.stroke();  
+      
+        function getDegree(n) {  
+            for(var k = Math.ceil(n/4); k < n; k++) {  
+                var flag = [];  
+                var current = 0;  
+                initArr(flag, 1, n);  
+                for(j = 0; j < n; j++) {  
+                    flag[current] = 0;  
+                    current = (current + k) % n;  
+                    if(sum(flag, n) === 0){  
+                        return k * Math.PI * 2 / n;  
+                    }  
+                }  
+            }  
+            return -1;  
+      
+            function initArr(arr, value, count) {  
+                for(var i = 0; i < count; i++) {  
+                    arr[i] = value;  
+                }  
+            }  
+            function sum(arr, n) {  
+                var sum = 0;  
+                for(var i = 0; i < n; i++) {  
+                    sum = sum + arr[i];  
+                }  
+                return sum;  
+            }  
+        }  
+    }  
+    }  
+    </script>  
+    </head>  
+    <body>  
+    <div class='test'>  
+      <label for='count'>输入多角形的角的个数</label>  
+      <input value='5' id='count' name='count'/>  
+      <button id='draw'>画图</button>  
+    </div>  
+    <canvas id="canvas" width="600" height="600"></canvas>  
+    </body>  
+    </html>  

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1{ width:200px; height:200px; background:red; }
+	</style>
+	<script type="text/javascript">
+		function setStyle(name,value){
+			var oDiv = document.getElementById("div1");
+			//oDiv.style.name = value;	//方法一
+			oDiv.style[name] = value;	//方法二 js里面凡是用'.'的地方都能用[]代替，反之有时不行。['']=''：如果两边用的是变量或者是参数，两边就不需要添加引号,否则要添加引号
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="变宽" onclick="setStyle('width','400px')" />
+	<input type="button" value="变高" onclick="setStyle('height','400px')" />
+	<input type="button" value="变绿" onclick="setStyle('background','green')" />
+	<div id="div1"></div>
+</body>
+</html>
+<!--
+	1、什么时候传参：含树立定不下来的东西
+-->

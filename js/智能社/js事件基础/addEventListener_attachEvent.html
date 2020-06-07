@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		//绑定事件（attachEvent、addEventListener），解除事件（detachEvent、removeEventListener）
+		function myAddEvent(obj, ev, fn){
+			if (obj.attachEvent) {
+				obj.attachEvent('on'+ev,fn);
+			}else{
+				obj.addEventListener(ev, fn, false);
+			}
+		}
+		
+		window.onload = function(){
+			var oBtn = document.getElementById('btn1');
+
+			myAddEvent(oBtn, 'click', function(){
+				alert('a');
+			});
+
+
+			myAddEvent(oBtn, 'click', function(){
+				alert('b');
+			});
+		}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="绑定" />
+</body>
+</html>

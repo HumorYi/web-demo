@@ -1,0 +1,109 @@
+·<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>瀑布流 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="css/animate.css" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,img{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; }
+				.pic{ width:1000px; margin:0px auto;}
+				.pic .list{ width:238px; float:left; text-align:center;}
+			</style>
+			<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		</head>
+		<!--网页身体-->
+		<body onload="initLoad()">
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="pic">
+				<div  class="list"></div>
+				<div  class="list"></div>
+				<div  class="list"></div>
+				<div  class="list"></div>
+			</div>
+
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var json = [
+					{"src":"images/1.jpg","alt":"1号","height":"165"},
+					{"src":"images/2.jpg","alt":"2号","height":"180"},
+					{"src":"images/3.jpg","alt":"3号","height":"137"},
+					{"src":"images/4.jpg","alt":"4号","height":"158"},
+					{"src":"images/5.jpg","alt":"5号","height":"148"},
+					{"src":"images/6.jpg","alt":"6号","height":"158"},
+					{"src":"images/7.jpg","alt":"7号","height":"165"},
+					{"src":"images/8.jpg","alt":"8号","height":"159"},
+					{"src":"images/9.jpg","alt":"9号","height":"165"},
+					{"src":"images/10.jpg","alt":"10号","height":"172"},
+					{"src":"images/11.jpg","alt":"11号","height":"165"},
+					{"src":"images/12.jpg","alt":"12号","height":"161"},
+					{"src":"images/13.jpg","alt":"13号","height":"180"},
+					{"src":"images/14.jpg","alt":"14号","height":"158"}
+				];
+				/*
+				for(var i=1; i<15; i++){
+					json[{ "src":"images/1.jpg"}]
+				}*/
+				
+				//循环加载数据，解析json对象
+				function initLoad(){
+					for(var i=0; i<json.length; i++){
+						var mv = "<div class='mv animated fadeInLeftBig'>";
+						mv += "<img src='"+json[i].src+"' alt='"+json[i].alt+"' width='238' height='"+json[i].height+"' />";
+						mv +="</div>";
+						getListDiv($(".list")).append(mv);
+					}
+				}
+
+				//获取每一列对象
+				function getListDiv(obj){
+					var length = obj.length;	//	获取总的列数
+					var h = Infinity; //高度无穷大
+					var getList;	//	获取每一列
+					for(var i=0; i<length; i++){
+						if(obj.eq(i).height() < h){
+							h = obj.eq(i).height();
+							getList = obj.eq(i);
+						}
+					}
+					return getList;
+				}
+
+				//滑动滚动轴加载图片
+				var scrollHeight =0; //	滚动条的高度
+				var scrollTop = 0;	//	滚动条距离顶部的高度
+				$(function(){
+					var _height = $(window).height();	//窗口的高度
+					$(window).scroll(function(){
+						scrollHeight = document.body.scrollHeight;
+						scrollTop = document.body.scrollTop;
+						//	判断滚动条是否触碰到浏览器的最下端
+						if(scrollTop + _height >= scrollHeight){
+							initLoad();
+						}
+					});
+				});
+			</script>
+
+		</body>
+</html>

@@ -1,0 +1,23 @@
+html,
+body,
+div,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+img {
+  border: none;
+}
+body {
+  font-family: "Helvetica Neue", sans-serif, "Microsoft YaHei";
+  color: #000000;
+}
+#wrap {
+  width: 670px;
+  height: 620px;
+  margin: 0 auto;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Simple Canvas Game</title>
+		<link rel="stylesheet" type="text/css" href="css/hero.css" />
+	</head>
+	<body>
+		<script src="js/game.js"></script>
+		<form oninput="x.value=parseInt(speed.value)">
+			改变英雄的移动速度 : 50 <input type="range"min="50" max="1000" value="" id="speed" onChange="updateSpeed()" /> 10000<br />
+			<p class="start">初始速度 : 256</p>
+			<p class="now">当前速度 : <output name="x" for="speed"></output></p>
+		</form>	
+		<h1>32 - 黄坚毅</h1>
+	</body>
+</html>

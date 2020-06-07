@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+			<div id="container">
+				<div id="dragger"></div>
+				<div id="dragger2"></div>
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--内嵌入-->
+			<script type="text/javascript">
+				function canDrag(dragger){
+					//为需要拖动的元素增加onmousedown事件监听
+					var drag = bindEvent(dragger, 'onmousedown', function(e){
+						//兼容事件对象
+						e = e || event;
+
+						//兼容坐标属性
+						var pageX = e.clientX || e.pageX;
+						var pageY = e.clientY || e.pageY;
+
+						//兼容样式对象
+						var style = this.currentStyle || window.getComputedStyle(this, null);
+
+						//获取元素坐标  当没有设置left和top属性时，IE默认为auto
+						var offX = parseInt(style.left) || 0;
+						var offY = parseInt(style.top) || 0;
+
+						//获取鼠标相对于元素的间距
+						var offXL = pageX - offX;
+						var offYL = pageY - offY;
+
+						//为dragger增加onDrag属性，用来存储拖动事件
+						if(!dragger.onDrag){
+							//监听拖动事件
+							dragger.onDrag = bindEvent(document, 'onmousemove', function(e){
+								e = e || event;
+								//设置X坐标
+								dragger.style.left = (event.clientX || e.pageX) - offXL + 'px';
+								//设置Y坐标
+								dragger.style.top = (event.clientY || e.pageY)- offYL + 'px';
+							});
+
+							//监听拖动结束事件
+							dragger.onDragEnd = bindEvent(document, 'onmouseup', function(){
+								//释放拖动监听和结束监听
+								removeEvent(document, 'onmousemove', dragger.onDrag);
+								removeEvent(document, 'onmouseup', dragger.onDragEnd);
+								try{
+									//删除拖动时所用的属性，兼容FF使用
+									delete dragger.onDrag;
+									delete dragger.onDragEnd;
+								}catch(e){
+									//删除拖动时所用的属性，兼容IE6使用
+									dragger.removeAttribute('onDrag');
+									dragger.removeAttribute('onDragEnd');
+								}
+							});
+						}
+					});
+
+					return function(){
+						//10秒钟后，拖动能力被去除
+						setTimeout(function(){
+							alert('拖动效果消失');
+							//释放拖动监听和结束监听
+							removeEvent(document, 'onmousemove', dragger.onDrag);
+							removeEvent(document, 'onmouseup', dragger.onDragEnd);
+							try{
+								//删除拖动时所用的属性，兼容FF使用
+								delete dragger.onDrag;
+								delete dragger.onDragEnd;
+							}catch(e){
+								//删除拖动时所用的属性，兼容IE6使用
+								dragger.removeAttribute('onDrag');
+								dragger.removeAttribute('onDragEnd');
+							}
+						},10000);
+					}
+				}
+			</script>
+		</body>
+</html>

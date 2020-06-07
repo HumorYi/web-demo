@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<style type="text/css">
+				#container{ width:300px; height:300px; border:1px solid #ccc; position:absolute; padding:50px; left:100px; top:100px;}
+				#container #dragger,#dragger2{width:100px; height:100px; }
+				#container #dragger{ background:#ddd; position:absolute; left:50px; top:50px;}
+				#container #dragger2{ background:#bbb; position:relative; left:80px; top:80px; display:none;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<div id="container">
+				<div id="dragger"></div>
+				<div id="dragger2"></div>
+			</div>
+
+			<!--
+				js,各色特效
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<script type="text/javascript" src="canDrag.js"></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				var dragger = document.getElementById('dragger');
+				var dragger2 = document.getElementById('dragger2');
+
+				//调用拖动接口后直接调用返回函数
+				canDrag(dragger)();
+				canDrag(dragger2)();
+			</script>
+		</body>
+</html>

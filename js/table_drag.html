@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,table,tr,td,font{margin:0px;padding:0px;}
+				body{font-size:13px; *font:70% Arial, Helvetica, sans-serif; background:#f1f1f1; color:#555; overflow:auto;}
+				table,td{font:100% Arial, Helvetica, sans-serif; }
+				table{ border-collapse:collapse; margin:1em 25%;}
+				td{ text-align:left; padding:.5em; border:1px solid #fff; background:#e5f1f4;}
+				thead{ color:#fff; text-align:center;}
+				.thead{text-align:center;}
+				.resizeDivClass{ background:#0f0; width:18px; height:100%; z-index:33; position:relative; float:right; left:15px; cursor:e-resize;/*左右箭头*/}
+				.hiddenLongChar{ width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<table id="sortTable" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="thead">
+						<font class="resizeDivClass" id="dragBlock1">&nbsp;</font>语文
+					</td>
+					<td class="thead">
+						<font class="resizeDivClass" id="dragBlock1">&nbsp;</font>数学
+					</td>
+					<td class="thead">
+						<font class="resizeDivClass" id="dragBlock1">&nbsp;</font>英语
+					</td>
+					<td class="thead">
+						<font class="resizeDivClass" id="dragBlock2">&nbsp;</font>标题
+					</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>
+						<div>这是一段十分非常特别忒长的长字段,当你改变表格宽度后，就会发现在表格外面的内容已经变成了...............................</div>
+					</td>
+					<td>Data1</td>
+				</tr>
+				<tr>
+					<td>312122134 312312vzcx 33123</td>
+					<td>This is a long long string...</td>
+					<td>hei</td>
+					<td>Data2</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>c</td>
+					<td>大润发</td>
+					<td>Data3</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>d</td>
+					<td>撒地方</td>
+					<td   class="hiddenLongChar">这是一段没有进行溢出处理的长字段，当你改变表格宽度后，有可能会把表格变的更难看</td>
+				</tr>
+			</table>
+
+			<!--js,各色特效-->
+			<script type="text/javascript" src=""></script>
+			<script type="text/javascript">
+				var dragBlock1 = document.getElementById('dragBlock1');
+				var dragBlock2 = document.getElementById('dragBlock2');
+				var dragBlock3 = document.getElementById('dragBlock3');
+				var dragBlock4 = document.getElementById('dragBlock4');
+				var sortTable = document.getElementById('sortTable');
+
+				//设置表格拖动动点
+				function changeWidth(obj){
+					obj.onmousedown = function(e){
+						e = e || event;
+						//this指obj对象，获取鼠标当前的x轴坐标
+						this.mouseDownX = e.clientX;
+						//获取font的父元素td的宽度
+						this.pareneTdW = this.parentNode.offsetWidth;
+						//IE下设置鼠标点捕获,防止鼠标焦点被打断。FF下无需捕获
+						if(this.setCapture){
+							this.setCapture();
+						}
+						//鼠标移动时触发的事件,计算拖动了多少偏移量
+						document.onmousemove = function(e){
+							e = e || event;
+							if(!obj.mouseDownX){
+								return;
+							}
+							//newWidth的值为td宽度加鼠标当前的X轴坐标再减去mouseDownX
+							//表示现在比原先移动了多少偏移量
+							var newWidth = obj.pareneTdW + e.clientX - obj.mouseDownX;
+							//最小宽度为60像素，不可在移动TD
+							if(newWidth<60){
+								return;
+							}
+							//改变td的宽度
+							obj.parentNode.style.width = newWidth + 'px';
+						}
+						//在拖动点松开鼠标时，还原拖动点的横坐标
+						document.onmouseup = function(e){
+							e = e || event;
+							//释放焦点捕获
+							if(obj.releaseCapture){
+								obj.releaseCapture();
+							}
+							//设置拖动点X轴坐标为0，表示拖动停止中
+							obj.mouseDownX = 0;
+						}
+					}
+				}
+
+				//调用拖动设置函数
+				changeWidth(dragBlock1);
+				changeWidth(dragBlock2);
+				changeWidth(dragBlock3);
+				changeWidth(dragBlock4);
+
+				function changeWidth(obj){
+					//在拖动点按下鼠标时，记录拖动点的横坐标
+					obj.onmousedown = function(e){
+						//增加表格初始宽度
+						this.pareneTableW = sortTable.offsetWidth;
+						//鼠标移动时触发的事件，计算拖动了多少偏移量
+						document.onmousemove = function(e){
+							sortTable.style.width = obj.pareneTableW + e.clientX - obj.mouseDownX;
+
+							//增加更新隐藏样式宽度
+							if(obj.id == 'dragBlock3'){
+								(document.styleSheets[0].rules || document.styleSheets[0].cssRules)[0].style.width = newＷidth + 'px';
+							}
+						}
+					}
+				}
+			</script>
+
+		</body>
+</html>

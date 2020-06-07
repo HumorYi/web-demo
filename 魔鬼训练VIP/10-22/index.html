@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>标题</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="描述">	
+		<!--引用css , js-->
+<style type="text/css">
+/*css表达方式:  属性:值; 身高:1.6m;  px像素*/
+*{margin:0px; padding:0px;}
+#Top{width:100%;/*宽度*/ height:70px;/*高度*/ background:#053585;/*背景颜色*/}
+#Top #banner{width:1000px; height:60px;  margin:0px auto; padding-top:10px;}
+#Adv{width:100%;height:430px; background:#2c61b9 url("images/adv.jpg") no-repeat center;}
+.title{width:1000px; height:48px; margin:20px auto;}
+#Main{width:1000px; height:600px;  margin:0px auto;}
+#Main ul li{width:270px; height:240px; /*border:2px solid blue;边框线*/ list-style-type:none;/*去掉圆点*/ float:left;/*左浮动*/ margin:20px 24px; box-shadow:0px 5px 10px #000;
+	padding:5px;}
+#Main ul li p{font-size:14px; font-family:"微软雅黑"; text-align:center;
+				height:35px; line-height:35px;/*文字竖直距中*/ }
+.adv2{width:1000px; height:160px; background:red; margin:0px auto;box-shadow:0px 5px 10px #000;}
+
+#Footer{width:100%; height:70px; background:#000; margin-top:30px; color:#fff; font-size:12px;font-family:"微软雅黑";text-align:center; line-height:70px;}
+</style>
+
+	</head>
+<body>
+<!--div 盒子模型，高度，宽度，放内容的长方形容器  姓名="清心"-->	
+<div id="Top">
+	<div id="banner"><img src="images/logo.png" /></div>
+</div>
+
+<div id="Adv"></div>
+<div class="title"><img src="images/title.png" /></div>
+
+<div id="Main">
+	<ul>
+		<li><embed src="http://player.video.qiyi.com/84fa32d7342f5e1e68275cdbf014e8b8/0/0/w_19rskukz19.swf-albumId=2593749809-tvId=2593749809-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p>
+		</li>
+
+
+
+		<li><embed src="http://player.video.qiyi.com/c9c6c4b2cf0a9c55d0dd9ded4c073b90/0/0/w_19rsk8hpqd.swf-albumId=2562757609-tvId=2562757609-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p>
+		</li>
+		<li><embed src="http://player.video.qiyi.com/315ade3a021adb4fa0eee149e4ef7dfd/0/0/w_19rskuku2x.swf-albumId=2593743909-tvId=2593743909-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p>
+		</li>
+
+		<li><embed src="http://player.video.qiyi.com/84fa32d7342f5e1e68275cdbf014e8b8/0/0/w_19rskukz19.swf-albumId=2593749809-tvId=2593749809-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p></li>
+		<li><embed src="http://player.video.qiyi.com/c9c6c4b2cf0a9c55d0dd9ded4c073b90/0/0/w_19rsk8hpqd.swf-albumId=2562757609-tvId=2562757609-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p></li>
+		<li><embed src="http://player.video.qiyi.com/315ade3a021adb4fa0eee149e4ef7dfd/0/0/w_19rskuku2x.swf-albumId=2593743909-tvId=2593743909-isPurchase=0-cnId=12" allowFullScreen="true" quality="high" width="270" height="200" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		<p>第一章:网站首页开发(一)_头部信息</p></li>
+
+	</ul>
+</div>
+
+
+<div class="adv2"><a href="http://pan.baidu.com/s/1c07xxgW" target="_blank"><img src="images/adv2.jpg" /></a></div>
+
+<div id="Footer">Copyright 2013-2014 www.mooncollege.cn All Rights Reserved版权所有：湖南潭州教育咨询有限公司 备案号：备13016338号</div>
+
+<!--
+	1、如何在页面中构建一个长方形的 div 盒子模型，宽度，高度，背景颜色;
+	2、什么叫外边距，解决了外边距的兼容型，*{margin:0px;}
+	3、在大盒子里面构建设个小的长方形，然后利用外边距，把这个小的长方形，设置在水平距中
+	4、如何在页面当中插入一张图片，<img src="地址" />
+	5、什么是内边距 padding  能过添加上内边距，来移动图片的位置 padding-top:10px;
+	6、如何构建广告区，(构建长方形盒子，给他添加背景图片，设置背景图片只使用一张no-repeat 控制背景图片距中 center 设置背景颜色)
+	7、如何制作下面的标题部分 构建长方形div 通过外边距，设置上下空隙，水平距中  然后插入一张图片
+	8、讲到了 ul无序列表 (默认的左内边距)  li样式的控制(宽度，高度，去掉圆点 竖直变成水平排列，外边距设置间距)
+	9、如何在页面当中插入视频(外部引用视频)
+
+
+
+-->
+</body>
+</html>

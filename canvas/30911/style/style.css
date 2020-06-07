@@ -1,0 +1,11 @@
+* {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+#c {
+    display: block;
+    margin: 0 auto;
+}

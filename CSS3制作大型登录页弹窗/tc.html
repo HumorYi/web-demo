@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>标题</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="描述">
+		<!--css , js-->
+<style type="text/css">
+*{margin:0px;}
+#Login{width:360px;/*宽度 px 像素*/ height:459px;/*高度*/ border:1px solid #ddd;
+		margin:100px auto; display:none;/*隐藏*/ z-index:333; position:relative;
+		background:#fff;}
+#Login .close{width:26px; height:26px; background:red; float:right;/*右浮动*/
+		margin:2px 2px 0px 0px;}
+#Login h3{color:#666; font-size:20px; font-family:"微软雅黑"; font-weight:100; text-align:center;/*水平方向距中*/}
+
+#Login .Con{width:261px; height:260px; margin:0px auto;/*水平距中*/}
+#Login .Con p{color:#666;font-family:"微软雅黑"; font-size:14px; height:40px; line-height:40px;/*竖直方向距中*/}
+#Login .Con p input.txt{ height:38px; width:258px; border:1px solid #ddd;}
+#Login .Con p input.but{height:40px; width:261px; color:#fff; font-size:18px;font-family:"微软雅黑";  background:#000000; border:none;}
+
+#button{}
+#button:checked ~ #Login{display:block;/*显示*/}
+#button:checked ~ .Layer{display:block;/*显示*/}
+.Layer{width:100%;height:100%; background:#000; position:absolute; top:0px; left:0px;
+		filter:Alpha(opacity=70);-moz-opacity: 0.7; opacity: 0.7;
+		 display:none;
+}
+
+</style>
+	</head>
+
+<body>
+<input type="checkbox"  id="button"/>
+<label for="button">登录</label>
+<div class="Layer"></div>
+
+<!--Div 盒子模型，高度，宽度，放置内容-->
+<div id="Login">
+	<label class="close" for="button"><img src="images/close.gif" /></label>
+	<div style="clear:both"></div>
+	<h3>登录</h3>
+	<div class="Con">
+		<form>
+		<p>邮箱</p>
+		<p><input type="text" class="txt"/></p>
+		<p>密码</p>
+		<p><input type="password"  class="txt"/></p>
+		<p><input type="checkbox" />&nbsp保持登录状态</p>
+		<p><input type="submit" class="but" value="登录"/></p>
+		</form>
+	</div>
+	<img src="images/1.png"/>
+</div>
+
+
+
+</body>
+</html>

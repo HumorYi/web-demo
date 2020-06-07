@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>产品展示 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,img{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";background:url(images/bg.jpg);background-size:cover;}
+				ul li{list-style:none;}
+				.product{width:1060px;height:640px;margin:0px auto;position:relative;overflow:hidden;}
+				.product .small{width:1050px;position:absolute;top:60px;left:15px;transition:all 2s;}
+				.product .small ul li{width:200px;height:150px;float:left;cursor:pointer;margin:5px;}
+				.product .small ul li img{width:100%;height:100%;}
+				/*.product:hover .small{width:440px;top:-360px;left:-60px;transform:scale(0.4);}
+				.product:hover .small ul li{width:80px;height:60px;}*/
+				.product .big{width:100%; position:absolute;top:100px; left:300px;transform:scale(0); transition:all 2s;}
+				.product .big img{transition:all 3s;}
+				/*点击之后的样式*/
+				.product .small_click{width:440px;top:-360px;left:-60px;transform:scale(0.4);}
+				.product .big_click{top:60px;right:60px;transform:scale(1);}
+				.product .big_click img{transform:rotate(360deg);}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="product">
+				<div class="small">
+					<ul>
+						<li><img src="images/1.jpg" /></li>
+						<li><img src="images/2.jpg" /></li>
+						<li><img src="images/3.jpg" /></li>
+						<li><img src="images/4.jpg" /></li>
+						<li><img src="images/5.jpg" /></li>
+						<li><img src="images/6.jpg" /></li>
+						<li><img src="images/7.jpg" /></li>
+						<li><img src="images/8.jpg" /></li>
+						<li><img src="images/1.jpg" /></li>
+						<li><img src="images/2.jpg" /></li>
+						<li><img src="images/3.jpg" /></li>
+						<li><img src="images/4.jpg" /></li>
+						<li><img src="images/5.jpg" /></li>
+						<li><img src="images/6.jpg" /></li>
+						<li><img src="images/7.jpg" /></li>
+					</ul>
+				</div>
+				<div class="big">
+					<img src="images/7.jpg" />
+				</div>
+			</div>
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			var i = 0;
+			$(".product .small ul li").click(function(){
+				var sming = $(this).find("img").attr("src");//attr 属性
+				$(".product .small").addClass("small_click");
+				if (i==0)
+				{
+					$(".product .big").addClass("big_click");
+					$(".product .big").find("img").attr("src",sming);
+					i++;
+				}else{
+					$(".product .big").removeClass("big_click");
+					setTimeout(function(){
+						$(".product .big").addClass("big_click");
+						$(".product .big").find("img").attr("src",sming);	
+					},2000);				
+				}
+			});
+		</script>
+</html>

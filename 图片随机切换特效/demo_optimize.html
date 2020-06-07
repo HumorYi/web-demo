@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图片随机切换特效</title>
+		<meta name="keywords" content="关键词1,关键词2">
+		<meta name="description" content="描述:对网页内容的大概介绍">
+		<style>
+			html, body, div,img{
+				margin:0px;
+				padding:0px;
+			}
+
+			img{cursor: pointer;}
+
+			#box{
+				margin:100px auto;
+			}
+
+			#box .box_imgs{
+				float:left;
+			}
+
+			#box .box_imgs:not(:first-of-type){
+				margin-left:10px;
+			}
+	 
+			#box .box_imgs .imgs_items{
+				position:relative;
+				overflow:hidden;
+			}
+
+			#box .box_imgs .imgs_items:not(:first-of-type) {
+				margin-top: 10px;
+			} 
+
+			#box .box_imgs .imgs_items img{
+				position:absolute;
+				left:0px;
+				top:0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script>
+			$(function(){
+				var imgs = [
+					[
+						[
+							{
+								"src": "images/1.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/2_1.jpg",
+								"alt": "img"
+							}
+						],
+						[
+							{
+								"src": "images/3.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/4_1.jpg",
+								"alt": "img"
+							}
+						]
+					],
+					[
+						[
+							{
+								"src": "images/5.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/6.jpg",
+								"alt": "img"
+							}
+						],
+						[
+							{
+								"src": "images/7.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/8_1.jpg",
+								"alt": "img"
+							}
+						],
+						[
+							{
+								"src": "images/9_1.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/10_2.jpg",
+								"alt": "img"
+							}
+						]
+					],
+					[
+						[
+							{
+								"src": "images/11_1.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/12_1.jpg",
+								"alt": "img"
+							}
+						],
+						[
+							{
+								"src": "images/13.jpg",
+								"alt": "img"
+							},
+							{
+								"src": "images/14_1.jpg",
+								"alt": "img"
+							}
+						]
+					]
+				];
+
+				/**
+				 * @description: 动态生成图片数据模板，并添加到指定dom中
+				 *
+				 * @param: imgs: Array, 图片数据
+				 * @param: $dom: jQuery, 要添加的jQuery dom 对象
+				 * @param: marginLeft: Number, default:10,  要设置每一大项图片的左外边距
+				 * @param: marginTop: Number, default:10, 要设置每一大项图片的上外边距
+				*/
+				var generateImgDom = function (imgs, $dom, marginLeft, marginTop) {
+					marginLeft = marginLeft || 10;
+					marginTop = marginTop || 10;
+
+					var totalWidth = 0;
+					var totalHeight = 0;
+					var count_hadLoad = 0;
+					var count_needLoad = 0;
+					var fragment = document.createDocumentFragment();
+
+					imgs.forEach(function(imgs_items, imgs_index) {
+						count_needLoad += imgs_items.length;
+
+						var dom_box_imgs = document.createElement("div");
+						dom_box_imgs.className = "box_imgs";
+
+						imgs_items.forEach(function (imgs_item, imgs_items_index) {
+							var dom_imgs_items = document.createElement("div");
+							dom_imgs_items.className = "imgs_items";
+
+							imgs_item.forEach(function(img, imgs_item_index) {
+								var dom_img = document.createElement("img");
+								dom_img.src = img.src;
+								dom_img.alt = img.alt;
+
+								dom_imgs_items.append(dom_img);
+
+								// 因为每一小项里面都是两个宽高一样的图片，只计算一次即可
+								if (imgs_item_index === 0) {
+									var obj_img = new Image();
+									obj_img.src = img.src;
+
+									// 异步执行
+									obj_img.onload = function () {
+										++count_hadLoad;
+
+										var obj_img_width = obj_img.width;
+										var obj_img_height = obj_img.height;
+
+										$(dom_imgs_items).css({
+											"width": obj_img_width,
+											"height": obj_img_height
+										});
+
+										// 计算每一大项里面单个图片的宽度之和
+										if (imgs_items_index === 0) {
+											totalWidth += obj_img_width + marginLeft;
+										}
+
+										// 计算第一小项里面单个图片的高度之和
+										if (imgs_index === 0) {
+											totalHeight += obj_img_height + marginTop;
+										}
+
+										/**
+										 * 已加载图片数量 === 需要加载图片数量
+										 * 证明图片加载完毕，此时添加所有图片dom模版到指定dom中，
+										 * 设置指定dom的宽度和高度
+										 * 
+										 * 不用担心数组第一项图片数据个数为1时会导致下面的语句提前执行，
+										 * 图片的加载是异步加载（后执行），图片数组遍历是同步遍历（优先执行）
+										*/
+										if (count_hadLoad === count_needLoad) {
+											$dom.append(fragment);
+											$dom.css({
+												"width": totalWidth - marginLeft,
+												"height": totalHeight - marginTop
+											});
+										}
+									}	
+								}							
+							});
+
+							dom_box_imgs.append(dom_imgs_items);
+						});
+
+						fragment.append(dom_box_imgs);
+					});
+				};
+
+				generateImgDom(imgs, $("#box"));
+			});
+			
+			var _width = 0;
+			var _height = 0;
+			var directions = [];
+			var n = 0;
+
+			$("#box").on("mouseover mouseout", ".box_imgs .imgs_items img", function(event){
+				var $this = $(this);
+
+				if(event.type == "mouseover"){
+					//鼠标移上去实现什么效果
+					//获取元素的宽高
+					_width = $this.width();//获取相应元素的宽度
+					_height = $this.height();//获取相应元素的高度
+					//生成一个0-4随机整数
+					n = Math.floor(Math.random()*4);
+					//用数组来保存移动的方向值
+					directions = [
+						{
+							"top" : _height + "px",
+							"left" : 0,
+							"opacity" : 0 
+						},
+						{
+							"top" : -_height + "px",
+							"left" : 0,
+							"opacity" : 0 
+						},
+						{
+							"top" : 0,
+							"left" : _width + "px",
+							"opacity" : 0 
+						},
+						{
+							"top" : 0,
+							"left" : -_width + "px",
+							"opacity" : 0 
+						}
+					];
+				}else if(event.type == "mouseout"){
+					if (!$this.is(":animated")) {
+						$this.animate(directions[n], 1000, function(){
+							//动画执行完成之后再加载什么特效
+							$this.css({//恢复原来位置
+								"top" : 0,
+								"left" : 0,
+								"opacity" : 1
+							}).prependTo($this.parent());//移开之后更换节点
+						});
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

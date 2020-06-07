@@ -1,0 +1,102 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>多边形导航 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,ul,li,img{
+					margin:0px;padding:0px;
+				}/*去除默认外边距、内边距*/
+				body{
+					font-size:12px; font-family:"Microsoft YaHei"; background:url("images/bodyBg.jpg");
+				}
+				ul li{
+					list-style:none;
+				}
+				#wrap{
+					width:980px;height:100px;/*background:red;背景：颜色*/margin:100px auto;/*一个值：上下左右外边距都为100px；两个值：上下 左右*/
+				}
+				ul li {
+					width:180px; height:105px; background:rgba(0,0,0,0.7); float:left;/*左浮动*/margin:30px 5px; position:relative;/*相对定位*/
+				}
+				ul li.left{
+					margin-left:100px;
+				}
+				ul li:before{
+					content:""; width:180px; height:105px; position:absolute; left:0px; top:0px; background:rgba(0,0,0,.5); transform:rotate(60deg);
+				}
+				ul li:after{
+					content:""; width:180px; height:105px; position:absolute; left:0px; top:0px; background:rgba(0,0,0,.5); transform:rotate(-60deg);
+				}
+				img{
+					/*position:absolute;left:50%;top:50%;margin-left:-40px;margin-top:-40px;*/
+					position:absolute; left:0px; top:0px; right:0px; bottom:0px; margin:auto; z-index:2;/*层级*/ transition:all 1s;/*动画过渡:所有的属性，时间*/
+				}
+				img:hover{
+					/*鼠标滑上来实现什么效果*/transform:scale(1.5) rotate(360deg);/*放大*/
+				}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div id="wrap">
+				<ul><!--无序列表-->
+					<li><img src="images/1.png"/></li>
+					<li><img src="images/2.png"/></li>
+					<li><img src="images/3.png"/></li>
+					<li><img src="images/4.png"/></li>
+					<li><img src="images/5.png"/></li>
+					<li class="left"><img src="images/6.png"/></li>
+					<li><img src="images/7.png"/></li>
+					<li><img src="images/8.png"/></li>
+					<li><img src="images/9.png"/></li>
+					<li><img src="images/10.png"/></li>
+					<li><img src="images/11.png"/></li>
+					<li><img src="images/12.png"/></li>
+					<li><img src="images/13.png"/></li>
+					<li><img src="images/14.png"/></li>
+				</ul>
+			</div>
+		</body>	
+</html>
+<!--
+			伪类：
+				  before:相当于在元素内容的前面添加内容，行内元素
+				  after:相当于在元素内容的后面添加内容，行内元素
+
+			行内元素设置宽高度：1、display:block/inline-block
+								2、定位，position:absolute
+								3、浮动，float:left/right
+		
+			定位：static:默认值 静态定位 元素处于普通文档流（画板）
+
+					relative:相对定位  元素框相对于其正常为位置定位，仍然处于普通文档流中（画板） 其所占空间依然存在
+
+					absolute：绝对定位 元素框从文档流删除，漂浮起来了，原来所占据的空间删除了，并相对于除了static定位以外的第一父元素定位 （临近原则）
+					重要：相对定位和绝对定位通常是配合使用的。
+
+					fixed:固定定位 元素框从文档流删除，漂浮起来了，原来所占据的空间删除了，相对于浏览器窗口定位
+
+					z-index:层级 定位元素才有的属性  谁层级越高就优先显示谁
+
+					left  top  right  bottom
+
+					 clip:rect(上下左右) 裁剪absolute绝对定位元素框
+
+			居中：1、margin,padding
+				  2、position:absolute;margin-left:-40px;margin-top:-40px;
+				  3、position:absolute;left:0px;top:0px;right:0px;bottom:0px;
+				  margin:auto;
+-->

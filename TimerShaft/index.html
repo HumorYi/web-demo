@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="utf-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>时间轴 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,h2,a,i,hr,h1,ul,li,p{ margin:0px;padding:0px; }
+				html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
+				body {font-size: 1.4rem;/*1.4 × 10px = 14px */ font-family:"微软雅黑"; }
+				a { text-decoration: none; cursor: pointer;}
+				li { list-style: none; }
+				.content{
+					width: 100%;
+					min-height: 720px;
+					background: url(img/log/content-bg.png);
+					padding: 50px 0;
+				}
+				
+				.content .wrapper{
+					width: 960px;
+					min-height: 720px;
+					background: url(img/log/release-bg.png) no-repeat right top;
+					position: relative;
+					margin: 0 auto;
+				}
+				
+				.content .wrapper .light{
+					width: 152px;
+					height: 191px;
+					background: url(img/log/light-top.png) no-repeat top center;
+					position: absolute;
+					top: -50px;
+					left: 55px;
+				}
+				
+				/*灯光*/
+				.content .wrapper .light i{
+					width: 100%;
+					height: 100%;
+					background: url(img/log/light.png) no-repeat top center;
+					position: absolute;
+					top: 0;	/*定位同displa: block; 同效果*/					
+				}
+				
+				/*水平线*/
+				.content .wrapper hr {
+					height: 0;
+					border-left: none;
+					border-right: 0;
+					border-top: 1px dashed #2d2f34;
+					border-bottom: 1px dashed #474954;
+					position: absolute;
+					top: 15px;
+				}
+				
+				.content .wrapper .line-left{ width: 70px; left: 0;}
+				
+				.content .wrapper .line-right{ width: 460px; right: 0;}
+				
+				.content .wrapper .main { background: url(img/log/line-bg.png) repeat-y 250px 0;}
+				/*时钟标题*/
+				.content .wrapper .main .title{
+					font-size: 24px;
+					color: #58a6fb;;
+					background: url(img/log/clock.png) no-repeat;
+					line-height: 40px;
+					padding-left: 70px;
+					position: absolute;
+ 					left: 230px;
+ 					top: 0;
+				}
+				
+				.content .wrapper .main .year h2 {
+					width: 170px;
+					line-height: 40px;
+					text-align: right;
+					padding-right: 30px;
+				}
+				
+				.content .wrapper .main .year h2 a{color: #58a6fb;}
+				
+				.content .wrapper .main .year h2 a i{
+					width: 0;
+					height: 0;
+					border-top: 6px solid #58a6fb;
+					border-right: 6px solid transparent;
+					border-left: 6px solid transparent;
+					position: relative;
+					left: 190px;
+					top: -20px;
+					display: block;
+					transition:   1s;
+					transform-origin: 6px 3px;;
+				}
+				
+				.content .wrapper .main .year .list { margin: 10px 0;}
+				
+				.content .wrapper .main .year .list ul li{
+					color: #a1a4b8;
+					padding: 30px 0;
+					background: url(img/log/circle.png) no-repeat 235px 30px;
+				}
+				
+				.content .wrapper .main .year .list ul li.high{background: url(img/circle-h.png) no-repeat 235px 30px;}
+				.content .wrapper .main .year .list ul li.cls:after{
+					content: ".";
+					clear: both;
+					display: block;
+					height: 0;
+				}
+				
+				.content .wrapper .main .year .list ul li.high .date, .intro{
+					color: #ec6a13;
+				}
+				
+				.content .wrapper .main .year .list ul li .intro{
+					color: #6ad029;
+					font-size: 18px;
+				}
+				
+				.content .wrapper .main .year .list ul li .date{
+					color: #bec1d5;
+					font-size: 18px;
+				}
+				
+				.content .wrapper .main .year .list ul li .date, .version{
+					width: 200px;
+					line-height: 24px;
+					float: left;					
+					clear: left;/*清除浮动*/
+					display: block;
+					text-align: right;
+				}
+				
+				.content .wrapper .main .year .list ul li .intro, .more{
+					width: 400px;
+					line-height: 24px;
+					float: left;
+					display: block;
+					margin-left: 100px;
+				}
+				
+				.content .wrapper .main .close h2 a i { transform: rotate(-90deg);}
+				.content .wrapper .main .close .list { height: 0 !important; opacity: 0;}
+			</style>
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script src="js/jquery.min.js"></script>
+						
+			
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="content">
+				<div class="wrapper">
+					<div class="light"><i></i></div>
+					<hr class="line-left" />
+					<hr class="line-right" />
+					
+					<div class="main">
+						<h1 class="title">Andy Show</h1>
+						<div class="year">
+							<h2><a href="javascript: void(0);">2016 年<i></i></a></h2>
+							<div class="list">
+								<ul>
+									<li class="cls high">
+										<p class="date">11月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+									<li class="cls">
+										<p class="date">10月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+									<li class="cls">
+										<p class="date">9月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+									<li class="cls">
+										<p class="date">8月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="year">
+							<h2><a href="javascript: void(0);">2015 年<i></i></a></h2>
+							<div class="list">
+								<ul>
+									<li class="cls high">
+										<p class="date">11月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>									
+									<li class="cls">
+										<p class="date">9月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+									<li class="cls">
+										<p class="date">8月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="year">
+							<h2><a href="javascript: void(0);">2014 年<i></i></a></h2>
+							<div class="list">
+								<ul>
+									<li class="cls high">
+										<p class="date">9月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+									<li class="cls">
+										<p class="date">8月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="year">
+							<h2><a href="javascript: void(0);">2013 年<i></i></a></h2>
+							<div class="list">
+								<ul>
+									<li class="cls high">
+										<p class="date">11月份</p>
+										<p class="intro">两年编程</p>
+										<p class="version">&nbsp;</p>
+										<div class="more">
+											<p>	两年的成长</p>
+											<p>	两年的征途</p>
+											<p>	两年的相随</p>
+											<p>	只为不负双亲</p>
+										</div>
+									</li>									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--内嵌入-->
+			<script>
+				//each()遍历list的高度
+				$(".main .year .list").each(function(e, target){
+					//获取目标
+					var $target = $(target);
+					//获取ul
+					var $ul = $target.find("ul");
+					//找到当前ul的高度				height innerHeight（包括padding） outerHeight（包括padding border content margin）
+					$target.height($ul.outerHeight());
+				});
+				
+				$(".main .year h2 a").click(function(e){
+					e.preventDefault(); //事件默认动作
+					$(this).parents(".year").toggleClass("close");
+				});
+			</script>
+		</body>	
+</html>

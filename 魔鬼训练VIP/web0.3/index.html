@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<!--声明当前页面的编码集charset=gbk中文编码gb2312,charset=utf-8 国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<!--当前页面的三要素-->
+		<title>魔鬼训练班_静态网站首页开发二</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="
+厦工楚胜洒水车免交购置税,洒水车现货供应。购车热线:18672281711.2014年最全的洒水车图片,最新的洒水车价格,欢迎前来选购。">	
+		<!--css , js-->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	</head>
+<body>
+<!--网站头部开始-->
+<div id="Top">
+	<!--头部信息开始-->
+	<div class="head"><img src="images/cart.png" align='absmiddle'/>&nbsp;全省免费服务热线：
+			<span>96556</span> <span>0731-84635555</span>旅行社同行热线：<span>0731-84402588</span> <a href="#">登陆</a> <a href="#">注册</a>
+	</div>
+	<!--头部信息结束-->
+
+	<!--banner开始-->
+	<div id="header">
+		<div class="banner"><a href=""><img src="images/logo.png" /></a></div>
+		<div class="logo">
+			<a href="">首页</a>
+			<a href="">出境游</a>
+			<a href="">国内游</a>
+			<a href="">特价游</a>
+			<a href="">签 证</a>
+		</div>
+		<!--搜索开始-->
+		<div class="search">
+			<form>
+				<input type="text" class='txt' value="输入目的地"/>
+				<input type="submit" class='but' value=""/>
+			</form>
+		</div>
+		<!--搜索结束-->
+	</div>
+	<!--banner结束-->
+
+	<!--导航开始-->
+	<div class="Nav">
+		<div class="mainNav">
+			<ul>
+				<li><a href="#">出境跟团游</a>
+					<div class="menu">
+						<p><span>台湾港澳:</span> <a href="#">台湾</a> | <a href="#">香港</a> | <a href="#">澳门</a></p>
+						<p><span>东南亚:</span> <a href="#">泰国</a> | <a href="#">新加坡</a> | <a href="#">马来西亚</a> | <a href="#">越南</a> | <a href="#">柬埔寨</a> | <a href="#">老挝</a> | <a href="#">印度</a> | <a href="#">尼泊尔</a></p>
+						<p><span>台湾港澳:</span> <a href="#">台湾</a> | <a href="#">香港</a> | <a href="#">澳门</a></p>
+						<p><span>东南亚:</span> <a href="#">泰国</a> | <a href="#">新加坡</a> | <a href="#">马来西亚</a> | <a href="#">越南</a> | <a href="#">柬埔寨</a> | <a href="#">老挝</a> | <a href="#">印度</a> | <a href="#">尼泊尔</a></p>
+					</div>
+				</li>
+
+				<li><a href="#">出境自由行</a>
+					<div class="menu"></div>
+				</li>
+
+				<li><a href="#">国内跟团游</a>
+					<div class="menu"></div>
+				</li>
+
+				<li><a href="#">国内自由行</a>
+					<div class="menu"></div>
+				</li>
+
+				<li><a href="#">湖南周边游</a>
+					<div class="menu"></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="smallNav"><a href="#">泰国</a> <a href="#">台湾</a> <a href="#">普吉</a></div>
+	</div>
+	<!--导航结束-->
+</div>	
+<!--网站头部结束-->	
+
+<!--广告开始-->
+<div id="Adv">
+	<!--图片列表-->
+	<div class="ImgList" style="background:url('images/adv1.jpg') center"></div>
+	<div class="ImgList" style="background:url('images/adv2.jpg') center"></div>
+	<div class="ImgList" style="background:url('images/adv3.jpg') center"></div>
+	<div class="ImgList" style="background:url('images/adv4.jpg') center"></div>
+	
+	<!--轮播的按扭-->
+	<ul class="button">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<!--广告结束-->
+
+
+
+
+
+
+
+<!--
+1、构建一个大的长方形，用来放图片列表和按扭，然后我们在里面构建四个大小一样的长方形，用来放图片列表(图片是当成背景图片插入进去，千万不能直接插入图片)
+2、相对和绝对定位，把四个长方形图片区块，放在一起;
+3、利用ul 无序列表来制切换按扭,同样是通过相对和绝对定位来进行位置的调整
+4、如何让ul 的宽度，自适应(他里面的内容有多宽，他就有多宽)定位的元素会在所有没有定位的元素上面
+5、发现导航出不来，是因为背图片给覆盖了，我们通过z-index:3;来改控制那个在上面，(值越大越在上面)
+6、利用js搞定，鼠标放上去时的图片切换效果
+-->
+
+<!--引用外部jquery类库-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	var d_Value=$(".search input.txt").val();//获取到他的默认的值
+	//获取焦点时
+	$(".search input.txt").focus(function(){
+	//$(this)同等于我们的 $(".search input.txt")
+		if($(this).val()==d_Value){
+			$(this).val("");//当前输入框的值设置为空
+			//$(this).css("border","1px solid red");
+		}
+	});
+	//失去焦点
+	$(".search input.txt").blur(function(){
+		if($(this).val()==""){
+			$(this).val(d_Value);//给他赋他的初始值
+		}
+	});
+
+	//二级菜单的实现
+	$(".Nav .mainNav ul li").hover(function(){
+		$(this).find(".menu").show();//显示 .menu 盒子
+		$(this).addClass("hover");//给li添加 class="hover"
+	},function(){
+		$(this).find(".menu").hide();//隐藏
+		$(this).removeClass("hover");//移除 li class="hover"
+	});
+
+	//=======广告轮播图的实现=======
+	var _index=0;//初始化序列
+	var timePlay=null;
+	$("#Adv .ImgList").eq(0).show().siblings("div").hide();//最开始显示第一张
+
+	$("ul.button li").hover(function(){/*鼠标在上面*/
+		clearInterval(timePlay);//清处定时播放器
+		_index=$(this).index();//获取当前li序列号
+		//alert(_index);//弹窗
+		$(this).addClass("hover").siblings().removeClass("hover");//显示按扭
+		//fadeIn  淡入  fadeOut 淡出  
+		$("#Adv .ImgList").eq(_index).fadeIn().siblings("div").fadeOut();//显示图片
+	},function(){/*鼠标移开*/
+		autoPlay();//启用定时播放器
+	});
+
+	//自动轮播
+	//构建自动轮播的函数
+	function autoPlay(){
+		//alert("sss");
+		//设置定时器
+		timePlay=setInterval(function(){
+			_index++;
+			if(_index<4){
+				$("ul.button li").eq(_index).addClass("hover").siblings().removeClass("hover");//显示按扭
+				$("#Adv .ImgList").eq(_index).fadeIn().siblings("div").fadeOut();//显示图片
+				//alert(_index);
+			}else{_index=-1;/*设置序列号为-1,跳到播放第一张图片*/}
+		},2000);	
+	};
+	autoPlay();//调用和执行
+
+</script>
+
+</body>
+</html>

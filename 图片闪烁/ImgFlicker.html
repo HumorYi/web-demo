@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="imgFlicker">
+		<img src="16.2.1.jpg" />
+	</div>
+
+	<script type="text/javascript">
+		var timer = 300;
+		var counter = 0;
+
+		function start(){
+			setTimeout(blink,timer);
+		}
+
+		function blink(){
+			imgFlicker.style.visibility = (imgFlicker.style.visibility == "hidden") ? "visible" : "hidden";
+			counter += 1;
+			setTimeout(blink,timer);
+		}
+
+		window.onload = start;
+	</script>
+</body>
+</html>

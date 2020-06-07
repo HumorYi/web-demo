@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>视频文字弹幕 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<link type="text/css" rel="stylesheet" href="css/sg.css" />
+			<style type="text/css">
+				html,body,div,h1,embed,a,input{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";background:#26887e;}
+				h1{font-size:40px;text-align:center;line-height:80px;color:#fff;text-shadow:2px 3px 2px #000;}
+				a{text-decoration:none;text-align:center;}
+				input{outline:none;}
+				.video{width:1024px;height:700px;margin:0px auto;position:relative;}
+				/*弹幕 S*/
+				/*弹幕按钮 S*/
+				.video a.btn_open{width:60px;line-height:30px;background:#ccc;display:block;border-radius:3px;color:#fff;box-shadow:1px 1px 1px #D6D1DF;position:absolute;bottom:12px;right:111px;}
+				.video a.btn_open:hover{background:#ddd;color:#29c7af;transition:2s;}
+				/*弹幕按钮 E*/
+				.video .open{width:100%;height:92%;background:rgba(0,0,0,0.5);position:absolute;top:0px;left:0px;overflow:hidden;}
+				/*弹幕显示内容 S*/
+				.video .open .open_show{font-size:20px;color:#fff;}
+				.video .open .open_show div{position:absolute;top:40px;right:0px;}
+				/*弹幕显示内容 E*/
+				/*弹幕 E*/
+				.video .send{width:100%;height:74px;}
+				.video .send input.input_text{width:90%;height:40px;padding-left:5px;float:left;}
+				.video .send a.publish{width:9%;line-height:43px;display:block;background:#ddd;color:#fff;border-radius:4px;box-shadow:2px 1px 1px #000;float:right;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<h1>帅得不像实力派</h1>
+			<div class="video">
+				<embed src="http://player.youku.com/player.php/sid/XNzE1ODA2MDKy/v.swf" allowFullScreen="true" quality="high" width="1024" height="700" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash">
+				</embed>			
+				<!--弹幕 S-->
+				<a href="javascript:void(0);" class="btn_open">弹幕</a>
+				<div class="open">
+					<!--弹幕显示内容 S-->
+					<div class="open_show">
+						<div>Andy 弹窗 Show</div>
+						<div>帅得不像实力派</div>
+					</div>
+					<!--弹幕显示内容 E-->
+				</div>
+				<!--弹幕 E-->
+				<div class="send">
+					<input type="text" class="input_text" value="Andy 弹窗 Show" />
+					<a href="javascript:void(0);" class="publish">发表</a>
+				</div>
+			</div>
+		</body>
+		<!--js,各色特效-->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				init_screent();
+				$(".btn_open").click(function(){
+					$(".open").toggle("slow");
+				});
+			});
+			$(".publish").click(function(){
+				var content = $(".input_text").val();//val=value
+				var _label = $("<div class='animated rotateIn'>"+content+"</div>");
+				$(".open_show").append(_label); 
+				init_screent();
+			});
+			function init_screent(){
+				var _top = 0;//距离头部的距离
+				$(".open_show").find("div").each(function(){//每一个div都执行下面的方法
+					var _left = $(".open_show").width()-$(this).width();//弹幕的宽度减去当前文字的宽度等于距离左边的宽度
+					var _height = $(".open").height();//获取弹幕的高度
+					_top = _top+40;
+					if (_top>=_height-100)
+					{
+						_top = 40;
+					}
+					//设置文字的位置 需要定位 即css样式
+					$(this).css({left:_left,top:_top,color:getRandomColor()});
+					//文字移动
+					$(this).animate({left:"-"+_left+"px"},5000,function(){
+						$(this).remove();
+					});
+				});
+			};
+			function getRandomColor(){
+				var str = Math.ceil(Math.random()*16777215).toString(16);//向上取整数 16777215(白色) 变成16进制
+				while (str.length<6)//16进制颜色有6位
+				{
+					str = "0"+str;
+				}
+				return "#"+str;
+			};
+		</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var arr1 = new Array(13,32,23,546);
+		var arr2 = new Array(55,34,23,46);
+		
+		Array.prototype.sum = function(){	//class 原型 			一次给一组元素加样式
+			//arr1.sum = function()		// 行间样式 给对象加事件 	一次给一个元素加样式
+			var result = 0;
+			for (var i = 0; i < this.length; i++) {
+				result += this[i];
+			}
+			
+			return result;
+		}
+
+		alert(arr1.sum());
+		alert(arr2.sum());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		输入字符串：<input type="text" name="textfield" id="sourceString" />
+		转换后结果：<input type="text" name="textfield" id="resultString" />
+	</div>
+	<div>
+			<input type="button" name="button" id="button" value="转换为小写" onclick="javascript:void ChangeLowerCase();" />
+			<input type="button" name="button2" id="button2" value="转换为大写" onclick="javascript:void ChangeUpperCase();" />
+			<input type="button" name="button4" id="button4" value="判断转换后大小写" onclick="javascript:void TestLetterCase();" />
+	</div>
+	<script type="text/javascript">
+		function ToLowerCase(s){
+			s = s.toLowerCase();
+			return s;
+		}
+
+		function ToUpperCase(s) {
+			s = s.toUpperCase();
+			return s;
+		}
+
+		function LetterTest(s){
+			if (/^[0 -9A -Z]*$/.test(s)) {
+				alert('全是大写');
+			}else if (/^[0 -9a -z]*$/.test(s)) {
+				alert('全是小写');
+			}else{
+				alert('出错了！');
+			}
+		}
+
+		function ChangeLowerCase(){
+			var sourceString;
+			sourceString = document.getElementById('sourceString').value;
+			sourceString = ToLowerCase(sourceString);
+
+			document.getElementById('resultString').value = sourceString; 
+		}
+
+		function ChangeUpperCase(){
+			var sourceString;
+			sourceString = document.getElementById('sourceString').value;
+			sourceString = ToUpperCase(sourceString);
+
+			document.getElementById('resultString').value = sourceString;
+		}
+
+		function TestLetterCase(){
+			var s = document.getElementById('resultString').value;
+			LetterTest(s);
+		}
+	</script>
+</body>
+</html>
+<!--
+	字符串（字母）大小写的书写和判断:
+	1、toLowerCase()方法返回一个字符串，该字符串中的字母被转换为小写字母。
+	2、toUpperCase()方法返回一个字符串，该字符串中的字母被转换为大写字母。
+	3、test方法检查在字符串中是否存在一个模式，如果存在则返回true，否则就返回false。
+-->

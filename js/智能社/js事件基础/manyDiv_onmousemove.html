@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{ width: 10px; height: 10px; background: red; position: absolute; }
+	</style>
+	<script type="text/javascript">
+		function getPos(ev){
+			var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			return { x: ev.clientX + scrollLeft, y: ev.clientY + scrollTop} 
+		}
+
+		document.onmousemove = function(ev){
+			var oEvent = ev || event;
+			var pos = getPos(oEvent);			
+			var aDiv = document.getElementsByTagName('div');
+
+			//思路：老鹰抓小鸡，后面一个div跟着前面的div走，第一个div跟着鼠标走
+			for (var i = aDiv.length-1; i > 0; i--) {
+				aDiv[i].style.left = aDiv[i-1].offsetLeft + 'px';
+				aDiv[i].style.top = aDiv[i-1].offsetTop + 'px';
+			}
+
+			aDiv[0].style.left = pos.x + 'px';
+			aDiv[0].style.top = pos.y + 'px';
+		}
+		
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

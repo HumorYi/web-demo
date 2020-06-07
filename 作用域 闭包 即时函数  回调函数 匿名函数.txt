@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+
+	<style type="text/css">
+	
+	</style>
+ </head>
+	
+ <body>
+	<script type="text/javascript">
+	/*
+		1.作用域  
+		2.作用域链
+		3.利用闭包突破作用域链接
+		4.回调函数 
+		5.即时函数
+		6.匿名函数
+	*/
+
+	/*
+		1.作用域
+		也就是说
+			在show()内， a和b 是可见 或者说是可以使用的
+			在show()外， a是可见的b是不可见的
+	*/
+	var a= 1;   //全局变量
+	function show(){
+		var b =2 ;     //该变量只能作用在该方法里面不能跳出方法
+	}
+
+	/*
+	2.作用域链
+		fn可以访问的变量是其自身的作用域 如c ，也可以是其父级的作用域如 a  b 都可以访问
+		这个就形成了一条作用域链，其长度取决于我们的需求 如  d=a+b+c  
+	*/
+	var a= 1;   //全局变量
+	function f(){
+		var b = 2 ;    
+		function fn(){
+			var c = 3;
+			var d=a+b+c;
+			alert(d);
+			return d;
+		}
+		return fn;  // 返回的是一个方法
+	}
+	//f()();   
+	/*看不明白的同学才拆分为 
+					var  fc = f();
+					fc()
+	*/
+	/*
+		3利用闭包突破作用域链
+			f1 能访问自身也可以访问fun的空间 b在f1 中可见
+		
+			闭包第一种方法
+	*/
+	var  a1 = 1;
+	function  fun(){   // 全局函数
+		var b1 = 2;
+		var f1= function(){   // 内部函数
+			var c1=3;
+			return b1;
+		};
+		return  f1;
+	};
+
+	//alert(fun()());
+
+	//闭包第二种方法
+	var iner;
+	function sh(){
+		var aa = 1;
+		var n = function(){
+			return aa;
+		};
+		iner= n;
+	};
+	//sh();
+	//alert(iner());
+	
+	
+	//第三种  
+	function fow(fn){
+		var a2 = 1;
+		fn(a2);
+	};
+	function text(a2){
+		alert(a2);
+		return a2;
+	};
+	//	fow(text);
+
+	//4. 回调函数
+	function fow1(fn){
+		var a2 = 1;
+		return function(){
+			return a2;
+		};
+	};
+	//alert(fow1()());
+
+	//5. 即时函数   即定义 即执行 
+	(function(a){
+		alert(a);
+		
+	})(1);
+	
+	//6. 匿名函数
+	var  ff = function(){
+		alert(0);
+	};
+	ff();
+	</script>
+ </body>
+</html>
+
+

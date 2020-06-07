@@ -1,0 +1,6 @@
+body,h1,p{margin:0px;padding: 0px;}
+canvas{margin:50px auto;}
+h1,form{text-align: center;}
+p.start{text-indent: -260px;}	
+p.now{text-indent: -292px;}
+input{outline: none;}

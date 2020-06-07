@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>更新时钟 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,input,img{ margin:0px;padding:0px; }
+				html,body{ width:100%; height:100%; font-family:"微软雅黑"; background:url(images/bg.png) no-repeat; font-size:50px; color:#fff; }
+				
+			</style>	
+			<script type="text/javascript">
+				window.onload = function(){
+					var oupdate = document.getElementById("update");
+					var oImg = document.getElementsByTagName("img");
+					var i = 0;
+					oupdate.onclick = function(){
+						var odate = new Date();
+						var arr = ["0","0","2","1","0","0"];
+						for (i=0;i<oImg.length ;i++ )
+						{
+							oImg[i].src="images/"+arr[i]+".png";
+						}
+					}
+				}
+			</script>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<input type="button" value="更新时间" id="update" />
+			<img src="images/0.png" />
+			<img src="images/0.png" />
+			点
+			<img src="images/0.png" />
+			<img src="images/0.png" />
+			分
+			<img src="images/0.png" />
+			<img src="images/0.png" />
+			秒
+
+		</body>
+</html>

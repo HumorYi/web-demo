@@ -1,0 +1,158 @@
+/* Development agreement
+ * 	S: Start 表示样式开始地方 
+ * 	E: End 表示样式结束地方
+*/
+
+/* Simpel Reset S */
+html,
+body,
+div,
+ul,
+li,
+button {
+	margin: 0;
+	padding: 0;
+}
+
+li { list-style: none; }
+
+button {
+	border: none;
+	outline: none;	
+}
+/* Simpel Reset E */
+
+/* Commom Variable S */
+@rootWidth: 100%;
+/* Commom Variable E */
+
+/* Commom Class S */
+.cursorD { cursor: default; }
+.cursorM { cursor: move; }
+.cursorP { cursor: pointer; }
+.fl { float: left; }
+.fr { float: right; }
+.fc { float: both; }
+.poa {	position: absolute; }
+.por {	position: relative; }
+/* Commom Class E */
+
+/* Commom Function S */
+.box (@width: 100%; @height: 100%) {
+	width: @width;
+	height: @height;
+}
+.color (@color: #fff) { color: @color; }
+.bgc (@bgc: #fff) {	background-color: @bgc; }
+.translateX (@size: -50%) {
+	transform:translateX(@size);
+	-ms-transform:translateX(@size); 	/* IE 9 */
+	-moz-transform:translateX(@size); 	/* Firefox */
+	-webkit-transform:translateX(@size); /* Safari 和 Chrome */
+	-o-transform:translateX(@size); 	/* Opera */
+}
+.translateY (@size: -50%) {
+	transform:translateY(@size);
+	-ms-transform:translateY(@size); 	/* IE 9 */
+	-moz-transform:translateY(@size); 	/* Firefox */
+	-webkit-transform:translateY(@size); /* Safari 和 Chrome */
+	-o-transform:translateY(@size); 	/* Opera */
+}
+/* Commom Function E */
+
+// 通过使用变量给样式属性赋值
+html,
+#banner { width: @rootWidth; }
+
+/* banner S */
+#banner {
+	// & 表示当前元素， 在这里表示 #banner
+	// 注意：函数不能继承，只能继承符合css选择器标准的选择器，一般选择继承类;
+	// 			继承最后显示的是群组选择器，即把所有继承这个选择器的元素聚在一起，
+	// 			内部样式是这个选择器的样式，方便管理和查看，例如定位等布局样式
+	&:extend(.por);
+
+	height: 500px;
+	margin-top: 50px;
+	
+	overflow: hidden;
+
+	/* images S */
+	>ul.images {
+		// 个人习惯，先写所有需要继承的类，再写所有需要调用的函数
+		&:extend(.poa);
+		// 函数就像js一样直接调用即可，记得加上 " . "
+		// 注意：函数调用相当于把函数内部封装的属性列表复制一份给当前元素
+		// 注意和extend的区别
+		.box();
+
+		left: 0;
+		top: 0;
+		
+		>li {
+			.box();
+
+			float: left;			
+
+			>a {
+				.box();
+				display: block;
+
+				>img { .box(); }
+			}
+		}
+	}
+	/* images E */
+
+	/* circles S */
+	>ul.circles {
+		&:extend(.poa);
+		.translateX();
+
+		left: 50%;
+		bottom: 20px;
+
+		>li {
+			&:extend(.fl);
+			&:extend(.cursorP);
+			.bgc();
+			.box(20px, 20px);
+
+			border-radius: 50%;
+ 
+			// 常用于过滤掉不需要的元素，对需要的元素进行样式设置
+			&:not(:last-child) { margin-right: 10px; }
+
+			// 匹配当前元素中包含类名为active的所有元素
+			&.active { .bgc(#26c59c); }
+		}
+	}
+	/* circles E */
+
+	/* button S */
+	>button {
+		&:extend(.poa);
+		&:extend(.cursorP);
+		.color();
+		.translateY();
+		.box(40px, 60px);
+		.bgc(rgba(0, 0, 0, .5));
+
+		top: 50%;
+
+		font-size: 40px;
+		text-align: center;
+		vertical-align: middle;
+
+		// 伪类也是像css一样直接使用
+		&:hover {
+			.bgc(#20b5a2);			
+			.color(#d0bc16);
+		}
+
+		&.left { left: 0; }
+		&.right { right: 0; }
+	}
+	/* button E */
+}
+/* banner E */

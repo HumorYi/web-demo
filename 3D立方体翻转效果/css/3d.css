@@ -1,0 +1,116 @@
+﻿				html,body,div,ul,li,ol{
+					margin:0px;padding:0px;
+				}
+				body{
+					font-size:12px;font-family:"Microsoft YaHei";
+				}
+				ul,ol li{
+					list-style:none;
+				}
+				
+				/*banner S*/
+				#banner{
+					width:800px;
+					height:360px;					
+					margin:50px auto;
+					perspective:800px;
+					position:relative;
+				}
+				/*#banner ul S*/
+				#banner ul li{
+					height:360px;
+					float:left;
+					position:relative;
+					transform-style:preserve-3d;					
+					transform:translateZ(-180px) rotateX(0deg);
+				}
+
+				#banner ul li div{
+					height:360px;
+					position:absolute;
+				}
+
+				#banner ul li div:nth-child(1){
+					bottom:360px;
+					transform-origin:bottom;
+					transform:translateZ(180px) rotateX(90deg);
+					background-image:url(../images/3.png);
+				}
+				#banner ul li div:nth-child(2){
+					top:360px;
+					transform-origin:top;
+					transform:translateZ(180px) rotateX(-90deg);
+					background-image:url(../images/4.png);
+				}
+				#banner ul li div:nth-child(3){
+					transform:translateZ(180px);
+					background-image:url(../images/1.png);
+				}
+				#banner ul li div:nth-child(4){
+					transform:translateZ(-180px) rotateX(180deg); 
+					background-image:url(../images/2.png);
+				}
+				
+				/*
+				#banner ul li:nth-child(1) div{
+					background-position:0px;
+				}
+				#banner ul li:nth-child(2) div{
+					background-position:-200px;
+				}
+				#banner ul li:nth-child(3) div{
+					background-position:-400px;
+				}
+				#banner ul li:nth-child(4) div{
+					background-position:-600px;
+				}
+				
+				#banner ul li:nth-child(1){
+					transition:1s 0s;
+				}
+				#banner ul li:nth-child(2){
+					transition:1s 0.3s;
+				}
+				#banner ul li:nth-child(3){
+					transition:1s 0.6s;
+				}
+				#banner ul li:nth-child(4){
+					transition:1s 0.9s;
+				}
+				
+				#banner:hover ul li{
+					transform:translateZ(-180px) rotateX(180deg);
+				}*/
+				
+				/*#banner ul E*/
+
+				/*#banner ol S*/
+				#banner ol{
+					width:100px;
+					height:20px;
+					position:absolute;
+					bottom:15px;
+					right:15px;
+
+				}
+				#banner ol li{
+					width:20px;
+					height:20px;
+					background:#000;
+					border-radius:10px;
+					box-shadow:1px 1px 5px #fff;
+					font-family:"微软雅黑";
+					font-size:12px;
+					line-height:20px;
+					text-align:center;
+					float:left;
+					margin:0px 2px;
+					color:#fff;
+					cursor:pointer;
+				}
+				
+				#banner ol li.on{
+					background:#3c6;
+				}
+				/*#banner ol E*/
+				/*banner E*/

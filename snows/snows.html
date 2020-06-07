@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>HTML5实现流星雨效果---思鹏博客</title>
+	<meta name="Keywords" content="关键词1,关键词2">
+    <meta name="description" content="网页的描述内容">
+	 <style type="text/css">
+	 html,body,div,canvas{margin:0;padding:0;} 
+	 body{background:url(images/bg.jpg);background-size:cover;}
+	 </style>
+
+    </head>
+   <body>
+   <canvas id="canvas"></canvas>
+
+   <script type="text/javascript">
+
+		//背景音乐
+		addBackMusic();
+		var canDom = document.getElementById("canvas");
+		var ctx = canDom.getContext("2d");
+		//画布充斥整个浏览器
+		var winWid = window.innerWidth;
+		var winHei = window.innerHeight;
+		canDom.width = winWid;
+		canDom.height = winHei;
+		document.body.style.overflow = "hidden";
+		//星星数量
+		var snowNum = 100;
+		//初始化位置
+		var initPosi = [];
+		for(var i = 0; i< snowNum; i++){
+			initPosi.push({
+				x:Math.random() * winWid,
+				y:Math.random() * winHei,
+				r:Math.random() * 15,
+				d:Math.random() * snowNum,
+				c:randomColor()
+			});
+		}
+		//绘画函数
+		var strtRotate = 0
+		function drowSnow(){
+			strtRotate+=5;
+			ctx.clearRect(0,0,winWid,winHei);
+			ctx.beginPath();
+			for(var i = 0; i< snowNum; i++){
+				var snow = initPosi[i];
+				//调用绘制函数
+				drawStar(ctx , 7 , 15 , snow.x , snow.y ,strtRotate);
+			}
+			if(strtRotate >= 360){
+				strtRotate = 0;
+			}
+			ctx.fill();
+			//调用星星自由落体函数
+			xxposi();
+		}
+		//星星自由落体函数
+		var angle = 0;
+		function xxposi(){
+				angle += 0.01;
+				for(var i = 0; i < snowNum; i++){
+					var p = initPosi[i];
+					//记住两个公式：Math.sin(弧度)返回是一个0 1 -1 的数字
+					//math.cos(1 0 -1 ) 自由体，
+					p.y += Math.cos(angle+p.d) + 1 + p.r*0.625;
+					p.x += Math.sin(angle) * 8 ;
+					//如果雪花到了边界，进行边界处理
+					if(p.x > winWid+5 || p.x < -5 || p.y > winHei){
+						if(i%4 > 0) {
+							initPosi[i] = {x: Math.random()*winWid, y: -10, r: p.r, d: p.d};
+						}else{
+							//控制方向
+							if(Math.sin(angle) > 0){
+								initPosi[i] = {x: -5, y: Math.random()*winHei, r: p.r, d: p.d};
+							}else{
+								initPosi[i] = {x: winWid+5, y: Math.random()*winHei, r: p.r, d: p.d};
+							}
+						}
+					}
+				}
+		}
+		drowSnow();
+
+		//每隔100毫秒钟的时间循环的额执行绘制函数
+		setInterval(drowSnow,50);
+		//窗口尺寸改变
+		window.onresize = function(){
+			canDom.width = winWid;
+			canDom.height = winHei;
+		}
+
+		//随机颜色值
+		function randomColor(){
+			var r = Math.floor(Math.random() * 255);
+			var g = Math.floor(Math.random() * 255);
+			var b = Math.floor(Math.random() * 255);
+			return "rgb("+r+","+g+","+b+")";
+		}
+
+		//封装绘制五角星的函数
+		function drawStar(cxt , r , R , x , y , rot){
+			/*
+				cxt: 绘制的上下文环境
+			 	r: 内圆的半径
+			 	R: 外圆的半径
+			 	x: 五角星的中心点距离X轴的坐标位置
+			 	y: 五角星的中心点距离Y轴的坐标位置
+			 	rot: 五角星的旋转角度 
+			*/
+			cxt.beginPath();
+			for(var i = 0; i < 5; i++){
+				cxt.lineTo(Math.cos((18 + i * 72 - rot) /180 * Math.PI) * R + x ,
+					-Math.sin((18 + i * 72 -rot) /180 * Math.PI) * R + y);
+
+				cxt.lineTo(Math.cos((54 + i * 72 -rot) /180 * Math.PI) * r + x ,
+					-Math.sin((54 + i * 72 -rot) /180 * Math.PI) * r + y);
+			}
+			cxt.closePath();
+			cxt.lineWidth = 3;//星星边框
+			cxt.strokeStyle = randomColor();//星星边框颜色
+			cxt.fillStyle = "#ffff40";//星星填充颜色
+			cxt.stroke();//绘制边框
+			cxt.fill();//填充颜色
+		}
+		//添加背景音乐
+		function addBackMusic(){
+			var musicDom = document.createElement('audio');
+			musicDom.src="strt.mp3";
+			musicDom.play();
+		}
+   </script>
+   </body>
+
+
+</html>

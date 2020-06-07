@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style type="text/css">
+		body{background:#000;height:100%;top:0px;bottom:0px;}
+			.wrapper{position:relative;perspective:1000px;/*视力远近*/perspective-origin:60% 50%;/*设置旋转中心点*/margin:0px auto;/*外边距 上下位移 水平位移 */margin-top:200px;display:block;transform:rotate(-10deg);}
+			.wrapper > div{position:relative;margin:0px auto;transform-style:preserve-3D;height:0px;}
+			/*start sun*/
+			.sun{
+			width:250px;height:125px ! important;/*提升我们样式应用优先权*/top:0px;z-index:1;}
+			.sun .star{
+			width:250px;height:250px;background:url("images/sun.png") no-repeat;background-size:cover;margin:0px auto;animation:spinsun 40s infinite linear;}
+	</style>
+
+ </head>
+ <body>
+  <ul class="wrapper">
+			<!--star 太阳-->
+			<div class="sun">
+					<div class="star"></div>
+			</div>
+
+ </body>
+</html>

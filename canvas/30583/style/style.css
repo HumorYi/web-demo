@@ -1,0 +1,25 @@
+body{
+  width:100%;
+  margin:0;
+  overflow:hidden;
+  background:hsla(0,0%,0%,1);
+  font-family: 'Ubuntu', sans-serif; 
+  font-size:1.2vw;
+  user-select:none;
+}
+
+canvas{
+  width:100%; 
+}
+
+p{
+  position:absolute;
+  color:hsla(255,255%,255%,1);
+  bottom:0;
+  left:0;
+  margin:0;
+  background:hsla(0,5%,15%,.4);
+  padding:1.2vw;
+  border-radius:2px;
+  text-shadow:2px 1px hsla(225, 95%, 95%, .5);
+}

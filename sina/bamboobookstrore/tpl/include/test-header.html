@@ -1,0 +1,35 @@
+<ion-side-menus id="settingSide">
+  <ion-side-menu side="left">
+    <ul class="list">
+      <li class="item" ng-click="jump('user')">
+        <img src="img/bkCover.jpg" alt="logo" class="logo" />
+        <span>登录 / 注册</span>
+      </li>
+      <li class="item" ng-click="jump('myOrder')">
+        <i class=" icon ion-ios-list-outline"></i>我的书单 </li>
+      <li class="item" ng-click="jump('myHeart')">
+        <i class=" icon ion-android-favorite"></i>我的关注 </li>
+      <li class="item" ng-click="open()">
+        <i class=" icon ion-ios-chatbubble"></i>关于落星书屋 </li>
+      <li class="item" ng-click="closeApp()">
+        <i class=" icon ion-log-out"></i>退出 </li>
+    </ul>
+  </ion-side-menu>
+  <ion-side-menu-content>
+    <ion-header-bar>
+      <img src="img/bkCover.jpg" alt="logo" class="logo" ng-click="showSetting()" />
+      <h1 class="title dir fc">落星书屋</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div ui-view></div>
+    </ion-content>
+    <ion-footer-bar>
+      <ion-tabs class="tabs-icon-top">
+        <ion-tab title="书页" ng-click="jump('start')" icon="ion-home"></ion-tab>
+        <ion-tab title="关注" on-select="jump('myOrder')" icon-on="icon ion-ios-heart" icon-off="icon ion-ios-heart-outline"></ion-tab>
+        <ion-tab title="书车" icon="ion-ios-cart-outline" ng-click="jump('myCart')"></ion-tab>
+        <ion-tab title="设置" ng-click="jump('setting')" icon="ion-gear-a"></ion-tab>
+      </ion-tabs>
+    </ion-footer-bar>
+  </ion-side-menu-content>
+</ion-side-menus>

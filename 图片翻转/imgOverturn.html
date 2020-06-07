@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+
+	<body>
+		<!-- <center>
+		            <h2>图像翻转效果</h2>
+		            <hr>
+		            <table border="0">
+		                <th width="160" height="160">
+		                    <img src="16.2.3.1.bmp" width="120" height="120" id="pic">
+		                </th>
+		            </table>
+		        </center> -->
+		<img src="16.2.3.1.bmp" width="120" height="120" id="pic" style="margin: 200px auto; display: block;" />
+
+		<script type="text/javascript">
+			window.onload = reverse;
+
+			var change = 5;
+			var timer1 = 50;
+			var timer2 = 1000;
+			var way = true;
+			var pic = document.getElementById("pic");
+			var picWidth = pic.getAttribute("width");
+			var picHeight = pic.getAttribute("height");
+
+			function reverse() {				
+				if(way == true) {
+					picWidth -= change;
+					pic.setAttribute("width", picWidth);
+
+					if(picWidth == 0) {
+						pic.setAttribute("src", "16.2.3.2.bmp");
+						change = -change;
+					}
+
+					if(picWidth == 120) {
+						way = false;
+						change = -change;
+						setTimeout(reverse, timer2);
+					} else {
+						setTimeout(reverse, timer1);
+					}
+
+				} else {
+					picHeight -= change;
+					pic.setAttribute("height", picHeight);
+					if(picHeight == 0) {
+						pic.setAttribute("src", "16.2.3.1.bmp");
+						change = -change;
+					}
+
+					if(picHeight == 120) {
+						way = true;
+						change = -change;
+						setTimeout(reverse, timer2);
+					} else {
+						setTimeout(reverse, timer1);
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

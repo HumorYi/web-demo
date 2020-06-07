@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function SplitDemo(){
+			var s,ss;
+			s = "The rain in Spain falls mainly in the plain.";
+			ss = s.split(" ");	//在每个空格字符处进行分解
+			return(ss);
+		}
+
+		with(document){
+			write("执行函数SplitDemo()返回的结果如下："+"<br />");
+			var s = SplitDemo();
+			for(var i=0; i<s.length; i++){
+				write('Array['+i+']:');
+				write(s[i]+"<br />");
+			}
+		}
+	</script>
+</body>
+</html>
+<!--
+	split()方法的结果是一个字符串数组，在stringObj中每个出现separator（分隔符）的位置都要进行分解，separator不作为任何数组元素的部分内容。
+-->

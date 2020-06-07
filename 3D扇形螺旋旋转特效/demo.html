@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>3D扇形螺旋旋转特效 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div{ 
+					margin:0px;padding:0px; 
+				}
+				body{ 
+					background:#000;
+				}
+
+				#wrap{
+					width: 500px; height:500px; margin:100px auto;
+				}
+
+				#wrap .box{
+					height:500px; position:relative; transform-style:preserve-3d; 
+					perspective:1000px; /*视镜*/ transform:translate3d(200px,200px,-100px); /*3d代表都移动x,y,z轴*/
+				}
+
+				#wrap .box .helix{
+					width:40px; height:200px; position:absolute; transform-origin:left top; /*x,y,z*/
+					opacity:.5; box-shadow:3px 1px 3px #000; animation:helix 2s infinite;
+				}
+
+				@keyframes helix{
+					to{transform:rotateZ(0deg) rotate(360deg);}
+				}
+				/*nth-of-type(具体获取哪一类如div)*/
+				.helix:nth-child(1){ transform:translateZ(-25px) rotate(13deg); background:#ffff00;}
+				.helix:nth-child(2){ transform:translateZ(-50px) rotate(26deg); background:#ff9900;}
+				.helix:nth-child(3){ transform:translateZ(-75px) rotate(39deg); background:#33ffff;}
+				.helix:nth-child(4){ transform:translateZ(-100px) rotate(52deg); background:#0000cc;}
+				.helix:nth-child(5){ transform:translateZ(-125px) rotate(65deg); background:#9966cc;}
+				.helix:nth-child(6){ transform:translateZ(-150px) rotate(78deg); background:#993333;}
+				.helix:nth-child(7){ transform:translateZ(-175px) rotate(91deg); background:#cc9933;}
+			</style>	
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+
+			<!--wrap S-->
+			<div id="wrap">
+				<!--box S-->
+				<div class="box">
+					<div class="helix"></div>
+					<div class="helix"></div>
+					<div class="helix"></div>
+					<div class="helix"></div>
+					<div class="helix"></div>
+					<div class="helix"></div>
+					<div class="helix"></div>
+				</div>
+				<!--box E-->
+			</div>
+			<!--wrap E-->
+
+		</body>
+</html>

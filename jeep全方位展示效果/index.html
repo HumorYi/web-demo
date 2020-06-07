@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>jeep全方位展示效果 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,div,img{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";background:#000;}
+				#box{width:960px;height:400px;border:5px solid #fff;margin:100px auto;position:relative;}
+				#box .btn{width:93px;height:60px;position:absolute;bottom:35px;cursor:pointer;}
+				#box .prev{left:65px;}
+				#box .next{right:65px;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<!--盒子布局-->
+			<div id="box">
+				<!--插入车-->
+				<img src="images/1.jpg" alt="car" width="960" height="400" />
+				<!--顺时针旋转-->
+				<div class="prev btn"></div>
+				<!--逆时针旋转-->
+				<div class="next btn"></div>
+			</div>
+			<!--js,各色特效-->
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript">
+				var i = 0;
+				var time = null;
+				function play_prev(){
+					i++;
+					if (i>35)
+					{
+						i = 1;
+					}
+					$("#box img").attr("src",'images/'+i+'.jpg');
+				} 
+				function play_next(){
+					i--;
+					if (i<1)
+					{
+						i = 35;
+					}
+					$("#box img").attr("src",'images/'+i+'.jpg');
+				}
+				$("#box .prev").hover(function(){
+					time = setInterval("play_prev()",100);
+				},function(){
+					clearInterval(time);
+				});
+				$("#box .next").hover(function(){
+					time = setInterval("play_next()",100);
+				},function(){
+					clearInterval(time);
+				});
+			</script>
+		</body>	
+</html>

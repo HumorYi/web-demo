@@ -1,0 +1,44 @@
+/*
+ Create By luoxing on 2018/4/9 16:13
+*/
+
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, dd, pre, form {
+    margin  : 0;
+    padding : 0;
+}
+
+body {
+    font-family         : "Microsoft YaHei";
+    font-size           : 16px;
+
+    /*去掉html元素双击后有篮框的行为*/
+    -webkit-user-select : none;
+    -m-user-select      : none;
+    -o-user-select      : none;
+    -ms-user-select     : none;
+    user-select         : none;
+}
+
+li {
+    list-style : none;
+}
+
+a {
+    text-decoration : none;
+}
+
+input {
+    outline : none;
+}
+
+.animate-bezier {
+    transition         : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -moz-transition    : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -webkit-transition : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -o-transition      : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+}
+
+/*为避免影响整体布局，去掉bootstrap屏幕分列的默认左内边距值*/
+.form-horizontal .form-group > div[class*=col-] {
+    padding-left : 0;
+}

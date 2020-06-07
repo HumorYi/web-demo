@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta charset="UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title>Js+H5模仿骇客帝国文字矩阵 - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<style type="text/css">
+				html,body,canvas,audio{margin:0px;padding:0px;}
+			</style>		
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<audio src="./mp3/李依娃 - 漂洋过海来看你.mp3" autoplay loop></audio>
+			<canvas id="canvas"></canvas>
+			<script type="text/javascript">
+				/* 
+					1.获取浏览器的 w  h  
+					2.获取 canvas对象
+						a： 给 画布动态添加高度 宽度
+					3.获取上下文
+					4. 定义方法
+						a:绘画矩形fillRect(x,y,w,h);
+						b:给画布添加文字 fillText(文字,x,y);
+						? 下落是通过那个坐标实现的    改变y的坐标 
+							a：是一组数据  用数组装 定义一个数组变量drops =[];初始逗为0
+							b :  有多少列   浏览器的宽度/ 字体的大小= 列  var cols = 0；
+						c： 动态添加文字的坐标   需要参数
+								x  =  i* fontSize
+								y  =  drops[i]* fontSize
+								fillText(文字,x,y);
+								drops[i] ++ 
+						d: 定时器     
+								setInterval
+						f:  判断  y>= canvas.height   && Math.random() >0.99
+							a: 重置  y的坐标
+				*/
+
+				//获取电脑屏幕的分辨率
+				var s = window.screen;
+				var w = s.width;
+				var h = s.height;
+				var canvas = document.getElementById("canvas");
+				//获取上下文
+				var ctx = canvas.getContext("2d");
+				//动态添加滑步的宽高度
+				canvas.width = w;
+				canvas.height = h;
+				//定义文本
+				var str = "每时每刻都在挑战自己的极限，贵在坚持";
+				//定义字体大小
+				var fontSize = 14;
+				//获取文字的在浏览器上的列数 Math.floor 向下取整
+				var cols = Math.floor(w/fontSize);//80
+				//这是一个数组 存放所有Y的坐标
+				var drops = [];
+				//初始化左右的y坐标都为0
+				for (var i = 0; i<cols ; i++ ){
+					drops.push(0);
+				}
+				function draw(){
+					//通过透明色 实现渐变
+					ctx.fillStyle = "rgba(0,0,0,0.05)";
+					//设置绘画的
+					//位置 填充整个页面
+					ctx.fillRect(0,0,w,h);
+					//设置颜色
+					ctx.fillStyle = ranColor();
+					//设置字体样式 (粗细 大小 类型)
+					ctx.font = "600 "+fontSize+"px 微软雅黑";
+					//遍历定义坐标的位置
+					for (var i = 0; i<cols ; i++) {
+						//Math.random 
+						var index = Math.floor(Math.random()*str.length);
+						//动态定义文字在x轴的坐标
+						var x = i*fontSize;
+						var y = drops[i]*fontSize;
+						//fillText(文字,x,y) 拿到坐标后绘画文字
+						ctx.fillText(str[index],x,y);
+						if (y>=canvas.height && Math.random()>0.89)
+						{
+							//满足条件y为0  重新跑
+							drops[i] = 0;
+						}
+						//循坏一次 y 改变一次位置 也就是向下
+						drops[i]++;
+					}		
+				};
+				draw();
+				//定时器
+				setInterval(draw,50);
+				//随机颜色
+				function ranColor()
+				{
+					var r=Math.floor(Math.random()*256);
+					var g=Math.floor(Math.random()*256);
+					var b=Math.floor(Math.random()*256);
+					return "rgb("+r+","+g+","+b+")";
+				};
+			</script>
+		</body>		
+</html>

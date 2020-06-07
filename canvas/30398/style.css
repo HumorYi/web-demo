@@ -1,0 +1,16 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #121a1f;
+    display: table;
+    width: 100%;
+}
+.wrapper {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>测试浏览器的宽高度</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var w=window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+var h=window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+
+x=document.getElementById("demo");
+x.innerHTML="浏览器的内部窗口宽度：" + w + "，高度：" + h + "。"
+</script>
+
+</body>
+</html>
+<!--
+	Window 尺寸
+	有三种方法能够确定浏览器窗口的尺寸（浏览器的视口，不包括工具栏和滚动条）。
+	对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
+	window.innerHeight - 浏览器窗口的内部高度
+	window.innerWidth - 浏览器窗口的内部宽度
+	对于 Internet Explorer 8、7、6、5：
+	document.documentElement.clientHeight
+	document.documentElement.clientWidth
+	或者
+	document.body.clientHeight
+	document.body.clientWidth
+
+	其他 Window 方法
+	window.open() - 打开新窗口
+	window.close() - 关闭当前窗口
+	window.moveTo() - 移动当前窗口
+	window.resizeTo() - 调整当前窗口的尺寸
+-->

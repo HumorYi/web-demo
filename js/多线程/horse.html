@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+			<!--css层叠样式表,化妆师，一件华丽的外衣，装扮，修饰-->
+			<!--外嵌入-->
+			<link href="" rel="stylesheet" type="text/css" />
+			<!--内嵌入-->
+			<style type="text/css">
+				html,body,div,span{ margin:0px;padding:0px; }
+				body{ font-family:"微软雅黑"; font-size:13px; color:white; background:#eee;}
+				#run{ cursor:pointer; height:5%; font-size:2em; font-weight:bold; text-align:center;}
+				.demoContent{ width:100%; font-family:tahoma; font-size:1em; margin-top:.5em; margin-left:2em; background-color:#ccc; border:1px solid #bbb;}
+				.horse{ text-align:center; width:10px; background:#aaa; border:1px solid #999;}
+				.same{margin-bottom:2%;}
+			</style>
+		</head>
+		<!--网页身体-->
+		<body>
+
+			<!--
+					div 盒子，框架，区域，
+					class="" 名字 重用 多个 不精准 灵活
+					id="" 身份证 唯一 精准 不灵活
+			-->
+			<div class="demoContent" id="demoContent">
+				<div id='run'>开始</div>
+				<div>
+					<div style='margin-bottom:2%; margin-top:2%;'>
+						<span id='a' class='horse'>&nbsp;</span>
+					</div>
+					<div class='same'>
+						<span id='b' class='horse'>&nbsp;</span>
+					</div>
+					<div class='same'>
+						<span id='c' class='horse'>&nbsp;</span>
+					</div>
+					<div class='same'>
+						<span id='d' class='horse'>&nbsp;</span>
+					</div>
+					<div class='same'>
+						<span id='e' class='horse'>&nbsp;</span>
+					</div>
+				</div>
+			</div>
+
+			<!--
+				js原理：操作DOM树,DOM树由节点和节点之间关联的。
+				(使用脚本有javascript和vbscript(IE专用)，如果没写脚本语言类型，浏览器默认为javascript)
+			-->
+			<!--外嵌入-->
+			<script type="text/javascript" src=""></script>
+			<!--内嵌入-->
+			<script type="text/javascript">
+				(function(){
+					//定义完成顺序
+					var sequeence = 5;
+					//获取开始元素div
+					var run = document.getElementById('run');
+					//赛马是否进行中，进行中重复单击开始按钮无效
+					var running;
+					//监听开始元素div的鼠标点击事件
+					run.onclick = function(){
+						//验证本轮赛马是否结束
+						if(sequeence!=0 && running){
+							return;
+						}else{
+							//初始化5个span元素的值为&nbsp实体
+							sequeence = 5;
+							document.getElementById('a').innerHTML += '&nbsp;';
+							document.getElementById('b').innerHTML += '&nbsp;';
+							document.getElementById('c').innerHTML += '&nbsp;';
+							document.getElementById('d').innerHTML += '&nbsp;';
+							document.getElementById('e').innerHTML += '&nbsp;';
+						}
+
+						//定义并启动线程一
+						var timer1 = setInterval(function(){
+							//循环中不断的增加span元素内的&nbsp实体，达到变长的效果
+							document.getElementById('a').innerHTML += '&nbsp;';
+							//当长度超过页面可视宽度减100像素时，停止定时器
+							if(document.getElementById('a').offsetWidth >= document.body.clientWidth-100){
+								//未达到终点的“赛马”排名次
+								document.getElementById('a').innerHTML += 5-sequeence+1;
+								sequeence--;
+								clearInterval(timer1);
+							}
+						},Math.random()*500);
+						var timer2 = setInterval(function(){
+							//循环中不断的增加span元素内的&nbsp实体，达到变长的效果
+							document.getElementById('b').innerHTML += '&nbsp;';
+							//当长度超过页面可视宽度减100像素时，停止定时器
+							if(document.getElementById('b').offsetWidth >= document.body.clientWidth-100){
+								//未达到终点的“赛马”排名次
+								document.getElementById('b').innerHTML += 5-sequeence+1;
+								sequeence--;
+								clearInterval(timer2);
+							}
+						},Math.random()*500);
+						var timer3 = setInterval(function(){
+							//循环中不断的增加span元素内的&nbsp实体，达到变长的效果
+							document.getElementById('c').innerHTML += '&nbsp;';
+							//当长度超过页面可视宽度减100像素时，停止定时器
+							if(document.getElementById('c').offsetWidth >= document.body.clientWidth-100){
+								//未达到终点的“赛马”排名次
+								document.getElementById('c').innerHTML += 5-sequeence+1;
+								sequeence--;
+								clearInterval(timer3);
+							}
+						},Math.random()*500);
+						var timer4 = setInterval(function(){
+							//循环中不断的增加span元素内的&nbsp实体，达到变长的效果
+							document.getElementById('d').innerHTML += '&nbsp;';
+							//当长度超过页面可视宽度减100像素时，停止定时器
+							if(document.getElementById('d').offsetWidth >= document.body.clientWidth-100){
+								//未达到终点的“赛马”排名次
+								document.getElementById('d').innerHTML += 5-sequeence+1;
+								sequeence--;
+								clearInterval(timer4);
+							}
+						},Math.random()*500);
+						var timer5 = setInterval(function(){
+							//循环中不断的增加span元素内的&nbsp实体，达到变长的效果
+							document.getElementById('e').innerHTML += '&nbsp;';
+							//当长度超过页面可视宽度减100像素时，停止定时器
+							if(document.getElementById('e').offsetWidth >= document.body.clientWidth-100){
+								//未达到终点的“赛马”排名次
+								document.getElementById('e').innerHTML += 5-sequeence+1;
+								sequeence--;
+								clearInterval(timer5);
+							}
+						},Math.random()*500);
+
+						//启动标志开启
+						running = 1;
+					}
+				})();
+			</script>
+
+		</body>
+</html>

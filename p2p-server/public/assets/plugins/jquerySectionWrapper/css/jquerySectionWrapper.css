@@ -1,0 +1,103 @@
+/*
+ Create By luoxing on 2018/4/9 19:38
+*/
+
+html, body {
+    width    : 100%;
+    height   : 100%;
+    overflow : hidden;
+}
+
+/*滚动动画 S*/
+.section-animate {
+    transition         : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -moz-transition    : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -webkit-transition : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+    -o-transition      : all 1s cubic-bezier(0.86, 0, 0.03, 1);
+}
+
+/*滚动动画 E*/
+
+/*滚动页面样式 S*/
+.section-wrapper,
+.section-wrapper > ul.section-wrap,
+.section-wrapper > ul.section-wrap > li.section {
+    width  : 100%;
+    height : 100%;
+}
+
+.section-wrapper > ul.section-wrap > li.section {
+    overflow : hidden;
+}
+
+/*滚动页面样式 E*/
+
+/*小圆圈样式 S*/
+.section-wrapper > ul.serial {
+    position : fixed;
+    z-index  : 1000;
+}
+
+.section-wrapper > ul.serial > li {
+    width                 : 20px;
+    height                : 20px;
+    -webkit-border-radius : 50%;
+    -moz-border-radius    : 50%;
+    border-radius         : 50%;
+    border                : 1px solid rgba(0, 0, 0, .5);
+    background-color      : rgba(255, 255, 255, .8);
+    cursor                : pointer;
+}
+
+.section-wrapper > ul.serial > li:hover {
+    background-color : rgba(0, 0, 0, .5);
+    border           : 1px solid rgba(255, 255, 255, .8);
+}
+
+.section-wrapper > ul.serial > li.active {
+    background-color : rgb(177, 62, 62);
+}
+
+/*小圆圈位置 S*/
+.section-wrapper > ul.serial.right {
+    right      : 5%;
+    top        : 50%;
+    margin-top : -95px;
+}
+
+.section-wrapper > ul.serial.left {
+    left       : 5%;
+    top        : 50%;
+    margin-top : -95px;
+}
+
+.section-wrapper > ul.serial.top {
+    top         : 100px;
+    left        : 50%;
+    margin-left : -95px;
+}
+
+.section-wrapper > ul.serial.bottom {
+    bottom      : 5%;
+    left        : 50%;
+    margin-left : -95px;
+}
+
+.section-wrapper > ul.serial.left > li:not(:first-child),
+.section-wrapper > ul.serial.right > li:not(:first-child) {
+    margin-top : 20px;
+}
+
+.section-wrapper > ul.serial.top > li,
+.section-wrapper > ul.serial.bottom > li {
+    float : left;
+}
+
+.section-wrapper > ul.serial.top > li:not(:first-child),
+.section-wrapper > ul.serial.bottom > li:not(:first-child) {
+    margin-left : 20px;
+}
+
+/*小圆圈位置 E*/
+
+/*小圆圈样式 E*/

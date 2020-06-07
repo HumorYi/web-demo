@@ -1,0 +1,41 @@
+<style type="text/css">
+canvas 	{width:100%;height:100%;}
+body    {margin:0;}
+</style>
+
+<canvas id="canvas" width="400" height="400">
+</canvas>
+
+<script>
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+
+var radials = function(x, y, r, n, initialAngle, color='#000') {
+  for( angle = initialAngle; angle < 2*Math.PI + initialAngle; angle += 2*Math.PI/n ) {
+    context.fillStyle = color;
+    context.strokeStyle = color;
+    context.lineWidth   = 1;
+
+    context.beginPath();
+    context.moveTo(x, y);
+    context.lineTo( x + r*Math.cos(angle), y - r*Math.sin(angle) );
+    context.stroke();
+    context.closePath();
+  }
+}
+
+var angleOffset = 0;
+
+var spinAndDraw = function() {
+  context.fillStyle = '#000';
+  context.fillRect(0,0,400,400);
+  radials(200,200,200,100, 0, '#0ff');
+  radials(205,205,200,100, angleOffset, '#ff0');
+  angleOffset = angleOffset + 0.005 % (2*Math.PI);
+  window.requestAnimationFrame(spinAndDraw);
+}
+
+spinAndDraw();
+
+</script>

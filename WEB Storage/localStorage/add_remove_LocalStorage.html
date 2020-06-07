@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加和删除localStorage数据</title>
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<script type="text/javascript">
+		function onLoad(){
+			if (typeof(Storage) == 'undefined') {
+				alert("Sorry!! 您的浏览器不支持WEB Storage");
+			}else{
+				btn_save.addEventListener('click',saveToLocalStorage);
+				btn_load.addEventListener('click',loadFromLocalStorage);
+				btn_clear.addEventListener('click',clearLocalStorage);
+			}
+		}
+
+		function saveToLocalStorage(){
+			localStorage.username = inputname.value;
+		}
+
+		function loadFromLocalStorage(){
+			show_LocalStorage.innerHTML = localStorage.username + "您好~~~欢迎来到我的网站~~~"
+		}
+
+		function clearLocalStorage(){
+			localStorage.clear();
+			show_LocalStorage.innerHTML = localStorage.username;
+		}
+
+		window.onload = onLoad;
+	</script>
+</head>
+<body>
+	<img src="images/welcome.jpg"><br />
+	请输入你的姓名：<input type="text" id="inputname" value="" /><br />
+	<div id="show_LocalStorage"></div><br />
+	<button id="btn_save">存储到localStorage</button>
+	<button id="btn_load">从localStorage读取数据</button>
+	<button id="btn_clear">清除localStorage数据</button>
+</body>
+</html>

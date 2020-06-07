@@ -1,0 +1,89 @@
+				html,body,div{margin:0px;padding:0px;}
+				body{font-size:12px;font-family:"微软雅黑";background-image:url("../images/唐嫣2.jpg");
+				background-repeat:no-repeat;/* 不平铺 repeat-x 向x轴横向平铺 repeat-y 向y轴横向平铺*/
+				background-position:bottom;/*背景定位 两个值 水平 垂直 单独一个值 默认垂直为center*/
+				/*background-position:30% 39%;/*百分数值表示位置*//*background-position:50px 140px;/*像素值表示位置*/
+				background-attachment:fixed;/*声明图像相对于可视区是固定的*/background-size:cover;}
+				li strong{font-style:italic;/*斜体字*/font-weight:normal;/*默认的*/}
+				p.color strong{color:red;}
+				h2{color:blue;}
+				h2 strong{color:gray;}	
+				#red{color:red;text-indent:-1em;/*可使用正负值 百分比值为父元素的多少 可继承父类 1em = 16px*/padding:1em;}
+				#green{color:green;background-image:url(../images/刘仁娜.jpg);text-align:center;/*水平对齐*/}
+				/*标签内的title属性表示css样式为[title]*/
+				[title]{color:#000;border:5px solid blue;}
+				/*单独为title属性中包含指定值添加css样式*/
+				[title~=Hello]{color:red;border:5px solid blue;word-spacing:1em;/*文字间隔 有正负值*/}
+				
+				/*单独为lang属性中的含有指定值添加css样式*/
+				[lang|=en-us]{color:#000;text-transform:uppercase;/*处理文本的大小写 四个值 none uppercase(全部转变为大写) lowercase(全部转变为小写) capitalize(首字母转变为大写)*/}
+				
+				input[type="text"]
+				{
+				  width:150px;
+				  display:block;
+				  margin-bottom:10px;
+				  background-color:yellow;
+				  font-family: Verdana, Arial;
+				}
+
+				input[type="button"]
+				{
+				  width:120px;
+				  margin-left:35px;
+				  display:block;
+				  font-family: Verdana, Arial;
+				 
+				}	
+				p.bgc{border:1px solid red;background-color:gray;font-size:16px;color:red; letter-spacing:7px;/*字母间修改的是字符或字母之间的间隔*/}
+				a{text-decoration:underline overline;/*五个值 none underline(会在文本的底部画一个下划线) overline(会在文本的顶端画一个上划线) line-through(会在文本的中间画一个贯穿线) blink(会让文本闪烁)*/}	
+				a.fly{text-decoration:line-through;}
+				/*white-space 五个值 normal pre nowrap pre-wrap pre-line
+				white-space 属性会影响到用户代理对源文档中的空格、换行和 tab 字符的处理。
+				通过使用该属性，可以影响浏览器处理字之间和文本行之间的空白符的方式。
+				从某种程度上讲，默认的 XHTML 处理已经完成了空白符处理：
+				它会把所有空白符合并为一个空格。所以给定以下标记，它在 Web 浏览器中显示时，
+				各个字之间只会显示一个空格，同时忽略元素中的换行.
+
+				normal  的规则告诉浏览器按照平常的做法去处理：丢掉多余的空白符。
+				如果给定这个值，换行字符（回车）会转换为空格，一行中多个空格的序列也会转换为一个空格。
+				不过，如果将 white-space 设置为 pre，受这个属性影响的元素中，空白符的处理就有所不同，
+				其行为就像 XHTML 的 pre 元素一样；空白符不会被忽略。
+
+				如果 white-space 属性的值为 pre，浏览器将会注意额外的空格，甚至回车。
+				在这个方面，而且仅在这个方面，任何元素都可以相当于一个 pre 元素。
+
+				与之相对的值是 nowrap，它会防止元素中的文本换行，除非使用了一个 br 元素。
+				在 CSS 中使用 nowrap 非常类似于 HTML 4 中用 <td nowrap> 将一个表单元格设置为不能换行，
+				不过 white-space 值可以应用到任何元素。
+
+				CSS2.1 引入了值 pre-wrap 和 pre-line，这在以前版本的 CSS 中是没有的。
+				这些值的作用是允许创作人员更好地控制空白符处理。
+				如果元素的 white-space 设置为 pre-wrap，那么该元素中的文本会保留空白符序列，
+				但是文本行会正常地换行。如果设置为这个值，源文本中的行分隔符以及生成的行分隔符也会保留。
+				pre-line 与 pre-wrap 相反，会像正常文本中一样合并空白符序列，但保留换行符。
+				*/
+				p.white-space{white-space:pre-line;/*normal pre nowrap pre-wrap pre-line*/}
+				/*direction:rtl;文字排序从右到左*/
+				.direction{direction:rtl;color:#fff;}
+				/*font-family	属性 定义文本的字体系列,若要为给定的元素指定一系列类似的字体，用,隔开。		
+				font-style属性有三个样式--》 normal 默认 italic 斜体 oblique 倾斜 斜体（italic）是一种简单的字体风格，对每个字母的结构有一些小改动，来反映变化的外观。与此不同，倾斜（oblique）文本则是正常竖直文本的一个倾斜版本。
+				font-variant 属性可以设定小型大写字母。
+				小型大写字母不是一般的大写字母，也不是小写字母，这种字母采用不同大小的大写字母。
+				font-weight 属性设置文本的粗细。关键字 100 ~ 900 为字体指定了 9 级加粗度。数字 400 等价于 normal，而 700 等价于 bold。如果将元素的加粗设置为 bolder，浏览器会设置比所继承值更粗的一个字体加粗。与此相反，关键词 lighter 会导致浏览器将加粗度下移而不是上移。
+				font-size 属性设置文本的大小。可用px em %来表示字体大学
+				font-size 值可以是绝对或相对值。
+				绝对值：
+				将文本设置为指定的大小
+				不允许用户在所有浏览器中改变文本大小（不利于可用性）
+				绝对大小在确定了输出的物理尺寸时很有用
+				相对大小：
+				相对于周围的元素来设置大小
+				允许用户在浏览器改变文本大小
+				注意：如果您没有规定字体大小，普通文本（比如段落）的默认大小是 16 像素 (16px=1em)。
+				如果要避免在 Internet Explorer 中无法调整文本的问题，许多开发者使用 em 单位代替 pixels。
+				（注：16 等于父元素的默认字体大小，假设父元素的 font-size 为 12px，那么公式需改为：pixels/12=em）
+				在所有浏览器中均有效的方案是为 body 元素（父元素）以百分比设置默认的 font-size 值：
+				*/
+				.font{font-family:sans-serif;font-style:oblique;font-variant:small-caps;font-weight:bold;
+				font-size:14px;}

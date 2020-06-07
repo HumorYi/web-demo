@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>Document</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+        
+		<!--css/js-->
+
+    </head>
+	<body>
+		<!--jquery  是对  js 的封装
+			1.运行方面  jquery<js 
+			2.jquery 能实现的  js都可以
+		-->
+		<!--js 入口+引用脚本-->		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script>
+           
+		 //数据是拿来传递的 js当中方法是可以来传递的
+		 //var 是一个伪元素 用于基础数据类型的定义
+		 //String 字符串类型 "" '' 类型有=后面决定
+		  var a="";
+		  console.log(typeof a);
+		 //number 数字类型
+		  var b=0;
+		  var b1=3.11;
+		  var b2=1/10;
+		  console.log(typeof b);
+		  console.log(typeof b1);
+		  console.log(typeof b2);
+		 //boolean false true
+		  var flag=true;
+		  console.log(typeof flag);
+		  //function 方法也是一种类型
+		  function show(){};
+		  console.log(typeof show());
+		 //object 对象类型 数组 日期 null json
+		  var arr= [];
+		  var date= new Date();
+		  var n = null;
+		  alert(typeof arr);
+		  alert(typeof date);
+		  alert(typeof n);
+		 //未定义的 undefined
+		 var d;
+		 alert(typeof d);
+		 d=0;
+		 alert(typeof d);
+		/*作用域  show()是一个方法 执行函数
+		1.在show 里面a是可见的 b课件
+		2、在show 外面a是可见的 b不可见
+		*/
+		 /*测试题
+		 var a=1;//全局变量
+		 fuction show(){	 
+			 var a=0;//局部变量
+			alert(a);
+		 }
+		 show();*/
+		  /*测试题
+		 var a=1;//全局变量
+		 fuction show(){		
+			 alert(a);	 
+			 var a=0;//局部变量			
+		 }
+		 show();*/
+		  /*测试题
+		 var a=1;//全局变量
+		 fuction show(){	//就近原则		
+			 var b=0;//局部变量	作用范围只在方法里面
+			 alert(a);		
+		 }
+		 show();*/
+		  /*测试题
+		 fuction show(){	//就近原则	
+		 //先定义属性再定义方法
+			 alert(a);	
+			 alert(b);
+			 var a=0;
+			 var b=0;
+		 }
+		 show();*/
+		  /*测试题
+		 fuction show(){	//就近原则	
+		 //先定义属性再定义方法
+			var a,b;
+			 alert(a);	
+			 alert(b);
+			 var a=0;
+			 var b=0;
+		 }
+		 show();*/
+		 //作用域链的长度取决于用到的变量
+		/* var a=0;
+		 function show(){
+			var b=1;
+			var n=function(){
+			var c=2;
+			var d=a+b+c;
+			return d;
+				}
+			return n;
+		 }
+		 alert(show()());*/
+		//属性的传递
+		/*
+		 var a=1;
+		 function show(a){//a是形参 形参就是参数列表的参数
+			alert(a);
+		 }
+		 show(a);//a是实参 实参就是调用参数列表的参数
+		 var a=1;
+		 function show(x){//a是属性形参 形参就是参数列表的参数
+			alert(x);
+		 }
+		 show(a);//a是实参 实参就是调用参数列表的参数
+		 */
+		/*
+		 function show(fn){//fn 方法形参 =text
+			var a=1;
+			fn(a);
+		 }
+		 function text(a){
+			console.log(a);
+			return a;
+		 }
+		 show(text);
+		 */
+		//回调方法
+		/*
+		 function show(){
+		 var a=1;
+			return function(){
+				return a; 
+			}
+		 }
+		 */
+		 //闭包-->改变作用域
+		 //回调方法
+		 /*
+		 function show(){//多了一个变量 多开闭空间 耗费内存
+		 var a=1;
+			return n=function(){
+				return a; 
+			}
+			return n;
+			alert(show()());
+		 }
+		 */
+	</script>
+	</body>
+</html>
+

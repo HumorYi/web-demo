@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+		<!--<title>小于等于31个字是标准-->
+        <title>JavaWeb开发选项卡 - Andy</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <!--80个以内，小于等于76个字是标准-->
+		<meta name="Description" content="">
+		<!--css/js-->
+		<style type="text/css">
+			html,body,div,ul,li,p{margin:0px;padding:0px;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			/*nav start*/
+			.nav{ width:750px;height:400px; margin:150px auto; }
+			/*header start*/
+			.nav .header{width:750px;height:34px;border-bottom:1px solid #dadada;position:relative;}
+			.nav .header ul li{width:90px;height:34px;list-style:none; float:left;line-height:34px;text-align:center;}
+			.nav .header ul li a{text-decoration:none;font-size:14px; color:#333; }
+			.nav .heade ul li a:hover{background:#039ae3;}
+			/*underline start*/
+			.nav .header .underline{width:90px;border-bottom:2px solid #039ae3;position:absolute;left:0px;bottom:-1px;}
+			.nav .n_all{width:750px;height:300px;border:1px solid green;}
+			.nav .n_all .list{width:750px;height:300px;display:none;}
+			.nav .n_all .one{background:#c6f;display:block;}
+			.nav .n_all .two{background:#f90;}
+			.nav .n_all .three{background:#63c;}
+			.nav .n_all .four{background:#f6c;}
+			/*underline end*/
+			/*header end*/
+			/*nav end*/
+		</style>
+    </head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+	/*	$(function(){
+			alert(1);
+		});*/
+		$(function(){
+			$(".nav").find("li").hover(function(){
+			//	alert($(window).width(););
+				var n_left = ($(window).width()-750)/2;
+			//	alert(n_left);
+			var _left = $(this).offset().left-n_left;
+			$(".nav").find(".underline").stop();
+			$(".nav").find(".underline").animate({left:_left},50);
+			var _index = $(this).index();
+		//	alert(_index);
+			$(".list").eq(_index).show().siblings().hide();
+			});
+		});
+    </script>
+	<body>
+		<div class="nav">
+			<div class="header">
+				<p class="underline"></p>
+				<!--无序列表-->
+				<ul>
+					<li><a href="#">推荐</a></li>
+					<li><a href="#">设计制作</a></li>
+					<li><a href="#"> 编程开发 </a></li>
+					<li><a href="#">最新发布</a></li>
+				</ul>
+			</div>
+			<div class="n_all">
+				<div class="list one" ></div>
+				<div class="list two"></div>
+				<div class="list three"></div>
+				<div class="list four"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+

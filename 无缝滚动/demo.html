@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/jquery1.42.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<style>
+*{ margin:0; padding:0; }
+#list{ 
+width:800px; 
+height:280px; 
+border:1px solid #ccc; 
+margin:200px auto; 
+position:relative; 
+overflow:hidden;
+}
+#list ul{ position:absolute; left:0; top:0;}
+#list ul li{
+list-style:none;
+float:left; 
+margin:10px; 
+width:180px; 
+height:255px;
+position:relative;
+}
+#list ul li em{
+width:100%;
+height:25px;
+line-height:80px;
+text-align:center;
+position:absolute;
+bottom:-55px;
+left:0px;
+display:block;
+color:#FFF;}
+#list ul li span{
+width:100%;
+height:25px;
+position:absolute;
+bottom:0px;
+left:0px;
+display:block;
+background:#333;
+filter:alpha(opacity:30);
+opacity:0.3;
+-moz-opacity:0.3;	
+}
+#list ul li p{
+width:100%;
+height:25px;
+line-height:25px;
+text-align:center;
+position:absolute;
+bottom:0px;
+left:0px;
+display:block;
+color:#FFF;
+}
+</style>
+</head>
+
+<body>
+<div id="list">
+	<ul class="img_list">
+    	<li><a href="#"><img src="img/1.jpg" width="180" height="255" alt="图片一" /></a>
+        	<em><span></span>
+            <p><strong>图片</strong></p></em>
+        </li>
+        <li><a href="#"><img src="img/2.jpg" width="180" height="255" alt="图片一" /></a>
+        	<span></span>
+            <p><strong>图片</strong></p>
+        </li>
+        <li><a href="#"><img src="img/3.jpg" width="180" height="255" alt="图片一" /></a>
+        	<span></span>
+            <p><strong>图片</strong></p>
+        </li>
+        <li><a href="#"><img src="img/4.jpg" width="180" height="255" alt="图片一" /></a>
+        	<span></span>
+            <p><strong>图片</strong></p>
+        </li>
+    </ul>
+</div>
+<input type="button" value="向左" id="btnL" />
+<input type="button"  value="向右" id="btnR" />
+</body>
+<script>
+/*	方法1
+	$("#list").slide({
+	mainCell:".img_list",
+	autoPlay:true,
+	mouseOverStop:true,
+	opp:true,
+	effect:"leftMarquee",
+	vis:4,
+	interTime:1});*/
+	/*方法2*/
+	 window.onload = function(){
+        var oDiv = document.getElementById("list");
+        var oUl = oDiv.getElementsByTagName("ul")[0];
+        var aLi = oUl.getElementsByTagName("li");
+        var timer = null;
+        
+        var btnL = document.getElementById("btnL");
+        var btnR = document.getElementById("btnR");
+        
+        var speed = 5;
+        
+        oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+        oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+        
+        function move(){
+            if(oUl.offsetLeft < -oUl.offsetWidth / 2){	//offsetLeft为负数
+                oUl.style.left = '0';
+            }
+            if(oUl.offsetLeft > 0){
+                oUl.style.left = -oUl.offsetWidth / 2 + 'px';
+            }
+            oUl.style.left = oUl.offsetLeft + speed + 'px';
+        }
+        
+        timer = setInterval(move,30);
+        
+        oDiv.onmouseover = function(){
+            clearInterval(timer);
+        };
+        
+        oDiv.onmouseout = function(){
+            timer = setInterval(move,30);
+        };
+        
+        btnL.onclick = function(){
+                speed = -speed;
+        };
+        btnR.onclick = function(){
+                speed = -speed;
+        };
+    };
+</script>
+</html>
+

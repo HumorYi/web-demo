@@ -1,0 +1,203 @@
+/*
+ Create By luoxing on 2018/4/9 15:29
+*/
+
+/*header S*/
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+header.hide {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+/*nav S*/
+/*common S*/
+header > nav.menubar {
+    width: 100%;
+}
+
+header > nav.menubar > .box {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+header > nav.menubar > .box > a.brand {
+    float: left;
+    line-height: 0;
+}
+
+header > nav.menubar > .box > ul.menus {
+    float: left;
+}
+
+header > nav.menubar > .box > ul.menus > li {
+    float: left;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+header > nav.menubar > .box > .user {
+    float: right;
+    background: url("../images/user.png") no-repeat 10px center;
+}
+
+header > nav.menubar > .box > .user > a:hover {
+    text-decoration: underline;
+}
+
+/*common E*/
+
+/*white skin S*/
+header > nav.menubar.white {
+    height: 74px;
+    line-height: 74px;
+    border-bottom: 1px solid #d5d0c3;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+header > nav.menubar.white > .box > a.brand > img.normal {
+    width: 70%;
+    margin-top: 16px;
+}
+
+header > nav.menubar.white > .box > a.brand > img.black {
+    display: none;
+}
+
+header > nav.menubar.white > .box > ul.menus > li {
+    color: #676767;
+}
+
+header > nav.menubar.white > .box > ul.menus > li:hover {
+    color: #b13e3e;
+    background-color: #eee;
+}
+
+header > nav.menubar.white > .box > .user {
+    -webkit-background-size: 30%;
+    background-size: 30%;
+    padding-left: 80px;
+    font-size: 20px;
+    color: #b13e3e;
+}
+
+header > nav.menubar.white > .box > .user > a {
+    font-size: 20px;
+    color: #b13e3e;
+}
+
+/*white skin E*/
+
+/*black skin S*/
+header > nav.menubar.black {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #6f6657;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+header > nav.menubar.black > .box > a.brand > img.normal {
+    display: none;
+}
+
+header > nav.menubar.black > .box > a.brand > img.black {
+    margin-top: 6px;
+    margin-right: 150px;
+}
+
+header > nav.menubar.black > .box > ul.menus > li {
+    font-size: 14px;
+    color: #d5d5d5;
+}
+
+header > nav.menubar.black > .box > ul.menus > li:hover {
+    color: #fff;
+    background-color: #403b3b;
+}
+
+header > nav.menubar.black > .box > .user {
+    -webkit-background-size: 18%;
+    background-size: 18%;
+    padding-left: 60px;
+    font-size: 16px;
+    color: #d5d5d5;
+}
+
+header > nav.menubar.black > .box > .user > a {
+    font-size: 16px;
+    color: #d5d5d5;
+}
+
+/*black skin E*/
+
+/*nav E*/
+/*header E*/
+
+/*sectionWrapper S*/
+#sectionWrapper > ul.sectionWrap > li.sectionOne {
+    position: relative;
+}
+#sectionWrapper > ul.sectionWrap > li.sectionOne > .large {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+#sectionWrapper > ul.sectionWrap > li.sectionTwo > img.qx {
+    width: 40%;
+    float: left;
+    margin-top: 5%;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+#sectionWrapper > ul.sectionWrap > li.sectionTwo > img.tb {
+    width: 60%;
+    float: right;
+    margin-top: 10%;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+}
+#sectionWrapper > ul.sectionWrap > li.sectionTwo.active > img {
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+#sectionWrapper > ul.sectionWrap > li.sectionThree {
+    background: url("../images/3.jpg");
+}
+
+#sectionWrapper > ul.sectionWrap > li.sectionFour {
+    background: url("../images/4.jpg");
+}
+
+#sectionWrapper > ul.sectionWrap > li.sectionThree {
+    background: url("../images/3.jpg");
+}
+/*sectionWrapper E*/

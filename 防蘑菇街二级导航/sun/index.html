@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <!--声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8>-->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!--声明当前页面的三要素-->
+        <title>sun show</title>
+        <meta name="Keywords" content="关键词，关键词">
+        <meta name="Description" content="">
+		<!--css层叠样式 穿衣服 化妆-->
+		<style>
+			body{background:#000;height:100%;top:0px;bottom:0px;}
+
+			/*wrapper start*/
+			.wrapper{position:relative;perspective:1000px;/*设置视力距离*/perspective-origin:60% 50%;/*设置旋转中心点*/margin:0px auto;/*外边距 上下位移 水平位移 */margin-top:200px;display:block;transform:rotate(-10deg);}
+			.wrapper > div{position:relative;margin:0px auto;transform-style:preserve-3D;/*构建3D环境*/height:0px;}
+			/*wrapper end*/
+
+			/*start sun*/
+			.sun{
+			width:250px;height:125px ! important;/*提升我们样式应用优先权*/top:0px;z-index:1;}
+			.sun .star{width:250px;height:250px;background:url("images/sun.png") no-repeat;background-size:cover;margin:0px auto;animation:spinsun 40s infinite linear;}
+			@Keyframes spinsun{
+					0%{transform:rotate(0);}	
+					100%{transform:rotate(-360deg);}
+			}
+			/*end sun*/
+
+			/*start==list*/
+			.mercury{
+				width:400px; position:absolute;z-index:2;animation:orbitmercury/*运行轨迹（椭圆形）*/ 12s infinite linear;top:-7.5px;}
+			.planet{
+				background-size:cover;background-repeat:no-repeat;
+				background-color:transparent;/*没有设置背景颜色就是透明即原来body里面的背景颜色*/animation-iteration-count:infinite;/*属性动画播放次数*/overflow:hidden;}
+			.shadow{position:absolute;top:0px;right:0px;bottom:0px;left:0px;background:transparent url("images/shadow.png") 0% 0% no-repeat;/*设置背景图片样式*/background-size:cover;border-radius:100%;/*圆边框*/}
+			/*end==list*/
+
+			/*mercury star*/
+			.mercury .planet{
+				width:15px;height:15px;background-image:url("images/mercury.png");animation:anti-spin 12s infinite linear;}
+			.mercury .shadow{animation:shadow 12s infinite linear;}
+			@Keyframes shadow{
+				0%{background-position:130% 0%;}
+				33%{background-position:50% 0%;}
+				55%{background-position:0% 0%;}
+				80%{background-position:-50% 0%;}
+				100%{background-position:-50% 0%;}
+			}
+			/*end mercury*/	
+
+			/*list play start*/
+			@Keyframes orbitmercury{
+				0%{z-index:2;transform:rotateY(0);}
+				49%{z-index:2;}
+				59%{z-index:-2;}
+				99%{z-index:-2;}
+				100%{z-index:2;transform:rotateY(360deg);}
+			}
+			@Keyframes anti-spin{
+				from{transform:rotateY(0);}
+				to	{transform:rotateY(-360deg);}
+			}
+			/*list play end*/
+
+			/*venus start*/
+			.venus{width:506px;height:100px;z-index:3;animation:orbitvenus 15s infinite linear;}
+			.venus .planet{width:38px;height:38px;background-image:url("images/venus.png");animation:anti-spin 15s infinite linear;}
+			.venus .shadow{animation:shadow 15s infinite linear;}
+			@Keyframes orbitvenus{
+				0%{z-index:2;transform:rotateY(0);}
+				49%{z-index:2;}
+				59%{z-index:-2;}
+				99%{z-index:-2;}
+				100%{z-index:2;transform:rotateY(360deg);}
+			}
+			/*venus end*/
+		</style>
+    </head>
+	<!--网页主体 文字内容 图片 视频 音频-->
+	<body>
+		<ul class="wrapper">
+			<!--star sun-->
+			<div class="sun">
+					<div class="star"></div>
+			</div>
+			<!--end sun-->
+			<!--mercury star-->
+			<div class="mercury">
+				<div class="planet">
+					<div class="shadow"></div>
+				</div>
+			</div>
+			<!--mercury end-->
+			<!--star venus-->
+			<div class="venus">
+					<div class="planet">
+						<div class="shadow"></div>
+					</div>
+			</div>
+			<!--end venus-->
+		</ul>
+	</body>
+</html>
+

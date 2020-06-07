@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//命名空间 json
+		var zns = {};
+		zns.common = {};
+		zns.fx = {};
+		zns.site = {};
+
+		zns.common.getUser = function(){
+			alert('a');
+		}
+		zns.fx.getUser = function(){
+			alert('b');
+		}
+		zns.site.getUser = function(){
+			alert('c');
+		}
+
+		zns.common.getUser();
+		zns.fx.getUser();
+		zns.site.getUser();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

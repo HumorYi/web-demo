@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form name="myform">
+        <center>
+            <h2>测试用正则表达式为：/(a)b*\1/gi</h2>
+            <h2>请输入要进行匹配的字符串</h2>
+            <input type="text" name="mytext" size=30>
+            <br>
+            <br>
+            <input type="button" value="test方法测试" onclick="clickfun1()">
+            <input type="button" value="exec方法测试" onclick="clickfun2()">
+            <input type="button" value="compile方法测试" onclick="clickfun3()">
+        </center>
+    </form>
+
+    <script type="text/javascript">
+    	function clickfun1(){
+    		var str = document.myform.mytext.value;
+    		var reg = /(a)b*\1/gi;
+    		var s;
+
+    		if (reg.test(str)) {
+    			s += '匹配成功！\n';
+    			s += 'RegExp对象当前的全局属性如下：\n';
+    			s += 'RegExp.index为：' +RegExp.index+ '\n';
+    			s += 'RegExp.lastIndex为：' +RegExp.lastIndex+ '\n';
+    			s += 'RegExp.lastMatch为：' +RegExp.lastMatch+ '\n';
+    			s += 'RegExp.lastParen为：' +RegExp.lastParen+ '\n';
+    			s += 'RegExp.leftContent为：' +RegExp.leftContent+ '\n';
+    			s += 'RegExp.rightContent为：' +RegExp.rightContent+ '\n';
+    			s += 'RegExp.$1为：' +RegExp.$1+ '\n';
+    			s += 'RegExp.$2为：' +RegExp.$2+ '\n';
+    			s += 'RegExp.$3为：' +RegExp.$3+ '\n';
+    			alert(s);
+    		}
+    		else alert("匹配失败");    		
+    	}
+
+    	function clickfun2(){
+    		var str = document.myform.mytext.value;
+    		var reg = /(a)b*\1/gi;
+    		var s;
+    		var arr = reg.exec(str);
+
+    		if (arr != null) {
+    			s += '匹配成功！\n';
+    			s += '返回数组情况如下：\n';
+    			s += 'arr.index为：' +arr.index+ '\n';
+    			s += 'arr.input为：' +arr.input+ '\n';
+    			s += 'arr.lastIndex为：' +arr.lastIndex+ '\n';
+    			s += '返回数组的元素个数为：' +arr.length+ '\n';
+    			s += '返回数组的内容为[';
+
+    			for (var i = 0; i < arr.length; i++) {
+    				if (i < arr.length-1) s += arr[i] + ',';
+    				else s += arr[i] + ']\n';
+    			}
+    			alert(s);
+    		} 
+    		else alert('匹配失败');
+    	}
+
+    	function clickfun3(){
+    		var str = document.myform.mytext.value;
+    		var reg = /(a)b*\1/gi;
+    		var s;
+    		reg.compile("123abc");
+    		if (reg.test(str)) {
+    			s += '当前正则表达式为：/123abc/ \n';
+    			s += '本次匹配成功！\n';
+    			alert(s);
+    		}
+    		else alert('匹配失败');
+    	}
+    </script>
+</body>
+</html>

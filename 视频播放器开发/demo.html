@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<!--超文本标记语言-->
+	<head><!--头部:网页相关信息 非可视化标签-->
+		<meta charset="utf-8"><!--字符编码:utf-8 国际编码-->
+		<title>视屏播放器</title>
+		<style>/*css样式的衣柜*/
+		*{/*通用选择器:选择到所有的标签元素*/
+		margin:0px;/*外边距*/padding:0px;/*内边距*/
+		}
+			#box{/*# id选择器*/
+			width:693px;/*宽度*/height:430px;/*高度*/
+			background:url("images/vid.jpg");/*背景颜色*/
+			background-size:100% 100%;/*背景尺寸*/
+			margin:100px auto;/*上下为100px 左右居中*/
+			padding-top:50px;
+			
+			}
+			.video{/*. 类名选择器*/
+			width:658px;height:430px;
+			margin-left:17px;margin-top:-65px;
+			overflow:hidden;
+			position:relative;/*相对定位*/
+			}
+			.control{
+				width:658px;height:60px;
+				position:absolute;/*绝对定位*/
+				left:17px;/*离相对定位元素左端的距离*/
+				bottom:-41px;/*离相对定位元素下端的距离*/
+				transition:1s linear;/*动画过渡：时间 匀速*/
+			}
+			.control div.progress{
+				width:470px;height:12px;background:#fff;
+				margin-left:88px;
+				border-radius:6px;/*圆角属性*/
+			}
+			.icon{
+				width:380px;height:48px;
+				margin-left:132px;
+			}
+			.icon div{
+				width:33px;height:33px;
+				background:url("images/1.jpg");
+				float:left;/*浮动:漂浮起来 与父元素左端对齐依次往右显示*/
+				margin-right:20px;
+				border-radius:50%;
+				margin-top:10px;
+				
+			}
+			.icon div.pre{
+				background-position:-112px -8px;/*背景图片定位:左右，上下*/
+				margin-left:50px;
+			}
+			.icon div.play{
+				background-position:-69px -8px;/*背景图片定位:左右，上下*/
+			}
+			.icon div.next{
+				background-position:-153px -8px;/*背景图片定位:左右，上下*/
+			}
+			.icon div.vol{
+				background-position:-153px -66px;/*背景图片定位:左右，上下*/
+			}
+			.icon div.full{
+				background:url("images/qp.png");
+			}
+			/*鼠标滑动到video上面 其后面的兄弟元素实现什么效果*/
+			.video:hover div.control{/*~选择到后面的兄弟元素*/
+				bottom:-5px;
+			}
+		</style>
+	</head>
+	<body><!--身体:可视化标签-->
+	<!--盒子模型 宽度 高度-->
+		<div id="box"><!--id唯一性(身份证)-->
+			<div class="video"><!--class类名 重复性-->
+				<video id="vid" src="video/0.mp4" width="660" height="430">
+					您的浏览器不支持video标签，请您更换浏览器！！
+				</video>
+				<div class="control">
+					<div class="progress"></div>
+					<div class="icon">
+						<div class="pre"></div>
+						<div class="play"></div>
+						<div class="next"></div>
+						<div class="vol"></div>
+						<div class="full"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<script>//js脚本语言的存放位置
+			var vid = document.getElementById("vid");
+			var play = document.getElementsByClassName("play")[0];
+			var pre = document.getElementsByClassName("pre")[0];
+			var next = document.getElementsByClassName("next")[0];
+			var full = document.getElementsByClassName("full")[0];
+			var mark = true;
+			var n = 1;
+			play.onclick = function(){//点击播放视频
+				if (mark)
+				{
+					vid.play();//播放视频
+					this.style.backgroundPosition = "-28px -66px";
+					mark = false;
+				}else{
+					vid.pause();//播放视频
+					this.style.backgroundPosition = "-69px -8px";
+					mark = true;
+				}
+				
+			};
+	
+			next.onclick = function(){
+				n++;//n = n+1
+				/*if (n>5)
+				{
+					n = 1;
+				}*/
+				n %= 5;//9/5 =1 余数为4
+				auto();
+			}
+
+			pre.onclick = function(){
+				n--;
+				if (n<1)
+				{
+					n = 5;
+				}
+				auto();
+			}
+
+			function auto(){
+				vid.src = "video/"+n+".mp4";
+				vid.play();
+				play.style.backgroundPosition = "-28px -66px";
+				mark = false;
+			}
+
+			full.onclick = function(){
+				fullSc();
+			}
+
+			vid.onclick = function(){
+				fullSc();
+			}
+
+			function fullSc(){
+				vid.webkitRequestFullScreen();
+			}
+		
+			//播放完毕自动跳到下一曲
+			vid.addEventListener("ended",function(){
+				//alert("播放完毕");
+				n++;//n = n+1
+				n %= 5;//9/5 =1 余数为4
+				auto();
+			},false);
+
+			vid.volume = 0.5;
+
+			document.onmousedown = function(){
+				return false;
+			}
+		</script>
+	</body>
+</html>

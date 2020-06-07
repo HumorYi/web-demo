@@ -1,0 +1,16 @@
+<ion-content class="content has-header">
+  <div class="list list-inset" ng-hide="true">
+    <div class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" ng-model="info.kw" placeholder="请输入书名或者作者名">
+    </div>
+  </div>
+  <div class="list list-inset">
+    <a ng-repeat="book in heart track by $index" href="#/bs_detail/{{book.bid}}" class="item item-thumbnail-left">
+      <img ng-src="img/{{book.img_sm}}" alt="{{book.img_alt}}" />
+      <h2 class="fs">{{book.name}}</h2>
+      <p class="energized">{{book.author}}</p>
+      <p class="price">{{book.price | currency:'¥'}}</p> 已有
+      <span class="buyNum">{{book.buyCount}}</span>人购买 </a>
+  </div>
+</ion-content>

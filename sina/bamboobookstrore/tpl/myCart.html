@@ -1,0 +1,52 @@
+<ion-content class="content has-header has-footer">
+  <ion-list class="list list-inset" ng-show="isLogin">
+    <ion-item ng-repeat="book in carts" class="bs-item">
+      <div class="row row-center">
+        <div class="col col-15">
+          <label class="checkbox">
+            <input type="checkbox" ng-click="selectBook(book)" ng-check="isSelectAll" ng-model="book.isSelect">
+          </label>
+        </div>
+        <div class="col col-25">
+          <div ng-click="jump('detail', {bid: book.bid})">
+            <img class="img-responsive" ng-src="img/{{book.img_sm}}" alt="{{book.img_alt}}" />
+          </div>
+        </div>
+        <div class="col col-60">
+          <h2 class="fs">
+            <a href="#/bs_detail/{{book.bid}}">{{book.name}}</a>
+          </h2>
+          <p>
+            <a href="#/bs_detail/{{book.bid}}">{{book.author}}</a>
+          </p>
+          <span class="price">{{book.price | currency : '¥'}}</span>
+          <div class="bCount">
+            <button class="button button-small" :disabled="book.bookCount===1" ng-class="book.bookCount===1 ? 'button-stable' : 'button-dark'"
+              ng-click="decrement(book)">-</button>
+            <input class="alterNum" type="text" ng-model="book.bookCount" ng-click="changeBookCount(book)" />
+            <button class="button button-small button-dark" ng-click="increment(book)">+</button>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <div class="text-center isLogin" ng-if="!isLogin">
+    <i class="icon ion-ios-cart-outline"></i>
+    <span>登录后可同步电脑与手机书车</span>
+    <button ng-click="jump('user')">登录</button>
+  </div>
+  <div class="text-center isLogin" ng-if="isLogin && !hasBook">
+    <i class="icon ion-ios-cart-outline"></i>
+    <span>书车中什么都没有，快去购书吧！</span>
+  </div>
+</ion-content>
+<ion-footer-bar class="footer-bs footer-cart" ng-if="isLogin && hasBook">
+  <div class="cartBook">
+    <label class="checkbox">
+      <input type="checkbox" ng-click="selectAllBook()" ng-model="isSelectAll">
+    </label>
+    <strong>全选</strong>
+    <button ng-click="jumpToOrder()">去结算</button> 合计：
+    <span class="price">{{sumAll() | currency :'¥'}}</span>
+  </div>
+</ion-footer-bar>

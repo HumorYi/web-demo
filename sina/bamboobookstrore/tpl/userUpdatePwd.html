@@ -1,0 +1,25 @@
+<ion-modal-view class="updateUpwd">
+  <ion-content overflow-scroll="false">
+    <ion-list>
+      <ion-item>
+        <h1 class="text-center">修改密码</h1>
+      </ion-item>
+      <ion-item>
+        <label class="item item-input item-floating-label labelBlock" for="oldPwd">
+          <span class="input-label">旧密码</span>
+          <input type="password" placeholder="请输入旧密码" class="text-center" id="oldPwd" maxlength="16" ng-model="upwd.oldVal" />
+        </label>
+      </ion-item>
+      <ion-item>
+        <label class="item item-input item-floating-label labelBlock" for="newPwd">
+          <span class="input-label">新密码</span>
+          <input type="password" placeholder="请输入新密码" class="text-center" id="newPwd" maxlength="16" ng-model="upwd.newVal" />
+        </label>
+      </ion-item>
+      <ion-item>
+        <button class="button button-assertive btnWidth" ng-click="alterPwd()">修改</button>
+        <button class="button button-balanced btnWidth btnTop" ng-click="closeUpdatePwd()">退出</button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

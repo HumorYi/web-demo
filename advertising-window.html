@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广告弹窗</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.box{
+			width: 200px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			cursor: pointer;
+			z-index: -1
+		}
+
+		.btnMgr{
+			width: 300px;
+			height: 30px;
+			margin: 30px auto;
+		}
+
+		.btnMgr > button{
+			width: 100px;
+			height: 30px;
+			margin-right: 30px;
+		}		
+	</style>
+</head>
+<body>
+	<div class='btnMgr'>
+		<button onclick = "start()">启动</button>
+		<button onclick = "stop()">停止</button>
+	</div>
+	<div class="box" id="box" href='https://www.baidu.com'></div>
+	<script>
+		var boxDom = document.getElementById('box');
+		var boxWidth = boxDom.offsetWidth;
+		var boxHeight = boxDom.offsetHeight;
+		var winHeight = document.documentElement.clientHeight;
+		var winWeight = document.documentElement.clientWidth;
+		/*var winHeight = document.documentElement.scrollHeight;
+		var winWeight = document.documentElement.scrollWidth;*/
+		var sy = 0;
+		var sx = 0;
+		var vy = 10;
+		var vx = 10;
+		var timer = null;
+
+		// 启动定时器
+		function start(){
+			timer = setInterval(function(){
+				sy += vy
+
+				// 到达上下边界时，反转自增变量 vy的值
+				if(sy <= 0 || sy >= (winHeight - boxHeight)){
+					vy = -vy
+				}
+
+				boxDom.style.top = sy + 'px';
+
+				sx += vx
+
+				// 到达左右边界时，反转自增变量 vx的值
+				if(sx <= 0 || sx >= (winWeight - boxWidth)){
+					vx = -vx
+				}
+
+				boxDom.style.left = sx + 'px';
+			},100);
+		}
+
+		function stop(){
+			clearInterval(timer);
+			timer = null;
+		}
+
+		boxDom.onmouseover = function(){
+			stop();
+		}
+
+		boxDom.onmouseout = function(){
+			start();
+		}
+
+		boxDom.onclick = function(){
+			// window.location.href = this.getAttribute('href');
+			window.open(this.getAttribute('href'), '_blank');
+		}
+
+		document.onkeydown = function(e){
+			var keyCode = e.keyCode;
+			switch(keyCode){
+				//左边
+				case 37:
+				case 65:
+					if(sx > 0){
+						sx -= vx;
+						boxDom.style.left = sx + 'px';
+					}
+
+					break;
+
+				//右边
+				case 39:
+				case 68:
+					if(sx < winWeight - boxWidth){
+						sx += vx;
+						boxDom.style.left = sx + 'px';
+					}
+					
+					break;
+
+				//上边
+				case 38:
+				case 87:
+					if(sy > 0){
+						sy -= vy;
+						boxDom.style.top = sy + 'px';
+					}
+
+					break;
+
+				//下边
+				case 40:
+				case 83:
+					if(sy < winHeight - boxHeight){
+						sy += vy;
+						boxDom.style.top = sy + 'px';
+					}
+
+					break;
+
+				default:
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

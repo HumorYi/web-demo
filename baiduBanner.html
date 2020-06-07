@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度banner</title>
+	<style>
+		#banner{
+			width: 400px;
+			height: 400px;
+			margin: 100px auto;
+			border: 1px solid red;
+			overflow: hidden;
+		}
+
+		#banner > #box {
+			width: 300px;
+			height: 1600px;
+			float: right;
+		}
+
+		#banner > #box > div{
+			width: 300px;
+			height: 400px;
+		}
+
+		#banner > #title > span{
+			display: inline-block;
+			width: 100px;
+			line-height: 100px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		#banner > #box > div:nth-of-type(1), #banner > #title > span:nth-of-type(1){
+			background: red;
+		}
+
+		#banner > #box > div:nth-of-type(2), #banner > #title > span:nth-of-type(2){
+			background: green;
+		}
+
+		#banner > #box > div:nth-of-type(3), #banner > #title > span:nth-of-type(3){
+			background: gray;
+		}
+
+		#banner > #box > div:nth-of-type(4), #banner > #title > span:nth-of-type(4){
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<div id="box">
+			<div>red</div>
+			<div>green</div>
+			<div>gray</div>
+			<div>blue</div>
+		</div>
+
+		<div id="title">
+			<span>red</span>
+			<span>green</span>
+			<span>gray</span>
+			<span>blue</span>
+		</div>
+	</div>
+
+	<script>
+		window.$ = HTMLElement.prototype.$ = function (selector) {
+			var elems = (this === window ? document : this).querySelectorAll(selector);
+			return elems.length === 0 ? null : elems.length === 1 ? elems[0] : elems;
+		};
+
+		/*var curSpan = $('#banner > #title > span');
+		for(var i = 0; i<curSpan.length; i++){
+			(function(i){
+				curSpan[i].onclick = function(){
+					$('#banner > #box').style.marginTop = -400 * i + 'px';
+				};
+			})(i);
+		}*/
+
+		$('#banner> #title > span').forEach(function(curSpan, i){
+			curSpan.onclick = function(){
+				$('#banner > #box').style.marginTop = -400 * i + 'px';
+			};
+		});
+	</script>
+</body>
+</html>

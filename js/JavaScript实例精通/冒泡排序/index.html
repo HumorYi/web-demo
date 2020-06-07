@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+		<!--网页头部-->
+		<head>
+			<!--声明当前页面的字符编码集，国际编码 utf-8 ，中文编码 gb2312 gbk-->
+			<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+			<!--网页三要素 标题，关键词，描述-->
+			<meta name="Keywords" content="">
+			<!--80个字以内，小于等于76个字是标准-->
+			<meta name="Description" content="">
+			<!--<title>小于等于31个字是标准-->
+			<title> - Andy</title>
+		</head>
+		<!--网页身体-->
+		<body>
+			请输入仅为数字的排序序列：<input type='text' id='source' />
+			<input type='button' value='排序' onClick='display();' />
+			<p>(输入序列请用半角逗号隔开，多谢合作！)</p>
+			<script language="javascript" type="text/javascript">
+				function bubbleSort(arr){
+					var temp, exchange;
+					for(var i=0; i<arr.length; i++){
+						exchange = false;
+						for(var j=arr.length-2; j>=i; j--){
+							if(eval(arr[j+1]) > eval(arr[j])){
+								temp = arr[j+1];
+								arr[j+1] = arr[j];
+								arr[j] = temp;
+
+								exchange = true;
+							}
+						}
+						if(!exchange){
+							break;
+						}
+					}
+					return arr;
+				}
+
+				function display(el){
+					var str = document.getElementById('source').value;
+					var strs = bubbleSort(str.split(','));
+					str = '';
+					for(var i=0; i<strs.length; i++){
+						str += strs[i] + ' , ';
+					}
+					str = str.substring(0,str.length-2);
+					//str = str.ToString().RTrim(',');
+
+					/*获取字符串最后一个元素
+					//str.charAt(str.length-1);
+					//str.subStr(str.length-1,1);
+						var str = '123456';
+						spstr = str.split('');
+						spstr[spstr.length-1];
+					*/
+					alert(str);
+				}
+			</script>
+
+		</body>
+</html>

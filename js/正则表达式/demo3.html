@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>等效正则表达式示例</title>
+</head>
+<body>
+	<form name=form1>
+        <center>
+            <h2>请输入待匹配的字符串：</h2>
+            <input type=text name=mytext size=30>
+            <h2>请选择正则表达式模式：</h2>
+            <table border width=200>
+                <tr>
+                    <td>
+                        <input type=radio name=RadioButtons onclick="radio1Click()">
+                        “\W”示例
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type=radio name=RadioButtons onclick="radio2Click()">
+                        [^A-Za-z0-9_]示例
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type=radio name=RadioButtons onclick="radio3Click()">
+                        “\s”示例
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type=radio name=RadioButtons onclick="radio4Click()">
+                        [\f\n\r\t\v]示例
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </form>
+
+    <script type="text/javascript">
+    	function radio1Click(){
+    		var str = document.form1.mytext.value;
+    		var reg = /\W/g;
+    		var str2 = str.replace(reg, "");
+            alert("去除非字母非数字非下划线后的字符串为："+str2);
+    	}
+
+    	function radio2Click(){
+    		var str = document.form1.mytext.value;
+    		var reg = /[^A-Za-z0-9_]/g;
+    		var str2 = str.replace(reg,"");
+    		alert("去除非字母非数字非下划线后的字符串为："+str2);
+    	}
+
+    	function radio3Click(){
+    		var str = document.form1.mytext.value;
+    		var reg = /\s/g;
+    		var str2 = str.replace(reg, "");
+            alert("去除空格后的字符串为："+str2);
+    	}
+
+    	function radio4Click(){
+    		var str = document.form1.mytext.value;
+    		var reg = /[\f\n\r\t\v]/g;
+    		var str2 = str.replace(reg, "");
+    		alert("去除空格后的字符串为："+str2);
+    	}
+    </script>
+</body>
+</html>

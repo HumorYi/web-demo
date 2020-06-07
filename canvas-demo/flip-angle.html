@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas翻角效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background: #5b250d;
+            display: inline-block;
+            font-size: 0;
+            position: relative;
+        }
+
+        .container:before, .container:after {
+            content: "";
+            position: absolute;
+            background: #fff;
+        }
+
+        .container:before {
+            left: 50px;
+            top: 0;
+            width: 1px;
+            height: 100px;
+        }
+
+        .container:after {
+            left: 0px;
+            top: 50px;
+            width: 100px;
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <canvas class="myCanvas" width="100" height="100"></canvas>
+</div>
+
+<script>
+    var canvas = document.querySelector('.myCanvas');
+    var ctx = canvas.getContext('2d');
+    var cw = 100;
+    var ch = 100;
+    var speed = 1;
+    var aSpeed = 0.1;
+    var deg = Math.PI / 180;
+
+    ctx.moveTo(0, 0);
+    ctx.strokeStyle = 'black';
+    ctx.strokeWidth = 1;
+    ctx.save();
+
+    function start(type) {
+        var points = null;
+        if (type === 'show') {
+            points = {
+                x1: 100,
+                y1: 0,
+                x2: 100,
+                y2: 0
+            };
+            aSpeed = .1;
+            speed = 1;
+        }
+        else {
+            points = {
+                x1: 50,
+                y1: 0,
+                x2: 100,
+                y2: 50
+            };
+            aSpeed = -.1;
+            speed = -1;
+        }
+
+        draw(points, type);
+    }
+
+    function draw(points, type) {
+        var disX = Math.floor(points.x2 - points.x1);
+        var disY = Math.floor(points.y2 - points.y1);
+        console.log("disX: ",disX);
+        console.log("disY: ",disY);
+
+        if (disY < 0 && type === 'hide') {
+            console.log('该展开动画了');
+            timer('show');
+            return;
+        }
+        else if (disY > 50 && type === 'show') {
+            console.log('该收起动画了');
+            timer('hide');
+            return;
+        }
+
+        ctx.clearRect(0, 0, cw, ch);
+
+        drawPageText(points);
+        drawPageShadow(points, disX, disY);
+
+        /**
+         * 此处需要使用h5提供的用于刷帧的函数 requestAnimationFrame。
+         * 此方法可简单理解为16毫秒的定时器，但是厉害的是可以再各个环境中自动匹配到可达到的相对顺畅的帧率，实际并不是定时器哈。
+         * */
+        window.requestAnimationFrame(function () {
+            console.log("requestAnimationFrame");
+            draw(points, type);
+        });
+    }
+
+    function drawPageText(points) {
+        //闭合三角形
+        ctx.save();
+        ctx.beginPath();
+        console.log('points: ', points);
+        ctx.moveTo(points.x1, points.y1);
+        ctx.lineTo(points.x2, points.y2);
+        ctx.lineTo(points.x2, points.y1);
+        ctx.lineTo(points.x1, points.y1);
+        ctx.fillStyle = '#f60';
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+
+        ctx.save();
+        ctx.beginPath();
+        //重叠模式
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fff';
+        ctx.translate(80, 20);
+        ctx.rotate(45 * deg);
+        ctx.fillText('NEW', 0, 0);
+        ctx.closePath();
+        ctx.restore();
+    }
+
+    function drawPageShadow(points, disX, disY) {
+        ctx.save();
+        ctx.beginPath();
+
+        //移動到位置 左上
+        ctx.moveTo(points.x1, points.y1);
+        console.log('moveTo: ', points.x1, points.y1);
+
+        //画第一个曲线
+        ctx.quadraticCurveTo(points.x1 + (disX / 10), points.y1 + disY / 10, (points.x1 + disX / 10), points.y1 + disY / 2);
+        console.log('quadraticCurveTo: ', points.x1 + (disX / 10), points.y1 + disY / 10, (points.x1 + disX / 10), points.y1 + disY / 2);
+
+        //直线向下
+        ctx.lineTo(points.x1 + disX / 10, points.y2 - (disY / 5));
+        console.log('lineTo: ', points.x1 + disX / 10, points.y2 - (disY / 5));
+
+        //半圆向右
+        ctx.arc(points.x1 + disX / 5, points.y2 - (disY / 5), disY / 10, deg * 180, deg * 90, true);
+        console.log('arc: ', points.x1 + disX / 5, points.y2 - (disY / 5), disY / 10, deg * 180, deg * 90);
+
+        // 直线向右
+        ctx.lineTo(points.x2 - disX / 2, points.y2 - (disY / 10));
+        console.log('lineTo: ', points.x2 - disX / 2, points.y2 - (disY / 10));
+
+        //曲线向右
+        ctx.quadraticCurveTo(points.x2 - disX / 10, points.y2 - (disY / 10), points.x2, points.y2);
+        console.log('quadraticCurveTo: ', points.x2 - disX / 10, points.y2 - (disY / 10), points.x2, points.y2);
+
+        //闭合图形
+        ctx.lineTo(points.x1, points.y1);
+        console.log('lineTo: ', points.x1, points.y1);
+
+        // 创建颜色线性渐变
+        var gradient = ctx.createLinearGradient(points.x1, points.y2, points.x1 + (disX / 2), points.y1 + disY / 2);
+        gradient.addColorStop(0, '#ccc');
+        gradient.addColorStop(0.7, '#111');
+        gradient.addColorStop(1, '#000');
+
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+
+        //更新速度位置
+        points.x1 -= speed;
+        points.y2 += speed;
+        speed += aSpeed;
+        console.log('points: ', points.x1, points.y2);
+        console.log('aSpeed: ', aSpeed);
+        console.log('speed: ', speed);
+    }
+
+    function timer(type) {
+        setTimeout(function () {
+            start(type);
+        }, 2000);
+    }
+
+    start('show');
+</script>
+
+<!--<script>
+
+    // 获取canvas元素
+    var canvas = document.querySelector('.myCanvas');
+    // 获取canvas元素宽度
+    var cw = canvas.width;
+    // 获取canvas元素高度
+    var ch = canvas.height;
+    // 获取canvas元素绘画2d内容的工具,即上下文环境
+    var ctx = canvas.getContext('2d');
+    var deg = Math.PI / 180;
+    var type = "show";
+
+    draw();
+
+    function draw(type) {
+
+        ctx.clearRect(0, 0, cw, ch);
+        //绘制三角等内容
+        drawMethod();
+
+        window.requestAnimationFrame(function () {
+            draw();
+        });
+    }
+
+    function drawMethod() {
+
+        // 阴影翻页三角
+        // 设置开始路径
+        ctx.beginPath();
+
+        // 设置原点
+        ctx.moveTo(50, 0);
+
+        // 左上弧线
+        ctx.quadraticCurveTo(55, 5, 55, 25);
+
+        // 左上到左下直线
+        ctx.lineTo(55, 40);
+
+        // 左下到右上 1/4 圆
+        ctx.arc(60, 40, 5, Math.PI, Math.PI / 2, true);
+
+        // 左下到右直线
+        ctx.lineTo(75, 45);
+
+        // 右下弧线
+        ctx.quadraticCurveTo(90, 45, 100, 50);
+
+        // 连接原点，闭合线图区域
+        ctx.lineTo(50, 0);
+
+        // 创建线性渐变颜色
+        var gradient = ctx.createLinearGradient(50, 0, 100, 50);
+        gradient.addColorStop(0, '#000');
+        gradient.addColorStop(0.5, '#ddd');
+        gradient.addColorStop(1, '#2a2a2c');
+
+        // 设置画图颜色
+        ctx.fillStyle = gradient;
+
+        ctx.fill();
+
+        // 设置结束路径
+        ctx.closePath();
+        // 还原之前画笔
+        ctx.restore();
+
+        // 文字区域
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(50, 0);
+        ctx.lineTo(100, 0);
+        ctx.lineTo(100, 50);
+        ctx.moveTo(50, 0);
+        ctx.fillStyle = '#ffc34f';
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+
+        // 文字区域填充文字
+        ctx.save();
+        ctx.beginPath();
+        // canvas层叠模式
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fff';
+        ctx.translate(80, 20);
+        ctx.rotate(45 * deg);
+        ctx.fillText('New', 0, 0);
+        ctx.closePath();
+        ctx.restore();
+    }
+</script>-->
+</body>
+</html>
