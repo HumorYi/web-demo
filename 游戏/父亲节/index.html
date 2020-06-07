@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>拼图游戏</title>
+    <meta name="keywords" content="拼图游戏"/>
+    <meta name="description" content="拼图游戏"/>
+    <style type="text/css">
+        #vvg p {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #vvg ul {
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #thumb li {
+            list-style: none;
+            float: left;
+            display: inline;
+            margin-left: 5px;
+        }
+
+        #gameCanvas {
+            position: relative;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        #gameCanvas li {
+            position: absolute;
+            list-style: none;
+            cursor: move;
+        }
+
+        #vvgBox {
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #mask {
+            position: absolute;
+            z-index: 999;
+            background: #fff;
+            left: 0;
+            top: 0;
+        }
+
+        #button {
+            width: 133px;
+            height: 133px;
+            background-image: url('images/play.png');
+            position: absolute;
+            z-index: 1000;
+            margin-left: -66px;
+            left: 50%;
+            margin-top: -66px;
+            top: 50%;
+        }
+
+        #button:hover {
+            background-position: -133px 0;
+        }
+
+        #textTip {
+            font-size: 25px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            position: relative;
+            top: -75%;
+            z-index: 1000;
+        }
+
+        #step {
+            margin-left: 5px;
+            margin-right: 5px;
+            color: red;
+            font-size: 20px;
+        }
+
+        #imgDiy {
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="vvg">
+    <p id="desTip">欢迎来到拼图游戏</p>
+    <div id="vvgBox">
+        <ul id="gameCanvas"></ul>
+    </div>
+</div>
+<script type="text/javascript">
+
+function getId(id) {
+    return typeof id === "string" ? document.getElementById(id) : id
+}
+
+function setOpacity(node, level) {
+    if (document.all) {
+        node.style.filter = 'alpha(opacity=' + level + ')';
+    } else {
+        node.style.opacity = level / 100;
+    }
+}
+
+var vvg = {};
+vvg.step = 1;
+
+function makeGame(url) {
+    var imgArray = [], imgArray_bak = [],
+            dragging = null, draggingL, draggingT, dear, dearL, dearT, top, left, effectEnd,
+            posArray = [], posArray_bak = [], canvas = getId('gameCanvas'), vvgBox = getId('vvgBox'), successTimer;
+    var posx, posy, zindex = 0, isMouseMove;
+    var imgWidth, imgHeight;
+    var img = new Image();
+    img.src = url;
+    
+    img.onload = function () {
+        imgWidth = img.width;
+        imgHeight = img.height;
+        var myw = Math.floor(imgWidth / 4),
+                myh = Math.floor(imgHeight / 4);
+        vvgBox.style.width = imgWidth + 'px';
+        vvgBox.style.height = imgHeight + 'px';
+        canvas.style.width = imgWidth + 'px';
+        canvas.style.height = imgHeight + 'px';
+        while (canvas.firstChild) {
+            canvas.removeChild(canvas.firstChild);
+        }
+        var oFragment = document.createDocumentFragment();
+        for (var i = 0; i < 16; i++) {
+            var li = document.createElement('li');
+            li.style.width = myw + 'px';
+            li.style.height = myh + 'px';
+            li.style.backgroundImage = 'url(' + url + ')';
+            if (i < 4) {
+                top = 0;
+                left = i * myw;
+            } else if (i >= 4 && i < 8) {
+                top = myh;
+                left = (i - 4) * myw;
+            } else if (i >= 8 && i < 12) {
+                top = 2 * myh;
+                left = (i - 8) * myw;
+            } else if (i >= 12) { 
+                top = 3 * myh;
+                left = (i - 12) * myw;
+            }
+            posArray.push([i, left, top]);
+            li.style.backgroundPosition = -left + 'px' + ' ' + (-top) + 'px';
+            li.id = i;
+            li.isMove = false;
+            imgArray.push(li);
+            li.style.left = left + 'px';
+            li.style.top = top + 'px';
+            li.onmousedown = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement;
+                isMouseMove = false;
+                dragging = target;
+                draggingL = parseInt(dragging.style.left);
+                draggingT = parseInt(dragging.style.top);
+                posx = event.clientX - canvas.offsetLeft - dragging.offsetLeft;
+                posy = event.clientY - canvas.offsetTop - dragging.offsetTop;
+                zindex++;
+                if (!dragging.isMove) {
+                    document.onmousemove = function (event) {
+                        event = event || window.event;
+                        var myleft = event.clientX - canvas.offsetLeft - posx;
+                        var mytop = event.clientY - canvas.offsetTop - posy;
+                        if (myleft < 0)myleft = 0;
+                        if (mytop < 0)mytop = 0;
+                        if (myleft > canvas.offsetWidth - dragging.offsetWidth)myleft = canvas.offsetWidth - dragging.offsetWidth;
+                        if (mytop > canvas.offsetHeight - dragging.offsetHeight)mytop = canvas.offsetHeight - dragging.offsetHeight;
+                        dragging.style.left = myleft + 'px';
+                        dragging.style.top = mytop + 'px';
+                        dragging.style.zIndex = zindex;
+                        setOpacity(dragging, 80);
+                        dear = checkMeet(dragging);
+                        for (var i = 0, n = imgArray_bak.length; i < n; i++) {
+                            setOpacity(imgArray_bak[i], 100);
+                        }
+                        setOpacity(dear, 50);
+                        dearL = parseInt(dear.style.left);
+                        dearT = parseInt(dear.style.top);
+                        isMouseMove = true;
+                        return false;
+                    };
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                        if (isMouseMove === true) {
+                            dear.style.zIndex = zindex;
+                            setOpacity(dragging, 100);
+                            setOpacity(dear, 100);
+                            startMove(dear, draggingL, draggingT, 10);
+                            startMove(dragging, dearL, dearT, 10);
+                        }
+                        isMouseMove = false;
+                        dragging = null;
+                        return false;
+                    };
+                }
+                return false;
+            };
+            oFragment.appendChild(li);
+        }
+        canvas.appendChild(oFragment);
+        imgArray_bak = imgArray.concat(); 
+        posArray_bak = posArray.concat(); 
+        play();
+	    console.log();
+    };
+   
+    function rank() {
+        while (imgArray.length > 0) {
+            var ranLi = imgArray.splice(random(0, imgArray.length), 1);
+            var ranCss = posArray.splice(random(0, posArray.length), 1);
+            startMove(ranLi[0], ranCss[0][1], ranCss[0][2], 10);
+        }
+    }
+
+    
+    function random(from, to) {
+        return Math.floor(Math.random() * (to - from) + from);
+    }
+
+    
+    function checkMeet(obj) {
+        var disArray = [];
+        for (var i = 0, n = imgArray_bak.length; i < n; i++) {
+            if (imgArray_bak[i] != obj && !imgArray_bak[i].isMove) {
+                var item = getDistance(obj, imgArray_bak[i]);
+                if (disArray.length == 0) {
+                    disArray.push([imgArray_bak[i], item]);
+                }
+                if (item - 0 < disArray[0][1] - 0) {
+                    disArray.splice(0, 1, [imgArray_bak[i], item]);
+                }
+            }
+        }
+        return disArray[0][0];
+    }
+
+    
+    function getDistance(obj1, obj2) {
+        var a = (obj1.offsetLeft + obj1.offsetWidth / 2) - (obj2.offsetLeft + obj2.offsetWidth / 2);
+        var b = (obj1.offsetTop + obj1.offsetHeight / 2) - (obj2.offsetTop + obj2.offsetHeight / 2);
+        return Math.ceil(Math.sqrt(a * a + b * b));
+    }
+
+    
+    function check() {
+        for (var j = 0, n = posArray_bak.length; j < n; j++) {
+            var loopLi = getId(posArray_bak[j][0] + ''); 
+            var loopLiLeft = parseInt(loopLi.style.left);
+            var loopLiTop = parseInt(loopLi.style.top);
+            if (loopLiLeft != posArray_bak[j][1]) return false;
+            if (loopLiTop != posArray_bak[j][2]) return false;
+        }
+        return true;
+    }
+
+    function startMove(obj, x2, y2, time) {
+        clearInterval(obj.timer);
+        if (!obj.timer) {
+            obj.timer = setInterval(function () {
+                move(obj, x2, y2);
+            }, time);
+        }
+    }
+
+
+    function move(obj, x2, y2) {
+        obj.isMove = true;
+        var x1 = parseInt(obj.style.left), y1 = parseInt(obj.style.top),
+                movex = (x2 > x1 ? Math.ceil : Math.floor)((x2 - x1) / 10),
+                movey = (y2 > y1 ? Math.ceil : Math.floor)((y2 - y1) / 10);
+        obj.style.left = (x1 + movex) + 'px';
+        obj.style.top = (y1 + movey) + 'px';
+        if (parseInt(obj.style.left) == x2 && parseInt(obj.style.top) == y2) {
+            clearInterval(obj.timer);
+            obj.isMove = false;
+            obj.timer = null;
+            if (!!check() && !effectEnd) {
+                successTimer && clearTimeout(successTimer);
+                successTimer = setTimeout(sucessEffect, 800);
+            }
+        }
+    }
+
+
+    function sucessEffect() {
+        var num = 0, cTimer;
+        effect();
+        function effect() {
+            var copy2 = imgArray_bak.concat();
+            var copy1 = posArray_bak.concat();
+            while (copy2.length > 0) {
+                var ranLi = copy2.splice(random(0, copy2.length), 1);
+                var ranCss = copy1.splice(random(0, copy1.length), 1);
+                startMove(ranLi[0], ranCss[0][1], ranCss[0][2], 10);
+            }
+            num++;
+            if (num < 4) {
+                setTimeout(effect, 800);
+            } else {
+                setTimeout(back, 800);
+            }
+        }
+
+        function back() {
+            var copy1 = posArray_bak.concat();
+            while (copy1.length > 0) {
+                var ranCss = copy1.splice(random(0, copy1.length), 1);
+                startMove(getId(ranCss[0][0] + ''), ranCss[0][1], ranCss[0][2], 30);
+                cTimer && clearTimeout(cTimer);
+            }
+            effectEnd = true;
+        }
+    }
+
+    function play() {
+        var mask = document.createElement('div');
+        mask.id = 'mask';
+        mask.style.width = imgWidth + 'px';
+        mask.style.height = imgHeight + 'px';
+        setOpacity(mask, 80);
+        var playBtn = document.createElement('div');
+        playBtn.id = 'button';
+        playBtn.onclick = function () {
+            canvas.removeChild(mask);
+            vvgBox.removeChild(playBtn);
+            rank();
+        };
+        canvas.appendChild(mask);
+        vvgBox.appendChild(playBtn);
+    }
+}
+
+makeGame('images/01.jpg');
+
+
+</script>
+
+</body>
+</html>

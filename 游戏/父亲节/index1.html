@@ -1,0 +1,46 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>父亲节快乐</title>
+	</head>
+	<body>
+		<audio id='test' src="images/父亲.mp3"></audio>
+   		
+		<div id="stage" style="margin: 0 auto; width: 1200px; height: 650px; text-align: center; vertical-align: middle" >
+			<canvas id="canvas"  width="1200" height="630">
+				不支持画板对象时能看到
+			</canvas>
+		</div>
+		<script>
+        	function play() {
+            var player = document.querySelector('#test');
+                player.src = 'images/父亲.mp3';
+                player.play();
+       		 }
+       		 play();
+			
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			
+			var d1 = new Image();
+			d1.src = "images/01.jpg";
+			var d2 = new Image();
+			d2.src = "images/02.jpg";
+			var d3 = new Image();
+			d3.src = "images/03.jpg";
+			var d4 = new Image();
+			d4.src = "images/04.jpg";
+			var d5 = new Image();
+			d5.src = "images/05.jpg";
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

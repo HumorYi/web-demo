@@ -1,0 +1,165 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>植物大战僵尸</title>
+	</head>
+
+	<body>
+		<div id="stage" style="margin: 0 auto; width: 1400px; height: 600px; background: #323232; text-align: center; vertical-align: middle" >
+			<canvas id="canvas"  width="1400" height="600">
+				不支持画板对象时能看到
+			</canvas>
+		</div>
+		<script type="text/javascript" src="tools.js"></script>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			/**
+			 *该部分内容属于 第二部分 
+			 */
+			//僵尸的三种状态：移动、攻击、站立
+			var MOVE = 0;
+			var STAND = 1;
+			var ATTACK = 2;
+			/**
+			 *第一部分
+			 * 1.将所有动画帧图片对象存储到数组中
+			 * 2.在定时器中演示，画背景和部分帧动画图片 
+			 */
+			//僵尸移动图片数组
+			var zombieM=[];
+			//僵尸站立图片数组
+			var zombieS=[];
+			//僵尸攻击图片数组
+			var zombieA=[];
+			/*
+			 * 把僵尸图片所有帧，存储到数组
+			 */
+			//僵尸移动图片存入数组
+			for(var i=0;i<13;i++){
+				zombieM[i] = new Image();
+				if(i+1<10){
+					zombieM[i].src = "img/move/0"+(i+1)+".png";
+				}else{
+					zombieM[i].src = "img/move/"+(i+1)+".png";
+				}
+			}
+			//僵尸站立图片存入数组
+			for(var i=0;i<6;i++){
+				zombieS[i] = new Image();
+				zombieS[i].src = "img/stand/"+(i+21)+".png";
+			}
+			//僵尸攻击图片存入数组
+			for(var i=0;i<11;i++){
+				zombieA[i] = new Image();
+				zombieA[i].src = "img/attack/"+(i+31)+".png";
+			}
+			
+			
+			
+			//创建僵尸对象
+			var z1 = new Zombie();
+			//创建高坚果对象
+			var nut = new Tallnut();
+			
+			//定时器
+			setInterval(function(){
+				ctx.drawImage(bg,0,0);
+				//如果坚果生命值不为零，则将其画出来
+				if(nut.life>0){
+					nut.paint();
+				}
+				//如果僵尸对象的x坐标小于等于200，则将他的状态转换为站立，并画出结束背景
+				if(z1.x<=200){
+					z1.state = STAND;
+					ctx.drawImage(bg_end,500,50);
+				}
+				z1.animation();
+				z1.paint();
+				check(z1,nut);
+			},70);
+			
+			/**
+			 *第二部分：创建僵尸构造方法
+			 * 1.添加可用属性
+			 * 2.添加画图片方法和移动方法
+			 * 3.添加播放动画方法
+			 * 4.创建僵尸对象，并调用paint以及animation方法
+			 */
+			function Zombie(){
+				this.x = 1200;
+				this.y = 210;
+				this.width = 180;
+				this.height = 180;
+				this.state = MOVE;
+				this.frame = zombieM[0];
+				this.index = 0;
+				this.paint = function(){
+					ctx.drawImage(this.frame,this.x,this.y);
+				}
+				this.move = function(){
+					this.x-=2;
+				}
+				this.animation = function(){
+					if(this.state == MOVE){
+						this.frame = zombieM[this.index%13];
+						this.move();
+					}else if(this.state == STAND){
+						this.frame = zombieS[this.index%6];
+					}else if(this.state == ATTACK){
+						this.frame = zombieA[this.index%11];
+					}
+					this.index++;
+				}
+			}
+			
+			/**
+			 *第三部分
+			 * 1.创建坚果的构造方法
+			 * 2.创建check方法，检测僵尸遇到坚果后发生的事情
+			 * 3.创建坚果对象，并画出来
+			 * 3.判定什么情况下画出坚果，什么情况下让其消失
+			 * 4.判断什么情况下转换僵尸的状态
+			 */
+			function Tallnut(){
+				this.x = 500;
+				this.y = 250;
+				this.width = 83;
+				this.height = 119;
+				this.life = 66;
+				this.frame = nut1;
+				this.paint = function(){
+					ctx.drawImage(this.frame,this.x,this.y);
+				}
+			}
+			
+			function check(zom,p){
+				if(zom.x<=(p.x+p.width/2)){
+					zom.state = ATTACK;
+					if(p.life>44){
+						p.frame = nut1;
+						p.life--;
+					}else if(p.life>22){
+						p.frame = nut2;
+						p.life--;
+					}else if(p.life>0){
+						p.frame = nut3;
+						p.life--;
+					}else if(p.life==0 && zom.x>200){
+						p.x = 0;
+						p.y = 0;
+						zom.state = MOVE;
+					}
+				}
+			}
+
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
